@@ -1,0 +1,62 @@
+.btn{
+  position: relative;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 6px 10px;
+  line-height: 16px;
+  border-radius: 3px;
+  border: 1px solid #8ad1fc;
+  color: #16a4fa;
+  background-color: #fff;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.1s linear;
+  &:hover{
+    background-color: #f4fbff;
+    border-color: #8ad1fc;
+  }
+  &:active{
+    background-color: #e7f5ff;
+    border-color: #8ad1fc;
+  }
+  i{
+    margin-right: 4px;
+    font-size: 14px;
+    vertical-align: -10%;
+    color:#79cbfc;
+  }
+  .amount{
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid #fff;
+  }
+  &.btn-blue{
+    color: #fff;
+    background-color: #16a4fa;
+    border-color: #16a4fa;
+    i{color:#fff;}
+    &:hover{
+      background-color: #45b6fb;
+      border-color: #45b6fb;
+    }
+    &:active{
+      background-color: #0e98eb;
+      border-color: #0e98eb;
+    }
+  }
+  &.btn-blue-secondary{
+    color: #59b3d5;
+    border-color: #fff;
+    &:hover{
+      border-color: #8ad1fc;
+    }
+    &:active{
+      border-color: #8ad1fc;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.article-files{
+  width: 300px;
+  padding: 15px 15px 5px;
+  background: #fff;
+}
+.file-btn{
+  display: block;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #c3ced4;
+  border-radius: 6px;
+  background: #fcfcfc;
+  cursor: pointer;
+
+  &__icon{
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 100%;
+    vertical-align: middle;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background: #ededed;
+    i{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -13px;
+      margin-left: -11px;
+      color: #8695aa;
+      font-size: 26px;
+    }
+  }
+
+  &__text{
+    position: relative;
+    display: inline-block;
+    max-width: 200px;
+    margin-left: 15px;
+    vertical-align: middle;
+    line-height: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #6f7a89;
+    overflow: hidden;
+    span{
+      display: block;
+      line-height: 12px;
+      font-size: 12px;
+      font-weight: 400;
+      color:#a7b2c2;
+    }
+  }
+}

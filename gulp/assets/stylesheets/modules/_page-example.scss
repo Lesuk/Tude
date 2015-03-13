@@ -1,0 +1,20 @@
+.page{
+  height: 500px;
+}
+
+.page__header{
+  @include span(full);
+  background: rgba(255, 0, 0, 0.4);
+  margin-bottom: 20px;
+}
+
+.page__sidebar{
+  @include span(full);
+  background: rgba(0, 255, 0, 0.4);
+  margin-bottom: 20px;
+}
+
+.page__content{
+  @include span(full);
+  background: rgba(0, 0, 255, 0.4);
+}

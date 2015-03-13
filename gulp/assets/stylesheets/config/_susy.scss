@@ -1,0 +1,10 @@
+$article-grid: (
+  container: 68.750em,
+  columns: 12,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: left bottom,
+  ),
+);

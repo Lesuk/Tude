@@ -1,0 +1,46 @@
+@include breakpoint(62.500em){
+  .sidebar-collapsed{
+    .sidebar{
+      width: 60px;
+      overflow: initial;
+    }
+    .app__container {
+      width: calc(100% - 60px);
+    }
+    .main-logo {
+      padding: 4px 13px;
+    }
+    .main-nav__header{
+      padding: 18px 12px 10px;
+    }
+    .main-nav__link{
+      height: 50px;
+      padding: 15px 20px 15px;
+    }
+    .main-nav__item-text{
+      position: absolute;
+      top: 0;
+      left: 60px;
+      width: 120px;
+      height: 50px;
+      padding-left: 20px;
+      line-height: 50px;
+      background: #4a566d;
+      &:before{
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        margin-top: -6px;
+        border-width: 6px 0px 6px 6px;
+        border-style: solid;
+        border-color: transparent #404b5f;
+      }
+    }
+    .is-active .main-nav__item-text:before{
+      border-color: transparent #364051;
+    }
+  }
+}

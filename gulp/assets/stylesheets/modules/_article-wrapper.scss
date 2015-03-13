@@ -1,0 +1,62 @@
+.article-wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.article-wrapper__breadcrumbs{
+  margin-bottom: 10px;
+}
+
+.article-wrapper__main-video{
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.main-video__thumbnail{
+  display: block;
+  width: 100%;
+}
+
+.main-video__play-btn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  margin-left: -28px;
+  margin-top: -28px;
+  padding: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6) url(https://vk.com/images/icons/video_play_compact.png) center center no-repeat;
+  transition: opacity 80ms linear;
+}
+
+.article-wrapper__primary{
+  max-width: 700px;
+  margin: 10px auto 0;
+  @include breakpoint(1000px){
+    width: calc(100% - 300px);
+    padding-right: 15px;
+    margin-top: 20px;
+    float: left;
+  }
+  @include breakpoint(1000px){
+    padding-right: 25px;
+  }
+}
+
+.article-wrapper__secondary{
+  position: relative;
+  width: 300px;
+  display: none;
+  float: right;
+  margin-top: 20px;
+  @include breakpoint(1000px){
+    display: block;
+  }
+
+  &-item{
+    margin-bottom: 30px;
+  }
+}

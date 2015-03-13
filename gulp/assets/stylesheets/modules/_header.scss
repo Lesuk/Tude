@@ -1,0 +1,65 @@
+.header{
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fff;
+
+  @include breakpoint(31.250em){
+    padding: 0 20px;
+  }
+}
+
+%table-display{
+  display: table-cell;
+  vertical-align: middle;
+}
+.header__menu-btn{
+  @extend %table-display;
+  width: 70px;
+
+  @include breakpoint(62.500em){
+    display: none;
+  }
+}
+
+.header__main-search{
+  display: none;
+  @include breakpoint(62.500em){
+    display: table-cell;
+    min-width: 400px;
+    vertical-align: middle;
+  }
+}
+
+.header__mob-logo{
+  @extend %table-display;
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 34px;
+  margin-left: -17px;
+
+  @include breakpoint(62.500em){
+    display: none;
+  }
+}
+
+.header__user-section{
+  @extend %table-display;
+  position: relative;
+  height: 50px;
+  float: right;
+}
+
+.header__notification-section{
+  @extend %table-display;
+  float: right;
+  width: 40px;
+
+  @include breakpoint(25.000em){
+    width: 60px;
+  }
+}

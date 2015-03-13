@@ -3,14 +3,27 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'mysql2'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
+
+# front end
+gem "slim-rails"
+gem 'susy'
+gem 'compass-rails', '~> 2.0.0'
+gem 'breakpoint', '~> 2.5.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Authentication
+gem 'devise'
+
+# SEO
+gem 'friendly_id', '~> 5.0.0'
+gem 'babosa'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

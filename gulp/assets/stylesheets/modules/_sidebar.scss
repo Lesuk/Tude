@@ -1,0 +1,25 @@
+.sidebar{
+  position: relative;
+  width: 230px;
+  height: 100%;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #404b5f;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar__secondary-search{
+  padding: 7px 10px 6px;
+
+  @include breakpoint(62.500em){
+    display: none;
+  }
+}
+
+.sidebar__main-logo{
+  display: none;
+  @include breakpoint(62.500em){
+    display: block;
+  }
+}

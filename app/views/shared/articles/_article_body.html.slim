@@ -1,0 +1,30 @@
+.article-body
+  h1.article-body__title = @article.title
+  .article-body__meta.clearfix
+
+    .meta-actions
+      a.btn.btn-blue href="#a"
+        i.fa.fa-thumbs-up
+        span.btn__text Подобається
+        span.amount 134
+      a.btn.btn-blue-secondary href="#a"
+        i.fa.fa-star
+        span.btn__text Вибране
+      a.btn.btn-blue-secondary href="#a"
+        i.fa.fa-share-alt
+        span.btn__text Поділитися
+      a.btn.btn--info href="#a"
+        i.fa.fa-info-circle
+        span.btn__text Додатково
+      a.btn.btn--playlist href="#a"
+        i.fa.fa-list-ul
+        span.btn__text Плейлист
+
+    .meta-info.clearfix
+      .meta-info__date 5 листопада, 2014
+      .meta-info__views
+        span 12 065
+        | переглядів
+
+  .article-body__content
+    = @article.body

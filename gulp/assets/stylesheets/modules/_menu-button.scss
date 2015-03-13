@@ -1,0 +1,93 @@
+$button-color : #4e5860;
+$transition: .3s;
+
+.menu-btn{
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 32px;
+  margin: 0;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  outline:none;
+
+  &:after{
+    content: 'меню';
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    line-height: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $button-color;
+  }
+
+  span{
+    display: block;
+  }
+}
+
+.lines-button{
+  padding: 13px 6px;
+  transition: $transition;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+
+  &:hover{
+    opacity: 1;
+  }
+  &:active{
+    transition: 0;
+  }
+}
+
+@mixin line{
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  background: $button-color;
+  transition: $transition;
+}
+
+.menu-btn__lines{
+  @include line;
+  position: relative;
+
+  &:before, &:after{
+    @include line;
+    position: absolute;
+    left: 0;
+    content: '';
+    /*-webkit-transform-origin: center center;*/
+            /*transform-origin: center center*/
+  }
+  &:before{
+    top: 5px;
+  }
+  &:after{
+    top: -5px;
+  }
+}
+
+.lines-button.x.close{
+  .menu-btn__lines{
+    background: transparent;
+
+    &:before, &:after{
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      top: 0;
+      width: 16px;
+    }
+    &:before{
+      -webkit-transform: rotate3d(0,0,1,45deg);
+              transform: rotate3d(0,0,1,45deg);
+    }
+    &:after{
+      -webkit-transform: rotate3d(0,0,1,-45deg);
+              transform: rotate3d(0,0,1,-45deg);
+    }
+  }
+}

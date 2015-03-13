@@ -1,0 +1,21 @@
+.filter-results{
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+  line-height: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: #8f969e;
+
+  @include breakpoint(31.25em){
+    float: right;
+    width: auto;
+    margin-top: 0;
+    line-height: 36px;
+  }
+}
+
+.filter-results__amount {
+  font-weight: 700;
+  padding-right: 4px;
+}

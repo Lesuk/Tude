@@ -1,0 +1,132 @@
+/* is designed to make an element expand to enclose any floated elements within it. */
+.h-clearfix:after {
+  content:"";
+  display:table;
+  clear:both
+}
+
+/* is used to make an element appear below any floated elements that are above it. */
+.h-clear {
+  clear:both
+}
+
+.h-text-center {
+  text-align:center
+}
+
+.h-text-left {
+  text-align:left
+}
+
+.h-text-right {
+  text-align:right
+}
+
+.h-text-justify {
+  text-align:justify
+}
+
+.h-remove-margin {
+  margin:0 !important
+}
+
+.h-remove-padding {
+  padding:0 !important
+}
+
+.h-clickable {
+  cursor:pointer
+}
+
+.h-float-right {
+  float:right
+}
+
+.h-float-left {
+  float:left
+}
+
+.h-float-none {
+  float:none!important
+}
+
+.h-no-bullet {
+  list-style:none
+}
+
+.h-flexible {
+  max-width:100%
+}
+
+.h-position-absolute {
+  position:absolute
+}
+
+.h-position-relative {
+  position:relative
+}
+
+.h-spacing-above {
+  margin-top:40px
+}
+
+.h-spacing-above--xsmall {
+  margin-top:10px
+}
+
+.h-spacing-above--small {
+  margin-top:20px
+}
+
+.h-spacing-above--large {
+  margin-top:80px
+}
+
+.h-spacing-below {
+  margin-bottom:40px
+}
+
+.h-spacing-below--xsmall {
+  margin-bottom:10px
+}
+
+.h-spacing-below--small {
+  margin-bottom:20px
+}
+
+.h-spacing-below--large {
+  margin-bottom:80px
+}
+
+.h-padding {
+  padding:20px;
+}
+
+.h-padding--large {
+  padding:40px;
+}
+
+.h-full-width {
+  width:100%;
+}
+
+.h-hidden{
+  display: none !important;
+}
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.h-visually-hidden{
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.h-bottom-sidebar-border{
+  border-bottom: 2px solid #364354;
+  box-shadow: 0px 1px 0px 0px rgba(84, 97, 116, 1);
+}

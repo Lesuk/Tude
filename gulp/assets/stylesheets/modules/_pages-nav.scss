@@ -1,0 +1,33 @@
+.pages-nav{
+  /*max-width: 400px;*/
+  font-size: 0;
+}
+
+.pages-nav__item{
+  display: inline-block;
+  width: 33.3%;
+  padding: 2px 0 8px;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: $pages-nav-color;
+  background-color: transparent;
+
+  &:hover{
+    border-bottom: 2px solid #ADE0FF;
+  }
+
+  @include breakpoint(31.250em){
+    width: auto;
+    padding: 2px 8px 8px;
+    margin: 0 8px;
+  }
+}
+
+.pages-nav__item.is-current{
+  color: $main-blue;
+  border-bottom: 2px solid $main-blue;
+  font-weight: 600;
+}

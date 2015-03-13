@@ -1,0 +1,57 @@
+.notification-section{
+  position: relative;
+  height: 50px;
+  padding: 4px 0;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+
+  &:hover{
+    .notification-section__icon{
+      border: 1px solid #eee;
+    }
+  }
+
+  &.is-active{
+    .notification-section__header-dropdown{
+      top: 130%;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+    .notification-section__icon{
+      border: 1px solid #ddd;
+    }
+  }
+
+  @include breakpoint (25.000em){
+    padding: 4px 10px;
+  }
+}
+
+.notification-section__icon{
+  display: block;
+  line-height: 30px;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #C3C3C3; /* #9ba5b1 */
+}
+
+.notification-section__header-dropdown{
+  position: absolute;
+  top: 120%;
+  right: -50px;
+  z-index: 100;
+  width: 280px;
+  /* Hiding */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.1s ease-in-out;
+
+  @include breakpoint (25.000em){
+    right: 0;
+  }
+}

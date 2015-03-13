@@ -1,0 +1,36 @@
+.author-box{
+  padding: 15px;
+
+  &__img{
+    float: left;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  &__name{
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+    color: #555;
+    line-height: 25px;
+  }
+  &__whois{
+    display: block;
+    font-size: 12px;
+    margin: 0;
+    color: #999;
+    line-height: 12px;
+  }
+  &__about{
+    padding-top: 10px;
+    margin-bottom: 0;
+    line-height: 18px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #5e5e5e;
+    clear: both;
+  }
+}

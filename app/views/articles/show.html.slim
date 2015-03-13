@@ -1,0 +1,20 @@
+.container__article-wrapper
+  .article-wrapper.h-clearfix
+
+    .article-wrapper__breadcrumbs
+      = render "shared/breadcrumbs"
+
+    .article-wrapper__main-video
+      img.main-video__thumbnail src="#{gulp_asset_path('images/maxresdefault.jpg')}"
+      span.main-video__play-btn
+
+    .article-wrapper__primary
+      = render "shared/articles/article_body"
+      = render "shared/author_box"
+
+
+    aside.article-wrapper__secondary
+      .article-wrapper__secondary-item
+        = render "shared/articles/course_playlist"
+      .article-wrapper__secondary-item
+        = render "shared/articles/article_files"

@@ -1,0 +1,36 @@
+header.container__header
+  .header.clearfix
+    .header__menu-btn
+      button.menu-btn.lines-button.x type="button" role="button" aria-label="Menu"
+        span.menu-btn__lines
+    .header__main-search
+      .main-search
+        label.main-search__icon for="main-search"
+          i.fa.fa-search
+        input.main-search__input type="text" id="main-search" placeholder="Search articles, courses, questions"
+    .header__mob-logo
+      .mob-logo
+        a.mob-logo__link href="#"
+          img.mob-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
+    .header__register-section
+    .header__user-section
+      .user-section.js-dropdown
+        - src = "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/73.jpg"
+        img.user-section__img width="34" height="34" src="#{src}"
+        span.user-section__name Alexander
+        .user-section__header-dropdown
+          ul.header-dropdown.-tb-padding
+            li.header-dropdown__item: a href="#" Profile
+            li.header-dropdown__item: a href="#" Settings
+    .header__notification-section
+      .notification-section.js-dropdown
+        span.notification-section__icon
+          i.fa.fa-bell-o.fa-lg
+        .notification-section__header-dropdown
+          ul.header-dropdown.-with-headings
+            li.header-dropdown__item.h-clearfix
+              | Notifications
+              a href="#" Settings
+            li.header-dropdown__item: a href="#" <b>Paul</b> create new article
+            li.header-dropdown__item: a href="#" <b>Grag Polak</b> create new course in <b>Ruby on Rails</b>
+            li.header-dropdown__item: a href="#" See All

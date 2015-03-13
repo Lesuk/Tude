@@ -1,0 +1,31 @@
+.container__filter.h-clearfix
+  .filter-cat
+    .filter-cat__name Всі категорії
+    ul.filter-cat__list
+      li.filter-cat__item
+        a href="?=home" Програмування
+        ul.filter-cat__sub-list
+          li.filter-cat__sub-list-item
+            a href="?=sub-menu1" C#
+          li.filter-cat__sub-list-item
+            a href="?=sub-menu1" Ruby on Rails
+      li.filter-cat__item
+        a href="?=contact" Основи Програмування
+      li.filter-cat__item
+        a href="#" Веб дизайн
+        ul.filter-cat__sub-list
+          li.filter-cat__sub-list-item
+            a href="?=sub-menu1" Графічний дизайн
+
+  .filter__view-type
+    ul.view-type
+      li.view-type__list
+        a.view-type__list-link href="?list"
+          i.fa.fa-bars
+      li.view-type__grid
+        a.view-type__grid-link.is-active href="?grid"
+          i.fa.fa-th
+
+  .filter-results
+    span.filter-results__amount 23
+    | Публікації знайдено

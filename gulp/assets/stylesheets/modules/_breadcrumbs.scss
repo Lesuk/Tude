@@ -1,0 +1,42 @@
+.breadcrumbs{
+  position: relative;
+  outline: 0;
+  font-size: 18px;
+  line-height: 14px;
+  height: 17px;
+  overflow: hidden;
+  list-style: none;
+  color: #d3d3d3;
+}
+
+.breadcrumbs__item{
+  display: inline-block;
+  margin-left: 5px;
+
+  &:before{
+    margin-right: 4px;
+    content: '\203A';
+  }
+  &:first-child{
+    margin-left: 0;
+    &:before{
+      content: initial;
+      margin:0;
+    }
+  }
+
+}
+
+.breadcrumbs__link{
+  font-size: 12px;
+  text-decoration: none;
+  color: #59b3d5;
+
+  &:hover{
+    text-decoration: underline;
+  }
+
+  &:visited {
+      color: #59b3d5;
+  }
+}
