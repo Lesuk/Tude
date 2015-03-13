@@ -1,11 +1,15 @@
-h2
-  | Resend unlock instructions
-= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Resend unlock instructions"
-= render "devise/shared/links"
+- provide(:title, "Resend unlock instructions")
+
+.user-form__wrapper
+  h2 Resend unlock instructions
+
+  = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    .user-form__field
+      = f.email_field :email, class: 'user-form__input', required: "required", autofocus: true
+      <label placeholder="Enter your email address" alt="Email address" for="user_email"></label>
+    
+    .actions
+      = f.submit "Resend unlock instructions", class: "user-form__submit"
+
+/= render "devise/shared/links"

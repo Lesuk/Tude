@@ -17,6 +17,16 @@ html.no-js lang="en"
     = csrf_meta_tags
 
   body
-    .bg-log-overlay
+    .user-form-bg-overlay
+
     .user-form
-      = yield
+
+      .user-form__logo
+        = link_to root_path, class: "user-form__logo-link"
+          img.user-form__logo-img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
+      
+      section.user-form__panel
+        = yield(:top_panel)
+        = yield
+
+      p.user-form__copy.h-text-center Copyright &copy; #{Time.now.year} Edut.com.ua
