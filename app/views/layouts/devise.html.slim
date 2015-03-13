@@ -3,7 +3,7 @@ html.no-js lang="en"
   head
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
-    title Title
+    title = content_for?(:title) ? yield(:title) : "Edut"
     meta name="description" content="description"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
@@ -17,14 +17,6 @@ html.no-js lang="en"
     = csrf_meta_tags
 
   body
-    .app
-      .app__sidebar
-        = render 'sidebar'
-      .app__container.is-pushed-canvas
-        .container
-          header.container__header
-            = render "header"
-          = yield
-          footer.container__main-footer
-            / = render "main_footer"
-          .container__overlay
+    .bg-log-overlay
+    .user-form
+      = yield

@@ -63,3 +63,8 @@
     width: 60px;
   }
 }
+
+.header__register-section {
+  @extend %table-display;
+  float: right;
+}

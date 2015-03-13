@@ -3,6 +3,8 @@
 /* Vendor mixin/function libraries */
 @import "../../../vendor/assets/bower_components/breakpoint-sass/stylesheets/breakpoint";
 @import "../../../vendor/assets/bower_components/susy/sass/susy";
+@import "mixins/adaptive-placeholders"
+
 /* Your mixins & functions */
 
 
@@ -54,6 +56,7 @@
 @import "modules/sidebar";
 @import "modules/top-panel";
 @import "modules/user-section";
+@import "modules/user-form";
 
 
 /* Utilities

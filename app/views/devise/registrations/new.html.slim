@@ -1,0 +1,45 @@
+= provide(:title, "Sign up")
+
+section.sign-in-up-panel
+  ul.sign-in-up-panel__switcher
+    li = link_to "Увійти", new_user_session_path
+    li = link_to "Зареєструватись", new_user_registration_path, class: "is-active"
+  
+  .form-wrapper
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+
+      .form-field
+        /= f.label :username
+        /br
+        = f.text_field :username, class: 'form-field__input', autofocus: true, required: "required"
+        /= f.label :username, "", placeholder: "Enter a username", alt: "Username"
+        <label placeholder="Enter a username" alt="Username" for="user_username" class=""></label>
+
+      .form-field
+        = f.email_field :email, class: 'form-field__input', required: "required"
+        /= f.label :email, ' ', placeholder: "Email address", alt: "Email"
+        <label placeholder="Email address" alt="Email" for="user_email" class=""></label>
+      
+      .form-field
+        - if @validatable
+          /em
+            | (
+            = @minimum_password_length
+            |  characters minimum)
+        = f.password_field :password, type: "text", class: 'form-field__input', autocomplete: "off", required: "required"
+        /= f.label :password, placeholder: "Password", alt: "Password"
+        <label placeholder="Password" alt="Password" for="user_password" class=""></label>
+        = link_to "Hide", "#", class: "hide-password"
+
+      .form-field
+        = f.password_field :password_confirmation, type: "text", class: 'form-field__input', autocomplete: "off", required: "required"
+        /= f.label :password_confirmation, '', placeholder: "Confirm password", alt: "Confirm password"
+        <label placeholder="Confirm password" alt="Confirm password" for="user_password_confirmation"></label>
+        = link_to "Hide", "#", class: "hide-password"
+
+      .actions
+        = f.submit "Sign up", class: "form-submit"
+
+  /= render "devise/shared/links"
+

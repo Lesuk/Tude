@@ -9,7 +9,7 @@
             i.fa.fa-search
   .sidebar__main-logo.h-bottom-sidebar-border
     .main-logo
-      a.main-logo__link href="#"
+      = link_to root_path, class: "main-logo__link"
         img.main-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
   nav.sidebar__main-nav
     = render 'main_nav'

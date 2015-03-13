@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users,  controllers: {registrations: "registrations"},
+                      path_names: {sign_up: "register" } #, :path_prefix => "d"
+
   root 'articles#index'
 
+  # resources :users, only: [:show]
+  get 'users/:id', to: 'users#show', as: 'user'
+  
   resources :articles
 
   # Example of regular route:

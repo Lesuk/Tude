@@ -1,18 +1,18 @@
-header.container__header
-  .header.clearfix
-    .header__menu-btn
-      button.menu-btn.lines-button.x type="button" role="button" aria-label="Menu"
-        span.menu-btn__lines
-    .header__main-search
-      .main-search
-        label.main-search__icon for="main-search"
-          i.fa.fa-search
-        input.main-search__input type="text" id="main-search" placeholder="Search articles, courses, questions"
-    .header__mob-logo
-      .mob-logo
-        a.mob-logo__link href="#"
-          img.mob-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
-    .header__register-section
+.header.clearfix
+  .header__menu-btn
+    button.menu-btn.lines-button.x type="button" role="button" aria-label="Menu"
+      span.menu-btn__lines
+  .header__main-search
+    .main-search
+      label.main-search__icon for="main-search"
+        i.fa.fa-search
+      input.main-search__input type="text" id="main-search" placeholder="Search articles, courses, questions"
+  .header__mob-logo
+    .mob-logo
+      = link_to root_path, class: "mob-logo__link"
+        img.mob-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
+  
+  - if user_signed_in?
     .header__user-section
       .user-section.js-dropdown
         - src = "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/73.jpg"
@@ -34,3 +34,7 @@ header.container__header
             li.header-dropdown__item: a href="#" <b>Paul</b> create new article
             li.header-dropdown__item: a href="#" <b>Grag Polak</b> create new course in <b>Ruby on Rails</b>
             li.header-dropdown__item: a href="#" See All
+  - else
+    .header__register-section
+      = link_to 'Увійти', new_user_session_path, class: "btn btn-large btn-blue-secondary btn-signin"
+      = link_to 'Зареєструватись', new_user_registration_path, class: "btn btn-large btn-register"
