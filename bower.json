@@ -1,0 +1,25 @@
+{
+  "name": "Tude",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Lesuk/Tude",
+  "authors": [
+    "Lesuk"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "~3.0.0",
+    "susy": "~2.2.2",
+    "breakpoint-sass": "~2.5.0"
+  }
+}
