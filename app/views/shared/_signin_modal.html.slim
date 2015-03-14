@@ -1,0 +1,13 @@
+.user-form
+
+  section.user-form__panel
+
+    ul.user-form__switcher
+      li: a href="#" Увійти
+      li: a href="#" Зареєструватись
+    
+    .user-form__wrapper
+      #user-form__signin-block
+        = render "devise/sessions/form"
+      #user-form__signup-block
+        = render "devise/registrations/reg_form"

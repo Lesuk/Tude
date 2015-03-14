@@ -28,3 +28,6 @@ html.no-js lang="en"
           footer.container__main-footer
             / = render "main_footer"
           .container__overlay
+          - unless user_signed_in?
+            .container__signin-modal
+              = render "shared/signin_modal"

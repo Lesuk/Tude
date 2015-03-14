@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users,  controllers: {registrations: "registrations"},
-                      path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"} 
+                      path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"} 
   #, :path_prefix => "d"
 
   root 'articles#index'

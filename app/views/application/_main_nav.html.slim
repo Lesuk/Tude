@@ -20,14 +20,18 @@ ul.main-nav
     a.main-nav__link href="#"
       i.fa.fa-question-circle
       span.main-nav__item-text Запитання
-
-  li.h-bottom-sidebar-border
-  li.main-nav__header Персональне
-  li.main-nav__item
-    a.main-nav__link href="#"
-      i.fa.fa-bell-o
-      span.main-nav__item-text Сповіщення
-  li.main-nav__item
-    a.main-nav__link href="#"
-      i.fa.fa-rss
-      span.main-nav__item-text Підписки
+  - if user_signed_in?
+    li.h-bottom-sidebar-border
+    li.main-nav__header Персональне
+    li.main-nav__item
+      = link_to user_path(current_user), class: "main-nav__link"
+        i.fa.fa-user
+        span.main-nav__item-text Профіль
+    li.main-nav__item
+      a.main-nav__link href="#"
+        i.fa.fa-bell-o
+        span.main-nav__item-text Сповіщення
+    li.main-nav__item
+      a.main-nav__link href="#"
+        i.fa.fa-rss
+        span.main-nav__item-text Підписки

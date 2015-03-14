@@ -13,28 +13,8 @@
         img.mob-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
   
   - if user_signed_in?
-    .header__user-section
-      .user-section.js-dropdown
-        - src = "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/73.jpg"
-        img.user-section__img width="34" height="34" src="#{src}"
-        span.user-section__name Alexander
-        .user-section__header-dropdown
-          ul.header-dropdown.-tb-padding
-            li.header-dropdown__item: a href="#" Profile
-            li.header-dropdown__item: a href="#" Settings
-    .header__notification-section
-      .notification-section.js-dropdown
-        span.notification-section__icon
-          i.fa.fa-bell-o.fa-lg
-        .notification-section__header-dropdown
-          ul.header-dropdown.-with-headings
-            li.header-dropdown__item.h-clearfix
-              | Notifications
-              a href="#" Settings
-            li.header-dropdown__item: a href="#" <b>Paul</b> create new article
-            li.header-dropdown__item: a href="#" <b>Grag Polak</b> create new course in <b>Ruby on Rails</b>
-            li.header-dropdown__item: a href="#" See All
+    = render "shared/header_user_section"
   - else
     .header__register-section
-      = link_to 'Увійти', new_user_session_path, class: "btn btn-large btn-blue-secondary btn-signin"
-      = link_to 'Зареєструватись', new_user_registration_path, class: "btn btn-large btn-register"
+      button.btn.btn-large.btn-blue-secondary.btn-signin Увійти
+      button.btn.btn-large.btn-register Зареєструватись

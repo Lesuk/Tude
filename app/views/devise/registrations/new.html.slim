@@ -3,31 +3,4 @@
   = render "devise/shared/sign_in_up_panel"
   
 .user-form__wrapper
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
-
-    .user-form__field
-      = f.text_field :username, class: 'user-form__input', autofocus: true, required: "required"
-      <label placeholder="Enter a username" alt="Username" for="user_username"></label>
-
-    .user-form__field
-      = f.email_field :email, class: 'user-form__input', required: "required"
-      <label placeholder="Email address" alt="Email" for="user_email"></label>
-    
-    .user-form__field
-      - if @validatable
-        /em
-          | (
-          = @minimum_password_length
-          |  characters minimum)
-      = f.password_field :password, type: "text", class: 'user-form__input', autocomplete: "off", required: "required"
-      <label placeholder="Password" alt="Password" for="user_password"></label>
-      = link_to "Hide", "#", class: "hide-password"
-
-    .user-form__field
-      = f.password_field :password_confirmation, type: "text", class: 'user-form__input', autocomplete: "off", required: "required"
-      <label placeholder="Confirm password" alt="Confirm password" for="user_password_confirmation"></label>
-      = link_to "Hide", "#", class: "hide-password"
-
-    .actions
-      = f.submit "Sign up", class: "user-form__submit"
+  = render "reg_form"

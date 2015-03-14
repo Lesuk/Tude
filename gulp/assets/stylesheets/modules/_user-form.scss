@@ -139,6 +139,15 @@ $adaptive-placeholder: (
   color: #666;
 }
 
+#user-form__signin-block,
+#user-form__signup-block{
+  display: none;
+
+  &.is-selected{
+    display: block;
+  }
+}
+
 .user-form-bg-overlay{
   position: fixed;
   top: 0;
