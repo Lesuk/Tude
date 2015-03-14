@@ -23,8 +23,7 @@
     .meta-info.clearfix
       .meta-info__date 5 листопада, 2014
       .meta-info__views
-        span 12 065
-        | переглядів
+        span = "#{@article.article_views.size} переглядів"
 
   .article-body__content
     = @article.body

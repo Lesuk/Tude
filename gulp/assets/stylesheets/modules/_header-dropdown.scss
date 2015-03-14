@@ -97,12 +97,17 @@
      border: none;
   }
 
-  a{
+  & a, & input[type="submit"]{
     display: block;
+    width: 100%;
     padding: 10px 10px;
     font-size: 14px;
+    text-align: left;
     text-decoration: none;
+    border: none;
+    background-color: transparent;
     color: #696969;
     transition: all 0.1s ease-out;
+    outline: 0;
   }
 }

@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
   end
 
 private

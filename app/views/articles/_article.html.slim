@@ -11,5 +11,5 @@
       = link_to article.title, article_path(article), class: "article-card__headline-link"
     .article-card__meta
       span.article-card__rating +34
-      span.article-card__views 2 398 переглядів
+      span.article-card__views = "#{article.article_views.size} переглядів"
       time.article-card__publication-date datetime="2015-03-02T00:00:00Z" title="2 Mar 2015" 5 днів тому

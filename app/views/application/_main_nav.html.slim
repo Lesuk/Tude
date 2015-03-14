@@ -35,3 +35,7 @@ ul.main-nav
       a.main-nav__link href="#"
         i.fa.fa-rss
         span.main-nav__item-text Підписки
+    li.main-nav__item
+      = link_to destroy_user_session_path, method: :delete, class: "main-nav__link"
+        i.fa.fa-sign-out
+        span.main-nav__item-text Вийти

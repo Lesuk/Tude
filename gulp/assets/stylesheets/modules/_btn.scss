@@ -15,6 +15,7 @@
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
+  outline: 0;
   transition: all 0.1s linear;
   &:hover{
     background-color: #f4fbff;
@@ -65,9 +66,16 @@
     padding: 7px 12px;
   }
   &.btn-register {
-    margin: 6px 0 6px 0;
+    display: none;
+    @include breakpoint(700px){
+      margin: 6px 0 6px 0;  
+      display: inline-block
+    }
   }
   &.btn-signin{
-    
+    margin: 6px 0 6px 0;
+    @include breakpoint(700px){
+      margin: 6px 10px 6px 0;
+    }
   }
 }

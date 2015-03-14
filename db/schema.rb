@@ -11,18 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313142841) do
+ActiveRecord::Schema.define(version: 20150314204159) do
+
+  create_table "article_views", force: :cascade do |t|
+    t.string   "guest_ip",   limit: 255
+    t.integer  "article_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "article_views", ["article_id"], name: "index_article_views_on_article_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
-    t.text     "body",        limit: 65535
-    t.integer  "course_id",   limit: 4
-    t.integer  "category_id", limit: 4
-    t.integer  "user_id",     limit: 4
-    t.string   "slug",        limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",               limit: 255
+    t.string   "description",         limit: 255
+    t.text     "body",                limit: 65535
+    t.integer  "course_id",           limit: 4
+    t.integer  "category_id",         limit: 4
+    t.integer  "user_id",             limit: 4
+    t.string   "slug",                limit: 255
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "article_views_count", limit: 4,     default: 0, null: false
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree

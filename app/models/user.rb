@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
 
+  has_many :articles
+
   validates :username, presence: true, uniqueness: {case_sensitive: false}
 
   # Include default devise modules. Others available are:

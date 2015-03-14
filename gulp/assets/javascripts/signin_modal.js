@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
   var $form_modal = $('.container__signin-modal'),
       $form_login = $form_modal.find('#user-form__signin-block'),
       $form_signup = $form_modal.find('#user-form__signup-block'),
-      $form_modal_tab = $('.user-form__switcher'),
+      $form_modal_tab = $form_modal.find('.user-form__switcher'),
       $tab_login = $form_modal_tab.children('li').eq(0).children('a'),
       $tab_signup = $form_modal_tab.children('li').eq(1).children('a'),
       $btn_login = $('.btn-signin'),
