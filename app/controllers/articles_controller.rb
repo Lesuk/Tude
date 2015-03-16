@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.all
+    @articles = Article.includes(:category).all
+    @categories = Category.includes(:subcategories).main_categories
   end
 
   def show

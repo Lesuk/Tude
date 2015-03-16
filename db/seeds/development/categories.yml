@@ -1,0 +1,27 @@
+options:
+  find_existing_by: ['name']
+
+records:
+  - sprig_id: 1
+    name: "Business"
+    description: "This category contains listings of articles and courses concerned with business."
+    #parent_id: 
+    #slug:
+
+  - sprig_id: 2
+    name: "Startups"
+    description: "This category contains listings of articles and courses concerned with startups."
+    parent_id: "<%= sprig_record(Category, 1).id %>"
+    #slug:
+
+  - sprig_id: 3
+    name: "Hiring"
+    description: "This category contains listings of articles and courses concerned with business."
+    parent_id: "<%= sprig_record(Category, 1).id %>"
+    #slug:
+
+  - sprig_id: 4
+    name: "Веб-програмування"
+    description: "Веб-програмування - галузь веб-розробки і різновид дизайну, в завдання якої входить проектування користувальницьких веб-інтерфейсів для сайтів або веб додатків."
+    #parent_id:
+    #slug:

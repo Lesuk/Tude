@@ -5,7 +5,7 @@ ul.main-nav
       i.fa.fa-tasks
       span.main-nav__item-text Курси
   li.main-nav__item
-    = link_to articles_path, class: "main-nav__link is-active" do
+    = active_link_to articles_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-file-text-o
       span.main-nav__item-text Публікації
   li.main-nav__item
@@ -24,7 +24,7 @@ ul.main-nav
     li.h-bottom-sidebar-border
     li.main-nav__header Персональне
     li.main-nav__item
-      = link_to user_path(current_user), class: "main-nav__link"
+      = active_link_to user_path(current_user), class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-user
         span.main-nav__item-text Профіль
     li.main-nav__item

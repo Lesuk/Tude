@@ -22,6 +22,8 @@
   display: block;
   position: relative;
   height: 100%;
+  border: 1px solid #d5dadb;
+  border-bottom: 0;
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
   overflow: hidden;
@@ -81,6 +83,7 @@
 .article-card__info{
   padding: 8px 15px 10px;
   border: 1px solid #d5dadb;
+  border-top-color: rgba(213, 218, 219, 0.3);
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
 
@@ -116,7 +119,7 @@
 
 .article-card__headline-link{
   display: block;
-  /*height: 40px;*/
+  min-height: 40px;
   overflow: hidden;
   font-size: 16px;
   font-family: "Segoe UI", "Open Sans";

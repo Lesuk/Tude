@@ -1,0 +1,22 @@
+options:
+  find_existing_by: ['email']
+
+records:
+  - sprig_id: 1
+    email: lesuk93@yahoo.com
+    username: Lesuk
+    fullname: "Alexander Osetskiy"
+    whois: "Just creator of Edut"
+    bio: "Morbi mauris diam, imperdiet quis accumsan ac, vestibulum a sem. Vestibulum turpis metus, porttitor sit amet erat non, mollis lobortis urna. Maecenas ex erat, sollicitudin a velit sed, venenatis pulvinar turpis. Aenean faucibus mollis odio, vel consectetur nisi ultricies a. "
+    password: 19931993
+    password_confirmation: 19931993
+    confirmed_at: <%= Time.now %>
+  - sprig_id: 2
+    email: altman@yahoo.com
+    username: altman
+    fullname: "Sam Altman"
+    whois: "President of Y Combinator"
+    bio: "Samuel H. ''Sam'' Altman is an entrepreneur, programmer, venture capitalist and blogger."
+    password: 19931993
+    password_confirmation: 19931993
+    confirmed_at: <%= Time.now %>

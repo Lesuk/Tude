@@ -2,6 +2,6 @@
 .author-box.boxed-head
   .boxed-head__title Автор публікації
   img.author-box__img src="#{img}"
-  span.author-box__name Alexander Urevich
-  span.author-box__whois Co-Founder of Web Net
-  p.author-box__about Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi minima sit soluta quisquam qui nostrum iste dolorem dolore explicabo, nobis culpa ad animi quis sapiente. Minima illo ipsam possimus nemo!
+  span.author-box__name = @article.user.fullname.present? ? @article.user.fullname : @article.user.username
+  span.author-box__whois = @article.user.whois if @article.user.whois.present?
+  p.author-box__about = @article.user.bio if @article.user.bio.present?

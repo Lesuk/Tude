@@ -55,8 +55,10 @@
       display: none;
     }
   }
-  .btn-blue-secondary{
-    border-color: #8ad1fc !important;
+  @include breakpoint(max-width 999px){
+    .btn-blue-secondary{
+      border-color: #8ad1fc !important;
+    }
   }
   @include breakpoint(1000px){
     & .btn--info, & .btn--playlist{display: none;}

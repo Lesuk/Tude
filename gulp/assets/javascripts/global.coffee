@@ -4,5 +4,7 @@ require './category-filter'
 require './pushy'
 require './show-hide-pass'
 require './signin_modal'
+require '../../../vendor/assets/bower_components/fitvids/jquery.fitvids';
+require './embed_youtube_iframe'
 
 console.log message

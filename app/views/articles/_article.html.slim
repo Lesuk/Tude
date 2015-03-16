@@ -1,15 +1,22 @@
-- img = "http://img.youtube.com/vi/8mCfe8Zi2kk/mqdefault.jpg"
-.article-card
+- if (article.youtube_id)
+  - thumb_src = "https://i.ytimg.com/vi/#{article.youtube_id}/mqdefault.jpg"
+-else
+  - thumb_src = "#{gulp_asset_path('images/thumb-placeholder.png')}"
+article.article-card
   .article-card__thumbnail
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
     span.article-card__play-btn
-    img.article-card__thumbnail-image src="#{img}"
-    span.article-card__duration 12:02
+    img.article-card__thumbnail-image src="#{thumb_src}"
+    - if ((article.video_duration > 0) && (article.video_duration < 3600))
+      span.article-card__duration = Time.at(article.video_duration).utc.strftime("%M:%S")
+    - elsif (article.video_duration >= 3600)
+      span.article-card__duration = Time.at(article.video_duration).utc.strftime("%H:%M:%S")
   .article-card__info
-    a.article-card__category href="#rails" WordPress
+    /a.article-card__category href="#rails" WordPress
+    = link_to article.category.name, category_path(article.category), class: "article-card__category"
     h3.article-card__headline
       = link_to article.title, article_path(article), class: "article-card__headline-link"
     .article-card__meta
       span.article-card__rating +34
       span.article-card__views = "#{article.article_views.size} переглядів"
-      time.article-card__publication-date datetime="2015-03-02T00:00:00Z" title="2 Mar 2015" 5 днів тому
+      time.article-card__publication-date datetime="#{article.created_at.to_s(:datetime)}" title="#{article.created_at.to_s(:shortdate)}" = article.created_at.to_s(:shortdate)

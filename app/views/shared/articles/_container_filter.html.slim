@@ -2,20 +2,15 @@
   .filter-cat
     .filter-cat__name Всі категорії
     ul.filter-cat__list
-      li.filter-cat__item
-        a href="?=home" Програмування
-        ul.filter-cat__sub-list
-          li.filter-cat__sub-list-item
-            a href="?=sub-menu1" C#
-          li.filter-cat__sub-list-item
-            a href="?=sub-menu1" Ruby on Rails
-      li.filter-cat__item
-        a href="?=contact" Основи Програмування
-      li.filter-cat__item
-        a href="#" Веб дизайн
-        ul.filter-cat__sub-list
-          li.filter-cat__sub-list-item
-            a href="?=sub-menu1" Графічний дизайн
+      - @categories.each do |main_cat|
+        li.filter-cat__item
+          = link_to main_cat.name, category_path(main_cat)
+          - sub_cats = main_cat.subcategories
+          - if sub_cats.any?
+            ul.filter-cat__sub-list
+              - sub_cats.each do |subcat|
+                li.filter-cat__sub-list-item
+                  = link_to subcat.name, category_path(subcat)
 
   .filter__view-type
     ul.view-type

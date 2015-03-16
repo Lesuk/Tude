@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   
   resources :articles
+  resources :categories
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sprig', '~> 0.1'
 
 # Authentication
 gem 'devise'
@@ -24,6 +25,10 @@ gem 'devise'
 # SEO
 gem 'friendly_id', '~> 5.0.0'
 gem 'babosa'
+gem 'gretel'
+
+# Tips
+gem 'active_link_to'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

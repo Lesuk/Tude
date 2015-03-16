@@ -1,11 +1,12 @@
+- img_src = "https://i.ytimg.com/vi/#{@article.youtube_id}/maxresdefault.jpg"
 .container__article-wrapper
   .article-wrapper.h-clearfix
 
     .article-wrapper__breadcrumbs
       = render "shared/breadcrumbs"
 
-    .article-wrapper__main-video
-      img.main-video__thumbnail src="#{gulp_asset_path('images/maxresdefault.jpg')}"
+    .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
+      img.main-video__thumbnail src="#{img_src}"
       span.main-video__play-btn
 
     .article-wrapper__primary

@@ -13,7 +13,6 @@ html.no-js lang="en"
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic,latin"
     = stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
     = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
     = csrf_meta_tags
 
   body
@@ -31,3 +30,5 @@ html.no-js lang="en"
           - unless user_signed_in?
             .container__signin-modal
               = render "shared/signin_modal"
+
+    = javascript_include_tag 'application'
