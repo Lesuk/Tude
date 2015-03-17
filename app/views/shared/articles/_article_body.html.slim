@@ -7,7 +7,10 @@
         i.fa.fa-thumbs-up
         span.btn__text Подобається
         span.amount 134
-      a.btn.btn-blue-secondary href="#a"
+      /a.btn.btn-blue-secondary href="#a"
+        i.fa.fa-star
+        span.btn__text Вибране
+      = link_to favorite_article_path(@article), remote: true, method: :post, id: "favorite", class: "btn btn-blue-secondary" do
         i.fa.fa-star
         span.btn__text Вибране
       a.btn.btn-blue-secondary href="#a"

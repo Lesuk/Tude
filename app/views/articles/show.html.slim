@@ -3,7 +3,8 @@
   .article-wrapper.h-clearfix
 
     .article-wrapper__breadcrumbs
-      = render "shared/breadcrumbs"
+      /= render "shared/breadcrumbs"
+      = render_breadcrumbs
 
     .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
       img.main-video__thumbnail src="#{img_src}"

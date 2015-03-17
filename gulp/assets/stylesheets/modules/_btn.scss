@@ -30,6 +30,7 @@
     font-size: 14px;
     vertical-align: -10%;
     color:#79cbfc;
+    transition: all 0.1s linear;
   }
   .amount{
     padding-left: 10px;
@@ -77,5 +78,8 @@
     @include breakpoint(700px){
       margin: 6px 10px 6px 0;
     }
+  }
+  &.is-favorite, &.is-favorite i{
+    color: #ffac33;
   }
 }

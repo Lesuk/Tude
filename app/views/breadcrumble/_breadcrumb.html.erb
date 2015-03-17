@@ -1,0 +1,11 @@
+<ul class="breadcrumbs" xmlns:v="http://rdf.data-vocabulary.org/#">
+  <% breadcrumbs.each_with_index do |crumb, i| %>
+    <li class="breadcrumbs__item" typeof="v:Breadcrumb">
+      <% if crumb[:url] == nil %>
+        <%= content_tag(:span, crumb[:name], {rel: 'v:url', property: 'v:title'}) %>
+      <% else %>
+        <%= link_to_unless_current crumb[:name], crumb[:url], {rel: "v:url", property: "v:title", class: "breadcrumbs__link"} %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

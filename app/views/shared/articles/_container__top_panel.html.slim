@@ -1,10 +1,13 @@
 .container__top-panel
   .top-panel
     .top-panel__breadcrumbs
-      = render "shared/breadcrumbs"
+      /= render "shared/breadcrumbs"
+      = render_breadcrumbs
     h1.top-panel__header Публікації
     .top-panel__pages-nav
       .pages-nav
-        a.pages-nav__item.is-current href="#" Останні
-        a.pages-nav__item href="#" Популярні
+        /a.pages-nav__item.is-current href="#" Останні
+        = active_link_to "Останні", articles_path(), active: /\/articles$/, class_active: 'is-current', class: 'pages-nav__item'
+        = active_link_to "Популярні", articles_path(sort_by: 'popularity'), active: /popularity/, class_active: 'is-current', class: 'pages-nav__item'
+        /a.pages-nav__item href="#" Популярні
         a.pages-nav__item href="#" Збережені

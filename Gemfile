@@ -25,7 +25,7 @@ gem 'devise'
 # SEO
 gem 'friendly_id', '~> 5.0.0'
 gem 'babosa'
-gem 'gretel'
+gem 'breadcrumble'
 
 # Tips
 gem 'active_link_to'

@@ -43,6 +43,8 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    breadcrumble (4.2.1)
+      rails (>= 4.0.0)
     breakpoint (2.5.0)
       sass (~> 3.3)
       sassy-maps (< 1.0.0)
@@ -209,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to
   babosa
+  breadcrumble
   breakpoint (~> 2.5.0)
   byebug
   coffee-rails (~> 4.1.0)

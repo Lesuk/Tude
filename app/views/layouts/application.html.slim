@@ -25,7 +25,7 @@ html.no-js lang="en"
             = render "header"
           = yield
           footer.container__main-footer
-            / = render "main_footer"
+            = render "main_footer"
           .container__overlay
           - unless user_signed_in?
             .container__signin-modal

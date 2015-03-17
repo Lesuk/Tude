@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
   
-  resources :articles
+  resources :articles do
+    member do
+      post :favorite
+    end
+  end
   resources :categories
 
   # Example of regular route:

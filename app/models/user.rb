@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :articles
+  has_many :favorites
+  has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}
 

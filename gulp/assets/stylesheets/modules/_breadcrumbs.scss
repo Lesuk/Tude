@@ -1,7 +1,7 @@
 .breadcrumbs{
   position: relative;
   outline: 0;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 14px;
   height: 17px;
   overflow: hidden;
@@ -16,6 +16,7 @@
   &:before{
     margin-right: 4px;
     content: '\203A';
+    font-size: 18px;
   }
   &:first-child{
     margin-left: 0;
@@ -24,6 +25,8 @@
       margin:0;
     }
   }
+
+  span{color: #999;}
 
 }
 
