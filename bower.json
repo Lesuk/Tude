@@ -20,6 +20,7 @@
   "dependencies": {
     "normalize-css": "~3.0.0",
     "susy": "~2.2.2",
-    "breakpoint-sass": "~2.5.0"
+    "breakpoint-sass": "~2.5.0",
+    "fitvids": "~1.1.0"
   }
 }

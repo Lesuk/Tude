@@ -8,6 +8,5 @@
       .pages-nav
         /a.pages-nav__item.is-current href="#" Останні
         = active_link_to "Останні", articles_path(), active: /\/articles$/, class_active: 'is-current', class: 'pages-nav__item'
-        = active_link_to "Популярні", articles_path(sort_by: 'popularity'), active: /popularity/, class_active: 'is-current', class: 'pages-nav__item'
-        /a.pages-nav__item href="#" Популярні
-        a.pages-nav__item href="#" Збережені
+        = active_link_to "Популярні", articles_path(sort: 'popularity'), active: /popularity/, class_active: 'is-current', class: 'pages-nav__item'
+        = active_link_to "Збережені", articles_path(sort: 'favorited'), active: /favorited/, class_active: 'is-current', class: 'pages-nav__item'

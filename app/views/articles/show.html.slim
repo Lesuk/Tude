@@ -1,18 +1,20 @@
-- img_src = "https://i.ytimg.com/vi/#{@article.youtube_id}/maxresdefault.jpg"
+= provide(:title, @article.title)
 .container__article-wrapper
   .article-wrapper.h-clearfix
 
     .article-wrapper__breadcrumbs
-      /= render "shared/breadcrumbs"
       = render_breadcrumbs
 
-    .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
-      img.main-video__thumbnail src="#{img_src}"
-      span.main-video__play-btn
+    /- unless @article.youtube_id.blank?
+      .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
+        - img_src = "https://i.ytimg.com/vi/#{@article.youtube_id}/maxresdefault.jpg"
+        img.main-video__thumbnail src="#{img_src}"
+        span.main-video__play-btn
 
     .article-wrapper__primary
       = render "shared/articles/article_body"
       = render "shared/author_box"
+      = render "shared/comments"
 
 
     aside.article-wrapper__secondary

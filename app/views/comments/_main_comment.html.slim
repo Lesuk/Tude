@@ -1,0 +1,21 @@
+- img2 = "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/73.jpg"
+- img = "https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
+= content_tag_for(:li, comment, class: 'comment__item') do
+  .comment__wrapper
+    .comment__head.h-clearfix
+      .comment__user-pic
+        img src="#{img}"
+      - name = comment.user.fullname.present? ? comment.user.fullname : comment.user.username 
+      = link_to name, user_path(comment.user), class: "comment__user-name"
+      time.comment__date datetime="#{comment.created_at.to_s(:datetime)}" title="#{comment.created_at.to_s(:shortdate)}" = comment.created_at.to_s(:shortdate)
+      .comment__user-whois = comment.user.whois if comment.user.whois.present?
+    .comment__body = comment.body
+    = render partial: "comments/comment_actions", locals: {comment: comment}
+
+  - sub_comments = comment.subcomments
+  - sub_class = "h-hidden" if sub_comments.empty?
+  .comment__sub-comments class="#{sub_class}"
+    ul.sub-comments id="comments#{comment.id}"
+      = render partial: "comments/new_subcomment_form", locals: {parentid: comment.id}
+      - if sub_comments.any?
+        = render partial: "comments/subcomment", collection: sub_comments

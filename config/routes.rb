@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   
   resources :articles do
+    resources :comments, only: [:new, :create, :destroy]
     member do
       post :favorite
     end

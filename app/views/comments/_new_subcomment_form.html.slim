@@ -1,0 +1,11 @@
+- img = "https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
+li.sub-comment.bg-white
+  = form_for([@commentable, @commentable.comments.build], remote: true, html: {class: 'sub-comment__form'}) do |f|
+    = f.hidden_field :parent_id, value: parentid
+    a.sub-comment__form-author
+      img src="#{img}"
+    .sub-comment__reply-field
+      = f.text_area :body, rows: "2", class: 'reply-field', placeholder: "Прокоментувати.."
+      .reply-buttons
+        = f.submit "Надіслати", class: "btn btn-blue"
+        button.btn.js-cancel-reply Скасувати

@@ -12,6 +12,7 @@ gem "slim-rails"
 gem 'susy'
 gem 'compass-rails', '~> 2.0.0'
 gem 'breakpoint', '~> 2.5.0'
+gem "font-awesome-rails"
 
 gem 'jquery-rails'
 gem 'turbolinks'

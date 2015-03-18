@@ -1,0 +1,4 @@
+- if comment.parent_id.nil?
+  = render partial: 'comments/main_comment', locals: {comment: comment}
+- else
+  = render partial: 'comments/sub_comment', locals: {subcomment: comment}

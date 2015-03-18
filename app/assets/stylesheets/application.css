@@ -6,6 +6,7 @@
  * libsass with Gulp.
  *
  * Pull compiled from /public/assets/stylesheets
+ *= require font-awesome
  *= require global
  */
  
