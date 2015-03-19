@@ -36,4 +36,15 @@ module ApplicationHelper
     end
   end
 
+  def user_pic_placeholder(num)
+    case num
+    when 1
+      "https://s3.amazonaws.com/uifaces/faces/twitter/jsa/73.jpg"
+    when 2
+      "https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/73.jpg"
+    else
+      "https://s3.amazonaws.com/uifaces/faces/twitter/rem/73.jpg"
+    end
+  end
+
 end

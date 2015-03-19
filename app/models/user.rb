@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def name
+    self.fullname.present? ? self.fullname : self.username
+  end
+
   def to_param
     username
   end

@@ -1,5 +1,8 @@
-$('.sub-comment__reply-field').on( 'keyup', 'textarea', function (){
+$('.comments__box').on( 'keyup', 'textarea', function (){
     $(this).height( 0 );
     $(this).height( this.scrollHeight );
+    if (this.scrollHeight >= 350){
+      $(this).css("overflow-y", "auto");
+    }
 });
-$('.sub-comment__reply-field').find( 'textarea' ).keyup();
+$('.comments__box').find( 'textarea' ).keyup();

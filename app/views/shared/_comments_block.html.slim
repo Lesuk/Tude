@@ -1,0 +1,12 @@
+.comments__box
+  .comments__head.h-clearfix
+    span.comments__headline = pluralize(@article.comments.size, 'Comment')
+    .comments__sort
+      = link_to "Новіші", {comments_sort: 'newest'}, remote: true, class: "comments__sort-link is-current"
+      = link_to "Старіші", {comments_sort: 'oldest'}, remote: true, class: "comments__sort-link"
+      /= link_to "За рейтингом", {comments_sort: 'rating'}, class: "comments__sort-link is-current"
+  ul#comments.comments__list
+    = render @comments
+  .comments__form
+    h4.comments__form-headline Ваш Коментар
+    = render partial: "comments/new_subcomment_form", locals: {parentid: nil}

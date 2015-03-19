@@ -3,11 +3,13 @@ ul.comment__actions
     span.comment__rating-value 0
     a.comment__rating-upvote href="#": i.fa.fa-angle-up
     a.comment__rating-downvote href="#": i.fa.fa-angle-down
-  li.comment__action
-    a.comment__sub-comment-action href="#sub-com" Коментувати
-  li.comment__action
-    = link_to 'Видалити', [@commentable, comment], method: :delete, remote: true, class: 'comment__sub-comment-action'
-  li.comment__action
+  - if comment.parent_id.blank?
+    li.comment__action
+      a.comment__sub-comment-action.reply-to href="javascript:void(0)" data-reply="#{comment.id}" Коментувати
+  - if comment.user.id == current_user.id
+    li.comment__action
+      = link_to 'Видалити', [@commentable, comment], method: :delete, remote: true, class: 'comment__sub-comment-action'
+  /li.comment__action.is-hidden
     a.comment__share-action href="#share" Поділитися
-  li.comment__action
+  /li.comment__action.is-hidden
     a.comment__claim-action href="#claim" Поскаржитись

@@ -1,9 +1,8 @@
-- img = "https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
 = content_tag_for(:li, subcomment, class: "sub-comment") do
   .sub-comment__head.h-clearfix
     .sub-comment__user-pic
-      img src="#{img}"
-    span.sub-comment__user-name = subcomment.user.fullname.present? ? subcomment.user.fullname : subcomment.user.username 
+      img src="#{user_pic_placeholder(0)}"
+    = link_to subcomment.user.name, user_path(subcomment.user), class: "sub-comment__user-name"
     span.sub-comment__user-whois = subcomment.user.whois if subcomment.user.whois.present?
     time.sub-comment__date datetime="#{subcomment.created_at.to_s(:datetime)}" title="#{subcomment.created_at.to_s(:shortdate)}" = subcomment.created_at.to_s(:shortdate)
   .sub-comment__body = subcomment.body

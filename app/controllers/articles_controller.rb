@@ -6,11 +6,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.includes(:category).published
-    @articles = @articles.popular if params[:sort] == 'popularity'
-    @articles = current_user.favorite_articles.published if params[:sort] == 'favorited'
-    @articles = @articles.order_desc
-
+    @articles = Article.includes(:category).published.order_desc
     @categories = Category.includes(:subcategories).main_categories
 
     add_breadcrumb("Публікації", articles_path)
@@ -19,7 +15,15 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @commentable = @article
-    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments
+    # OPTIMIZE order
+    # FIXME After ordering - reply to don't work
+    case params[:comments_sort]
+    when 'oldest'
+      sort_order = "id ASC"
+    else
+      sort_order = "id DESC"
+    end
+    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments.order(sort_order)
     
     @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
 
