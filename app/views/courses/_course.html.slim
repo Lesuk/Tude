@@ -1,0 +1,38 @@
+- img = "http://img.youtube.com/vi/#{course.youtube_id}/mqdefault.jpg"
+- active = false
+.course-card
+  .course-card__thumbnail
+    img.course-card__thumbnail-image src="#{img}"
+    = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__thumbnail-link"
+    .course-card__thumbnail-actions
+      .thumbnail-actions
+        .thumbnail-actions__play-btn
+        .thumbnail-actions__share-btn
+          i.fa.fa-share-alt
+  .course-card__info
+    .course-card__meta
+      - if !active
+        .course-card__level
+          span.course-card__level-lines.level-easy
+        .course-card__students-count
+          span 784
+          | учасників
+        .course-card__rating
+          .course-card__rating-stars
+            .course-card__rating-stars-gray
+            .course-card__rating-stars-yellow style="width: 80%;"
+          span.course-card__rating-count 12 відгуків
+      - else
+        .course-card__progress
+          .progress
+            .progress-bar.status-active style="width: 49%;"
+          span.progress__stats 12/25
+          a.progress__next href="#next-tuts"
+    = link_to course.category.name, category_path(course.category), class: "course-card__category"
+    h3.course-card__headline
+      = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__headline-link"
+    .course-card__author
+      .course-card__author-img
+        img src="#{user_pic_placeholder(1)}"
+      = link_to course.author.name, user_path(course.author), class: "course-card__author-name"
+      .course-card__author-whois = course.author.whois

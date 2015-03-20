@@ -11,7 +11,7 @@ records:
             I'm only teaching three. Counting YC itself, every guest speaker has been involved in the creation of a billion plus dollar company. So the advice shouldn't be that theoretical, it's all been people who have done it.
             All of the advice in this class is geared towards people starting a business where the goal is hyper growth and eventually building a very large company. Much of it doesn't apply in other cases and I want to warn people up front, that if you try to do these things in a lot of big companies or non-startups, it won't work. It should still be interesting, I really think that startups are the way of the future and it's worth trying to understand them, but startups are very different than normal companies. So over the course of today and Thursday, I'm going to try to give an overview of the four areas you need to excel at in order to maximize your success as a startup. And then throughout the course, the guest speakers are going to drill into all of these in more detail.
     status: 1
-    youtube_link: CBYhVcO4WgI
+    youtube_id: CBYhVcO4WgI
     video_duration: 2632
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -33,7 +33,7 @@ records:
             A: The answer to this is just that it sucks and you keep going. Unlike a student where you can throw up your hands and say you know I'm really burnt out and I'm just going to get bad grades this quarter, one of the hard parts about running a startup is that it's real life and you just have to get through it. The canonical advice is to go on a vacation and that never works for founders. It's sort of all consuming in this way that is very difficult to understand.
             So what you do is you just keep going. You rely on people, it's really important, founder depression is a serious thing and you need to have a support network. But the way through burn out is just to address the challenges, to address the things that are going wrong and you'll eventually feel better.
     status: 1
-    youtube_link: CVfnkM44Urs
+    youtube_id: CVfnkM44Urs
     video_duration: 2778
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -52,7 +52,7 @@ records:
             Startups are as unnatural as skiing and there is a similar list of stuff you have to remember for startups. What I'm going to give you today is the beginning of the list, the list of the counterintuitive stuff you have to remember to prevent your existing instincts from leading you astray.
             The first thing on it is the fact I just mentioned: startups are so weird that if you follow your instincts they will lead you astray. If you remember nothing more than that, when you're about to make a mistake, you can pause before making it. When I was running Y Combinator we used to joke that our function was to tell founders things they would ignore, and it's really true. Batch after batch the YC partners warned founders about mistakes they were about to make and the founders ignored them, and they came back a year later and said, "I wish we'd listened." But that dude is in their cap table and there is nothing they can do.
     status: 1
-    youtube_link: ii1jcLg-eIQ
+    youtube_id: ii1jcLg-eIQ
     video_duration: 2887
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -75,7 +75,7 @@ records:
             The next thing is that you have an idea and you should really think about what the idea is really solving. Like what is the actual problem. You should be able to describe your problem in one sentence. And then you should think, "How does that problem relate to me? Am I really passionate about that problem?" And then you should think, "Okay it's a problem I have, but is it a problem that other people have?" And you verify that by going out and talking to people.
             One of the biggest mistakes I've made involves my co-founder and I, who is also my brother. We started a company called Pathjoy in 2009 or 2010. We had two goals in mind. One was to create a company that made people really happy, and to create a company that was very, very impactful. A good proxy for that is to just create a big huge company. And so we thought, okay, the problem we are solving is to make people happier. We first went to the notion of who are the people who make people happy. We came up with life coaches and therapists. It seemed kind of obvious to create a platform for life coaches and therapist. What happened as a result was that when we started using the product ourselves, we aren't cynical people by any means, but life coaches and therapists are just not people we would use ourselves. It was sort of useless to us. So it wasn't even a problem that we had and it wasn't something that we were super passionate about building out, yet we spent almost a year trying to do this. And so if you just start from T=0 and think about this before you build any product I think you can save yourself a lot of headache down the road from doing something you don't want to do.
     status: 1
-    youtube_link: yP176MBG9Tk
+    youtube_id: yP176MBG9Tk
     video_duration: 3141
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -96,7 +96,7 @@ records:
             So to create a valuable company you have to basically both create something of value and capture some fraction of the value of what you've created. And sort of just to illustrate this as a contrast, if you compare the US airline industry with a company like Google on search, if you measure by the size of these industries you could say that airlines are still more important than search, just measured by revenue. [For airline carriers] there’s $195 billion in domestic revenues in 2012; Google had just north of $50 billion. And certainly on some intuitive level if you were given a choice and said, well would you want to get rid of all air travel, or do you want to give up search engines, the intuition would be that air travel is something that's more important than search. And this is of course just the domestic numbers.
             If you'd look at this globally, airlines are much much bigger than search, than Google is, but the profit margins are quite a bit less. They were marginally profitable in 2012, I think in the entire hundred year history of the airline industry, the cumulative profits in the US have been approximately zero. The companies make money, they episodically go bankrupt, they get recapitalized, and you sort of cycle and repeat. And this is reflected in the combined market capitalization of the airline industry, which may be something like a quarter of Google's. So you have search much smaller than air travel but much more valuable. I think this reflects these very different valuations on "X" and "Y."
     status: 1
-    youtube_link: 5_0dVHMpJlo
+    youtube_id: 5_0dVHMpJlo
     video_duration: 3016
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -117,7 +117,7 @@ records:
             When Google launched AdWords, that’s really when I started to do all my marketing. That meant buying paid clicks from Google and reselling them to eBay for a small margin of like 20% using their affiliate program. That was what really kicked me into overdrive, into doing what everyone nowadays talks about as growth, growth hacking or growth marketing. In my mind it’s just internet marketing using whatever channel you can to get whatever output you want, and that’s how I paid for college and that’s how I went from being a physicist to a Marketer - transitioning to the darkside of the force.
             So what do you think matters most for growth? You’ve had tons of lectures, and people have said it over and over, so what do you guys think matters most for growth?
     status: 1
-    youtube_link: n_yHZ_vKjno
+    youtube_id: n_yHZ_vKjno
     video_duration: 2847
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -139,7 +139,7 @@ records:
             So a lot of people are interested in what makes Wufoo a little bit different, or how do we run the company differently. And a lot of it was focused on product. We weren't interested in building software that people just wanted to use, that reminded you that you worked in a cubicle because it was a database app at its core. We wanted a product that people wanted to love, that people wanted to have a relationship with, and we were actually very fanatical about how we approached this idea, to the point where it was almost sort of in a science-y way. So what we said was like, "What's interesting about startups in terms of us wanting to create things that people love, is that love and unconditional feelings, are difficult things for us to do in real life. In startups, we have to do it at scale." So we decided to start off by asking, “How do relationships work in the real world and how can we apply them to the way we run our business and build our product that way?”
             We'll go over these two metaphors: acquiring new users as if we are trying to date them, and existing users as if they are a successful marriage.
     status: 1
-    youtube_link: sz_LgBAGYyo
+    youtube_id: sz_LgBAGYyo
     video_duration: 2881
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -157,7 +157,7 @@ records:
             It all began two years ago in a macaroon store. It was my junior year at Stanford during the fall quarter. At the time, I was really passionate about building technology for small business owners. I sat down with Chloe, the owner of Chantal Guillon, a macaroon store in Palo Alto at the time, just interviewing her, trying to get feedback on this prototype we'd been working on, and also just learning about what her problems were in general. It was during this meeting when Chloe first brought up this problem of delivery. I remember she brought down this really really thick booklet. She showed me pages and pages of delivery orders, and a lot of these orders she had to turn down because there was no way she could have fulfilled them. She had no drivers, and she ended up having to personally deliver all these orders. That was a very interesting moment for us.
             Over the course of the next few weeks, we talked to around 150 to 200 small business owners, and when we brought up this idea of delivery, they kept agreeing with us; they would say, "You know, we don't have delivery infrastructure. It's such a huge pain for us. There aren't any good solutions out there." This led us to wonder, delivery is such a common thing, such an obvious thing; why hasn't anyone solved this yet? Like, we must be missing something here right? We thought it was maybe because people had already tried this in the past, but they failed because there wasn't consumer demand for this. We asked ourselves, "How can we test this hypothesis?" We were just a bunch of college kids at the time. We didn't own trucks or delivery infrastructure or anything like that; we couldn't just build a delivery company overnight right? So how could we test this assumption we had?
     status: 1
-    youtube_link: oQOC-qy-GDY
+    youtube_id: oQOC-qy-GDY
     video_duration: 3133
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
@@ -177,7 +177,7 @@ records:
             Before you hire a programmer, you need to get very clear on what you expect the programmer to do. You need a precise vision of what you expect the final app, website or software to look like.
             Duffy learned this lesson the hard way when he hired a team of developers to create a website for a healthcare startup. The website they created was a "disaster". In Duffy's own words:
     status: 1
-    #youtube_link:
+    #youtube_id:
     #video_duration:
     user_id: "<%= sprig_record(User, 1).id %>"
     category_id: "<%= sprig_record(Category, 3).id %>"
@@ -185,7 +185,7 @@ records:
     #section_id:
     #slug:
     #demo_link:
-    #github_link: 
+    #github_link:
 
   - sprig_id: 10
     title: "How to Hire Your First Employees"
@@ -194,7 +194,7 @@ records:
             In this tutorial we’ll look at how you can go about hiring your first employees. If you’ve been going it alone until now, bringing on full-time staff will be a big step, and it can be hard to know where to start. So we’ll take you through the process of finding and recruiting good people to help your business grow.
             You’ll learn how to identify good candidates, how to interview them and select the right people, how to figure out what to offer in terms of pay and benefits, and how to navigate some of the regulatory requirements like tax forms and employment identification numbers.
     status: 1
-    #youtube_link:
+    #youtube_id:
     #video_duration:
     user_id: "<%= sprig_record(User, 1).id %>"
     category_id: "<%= sprig_record(Category, 3).id %>"

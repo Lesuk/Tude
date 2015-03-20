@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent, class_name: "Category"
   has_many :subcategories, class_name: "Category", foreign_key: "parent_id"
   has_many :articles
-  #has_many :courses
+  has_many :courses
 
   #friendly_id :name, use: :slugged
 

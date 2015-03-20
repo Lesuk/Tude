@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users,  controllers: {registrations: "registrations"},
-                      path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"} 
+                      path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"
 
   root 'articles#index'
 
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
-  
+
   resources :articles do
     resources :comments, only: [:new, :create, :destroy]
     member do
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
+  resources :courses
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

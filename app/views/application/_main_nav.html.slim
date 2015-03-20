@@ -1,7 +1,7 @@
 ul.main-nav
   li.main-nav__header Меню
   li.main-nav__item
-    a.main-nav__link href="#"
+    = active_link_to courses_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-tasks
       span.main-nav__item-text Курси
   li.main-nav__item

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318130228) do
+ActiveRecord::Schema.define(version: 20150320175505) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -75,6 +75,28 @@ ActiveRecord::Schema.define(version: 20150318130228) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "title",          limit: 255
+    t.string   "summary",        limit: 255
+    t.text     "description",    limit: 65535
+    t.string   "slug",           limit: 255
+    t.text     "content",        limit: 65535
+    t.string   "level",          limit: 255
+    t.integer  "duration",       limit: 4
+    t.string   "youtube_id",     limit: 255
+    t.integer  "category_id",    limit: 4
+    t.integer  "students_count", limit: 4,     default: 0, null: false
+    t.integer  "articles_count", limit: 4,     default: 0, null: false
+    t.integer  "reviews_count",  limit: 4,     default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "user_id",        limit: 4
+  end
+
+  add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
+  add_index "courses", ["slug"], name: "index_courses_on_slug", unique: true, using: :btree
+  add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id",        limit: 4

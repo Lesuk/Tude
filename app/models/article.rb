@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :category, counter_cache: true
+  belongs_to :course
   has_many :comments, as: :commentable
   has_many :article_views
   has_many :favorites, as: :favorable
