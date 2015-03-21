@@ -7,7 +7,7 @@
 
     /- unless @article.youtube_id.blank?
       .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
-        - img_src = "https://i.ytimg.com/vi/#{@article.youtube_id}/maxresdefault.jpg"
+        - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"
         img.main-video__thumbnail src="#{img_src}"
         span.main-video__play-btn
 

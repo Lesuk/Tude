@@ -9,4 +9,7 @@
     = render @comments
   .comments__form
     h4.comments__form-headline Ваш Коментар
-    = render partial: "comments/new_subcomment_form", locals: {parentid: nil}
+    - if current_user
+      = render partial: "comments/new_subcomment_form", locals: {parentid: nil}
+    - else
+      h4 You must login/register to comment.

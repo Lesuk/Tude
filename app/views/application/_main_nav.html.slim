@@ -1,5 +1,8 @@
 ul.main-nav
-  li.main-nav__header Меню
+  li.main-nav__header
+    | Меню
+    - direction = cookies[:sidebar_position] == 'reduced' ? 'right' : 'left'
+    span class="fa fa-angle-#{direction} reduce-sidebar"
   li.main-nav__item
     = active_link_to courses_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-tasks
@@ -22,7 +25,7 @@ ul.main-nav
       span.main-nav__item-text Запитання
   - if user_signed_in?
     li.h-bottom-sidebar-border
-    li.main-nav__header Персональне
+    li.main-nav__header.pers Персональне
     li.main-nav__item
       = active_link_to user_path(current_user), class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-user

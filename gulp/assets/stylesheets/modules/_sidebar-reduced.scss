@@ -1,8 +1,19 @@
 @include breakpoint(62.500em){
-  .sidebar-collapsed{
+  .sidebar-reduced{
     .sidebar{
       width: 60px;
       overflow: initial;
+    }
+    .reduce-sidebar {
+      background-color: transparent;
+      left: 0;
+      width: 100%;
+      text-align: right;
+      padding-right: 5px;
+      padding-top: 3px;
+      &:hover {
+        background-color: rgba(77, 90, 115, 0.5);
+      }
     }
     .app__container {
       width: calc(100% - 60px);
@@ -11,7 +22,7 @@
       padding: 4px 13px;
     }
     .main-nav__header{
-      padding: 18px 12px 10px;
+      padding: 18px 12px 10px 10px;
     }
     .main-nav__link{
       height: 50px;
@@ -42,5 +53,6 @@
     .is-active .main-nav__item-text:before{
       border-color: transparent #364051;
     }
+    .pers{display:none;}
   }
 }

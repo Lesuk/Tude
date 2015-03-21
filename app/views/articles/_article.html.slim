@@ -1,7 +1,7 @@
 - if (article.youtube_id)
-  - thumb_src = "https://i.ytimg.com/vi/#{article.youtube_id}/mqdefault.jpg"
+  - thumb_src = youtube_thumbnail(article.youtube_id, 'mq')
 -else
-  - thumb_src = "#{gulp_asset_path('images/thumb-placeholder.png')}"
+  - thumb_src = youtube_thumbnail(0, 'none')
 article.article-card
   .article-card__thumbnail
     = link_to '', article_path(article), class: "article-card__thumbnail-link"

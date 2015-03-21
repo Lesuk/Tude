@@ -15,7 +15,7 @@ html.no-js lang="en"
     = csrf_meta_tags
 
   body
-    .app
+    .app class="sidebar-#{cookies[:sidebar_position]}"
       .app__sidebar
         = render 'sidebar'
       .app__container.is-pushed-canvas
@@ -30,7 +30,7 @@ html.no-js lang="en"
             .container__signin-modal
               = render "shared/signin_modal"
     - flash.each do |key, value|
-      div class="#{flash_class(key)}" 
+      div class="#{flash_class(key)}"
         = value
 
     = javascript_include_tag 'application'

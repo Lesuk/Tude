@@ -47,4 +47,15 @@ module ApplicationHelper
     end
   end
 
+  def youtube_thumbnail(id, size)
+    case size
+    when 'mq'
+      "https://i.ytimg.com/vi/#{id}/mqdefault.jpg"
+    when 'maxres'
+      "https://i.ytimg.com/vi/#{id}/maxresdefault.jpg"
+    else
+      "#{gulp_asset_path('images/thumb-placeholder.png')}"
+    end
+  end
+
 end

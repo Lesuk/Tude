@@ -8,5 +8,6 @@ require '../../../vendor/assets/bower_components/fitvids/jquery.fitvids'
 require './embed_youtube_iframe'
 require './auto-textarea-height'
 require './comments'
+require './reduce-sidebar'
 
 console.log message
