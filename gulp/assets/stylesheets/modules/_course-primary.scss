@@ -1,0 +1,29 @@
+.course-primary{
+  padding: 10px 10px;
+  &__course-description{
+
+  }
+  &__course-author{
+    margin-top: 30px;
+  }
+  &__course-info{
+    margin-top: 30px;
+  }
+  &__course-share{}
+  &__course-toc{}
+  &__course-faq{}
+  &__course-reviews{}
+}
+
+.course-description{
+  &__title{
+    margin: 0 0 2px;
+    color: #333;
+    font-size: 16px;
+  }
+  &__content{
+    color: #5e5e5e;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

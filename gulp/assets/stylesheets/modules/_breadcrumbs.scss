@@ -43,3 +43,14 @@
       color: #59b3d5;
   }
 }
+
+// Modifiers
+@include breakpoint(500px){
+  .-color-white{
+    .breadcrumbs,
+    .breadcrumbs__item span,
+    .breadcrumbs__link, .breadcrumbs__link:visited{
+      color: #fff;
+    }
+  }
+}

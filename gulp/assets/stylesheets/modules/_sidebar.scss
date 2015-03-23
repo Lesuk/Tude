@@ -26,19 +26,23 @@
 }
 
 .reduce-sidebar {
-  position: absolute;
-  right: 0;
-  top: 1px;
-  width: 40px;
-  height: 39px;
-  line-height: 39px;
-  font-size: 15px;
-  background-color: #404B5F;
-  text-align: center;
-  cursor: pointer;
-  transition: all .2s linear;
+  display: none;
+  @include breakpoint(62.500em){
+    position: absolute;
+    right: 0;
+    top: 1px;
+    display: block;
+    width: 40px;
+    height: 39px;
+    line-height: 39px;
+    font-size: 15px;
+    background-color: #404B5F;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s linear;
 
-  &:hover {
-    background-color: #4D5A73;
+    &:hover {
+      background-color: #4D5A73;
+    }
   }
 }

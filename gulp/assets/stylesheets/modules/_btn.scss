@@ -69,7 +69,7 @@
   &.btn-register {
     display: none;
     @include breakpoint(700px){
-      margin: 6px 0 6px 0;  
+      margin: 6px 0 6px 0;
       display: inline-block
     }
   }
@@ -81,5 +81,18 @@
   }
   &.is-favorite, &.is-favorite i{
     color: #ffac33;
+  }
+  &.-shadow-bottom{
+    box-shadow: 0px 2px 0px #0C86D0;
+  }
+  &--start-course{
+    width: 260px;
+    padding: 10px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    @include breakpoint(500px){
+      width: 180px;
+      margin-right: 20px;
+    }
   }
 }

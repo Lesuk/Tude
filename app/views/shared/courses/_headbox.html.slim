@@ -1,0 +1,17 @@
+.headbox
+  .headbox__breadcrumbs.-color-white
+    = render_breadcrumbs
+
+  .headbox__course-thumb
+    .course-thumb.youtube_video id="#{@course.youtube_id}"
+      - img_src = "#{youtube_thumbnail(@course.youtube_id, 'mq')}"
+      img.course-thumb__img src="#{img_src}" style="opacity: 0.5;"
+      span.course-thumb__play-btn
+
+  .headbox__hgroup
+    .hgroup
+      h1.hgroup__headline = @course.title
+      p.hgroup__summary = @course.summary
+      .hgroup__actions
+        a.btn.btn-blue.btn--start-course.-shadow-bottom Пройти курс
+        a.watch-trailer Переглянути трейлер

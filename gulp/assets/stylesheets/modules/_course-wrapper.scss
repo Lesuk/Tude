@@ -1,0 +1,16 @@
+.course-wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+
+  &__headbox{
+    padding: 10px 10px 0;
+    @include breakpoint(500px){
+      padding: 0;
+    }
+  }
+  &__course-nav{
+    text-align: center;
+    font-size: 0;
+  }
+  &__primary{}
+}

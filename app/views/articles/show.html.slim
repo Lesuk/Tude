@@ -5,11 +5,12 @@
     .article-wrapper__breadcrumbs
       = render_breadcrumbs
 
-    /- unless @article.youtube_id.blank?
-      .article-wrapper__main-video.youtube_video id="#{@article.youtube_id}"
-        - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"
-        img.main-video__thumbnail src="#{img_src}"
-        span.main-video__play-btn
+    - unless @article.youtube_id.blank?
+      .article-wrapper__main-video
+        .main-video.youtube_video id="#{@article.youtube_id}"
+          - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"
+          img.main-video__thumbnail src="#{img_src}"
+          span.main-video__play-btn
 
     .article-wrapper__primary
       = render "shared/articles/article_body"

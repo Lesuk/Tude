@@ -1,0 +1,24 @@
+= provide(:title, @course.title)
+.container__course-wrapper
+  .course-wrapper.h-clearfix
+    .course-wrapper__headbox.h-clearfix
+      = render "shared/courses/headbox"
+    = render "shared/courses/course_nav"
+    .course-wrapper__course-primary
+      .course-primary
+        .course-primary__course-description
+          h2.course-description__title Course description
+          p.course-description__content = @course.description
+        .course-primary__course-author
+          .author-box.boxed-head
+            .boxed-head__title Course author
+            = link_to user_path(@course.author) do
+              img.author-box__img src="#{user_pic_placeholder(1)}"
+            = link_to @course.author.name, user_path(@course.author), class: "author-box__name"
+            span.author-box__whois = @course.author.whois if @course.author.whois.present?
+        .course-primary__course-info
+          = render "shared/courses/course_info"
+        .course-primary__course-share
+        .course-primary__course-toc
+        .course-primary__course-faq
+        .course-primary__course-reviews

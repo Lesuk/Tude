@@ -1,0 +1,30 @@
+.course-info.boxed-head
+  .boxed-head__title About Course
+  ul.course-info__list
+    li.course-info__course-rating
+      h3.course-rating__headline Course rating
+      .course-rating__rating-stars
+        .course-rating__rating-stars-gray
+        .course-rating__rating-stars-yellow style="width: 80%;"
+      .course-rating__rating 4.1 / 5 (12 reviews)
+    li.course-info__item
+      | Level
+      span = @course.level.capitalize
+    li.course-info__item
+      | Language
+      span Ukrainian
+    li.course-info__item
+      | Number of Students
+      span 1000
+    li.course-info__item
+      | Course duration
+      span 00:40:00
+    li.course-info__item
+      | Number of Lessons
+      span 14
+    li.course-info__item
+      | Number of Students
+      span 1000
+    li.course-info__item
+      | Created at
+      time datetime="#{@course.created_at.to_s(:datetime)}" title="#{@course.created_at.to_s(:shortdate)}" = @course.created_at.to_s(:shortdate)
