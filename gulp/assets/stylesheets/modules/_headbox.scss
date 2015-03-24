@@ -133,6 +133,6 @@
   }
   @include breakpoint(600px){
     padding: 9px 10px 9px 50px;
-    background: transparent url(images/play-big.png) 0 0 no-repeat;
+    background: transparent image-url('play-big.png') 0 0 no-repeat;
   }
 }

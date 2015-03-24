@@ -15,7 +15,7 @@ gem 'breakpoint', '~> 2.5.0'
 gem "font-awesome-rails"
 
 gem 'jquery-rails'
-gem 'turbolinks'
+#gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sprig', '~> 0.1'
@@ -46,6 +46,9 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  # Code Quality
+  gem "rails_best_practices"
 end
 
 group :production do

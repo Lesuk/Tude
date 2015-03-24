@@ -5,7 +5,7 @@
     .article-wrapper__breadcrumbs
       = render_breadcrumbs
 
-    - unless @article.youtube_id.blank?
+    - if @article.youtube_id?
       .article-wrapper__main-video
         .main-video.youtube_video id="#{@article.youtube_id}"
           - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"

@@ -27,11 +27,11 @@
             .progress-bar.status-active style="width: 49%;"
           span.progress__stats 00/00
           a.progress__next href="#next-tuts"
-    = link_to course.category.name, category_path(course.category), class: "course-card__category"
+    = link_to course.category_name, category_path(course.category), class: "course-card__category"
     h3.course-card__headline
       = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__headline-link"
     .course-card__author
       .course-card__author-img
         img src="#{user_pic_placeholder(1)}"
-      = link_to course.author.name, user_path(course.author), class: "course-card__author-name"
-      .course-card__author-whois = course.author.whois
+      = link_to course.author_name, user_path(course.author), class: "course-card__author-name"
+      .course-card__author-whois = course.author_whois

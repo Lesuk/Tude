@@ -35,6 +35,5 @@ module Tude
       g.helper = false
       g.view_specs = false
     end
-    
   end
 end

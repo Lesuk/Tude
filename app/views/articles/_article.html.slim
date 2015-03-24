@@ -13,7 +13,7 @@ article.article-card
       span.article-card__duration = Time.at(article.video_duration).utc.strftime("%H:%M:%S")
   .article-card__info
     /a.article-card__category href="#rails" WordPress
-    = link_to article.category.name, category_path(article.category), class: "article-card__category"
+    = link_to article.category_name, category_path(article.category), class: "article-card__category"
     h3.article-card__headline
       = link_to article.title, article_path(article), class: "article-card__headline-link"
     .article-card__meta

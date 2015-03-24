@@ -73,7 +73,7 @@
   margin-top: -25px;
   padding: 25px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6) url(https://vk.com/images/icons/video_play_compact.png) center center no-repeat;
+  background: rgba(0, 0, 0, 0.6) image-url('video_play_icon.png') center center no-repeat;
 }
 .thumbnail-actions__share-btn{
   position: absolute;
@@ -160,7 +160,7 @@
   width: 76px;
   padding:0px 8px 0px 37px;
   color: #9ca0a4;
-  background: transparent url(images/users.png) 8px center no-repeat;
+  background: transparent image-url('users.png') 8px center no-repeat;
   line-height: 10px;
   font-size: 10px;
 
@@ -211,10 +211,10 @@
     font-size: 0;
   }
   &-gray{
-    background: transparent url(images/gray-stars.png) 0 0 no-repeat;
+    background: transparent image-url('gray-stars.png') 0 0 no-repeat;
   }
   &-yellow{
-    background: transparent url(images/yellow-stars.png) 0 0 no-repeat;
+    background: transparent image-url('yellow-stars.png') 0 0 no-repeat;
   }
 }
 
@@ -339,7 +339,7 @@
   vertical-align: middle;
   border: 1px solid #eee;
   border-radius: 4px;
-  background: transparent url(http://i.imgur.com/lRKAk1f.png) center center no-repeat;
+  background: transparent image-url('blue-arrow.png') center center no-repeat;
 
   &:hover{
     border-color: #ddd;

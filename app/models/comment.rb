@@ -6,5 +6,7 @@ class Comment < ActiveRecord::Base
 
   validates :body, presence: true
 
-  scope :main_comments, -> {where(parent_id: nil)} 
+  delegate :name, :whois, to: :user, prefix: true, allow_nil: true
+
+  scope :main_comments, -> {where(parent_id: nil)}
 end

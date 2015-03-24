@@ -8,6 +8,6 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    add_breadcrumbs(["Courses", courses_path], [@course.category.name, category_path(@course.category)], [@course.title, nil])
+    add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, nil])
   end
 end

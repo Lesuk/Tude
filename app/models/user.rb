@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :articles
+  has_many :comments
   has_many :own_courses, class_name: "Course"
   has_many :favorites
   has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'

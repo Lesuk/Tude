@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @commentable = @article
+
     # OPTIMIZE order
     # FIXME After ordering - reply to don't work
     case params[:comments_sort]
@@ -24,10 +25,10 @@ class ArticlesController < ApplicationController
       sort_order = "id DESC"
     end
     @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments.order(sort_order)
-    
+
     @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
 
-    add_breadcrumbs([@article.category.name, category_path(@article.category)], [@article.title, nil])
+    add_breadcrumbs([@article.category_name, category_path(@article.category)], [@article.title, nil])
   end
 
   def favorite
@@ -49,13 +50,13 @@ class ArticlesController < ApplicationController
   end
 
 private
-  
-  def set_article
-    #@article = Article.friendly.find(params[:id])
-  end
 
-  def article_params
-    params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
-  end
+  # def set_article
+  #   @article = Article.friendly.find(params[:id])
+  # end
+
+  # def article_params
+  #   params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
+  # end
 
 end

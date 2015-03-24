@@ -3,8 +3,8 @@
     .comment__head.h-clearfix
       .comment__user-pic
         img src="#{user_pic_placeholder(2)}"
-      = link_to comment.user.name, user_path(comment.user), class: "comment__user-name"
-      .comment__user-whois = comment.user.whois if comment.user.whois.present?
+      = link_to comment.user_name, user_path(comment.user), class: "comment__user-name"
+      .comment__user-whois = comment.user_whois
       time.comment__date datetime="#{comment.created_at.to_s(:datetime)}" title="#{comment.created_at.to_s(:shortdate)}" = comment.created_at.to_s(:shortdate)
     .comment__body = comment.body
     = render partial: "comments/comment_actions", locals: {comment: comment}

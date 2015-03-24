@@ -14,8 +14,8 @@
             .boxed-head__title Course author
             = link_to user_path(@course.author) do
               img.author-box__img src="#{user_pic_placeholder(1)}"
-            = link_to @course.author.name, user_path(@course.author), class: "author-box__name"
-            span.author-box__whois = @course.author.whois if @course.author.whois.present?
+            = link_to @course.author_name, user_path(@course.author), class: "author-box__name"
+            span.author-box__whois = @course.author_whois
         .course-primary__course-info
           = render "shared/courses/course_info"
         .course-primary__course-share

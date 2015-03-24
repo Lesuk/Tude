@@ -4,4 +4,7 @@ class Course < ActiveRecord::Base
   has_many :articles
   # has_many :students, class: "User"
   has_many :reviews
+
+  delegate :name, to: :category, prefix: true, allow_nil: true
+  delegate :name, :whois, to: :author, prefix: true, allow_nil: true
 end

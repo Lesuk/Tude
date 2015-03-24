@@ -27,7 +27,7 @@
 }
 
 .course-rating{
-  
+
   &__headline{
     margin: 6px 0 0;
     line-height: 30px;
@@ -53,10 +53,10 @@
       font-size: 0;
     }
     &-gray{
-      background: transparent url(images/gray-stars.png) 0 0 no-repeat;
+      background: transparent image-url('gray-stars.png') 0 0 no-repeat;
     }
     &-yellow{
-      background: transparent url(images/yellow-stars.png) 0 0 no-repeat;
+      background: transparent image-url('yellow-stars.png') 0 0 no-repeat;
     }
   }
 
