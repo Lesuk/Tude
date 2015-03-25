@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320175505) do
+ActiveRecord::Schema.define(version: 20150325170328) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20150320175505) do
     t.string   "slug",           limit: 255
     t.text     "content",        limit: 65535
     t.string   "level",          limit: 255
-    t.integer  "duration",       limit: 4
     t.string   "youtube_id",     limit: 255
     t.integer  "category_id",    limit: 4
     t.integer  "students_count", limit: 4,     default: 0, null: false
@@ -92,6 +91,7 @@ ActiveRecord::Schema.define(version: 20150320175505) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "user_id",        limit: 4
+    t.integer  "duration",       limit: 4,     default: 0, null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(version: 20150320175505) do
   add_index "favorites", ["favorable_type", "favorable_id"], name: "index_favorites_on_favorable_type_and_favorable_id", using: :btree
   add_index "favorites", ["user_id", "favorable_id", "favorable_type"], name: "index_favorites_on_user_id_and_favorable_id_and_favorable_type", unique: true, using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "duration",   limit: 4,   default: 0, null: false
+  end
+
+  add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false

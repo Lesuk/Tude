@@ -7,10 +7,7 @@ article.article-card
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
     span.article-card__play-btn
     img.article-card__thumbnail-image src="#{thumb_src}"
-    - if ((article.video_duration > 0) && (article.video_duration < 3600))
-      span.article-card__duration = Time.at(article.video_duration).utc.strftime("%M:%S")
-    - elsif (article.video_duration >= 3600)
-      span.article-card__duration = Time.at(article.video_duration).utc.strftime("%H:%M:%S")
+    span.article-card__duration = set_duration(article.video_duration)
   .article-card__info
     /a.article-card__category href="#rails" WordPress
     = link_to article.category_name, category_path(article.category), class: "article-card__category"

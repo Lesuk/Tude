@@ -1,0 +1,10 @@
+options:
+  find_existing_by: ['name']
+
+records:
+  - sprig_id: 1
+    name: "Week 1 - Resources and Videos"
+    course_id: "<%= sprig_record(Course, 1).id %>"
+  - sprig_id: 2
+    name: "Week 2 - Resources and Videos"
+    course_id: "<%= sprig_record(Course, 1).id %>"

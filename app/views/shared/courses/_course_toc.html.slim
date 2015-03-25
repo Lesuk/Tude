@@ -1,0 +1,5 @@
+.course-toc
+  h2.course-toc__title Table of Content
+  - @course.sections.any?
+    ol.course-toc__list
+      = render @course.sections

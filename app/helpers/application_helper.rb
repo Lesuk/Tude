@@ -58,4 +58,12 @@ module ApplicationHelper
     end
   end
 
+  def set_duration(duration)
+    if ( (duration > 0) && (duration < 3600) )
+      Time.at(duration).utc.strftime("%M:%S")
+    elsif (duration >= 3600)
+      Time.at(duration).utc.strftime("%H:%M:%S")
+    end
+  end
+
 end

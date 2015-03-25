@@ -9,5 +9,6 @@ require './embed_youtube_iframe'
 require './auto-textarea-height'
 require './comments'
 require './reduce-sidebar'
+require './course-nav'
 
 console.log message

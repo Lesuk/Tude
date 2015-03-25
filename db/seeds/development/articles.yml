@@ -15,8 +15,8 @@ records:
     video_duration: 2632
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 1).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -37,8 +37,8 @@ records:
     video_duration: 2778
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 1).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -56,8 +56,8 @@ records:
     video_duration: 2887
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 1).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -79,8 +79,8 @@ records:
     video_duration: 3141
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -100,8 +100,8 @@ records:
     video_duration: 3016
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -121,8 +121,8 @@ records:
     video_duration: 2847
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -143,8 +143,8 @@ records:
     video_duration: 2881
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup
@@ -161,8 +161,8 @@ records:
     video_duration: 3133
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #course_id:
-    #section_id:
+    course_id: "<%= sprig_record(Course, 1).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
     #slug:
     demo_link: https://www.youtube.com/channel/UCxIJaCMEptJjxmmQgGFsnCg
     github_link: https://github.com/NathanEpstein/How_To_Start_A_Startup

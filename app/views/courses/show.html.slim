@@ -5,20 +5,21 @@
       = render "shared/courses/headbox"
     = render "shared/courses/course_nav"
     .course-wrapper__course-primary
-      .course-primary
-        .course-primary__course-description
+      .course-primary.h-clearfix
+        .course-primary__course-description.course-primary__alpha data-box="info"
           h2.course-description__title Course description
           p.course-description__content = @course.description
-        .course-primary__course-author
+        .course-primary__course-author.course-primary__omega data-box="info"
           .author-box.boxed-head
             .boxed-head__title Course author
             = link_to user_path(@course.author) do
               img.author-box__img src="#{user_pic_placeholder(1)}"
             = link_to @course.author_name, user_path(@course.author), class: "author-box__name"
             span.author-box__whois = @course.author_whois
-        .course-primary__course-info
+        .course-primary__course-info.course-primary__omega data-box="info"
           = render "shared/courses/course_info"
-        .course-primary__course-share
-        .course-primary__course-toc
-        .course-primary__course-faq
-        .course-primary__course-reviews
+        /.course-primary__course-share data-box="info"
+        .course-primary__course-toc.course-primary__alpha data-box="toc"
+          = render "shared/courses/course_toc"
+        /.course-primary__course-faq data-box="info"
+        /.course-primary__course-reviews data-box="reviews"

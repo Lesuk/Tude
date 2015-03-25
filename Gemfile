@@ -49,6 +49,8 @@ group :development, :test do
 
   # Code Quality
   gem "rails_best_practices"
+
+  gem 'better_errors'
 end
 
 group :production do

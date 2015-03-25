@@ -1,18 +1,63 @@
 .course-primary{
-  padding: 10px 10px;
-  &__course-description{
+  padding: 16px 10px 10px;
 
+  @include breakpoint(31.25em){
+    padding: 16px 20px 10px;
   }
+
+  &__alpha{
+    margin-bottom: 30px;
+    @include breakpoint(37.500em){
+      width: 57%;
+      margin-bottom: 20px;
+      float: left;
+    }
+    @include breakpoint(48.125em){
+      width: calc(100% - 320px);
+    }
+  }
+  &__omega{
+    margin-bottom: 30px;
+    @include breakpoint(37.500em){
+      width: 40%;
+      margin-bottom: 0;
+      float: right;
+      clear: right;
+    }
+    @include breakpoint(48.125em){
+      width: 300px;
+    }
+  }
+
+  &__course-description{}
+
   &__course-author{
-    margin-top: 30px;
   }
+
   &__course-info{
-    margin-top: 30px;
   }
-  &__course-share{}
-  &__course-toc{}
+
+  &__course-share{
+  }
+
+  &__course-toc{
+  }
+
   &__course-faq{}
+
   &__course-reviews{}
+
+  [data-box="info"]{}
+  [data-box="toc"]{
+    @include breakpoint(6.250em 37.438em){
+      display: none;
+    }
+  }
+  [data-box="reviews"]{
+    @include breakpoint(6.250em 37.438em){
+      display: none;
+    }
+  }
 }
 
 .course-description{
@@ -20,6 +65,9 @@
     margin: 0 0 2px;
     color: #333;
     font-size: 16px;
+    @include breakpoint(31.250em){
+      font-size: 20px;
+    }
   }
   &__content{
     color: #5e5e5e;
