@@ -4,6 +4,8 @@ class Course < ActiveRecord::Base
   has_many :sections
   has_many :articles
   #has_many :reviews
+  has_many :enrollments
+  has_many :users, through: :enrollments
 
   after_touch :update_duration
 

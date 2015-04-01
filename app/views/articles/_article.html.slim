@@ -7,7 +7,8 @@ article.article-card
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
     span.article-card__play-btn
     img.article-card__thumbnail-image src="#{thumb_src}"
-    span.article-card__duration = set_duration(article.video_duration)
+    -if article.video_duration > 0
+      span.article-card__duration = set_duration(article.video_duration)
   .article-card__info
     /a.article-card__category href="#rails" WordPress
     = link_to article.category_name, category_path(article.category), class: "article-card__category"

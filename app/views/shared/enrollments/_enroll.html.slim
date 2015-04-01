@@ -1,0 +1,3 @@
+= form_for(current_user.enrollments.build(course_id: course.id), html: {class: "hgroup__form"}) do |f|
+  = f.hidden_field :course_id
+  = f.submit "Start Course", class: "btn btn-blue btn--start-course -shadow-bottom"

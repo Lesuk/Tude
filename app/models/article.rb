@@ -15,6 +15,7 @@ class Article < ActiveRecord::Base
 
   delegate :name, :whois, :bio, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :category, prefix: true, allow_nil: true
+  delegate :title, to: :course, prefix: true, allow_nil: true
 
   def user_fan?(user_id)
     self.fans.where(id: user_id).present?

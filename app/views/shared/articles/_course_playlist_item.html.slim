@@ -1,0 +1,7 @@
+li.pl-list-item
+  .pl-list-item__thumbnail
+    img src="#{youtube_thumbnail(item.youtube_id, 'default')}"
+    span.pl-list-item__counter = item_counter + 1
+  .pl-list-item__title = item.title
+  = link_to item.title, article_path(item), class: "pl-list-item__link"
+  /a.pl-list-item__link href="#1tut"

@@ -1,4 +1,3 @@
-- active = false
 .course-card
   .course-card__thumbnail
     img.course-card__thumbnail-image src="#{youtube_thumbnail(course.youtube_id, 'mq')}"
@@ -10,23 +9,24 @@
           i.fa.fa-share-alt
   .course-card__info
     .course-card__meta
-      - if !active
+      - if current_user.try(:enrolled?, course.id)
+        .course-card__progress
+          .progress
+            .progress-bar.status-active style="width: 49%;"
+          span.progress__stats 00/00
+          a.progress__next href="#next-tuts"
+      - else
         .course-card__level
           span.course-card__level-lines class="level-#{course.level.downcase}"
         .course-card__students-count
-          span 000
+          span = course.users.size
           | учасників
         .course-card__rating
           .course-card__rating-stars
             .course-card__rating-stars-gray
             .course-card__rating-stars-yellow style="width: 80%;"
           span.course-card__rating-count 00 відгуків
-      - else
-        .course-card__progress
-          .progress
-            .progress-bar.status-active style="width: 49%;"
-          span.progress__stats 00/00
-          a.progress__next href="#next-tuts"
+
     = link_to course.category_name, category_path(course.category), class: "course-card__category"
     h3.course-card__headline
       = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__headline-link"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325170328) do
+ActiveRecord::Schema.define(version: 20150327174414) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20150325170328) do
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
   add_index "courses", ["slug"], name: "index_courses_on_slug", unique: true, using: :btree
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "course_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id",        limit: 4

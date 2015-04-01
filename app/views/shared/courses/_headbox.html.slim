@@ -12,6 +12,12 @@
     .hgroup
       h1.hgroup__headline = @course.title
       p.hgroup__summary = @course.summary
-      .hgroup__actions
-        a.btn.btn-blue.btn--start-course.-shadow-bottom Пройти курс
-        a.watch-trailer Переглянути трейлер
+      - if current_user.try(:enrolled?, @course.id)
+        | panel
+      - else
+        .hgroup__actions
+          - if current_user
+            = render partial: "shared/enrollments/enroll", locals: {course: @course}
+          - else
+            = link_to "Start Course", new_user_session_path(), class: "btn btn-blue btn--start-course -shadow-bottom"
+          a.watch-trailer Переглянути трейлер

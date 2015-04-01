@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :own_courses, class_name: "Course"
   has_many :favorites
   has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
+  has_many :enrollments
+  has_many :courses, through: :enrollments
 
   validates :username, presence: true, uniqueness: {case_sensitive: false}
 
@@ -33,4 +35,15 @@ class User < ActiveRecord::Base
     username
   end
 
+  def enroll!(course_id)
+    self.enrollments.create!(course_id: course_id)
+  end
+
+  def enrolled?(course_id)
+    self.enrollments.find_by(course_id: course_id)
+  end
+
+  def disenroll!(course_id)
+    self.enrollments.find_by(course_id: course_id).destroy!
+  end
 end

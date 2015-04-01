@@ -53,6 +53,8 @@ module ApplicationHelper
       "https://i.ytimg.com/vi/#{id}/mqdefault.jpg"
     when 'maxres'
       "https://i.ytimg.com/vi/#{id}/maxresdefault.jpg"
+    when 'default'
+      "https://i.ytimg.com/vi/#{id}/default.jpg"
     else
       "#{gulp_asset_path('images/thumb-placeholder.png')}"
     end

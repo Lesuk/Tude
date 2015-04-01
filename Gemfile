@@ -51,6 +51,7 @@ group :development, :test do
   gem "rails_best_practices"
 
   gem 'better_errors'
+  gem 'lol_dba'
 end
 
 group :production do

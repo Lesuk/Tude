@@ -13,8 +13,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.includes(:course).find(params[:id])
     @commentable = @article
+    @articles = @article.course.articles
 
     # OPTIMIZE order
     # FIXME After ordering - reply to don't work

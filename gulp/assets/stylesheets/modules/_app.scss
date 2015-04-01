@@ -16,17 +16,17 @@
   height: 100%;
 
   @include breakpoint(62.500em){
-    width: calc(100% - 230px);
+    width: calc(100% - 210px);
     float: right;
   }
 
   @include breakpoint(max-width 62.438em){
     &.is-pushed{ /* .push-push */
-      -webkit-transform: translate3d(230px,0,0);
-      -moz-transform: translate3d(230px,0,0);
-      -ms-transform: translate3d(230px,0,0);
-      -o-transform: translate3d(230px,0,0);
-      transform: translate3d(230px,0,0);
+      -webkit-transform: translate3d(10px,0,0);
+      -moz-transform: translate3d(210px,0,0);
+      -ms-transform: translate3d(210px,0,0);
+      -o-transform: translate3d(210px,0,0);
+      transform: translate3d(210px,0,0);
     }
 
     &.is-pushed-canvas{

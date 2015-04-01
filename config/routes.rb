@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :courses
+  resources :enrollments, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
