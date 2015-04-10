@@ -19,7 +19,8 @@
 
 
     aside.article-wrapper__secondary
-      .article-wrapper__secondary-item
-        = render "shared/articles/course_playlist"
+      - if @article.course
+        .article-wrapper__secondary-item
+          = render "shared/articles/course_playlist"
       .article-wrapper__secondary-item
         = render "shared/articles/article_files"

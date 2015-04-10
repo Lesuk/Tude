@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  USERNAME_REGEX = /([A-Za-z0-9_]{3,15})/
+
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
 
@@ -10,8 +12,12 @@ class User < ActiveRecord::Base
   has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
   has_many :enrollments
   has_many :courses, through: :enrollments
+  has_many :mentions
+  has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
 
-  validates :username, presence: true, uniqueness: {case_sensitive: false}
+  validates :username, presence: true, uniqueness: {case_sensitive: false},
+                        exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},
+                        format: {with: USERNAME_REGEX, message: 'Only letters, numbers and underscore'}
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

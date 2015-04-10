@@ -7,6 +7,8 @@
         .thumbnail-actions__play-btn
         .thumbnail-actions__share-btn
           i.fa.fa-share-alt
+        .thumbnail-actions__star-btn
+          i.fa.fa-star
   .course-card__info
     .course-card__meta
       - if current_user.try(:enrolled?, course.id)

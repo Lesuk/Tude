@@ -4,7 +4,7 @@
   position: relative;
   display: block;
   margin-bottom: 20px;
-  padding-bottom: 5px;
+  // padding-bottom: 5px;
   border-bottom: 1px solid rgb(204, 204, 204);
 }
 .comments__headline{
@@ -20,18 +20,54 @@
   &-link{
       display: inline-block;
       // width: 33.3%;
-      padding: 2px 0 8px;
+      padding: 2px 5px 8px 0;
       margin-left: 14px;
+      border: none;
       text-decoration: none;
       text-align: center;
       font-size: 13px;
       font-weight: 400;
       color: #8f969e;
       background-color: transparent;
+      outline: 0;
 
       &.is-current {
         color: #17a5fb;
         font-weight: 600;
+      }
+
+      &.sort:after {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        content: "";
+        position: relative;
+        top: -10px;
+        right: -5px;
+      }
+      &.sort.asc:after {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #17a5fb;
+        content: "";
+        position: relative;
+        top: 13px;
+        right: -5px;
+      }
+      &.sort.desc:after {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #17a5fb;
+        content: "";
+        position: relative;
+        top: -10px;
+        right: -5px;
       }
   }
 }
@@ -95,11 +131,11 @@
 }
 
 .comment__date{
-  display: block;
-  line-height: 15px;
-  margin-left: 10px;
-  font-size: 11px;
-  color: #aaa;
+  // display: block;
+  // line-height: 15px;
+  // margin-left: 10px;
+  // font-size: 11px;
+  // color: #aaa;
 }
 
 .comment__body{
@@ -119,10 +155,10 @@
   line-height: 21px;
   font-size: 12px;
   color: #aaa;
-  
-  
+
+
   &:nth-child(2){margin-left: 0;}
-  
+
   &:before{
     content: '\2022';
     margin-right: 5px;
@@ -138,7 +174,7 @@
 %comment-action-link{
   color: #bbb;
   text-decoration: none;
-  transition: all .1s linear; 
+  transition: all .1s linear;
   &:hover{
     color: #16a4fa;
     border-bottom: 1px dashed #16a4fa;
@@ -152,6 +188,13 @@
 }
 .comment__claim-action{
   @extend %comment-action-link;
+}
+.comment__anchor-link{
+  @extend %comment-action-link;
+  display: table-cell;
+  line-height: 15px;
+  margin-left: 10px;
+  font-size: 11px;
 }
 
 .comment__rating{
@@ -232,7 +275,7 @@
   /* margin: 0 0 20px 0; */
   padding: 10px 10px 5px;
   border-bottom: 1px solid #e9e9e9;
-  
+
   &__head{
     position: relative;
     display: block;
@@ -254,7 +297,7 @@
     line-height: 15px;
     font-size: 13px;
     font-weight: 600;
-    color: #555; 
+    color: #555;
 
     &:hover{
       text-decoration: underline;
@@ -270,9 +313,10 @@
         display: none;
       }
   }
-  &__date{
-    display: block;
-    line-height: 15px;
+  &__anchor-link{
+    @extend %comment-action-link;
+    display: table-cell;
+    line-height: 14px;
     margin-left: 10px;
     font-size: 11px;
     color: #aaa;
@@ -283,7 +327,7 @@
     line-height: 18px;
     color: #5e5e5e;
   }
-  
+
   &.bg-white{
     background-color: #fff;
   }
@@ -328,16 +372,21 @@
 .reply-field{
   display: block;
   width: 100%;
-  min-height: 50px;
+  min-height: 40px;
   max-height: 350px;
   padding: 6px;
   resize: none;
   border: 1px solid #ddd;
+  border-radius: 3px;
   font-size: 13px;
   line-height: 18px;
   color: #5e5e5e;
   overflow-y: hidden;
   outline: 0;
+
+  &:focus{
+    border-color: #A5C7DB;
+  }
 }
 
 .reply-buttons {

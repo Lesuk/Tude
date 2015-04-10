@@ -12,6 +12,8 @@ html.no-js lang="en"
 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic,latin"
     = stylesheet_link_tag 'application'
+    / FIX PROBLEM WITH LIST.js
+    = javascript_include_tag 'http://www.listjs.com/no-cdn/list.js'
     = csrf_meta_tags
 
   body

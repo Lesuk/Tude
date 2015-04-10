@@ -1,11 +1,14 @@
 ul.comment__actions
   li.comment__rating
-    span.comment__rating-value 0
+    span.comment__rating-value.rating = rand(0..10)
     a.comment__rating-upvote href="#": i.fa.fa-angle-up
     a.comment__rating-downvote href="#": i.fa.fa-angle-down
   - if comment.parent_id.blank? && current_user
     li.comment__action
-      a.comment__sub-comment-action.reply-to href="javascript:void(0)" data-reply="#{comment.id}" Коментувати
+      a.comment__sub-comment-action.js-reply-to href="javascript:void(0)" data-reply="#{comment.id}" Коментувати
+  - if current_user && comment.parent_id.present?
+    li.comment__action
+      a.comment__sub-comment-action.js-reply-to href="#comments#{comment.parent_id}" data-reply="#{comment.parent_id}" data-username="#{comment.user_username}" data-rep-id="#{comment.id}" Відповісти
   - if current_user
     - if comment.user.id == current_user.id
       li.comment__action

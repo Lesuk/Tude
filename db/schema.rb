@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327174414) do
+ActiveRecord::Schema.define(version: 20150410092539) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -70,10 +70,12 @@ ActiveRecord::Schema.define(version: 20150327174414) do
     t.text     "body",             limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "subparent_id",     limit: 4
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
+  add_index "comments", ["subparent_id"], name: "index_comments_on_subparent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
@@ -119,6 +121,17 @@ ActiveRecord::Schema.define(version: 20150327174414) do
   add_index "favorites", ["favorable_type", "favorable_id"], name: "index_favorites_on_favorable_type_and_favorable_id", using: :btree
   add_index "favorites", ["user_id", "favorable_id", "favorable_type"], name: "index_favorites_on_user_id_and_favorable_id_and_favorable_type", unique: true, using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "mentions", force: :cascade do |t|
+    t.integer  "mentionable_id",   limit: 4
+    t.string   "mentionable_type", limit: 255
+    t.integer  "user_id",          limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "mentions", ["mentionable_type", "mentionable_id"], name: "index_mentions_on_mentionable_type_and_mentionable_id", using: :btree
+  add_index "mentions", ["user_id"], name: "index_mentions_on_user_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "name",       limit: 255

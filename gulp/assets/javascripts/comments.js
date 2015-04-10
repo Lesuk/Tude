@@ -1,15 +1,36 @@
 ;(function($) {
 
+  "use strict";
   // DOM ready
   $(function() {
 
+    var commentOptions = {
+      valueNames: [ 'timestamp', 'rating' ],
+      listClass: 'comments__list'
+    };
+
+    var commentList = new List('comments__box', commentOptions);
+
     // Click to reveal the nav
-    $('.comment__item').on('click', '.reply-to', function(){
-      console.log('reply');
+    $('.comment__item').on('click', '.js-reply-to', function(e){
+      e.preventDefault();
       var comment_to_id = $(this).data("reply");
+      var reply_to_id = $(this).data("rep-id");
       var subcomments_block = $("#comment_" + comment_to_id + " .comment__sub-comments");
+      var replyTo = $(this).data("username");
       subcomments_block.removeClass('h-hidden');
       subcomments_block.children('ul').children('li:nth-child(1)').removeClass('h-hidden');
+      if (replyTo){
+        var textArea = $("#comment_to_" + comment_to_id);
+        var hiddenField = $("#subparent_" + comment_to_id);
+        textArea.val(function(i, val){
+          return val + '@' + replyTo + ' ';
+        });
+        textArea.focus();
+        hiddenField.val(function(i, val){
+          return reply_to_id
+        });
+      }
     });
 
     $('.js-cancel-reply').on('click', function(){

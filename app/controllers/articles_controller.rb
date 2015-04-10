@@ -15,17 +15,17 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.includes(:course).find(params[:id])
     @commentable = @article
-    @articles = @article.course.articles
+    @articles = @article.course.articles if @article.course
 
     # OPTIMIZE order
     # FIXME After ordering - reply to don't work
-    case params[:comments_sort]
-    when 'oldest'
-      sort_order = "id ASC"
-    else
-      sort_order = "id DESC"
-    end
-    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments.order(sort_order)
+    # case params[:comments_sort]
+    # when 'oldest'
+    #   sort_order = "id ASC"
+    # else
+    #   sort_order = "id DESC"
+    # end
+    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments # .order(sort_order)
 
     @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
 

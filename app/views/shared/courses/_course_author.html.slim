@@ -1,0 +1,6 @@
+.author-box.boxed-head.h-clearfix
+  .boxed-head__title Course author
+  = link_to user_path(course.author) do
+    img.author-box__img src="#{user_pic_placeholder(1)}"
+  = link_to course.author_name, user_path(course.author), class: "author-box__name"
+  span.author-box__whois = course.author_whois

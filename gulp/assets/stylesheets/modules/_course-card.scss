@@ -31,6 +31,8 @@
   right: 0;
   z-index: 30;
   border: none;
+  text-indent: -999px;
+  overflow: hidden;
   cursor: pointer;
 
   /*&:hover{
@@ -69,16 +71,19 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 40;
   margin-left: -25px;
   margin-top: -25px;
   padding: 25px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6) image-url('video_play_icon.png') center center no-repeat;
+  background: image-url('video_play_icon.png') center center no-repeat;
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
 }
-.thumbnail-actions__share-btn{
+.thumbnail-actions__share-btn,
+.thumbnail-actions__star-btn{
   position: absolute;
   top: 50%;
-  left: 0;
   z-index: 40;
   margin-top: -20px;
   padding: 10px 14px;
@@ -87,6 +92,20 @@
   color: #fff;
   cursor: pointer;
   transition: opacity 80ms linear;
+}
+.thumbnail-actions__share-btn{
+  left: 0;
+}
+.thumbnail-actions__star-btn{
+  right: 0;
+}
+
+.thumbnail-actions__share-btn,
+.thumbnail-actions__star-btn,
+.thumbnail-actions__play-btn{
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+  }
 }
 
 .course-card__info{

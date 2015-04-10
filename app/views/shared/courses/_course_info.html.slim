@@ -9,7 +9,7 @@
       .course-rating__rating 4.1 / 5 (12 reviews)
     li.course-info__item
       | Level:
-      span = @course.level.capitalize
+      span = course.level.capitalize
     li.course-info__item
       | Language:
       span Ukrainian
@@ -18,13 +18,13 @@
       span 1000
     li.course-info__item
       | Course duration:
-      span = set_duration(@course.duration)
+      span = set_duration(course.duration)
     li.course-info__item
       | Number of Lessons:
-      span = @course.articles.size
+      span = course.articles.size
     li.course-info__item
       | Created at:
-      time datetime="#{@course.created_at.to_s(:datetime)}" title="#{@course.created_at.to_s(:shortdate)}" = @course.created_at.to_s(:shortdate)
+      time datetime="#{course.created_at.to_s(:datetime)}" title="#{course.created_at.to_s(:shortdate)}" = course.created_at.to_s(:shortdate)
     li.course-info__item
       | Last update:
-      time datetime="#{@course.updated_at.to_s(:datetime)}" title="#{@course.updated_at.to_s(:shortdate)}" = @course.updated_at.to_s(:shortdate)
+      time datetime="#{course.updated_at.to_s(:datetime)}" title="#{course.updated_at.to_s(:shortdate)}" = course.updated_at.to_s(:shortdate)

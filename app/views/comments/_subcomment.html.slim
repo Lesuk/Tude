@@ -4,6 +4,7 @@
       img src="#{user_pic_placeholder(0)}"
     = link_to subcomment.user.name, user_path(subcomment.user), class: "sub-comment__user-name"
     span.sub-comment__user-whois = subcomment.user.whois if subcomment.user.whois.present?
-    time.sub-comment__date datetime="#{subcomment.created_at.to_s(:datetime)}" title="#{subcomment.created_at.to_s(:shortdate)}" = subcomment.created_at.to_s(:shortdate)
-  .sub-comment__body = subcomment.body
+    a.sub-comment__anchor-link href="#comment_#{subcomment.id}"
+      time.sub-comment__date datetime="#{subcomment.created_at.to_s(:datetime)}" title="#{subcomment.created_at.to_s(:shortdate)}" = subcomment.created_at.to_s(:shortdate)
+  .sub-comment__body = sanitize text_with_mentions(subcomment.body)
   = render partial: "comments/comment_actions", locals: {comment: subcomment}
