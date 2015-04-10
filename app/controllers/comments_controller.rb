@@ -22,6 +22,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = @commentable.comments.find(params[:id])
+    respond_to do |format|
+      @comment.update_attributes(comment_params)
+      format.json { respond_with_bip(@comment) }
+    end
+  end
+
   def destroy
     @comment = @commentable.comments.find(params[:id])
     @comment.destroy

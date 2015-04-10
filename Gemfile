@@ -31,6 +31,8 @@ gem 'breadcrumble'
 # Tips
 gem 'active_link_to'
 
+gem 'best_in_place', '~> 3.0.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

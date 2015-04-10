@@ -12,6 +12,8 @@ ul.comment__actions
   - if current_user
     - if comment.user.id == current_user.id
       li.comment__action
+        = link_to 'Редагувати', "javascript:void(0)", id: "comment_edit_#{comment.id}",class: 'comment__sub-comment-action'
+      li.comment__action
         = link_to 'Видалити', [@commentable, comment], method: :delete, remote: true, class: 'comment__sub-comment-action'
   /li.comment__action.is-hidden
     a.comment__share-action href="#share" Поділитися
