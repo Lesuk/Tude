@@ -4,23 +4,24 @@
     ul.filter-cat__list
       - @categories.each do |main_cat|
         li.filter-cat__item
-          = link_to main_cat.name, category_path(main_cat)
+          = link_to main_cat.name, {category_id: main_cat.id}
           - sub_cats = main_cat.subcategories
           - if sub_cats.any?
             ul.filter-cat__sub-list
               - sub_cats.each do |subcat|
                 li.filter-cat__sub-list-item
-                  = link_to subcat.name, category_path(subcat)
+                  = link_to subcat.name, {category_id: subcat.id}
 
   .filter__view-type
     ul.view-type
       li.view-type__list
-        a.view-type__list-link href="?list"
+        = link_to({view: 'list'}, class: 'view-type__list-link') do
           i.fa.fa-bars
       li.view-type__grid
-        a.view-type__grid-link.is-active href="?grid"
+        = link_to({view: 'grid'}, class: 'view-type__grid-link is-active') do
           i.fa.fa-th
 
   .filter-results
-    span.filter-results__amount 23
-    | Публікації знайдено
+    = page_entries_info @articles
+    /span.filter-results__amount 23
+    /| Публікації знайдено

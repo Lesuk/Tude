@@ -1,8 +1,0 @@
-= form_for([@commentable, @commentable.comments.build], remote: true) do |f|
-  .row
-    .large-10.columns
-      = f.label :body
-      = f.text_area :body, rows: 3
-  .row
-    .large-10.columns
-      = f.submit "Post comment"

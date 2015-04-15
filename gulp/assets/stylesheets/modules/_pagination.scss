@@ -1,0 +1,108 @@
+@mixin initial-position{
+  position: relative;
+  top: initial;
+  left: initial;
+}
+
+@mixin abs-position{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.pagination{
+  @include breakpoint(max-width 499px){
+    text-align: center;
+  }
+
+  &__list{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(39,41,43,.15),0 1px 2px 0 rgba(0,0,0,.05);
+    font-size: 0;
+  }
+
+  &__item{
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    color: #7D8389;
+
+    @include breakpoint(max-width 499px){
+      @include abs-position;
+    }
+
+    &:after{
+      position: absolute;
+      content: '';
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      background: -webkit-linear-gradient(rgba(0,0,0,.05)0,rgba(0,0,0,.1)50%,rgba(0,0,0,.05)100%);
+      background: linear-gradient(rgba(0,0,0,.05)0,rgba(0,0,0,.1)50%,rgba(0,0,0,.05)100%);
+    }
+
+    &--first{
+      @include initial-position;
+      @include breakpoint(min-width 500px){
+        @include abs-position;
+      }
+    }
+    &--last{
+      @include initial-position;
+      @include breakpoint(min-width 500px){
+        @include abs-position;
+      }
+    }
+    &--prev{
+      @include initial-position;
+    }
+    &--next{
+      @include initial-position;
+    }
+
+    &.is-current{
+      @include initial-position;
+    }
+
+  }
+
+  &__link{
+    position: relative;
+    display: inline-block;
+    padding: 12px 22px;
+    // padding: 10px 15px;
+    user-select: none;
+    transition: opacity .2s ease,background .2s ease,box-shadow .2s ease;
+    color: #7D8389;
+    font-family: Arial;
+
+    &:hover{
+      background: rgba(0,0,0,.03);
+      color: #60656B;
+    }
+
+    &--dots{
+      cursor: default;
+      background: transparent !important;
+      color: inherit !important;
+    }
+
+    &.is-current{
+      background-color: #E1E6E8;
+      box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+      font-weight: 700;
+      color: #fff; /* #BBC9D7; */
+      cursor: default;
+      @include breakpoint(max-width 499px){
+        padding: 12px 28px;
+      }
+    }
+  }
+
+}

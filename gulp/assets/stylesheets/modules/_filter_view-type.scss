@@ -38,8 +38,10 @@
 
 .view-type__list-link.is-active{
   background-color: #E1E6E8;
-  color: #BBC9D7;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  cursor: default;
 }
 .view-type__grid-link.is-active{
   @extend .view-type__list-link.is-active;

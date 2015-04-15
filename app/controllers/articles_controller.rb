@@ -6,10 +6,11 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = Article.includes(:category).published.order_desc
+    page_size = params[:pagesize] ? params[:pagesize] : 8
+    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(page_size)
     @categories = Category.includes(:subcategories).main_categories
 
-    add_breadcrumb("Публікації", articles_path)
+    add_breadcrumb("Articles", articles_path)
   end
 
   def show

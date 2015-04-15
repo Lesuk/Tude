@@ -1,6 +1,7 @@
 - provide(:title, "Articles")
 = render partial: "shared/container__top_panel", locals: {type: "Articles"}
-= render "shared/articles/container_filter"
+= render "shared/articles/container_filter", locals: {entries: 'articles'}
 .container__article-grid
   .article-grid
-      = render @articles
+    = render @articles
+  = paginate @articles

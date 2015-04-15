@@ -16,7 +16,8 @@
   background-color: transparent;
 
   &:hover{
-    border-bottom: 2px solid #ADE0FF;
+    //border-bottom: 2px solid #ADE0FF;
+    color: $main-blue;
   }
 
   @include breakpoint(31.250em){

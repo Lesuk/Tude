@@ -50,11 +50,16 @@
     border-bottom-right-radius: 0;
     background-color: #E1E6E8;
     box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    user-select: none;
 
     &:before{
-      border-color: $main-blue transparent;
+      border-color: #fff transparent;
     }
     &:after{
+      top: 46%;
       border-color: #E1E6E8 transparent;
     }
   }

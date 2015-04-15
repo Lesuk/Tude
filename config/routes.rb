@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                       path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"
 
-  root 'articles#index'
+  root 'users#show'
 
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
