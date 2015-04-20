@@ -1,0 +1,11 @@
+.filter__view-type
+  ul.view-type.white-box
+    li.view-type__item
+      = link_to({view: 'grid'}, class: 'view-type__link white-box__icon-item is-active') do
+        i.fa.fa-th
+    li.view-type__item
+      = link_to({view: 'list'}, class: 'view-type__link white-box__icon-item') do
+        i.fa.fa-th-list
+    li.view-type__item
+      = link_to({view: 'links'}, class: 'view-type__link white-box__icon-item') do
+        i.fa.fa-bars

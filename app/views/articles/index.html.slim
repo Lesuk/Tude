@@ -1,7 +1,11 @@
 - provide(:title, "Articles")
+- content_for :head do
+  = rel_next_prev_link_tags @articles
+
 = render partial: "shared/container__top_panel", locals: {type: "Articles"}
 = render "shared/articles/container_filter", locals: {entries: 'articles'}
-.container__article-grid
+.container__article-grid.h-clearfix
   .article-grid
     = render @articles
   = paginate @articles
+  = render partial: "shared/filter_per_page"

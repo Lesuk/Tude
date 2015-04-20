@@ -11,7 +11,7 @@ class Article < ActiveRecord::Base
   scope :published, -> {where(status: true)}
   scope :draft, -> {where(status: false)}
   scope :order_desc, -> {order(id: :desc)}
-  scope :popular, -> {order(article_views_count: :desc)}
+  scope :order_popular, -> {order(article_views_count: :desc)}
   # scope :in_category, ->(category_id) { where(category_id: category_id) }
 
   delegate :name, :whois, :bio, to: :user, prefix: true, allow_nil: true

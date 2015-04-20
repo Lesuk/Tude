@@ -1,11 +1,10 @@
 .filter-results{
   display: inline-block;
   width: 100%;
-  margin-top: 5px;
   line-height: 22px;
   text-align: center;
   font-size: 14px;
-  color: #8f969e;
+  color: $pages-nav-color;
 
   @include breakpoint(31.25em){
     float: right;

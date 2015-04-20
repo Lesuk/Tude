@@ -1,5 +1,7 @@
 .headbox{
   position: relative;
+  overflow: hidden;
+
   &__breadcrumbs{
     margin-bottom: 10px;
     @include breakpoint(500px){

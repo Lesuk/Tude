@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
-  #before_action :set_article, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  #before_action :set_article, only: [:edit, :update, :destroy]
+  before_action :load_categories, only: [:index, :favorites, :popular]
+  before_action :set_page_params, only: [:index, :favorites, :popular]
 
   add_breadcrumb("Edut", '/')
 
@@ -8,9 +10,8 @@ class ArticlesController < ApplicationController
   def index
     page_size = params[:pagesize] ? params[:pagesize] : 8
     @articles = Article.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(page_size)
-    @categories = Category.includes(:subcategories).main_categories
-
-    add_breadcrumb("Articles", articles_path)
+    add_breadcrumb("Articles", nil)
+    #render locals: {}
   end
 
   def show
@@ -18,19 +19,11 @@ class ArticlesController < ApplicationController
     @commentable = @article
     @articles = @article.course.articles if @article.course
 
-    # OPTIMIZE order
-    # FIXME After ordering - reply to don't work
-    # case params[:comments_sort]
-    # when 'oldest'
-    #   sort_order = "id ASC"
-    # else
-    #   sort_order = "id DESC"
-    # end
     @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments # .order(sort_order)
 
     @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
 
-    add_breadcrumbs([@article.category_name, category_path(@article.category)], [@article.title, nil])
+    add_breadcrumbs(["Articles", articles_path], [@article.category_name, category_path(@article.category)], [@article.title, nil])
   end
 
   def favorite
@@ -51,6 +44,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def popular
+    page_size = params[:pagesize] ? params[:pagesize] : 8
+    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_popular.page(params[:page]).per(page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
+  def favorites
+    page_size = params[:pagesize] ? params[:pagesize] : 8
+    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_popular.page(params[:page]).per(page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
 private
 
   # def set_article
@@ -60,5 +67,12 @@ private
   # def article_params
   #   params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
   # end
+
+  def load_categories
+    @categories = Category.includes(:subcategories).main_categories
+  end
+  def set_page_params
+    @page_params = params.slice(:pagesize, :category_id, :page, :view)
+  end
 
 end

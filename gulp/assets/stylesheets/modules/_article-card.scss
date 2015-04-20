@@ -32,6 +32,7 @@
   &:hover{
     & .article-card__play-btn{
       opacity: 1;
+      z-index: 31;
     }
 
     & .article-card__thumbnail-hover-bg{

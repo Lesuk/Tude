@@ -16,4 +16,8 @@ $(function() {
       $(this).fitVids();
     });
   });
+
+  if (window.location.search.indexOf('autoplay=true') > -1) {
+    $( ".youtube_video" ).trigger( "click" );
+  }
 });

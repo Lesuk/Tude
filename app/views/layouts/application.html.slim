@@ -10,6 +10,8 @@ html.no-js lang="en"
     / Place favicon.ico and apple-touch-icon.png in the root directory
     link rel="shortcut icon" href="" type="image/x-icon"
 
+    = yield :head
+
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic,latin"
     = stylesheet_link_tag 'application'
     / FIX PROBLEM WITH LIST.js

@@ -1,27 +1,37 @@
 .filter__view-type{
   display: inline-block;
   position: relative;
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: center;
   vertical-align: top;
-  margin-left: 4px;
+
+  @include breakpoint(370px){
+    width: auto;
+    margin-left: 8px;
+  }
 }
 
 .view-type{
-  border: 1px solid #e5e5e5;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #fff;
-  font-size: 0;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-}
-
-.view-type__list{
+  position: relative;
   display: inline-block;
-}
-.view-type__grid{
-  @extend .view-type__list;
+  font-size: 0;
 }
 
-.view-type__list-link{
+.view-type__item{
+  display: inline-block;
+
+  &:first-child .view-type__link{
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+  &:last-child .view-type__link{
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
+
+.view-type__link{
   display: block;
   color: #d7dbdf;
   font-size: 20px;
@@ -31,18 +41,4 @@
   text-align: center;
   line-height: 25px;
   cursor: pointer;
-}
-.view-type__grid-link{
-  @extend .view-type__list-link;
-}
-
-.view-type__list-link.is-active{
-  background-color: #E1E6E8;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  cursor: default;
-}
-.view-type__grid-link.is-active{
-  @extend .view-type__list-link.is-active;
 }

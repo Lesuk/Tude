@@ -5,7 +5,8 @@
 article.article-card
   .article-card__thumbnail
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
-    span.article-card__play-btn
+    /span.article-card__play-btn
+    = link_to '', article_path(article, {autoplay: true}), class: "article-card__play-btn"
     .article-card__thumbnail-hover-bg
       .article-card__thumbnail-overlay
       .article-card__thumbnail-gradient

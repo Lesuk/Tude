@@ -1,0 +1,7 @@
+.per-page
+  span.per-page__label per page
+  ul.per-page__list.white-box.white-box__list
+    li.per_page__item.white-box__item.white-box__list-item
+       = active_link_to "8", @page_params.merge(pagesize: 8).except(:page), active: /^((?!pagesize).)*$|(pagesize=8)/, active_disable: true, class_active: 'is-active', class: 'white-box__item white-box__link'
+    li.per_page__item.white-box__item.white-box__list-item
+       = active_link_to "10", @page_params.merge(pagesize: 10).except(:page), active: /[?]pagesize=10/, active_disable: true, class_active: 'is-active', class: 'white-box__item white-box__link'

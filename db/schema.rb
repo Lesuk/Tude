@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410092539) do
+ActiveRecord::Schema.define(version: 20150419153304) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150410092539) do
     t.string   "level",          limit: 255
     t.string   "youtube_id",     limit: 255
     t.integer  "category_id",    limit: 4
-    t.integer  "students_count", limit: 4,     default: 0, null: false
+    t.integer  "users_count",    limit: 4,     default: 0, null: false
     t.integer  "articles_count", limit: 4,     default: 0, null: false
     t.integer  "reviews_count",  limit: 4,     default: 0, null: false
     t.datetime "created_at",                               null: false

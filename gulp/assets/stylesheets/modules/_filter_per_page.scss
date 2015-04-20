@@ -1,0 +1,18 @@
+.per-page{
+  position: relative;
+  margin-bottom: 16px;
+  text-align: center;
+
+  @include breakpoint(31.25em){
+    display: inline-block;
+    float: right;
+  }
+
+  &__label {
+    position: absolute;
+    top: 100%;
+    font-size: 12px;
+    line-height: 14px;
+    color: $pages-nav-color;
+  }
+}

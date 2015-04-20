@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     member do
       post :favorite
     end
+    collection do
+      get :popular
+      get :favorites
+    end
   end
   resources :categories
   resources :courses

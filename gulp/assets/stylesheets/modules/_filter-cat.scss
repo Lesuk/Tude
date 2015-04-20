@@ -1,8 +1,13 @@
 .filter-cat{
   position: relative;
   display: inline-block;
-  width: 200px;
+  width: 100%;
+  margin-bottom: 8px;
   font-size: 14px;
+
+  @include breakpoint(370px){
+    width: 200px;
+  }
 }
 
 .filter-cat__name{
@@ -11,11 +16,6 @@
   z-index: 91;
   width: 100%;
   padding: 8px 15px;
-  background-color: #fff;
-  border: 1px solid $border-color;
-  border-radius: 4px;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-  color: #8f969e;
   cursor:pointer;
 
   &:before { /* Little arrow */
@@ -44,15 +44,10 @@
   }
 
   &.is-active{
-    border-bottom: none;
-    box-shadow: none;
+    //border-bottom: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background-color: #E1E6E8;
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font-weight: 600;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
     user-select: none;
 
     &:before{
@@ -70,9 +65,13 @@
   left: 0;
   top: 97%;
   z-index: 90;
-  width: 280px;
+  width: 100%;
   display: none;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
+  @include breakpoint(370px){
+    width: 280px;
+  }
 }
 
 .filter-cat__item{
