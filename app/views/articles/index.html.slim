@@ -7,5 +7,5 @@
 .container__article-grid.h-clearfix
   .article-grid
     = render @articles
-  = paginate @articles
+  = paginate @articles, window: 3, outer_window: 1
   = render partial: "shared/filter_per_page"

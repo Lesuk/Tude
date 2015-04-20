@@ -4,12 +4,18 @@ Rails.application.routes.draw do
                       path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"
 
+  # For pagination links, like: /page/2
+  concern :paginatable do
+    get '(page/:page)', :action => :index, :on => :collection, :as => ''
+  end
+
   root 'users#show'
 
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
 
   resources :articles do
+    concerns :paginatable
     resources :comments, only: [:new, :create, :update, :destroy]
     member do
       post :favorite
