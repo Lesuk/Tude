@@ -4,7 +4,7 @@
 
   .headbox__course-thumb
     .course-thumb.youtube_video id="#{course.youtube_id}"
-      - img_src = "#{youtube_thumbnail(course.youtube_id, 'mq')}"
+      - img_src = "#{youtube_thumbnail(course.youtube_id, 'maxres')}"
       img.course-thumb__img src="#{img_src}" style="opacity: 0.5;"
       span.course-thumb__play-btn
 

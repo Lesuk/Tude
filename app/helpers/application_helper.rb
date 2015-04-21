@@ -68,4 +68,13 @@ module ApplicationHelper
     end
   end
 
+  def insert_time_tag(time, classes)
+    time_tag(time, title: "#{time.to_s(:shortdate)}", class: "#{classes}") do
+      get_time_value(time)
+    end
+  end
+
+  def get_time_value(time)
+    time > (Time.now - 1.days) ? time_ago_in_words(time) + " ago" : time.to_s(:shortdate)
+  end
 end

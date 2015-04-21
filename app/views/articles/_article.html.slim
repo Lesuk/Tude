@@ -21,4 +21,4 @@ article.article-card
     .article-card__meta
       span.article-card__rating +34
       span.article-card__views = "#{article.article_views.size} переглядів"
-      time.article-card__publication-date datetime="#{article.created_at.to_s(:datetime)}" title="#{article.created_at.to_s(:shortdate)}" = article.created_at.to_s(:shortdate)
+      = insert_time_tag(article.created_at, "article-card__publication-date")

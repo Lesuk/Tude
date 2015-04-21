@@ -56,6 +56,8 @@ group :development, :test do
 
   gem 'better_errors'
   gem 'lol_dba'
+  # finds dead routes and unused actions
+  gem 'traceroute'
 end
 
 group :production do

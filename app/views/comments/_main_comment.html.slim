@@ -5,9 +5,8 @@
         img src="#{user_pic_placeholder(2)}"
       = link_to comment.user_name, user_path(comment.user), class: "comment__user-name"
       .comment__user-whois = comment.user_whois
-      - time_value = comment.created_at > (Time.now - 1.days) ? time_ago_in_words(comment.created_at) : comment.created_at.to_s(:shortdate)
       a.comment__anchor-link href="#comment_#{comment.id}"
-        time.comment__date datetime="#{comment.created_at.to_s(:datetime)}" title="#{comment.created_at.to_s(:shortdate)}" = time_value
+        = insert_time_tag(comment.created_at, "comment__date")
       .timestamp.h-hidden = comment.created_at.to_time.to_i
     .comment__body = best_in_place comment, :body, as: :textarea, url: [@commentable, comment],
                       activator: "#comment_edit_#{comment.id}", inner_class: 'reply-field',

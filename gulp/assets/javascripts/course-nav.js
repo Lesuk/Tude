@@ -1,7 +1,6 @@
 jQuery(document).ready(function() {
   jQuery('.course-nav button').click(function(){
     var currentPointer = jQuery(this).data('pointer');
-    console.log(currentPointer);
     jQuery(this).parent().addClass('active').siblings().removeClass('active');
 
     switch (currentPointer) {

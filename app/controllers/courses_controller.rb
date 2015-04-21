@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 
   def index
     courses = Course.includes(:category, :author).all.to_a
-    add_breadcrumb("Курси", courses_path)
+    add_breadcrumb("Курси", nil)
     render locals: {courses: courses}
   end
 

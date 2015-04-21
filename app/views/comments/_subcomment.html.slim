@@ -5,8 +5,7 @@
     = link_to subcomment.user.name, user_path(subcomment.user), class: "sub-comment__user-name"
     span.sub-comment__user-whois = subcomment.user.whois if subcomment.user.whois.present?
     a.sub-comment__anchor-link href="#comment_#{subcomment.id}"
-      time.sub-comment__date datetime="#{subcomment.created_at.to_s(:datetime)}" title="#{subcomment.created_at.to_s(:shortdate)}" = subcomment.created_at.to_s(:shortdate)
-  /.sub-comment__body = sanitize text_with_mentions(subcomment.body)
+      = insert_time_tag(subcomment.created_at, "sub-comment__date")
   .sub-comment__body = best_in_place subcomment, :body, as: :textarea, url: [@commentable, subcomment],
                         activator: "#comment_edit_#{subcomment.id}", inner_class: 'reply-field',
                         ok_button: 'Save', ok_button_class: 'btn btn-blue h-spacing-above--xsmall', cancel_button: 'Cancel', cancel_button_class: 'btn btn-blue-secondary h-spacing-above--xsmall',
