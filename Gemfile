@@ -20,8 +20,17 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sprig', '~> 0.1'
 
+# Background processing
+gem 'sidekiq'
+
 # Authentication
 gem 'devise'
+
+# Recommendation
+gem 'recommendable'
+
+# Reputation
+gem 'activerecord-reputation-system'
 
 # SEO
 gem 'friendly_id', '~> 5.0.0'

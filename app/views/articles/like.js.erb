@@ -1,0 +1,11 @@
+<% if @liked %>
+  $('#like i').removeClass('is-liked');
+  $('#like .amount').html(function(index, oldhtml){
+    return parseInt(oldhtml) - 1;
+  });
+<% else %>
+  $('#like i').addClass('is-liked');
+  $('#like .amount').html(function(index, oldhtml){
+    return parseInt(oldhtml) + 1;
+  });
+<% end %>

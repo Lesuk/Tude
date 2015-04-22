@@ -19,10 +19,14 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :update, :destroy]
     member do
       post :favorite
+      post :like
     end
     collection do
       get :popular
       get :favorites
+      get :recommended
+      get :mine
+      get :top
     end
   end
   resources :categories

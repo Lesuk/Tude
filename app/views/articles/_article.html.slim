@@ -5,8 +5,8 @@
 article.article-card
   .article-card__thumbnail
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
-    /span.article-card__play-btn
-    = link_to '', article_path(article, {autoplay: true}), class: "article-card__play-btn"
+    -if article.video_duration > 0
+      = link_to '', article_path(article, {autoplay: true}), class: "article-card__play-btn"
     .article-card__thumbnail-hover-bg
       .article-card__thumbnail-overlay
       .article-card__thumbnail-gradient
@@ -19,6 +19,8 @@ article.article-card
     h3.article-card__headline
       = link_to article.title, article_path(article), class: "article-card__headline-link"
     .article-card__meta
-      span.article-card__rating +34
+      span.article-card__rating = article.liked_by_count
       span.article-card__views = "#{article.article_views.size} переглядів"
       = insert_time_tag(article.created_at, "article-card__publication-date")
+      / will be redesigned
+      = link_to "#{current_user.bookmarks?(article) ? '+' : '' }favor", favorite_article_path(article), remote: true, method: :post

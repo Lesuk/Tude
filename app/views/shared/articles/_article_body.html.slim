@@ -2,24 +2,7 @@
   h1.article-body__title = @article.title
   .article-body__meta.clearfix
 
-    .meta-actions
-      a.btn.btn-blue href="#a"
-        i.fa.fa-thumbs-up
-        span.btn__text Подобається
-        span.amount 134
-      - favorite_class = @article.user_fan?(current_user.id) ? 'is-favorite' : '' if current_user
-      = link_to favorite_article_path(@article), remote: true, method: :post, id: "favorite", class: "btn btn-blue-secondary #{favorite_class}" do
-        i.fa.fa-star
-        span.btn__text Вибране
-      a.btn.btn-blue-secondary href="#a"
-        i.fa.fa-share-alt
-        span.btn__text Поділитися
-      a.btn.btn--info href="#a"
-        i.fa.fa-info-circle
-        span.btn__text Додатково
-      a.btn.btn--playlist href="#a"
-        i.fa.fa-list-ul
-        span.btn__text Плейлист
+    = render "shared/articles/article_actions"
 
     .meta-info.clearfix
       time.meta-info__date datetime="#{@article.created_at.to_s(:datetime)}" title="#{@article.created_at.to_s(:shortdate)}" = @article.created_at.to_s(:shortdate)
