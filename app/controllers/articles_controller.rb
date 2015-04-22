@@ -1,32 +1,75 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_article, only: [:favorite, :like] #[:edit, :update, :destroy]
-  before_action :load_categories, only: [:index, :favorites, :popular, :recommended, :mine, :top]
-  before_action :set_page_params, only: [:index, :favorites, :popular, :recommended, :mine, :top]
-  before_action :set_page_size, only: [:index, :favorites, :popular, :recommended, :mine, :top]
+  before_action :authenticate_user!, only: [:recommended, :favorites, :mine, :favorite, :like]
 
   add_breadcrumb("Edut", '/')
 
 
   def index
+    load_categories
+    set_page_params
+    set_page_size
     @articles = Article.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
-    #render locals: {}
   end
 
   def show
-    @article = Article.includes(:course).find(params[:id])
-    @commentable = @article
-    @articles = @article.course.articles if @article.course
-
-    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments # .order(sort_order)
-
-    @article.article_views.find_or_create_by!(guest_ip: request.remote_ip)
-
+    load_article_with_categories
+    load_course_articles
+    set_commentable
+    load_comments
+    ArticleView.set_view(@article.id, request.remote_ip)
     add_breadcrumbs(["Articles", articles_path], [@article.category_name, category_path(@article.category)], [@article.title, nil])
   end
 
+  def popular
+    load_categories
+    set_page_params
+    set_page_size
+    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_popular.page(params[:page]).per(@page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
+  def favorites
+    load_categories
+    set_page_params
+    set_page_size
+    @articles = current_user.bookmarked_articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
+  def recommended
+    load_categories
+    set_page_params
+    set_page_size
+    ids = current_user.recommended_articles.map{ |a| a.id }
+    @articles = Article.includes(:category).in_array(ids).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
+  def top
+    load_categories
+    set_page_params
+    set_page_size
+    articles_array = Article.top_sorted_array(params[:category_id])
+    @articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(@page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
+  def mine
+    load_categories
+    set_page_params
+    set_page_size
+    @articles = current_user.articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    add_breadcrumb("Articles", nil)
+    render :index
+  end
+
   def favorite
+    load_article
     @favorited = current_user.bookmarks?(@article)
     if @favorited
       current_user.unbookmark(@article)
@@ -44,6 +87,7 @@ class ArticlesController < ApplicationController
   end
 
   def like
+    load_article
     @liked = current_user.likes?(@article)
     if @liked
       current_user.unlike(@article)
@@ -60,58 +104,52 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def popular
-    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_popular.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def favorites
-    @articles = current_user.bookmarked_articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def recommended
-    ids = current_user.recommended_articles.map{ |a| a.id }
-    @articles = Article.includes(:category).in_array(ids).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def top
-    articles_array = Article.top_sorted_array(params[:category_id])
-    @articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def mine
-    @articles = current_user.articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
 private
 
-  def find_article
-    #@article = Article.friendly.find(params[:id])
-    @article = Article.find(params[:id])
+  def load_articles
+    @articles ||= article_scope.to_a
   end
 
-  # def article_params
-  #   params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
-  # end
+  def load_article
+    @article ||= article_scope.find(params[:id])
+  end
+
+  def load_article_with_categories
+    @article ||= article_scope.includes(:category).find(params[:id])
+  end
 
   def load_categories
-    @categories = Category.includes(:subcategories).main_categories
+    @categories ||= Category.includes(:subcategories).main_categories
   end
+
+  def load_course_articles
+    @course_articles ||= @article.course.articles if @article.course
+  end
+
+  def load_comments
+    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments
+  end
+
+  def set_commentable
+    @commentable ||= @article
+  end
+
   def set_page_params
-    @page_params = params.slice(:pagesize, :category_id, :page, :view)
+    @page_params ||= params.slice(:pagesize, :category_id, :page, :view)
   end
 
   def set_page_size
-    @page_size = params[:pagesize] ? params[:pagesize] : 8
+    @page_size ||= params[:pagesize] ? params[:pagesize] : 8
+  end
+
+  def article_params
+    article_params = params[:article]
+    article_params ? article_params.permit(:title, :description, :body, :status, :slug, :category_id, :course_id) : {}
+    #params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
+  end
+
+  def article_scope
+    Article.where(nil)
   end
 
 end

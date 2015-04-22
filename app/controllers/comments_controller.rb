@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_commentable
+  #before_action :load_commentable
 
   def new
-    @comment = @commentable.comments.build
+    load_commentable
+    build_comment
   end
 
   def create
-    @comment = @commentable.comments.build(comment_params)
+    load_commentable
+    build_comment
     @comment.user_id = current_user.id
     if @comment.save
       respond_to do |format|
@@ -23,7 +25,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = @commentable.comments.find(params[:id])
+    load_commentable
+    load_comment
     respond_to do |format|
       @comment.update_attributes(comment_params)
       format.json { respond_with_bip(@comment) }
@@ -31,7 +34,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @commentable.comments.find(params[:id])
+    load_commentable
+    load_comment
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @commentable, success: 'Comment deleted' }
@@ -39,14 +43,29 @@ class CommentsController < ApplicationController
     end
   end
 
-  private
-
-  def comment_params
-    params.require(:comment).permit(:body, :parent_id, :user_id, :commentable_id, :commentable_type)
-  end
+private
 
   def load_commentable
     klass = [Article].detect { |c| params["#{c.name.underscore}_id"] }
     @commentable = klass.find(params["#{klass.name.underscore}_id"])
+  end
+
+  def load_comment
+    @comment ||= comment_scope.find(params[:id])
+  end
+
+  def build_comment
+    @comment ||= comment_scope.build
+    @comment.attributes = comment_params
+  end
+
+  def comment_params
+    comment_params = params[:comment]
+    comment_params ? comment_params.permit(:body, :parent_id, :subparent_id, :user_id, :commentable_id, :commentable_type) : {}
+    #params.require(:comment).permit(:body, :parent_id, :user_id, :commentable_id, :commentable_type)
+  end
+
+  def comment_scope
+    @commentable.comments.where(nil)
   end
 end

@@ -23,4 +23,5 @@ article.article-card
       span.article-card__views = "#{article.article_views.size} переглядів"
       = insert_time_tag(article.created_at, "article-card__publication-date")
       / will be redesigned
-      = link_to "#{current_user.bookmarks?(article) ? '+' : '' }favor", favorite_article_path(article), remote: true, method: :post
+      - if current_user
+        = link_to "#{current_user.bookmarks?(article) ? '+' : '' }favor", favorite_article_path(article), remote: true, method: :post
