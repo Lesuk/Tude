@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
+  post 'comments/:id/upvote', to: 'comments#upvote', as: 'upvote_comment'
+  post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
 
   resources :articles do
     concerns :paginatable

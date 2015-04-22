@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  recommends :articles, :courses
+  recommends :articles, :courses, :comments
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

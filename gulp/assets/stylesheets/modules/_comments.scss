@@ -209,7 +209,13 @@
   &-value{
     font-size: 12px;
     font-weight: 700;
-    color: #349d00;
+    cursor: default;
+    &.-color-green{
+      color: #349d00;
+    }
+    &.-color-red{
+      color: #e6310e;
+    }
   }
   &:after{
     content: '\007C';
@@ -219,18 +225,23 @@
   }
 }
 
-.comment__rating-upvote{
+%rating-vote{
   position: relative;
+  display: inline-block;
   padding: 1px 8px;
   color: #c1cacf;
-  &:hover{
+}
+
+.comment__rating-upvote{
+  @extend %rating-vote;
+  &:hover, &.upvoted{
     color: #349d00;
   }
 }
 
 .comment__rating-downvote{
-  @extend .comment__rating-upvote;
-  &:hover{
+  @extend %rating-vote;
+  &:hover, &.downvoted{
     color: #e6310e;
   }
 }

@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :load_commentable
 
   def new
     load_commentable
@@ -43,6 +42,42 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    load_single_comment
+    @upvoted = current_user.likes?(@comment)
+    if @upvoted
+      current_user.unlike(@comment)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.js
+      end
+    else
+      current_user.like(@comment)
+      respond_to do |format|
+        format.html{redirect_to :back}
+        format.js
+      end
+    end
+  end
+
+  def downvote
+    load_single_comment
+    @downvoted = current_user.dislikes?(@comment)
+    if @downvoted
+      current_user.undislike(@comment)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.js
+      end
+    else
+      current_user.dislike(@comment)
+      respond_to do |format|
+        format.html{redirect_to :back}
+        format.js
+      end
+    end
+  end
+
 private
 
   def load_commentable
@@ -52,6 +87,10 @@ private
 
   def load_comment
     @comment ||= comment_scope.find(params[:id])
+  end
+
+  def load_single_comment
+    @comment ||= Comment.find(params[:id])
   end
 
   def build_comment
