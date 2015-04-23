@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :users, through: :enrollments
 
-  #validates :slug, presence: true
+  validates :slug, presence: true
 
   after_touch :update_duration
 

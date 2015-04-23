@@ -24,14 +24,14 @@ class Article < ActiveRecord::Base
   scope :order_popular, -> {order(article_views_count: :desc)}
   scope :in_array, ->(ids) { where(id: ids) }
 
-  def self.in_category(cat_id = nil)
-    if cat_id.present?
-      category = Category.find(cat_id)
+  def self.in_category(cat = nil)
+    if cat.present?
+      category = Category.friendly.find_by_slug(cat)
       if category.parent?
         ids = category.subcategories.ids
         where(category_id: ids)
       else
-        where(category_id: cat_id)
+        where(category_id: category.id)
       end
     else
       all

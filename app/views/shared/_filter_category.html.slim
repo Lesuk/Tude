@@ -1,14 +1,14 @@
 .filter-cat
-  .filter-cat__name.white-box Всі категорії
+  .filter-cat__name.white-box All categories
   ul.filter-cat__list
     li.filter-cat__item
-      = link_to 'All categories', url_for(params.except(:category_id))
+      = active_link_to "All categories", url_for(params.except(:category)), active: !params.has_key?(:category), class_active: 'is-active'
     - @categories.each do |main_cat|
       li.filter-cat__item
-        = link_to main_cat.name, @page_params.merge(category_id: main_cat.id).except(:page)
+        = active_link_to main_cat.name, @page_params.merge(category: main_cat.slug).except(:page), active: /category=#{main_cat.slug}/, class_active: 'is-active'
         - sub_cats = main_cat.subcategories
         - if sub_cats.any?
           ul.filter-cat__sub-list
             - sub_cats.each do |subcat|
               li.filter-cat__sub-list-item
-                = link_to subcat.name, @page_params.merge(category_id: subcat.id).except(:page)
+                = active_link_to subcat.name, @page_params.merge(category: subcat.slug).except(:page), active: /category=#{subcat.slug}/, class_active: 'is-active'

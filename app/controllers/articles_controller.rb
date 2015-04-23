@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     load_categories
     set_page_params
     set_page_size
-    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    @articles = Article.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
   end
 
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
     load_categories
     set_page_params
     set_page_size
-    @articles = Article.includes(:category).published.in_category(params[:category_id]).order_popular.page(params[:page]).per(@page_size)
+    @articles = Article.includes(:category).published.in_category(params[:category]).order_popular.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
     render :index
   end
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     load_categories
     set_page_params
     set_page_size
-    @articles = current_user.bookmarked_articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    @articles = current_user.bookmarked_articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
     render :index
   end
@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
     set_page_params
     set_page_size
     ids = current_user.recommended_articles.map{ |a| a.id }
-    @articles = Article.includes(:category).in_array(ids).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    @articles = Article.includes(:category).in_array(ids).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
     render :index
   end
@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
     load_categories
     set_page_params
     set_page_size
-    articles_array = Article.top_sorted_array(params[:category_id])
+    articles_array = Article.top_sorted_array(params[:category])
     @articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
     render :index
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
     load_categories
     set_page_params
     set_page_size
-    @articles = current_user.articles.includes(:category).published.in_category(params[:category_id]).order_desc.page(params[:page]).per(@page_size)
+    @articles = current_user.articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
     add_breadcrumb("Articles", nil)
     render :index
   end
@@ -135,7 +135,7 @@ private
   end
 
   def set_page_params
-    @page_params ||= params.slice(:pagesize, :category_id, :page, :view)
+    @page_params ||= params.slice(:pagesize, :category, :page, :view)
   end
 
   def set_page_size

@@ -10,7 +10,9 @@
     };
 
     var commentList = new List('comments__box', commentOptions);
-    commentList.sort('rating', { order: "desc" });
+    if (commentList.listContainer){
+      commentList.sort('rating', { order: "desc" });
+    }
 
     // Click to reveal the nav
     $('.comment__item').on('click', '.js-reply-to', function(e){

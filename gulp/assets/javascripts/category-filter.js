@@ -3,6 +3,10 @@
   // DOM ready
   $(function() {
 
+    $(".filter-cat__name").html(function(){
+      return $(".filter-cat__list .is-active").text();
+    });
+
     // Add a <span> to every .nav-item that has a <ul> inside
     $('.filter-cat__item').has('ul').prepend('<span class="js-click filter-cat__item-arrow"></span>');
 

@@ -89,7 +89,7 @@
     border-top: none;
     text-decoration: none;
 
-    &:hover{
+    &:hover, &.is-active{
       /* background-color: #F4F9FC; */
       color: #838d98;
       box-shadow: inset 2px 0px 0px 0px rgba(23,165,251,1);
