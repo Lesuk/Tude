@@ -1,3 +1,4 @@
+require 'babosa'
 class Category < ActiveRecord::Base
   #extend FriendlyId
 
@@ -6,7 +7,10 @@ class Category < ActiveRecord::Base
   has_many :articles
   has_many :courses
 
-  #friendly_id :name, use: :slugged
+  #validates :slug, presence: true
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   scope :main_categories, -> { where(parent_id: nil) }
   scope :all_subcategories, -> { where.not(parent_id: nil) }
@@ -17,5 +21,9 @@ class Category < ActiveRecord::Base
 
   def parent?
     self.parent_id == nil
+  end
+
+  def normalize_friendly_id(string)
+    string.to_s.to_slug.normalize(transliterations: :ukrainian).to_s
   end
 end

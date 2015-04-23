@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419153304) do
+ActiveRecord::Schema.define(version: 20150423134220) do
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150419153304) do
     t.integer  "course_id",           limit: 4
     t.integer  "category_id",         limit: 4
     t.integer  "user_id",             limit: 4
-    t.string   "slug",                limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.integer  "article_views_count", limit: 4,     default: 0,   null: false
@@ -40,27 +39,28 @@ ActiveRecord::Schema.define(version: 20150419153304) do
     t.integer  "video_duration",      limit: 4,     default: 0,   null: false
     t.string   "demo_link",           limit: 255
     t.string   "github_link",         limit: 255
+    t.string   "slug",                limit: 255,                 null: false
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
   add_index "articles", ["course_id"], name: "index_articles_on_course_id", using: :btree
   add_index "articles", ["section_id"], name: "index_articles_on_section_id", using: :btree
-  add_index "articles", ["slug"], name: "index_articles_on_slug", using: :btree
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",           limit: 255
     t.string   "description",    limit: 255
-    t.string   "slug",           limit: 255
     t.integer  "parent_id",      limit: 4
     t.integer  "articles_count", limit: 4,   default: 0, null: false
     t.integer  "courses_count",  limit: 4,   default: 0, null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "slug",           limit: 255,             null: false
   end
 
   add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
-  add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id",   limit: 4
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20150419153304) do
     t.string   "title",          limit: 255
     t.string   "summary",        limit: 255
     t.text     "description",    limit: 65535
-    t.string   "slug",           limit: 255
     t.text     "content",        limit: 65535
     t.string   "level",          limit: 255
     t.string   "youtube_id",     limit: 255
@@ -94,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150419153304) do
     t.datetime "updated_at",                               null: false
     t.integer  "user_id",        limit: 4
     t.integer  "duration",       limit: 4,     default: 0, null: false
+    t.string   "slug",           limit: 255,               null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -121,6 +121,19 @@ ActiveRecord::Schema.define(version: 20150419153304) do
   add_index "favorites", ["favorable_type", "favorable_id"], name: "index_favorites_on_favorable_type_and_favorable_id", using: :btree
   add_index "favorites", ["user_id", "favorable_id", "favorable_type"], name: "index_favorites_on_user_id_and_favorable_id_and_favorable_type", unique: true, using: :btree
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",           limit: 255, null: false
+    t.integer  "sluggable_id",   limit: 4,   null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope",          limit: 255
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "mentions", force: :cascade do |t|
     t.integer  "mentionable_id",   limit: 4

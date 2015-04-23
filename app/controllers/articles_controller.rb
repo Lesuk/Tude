@@ -111,11 +111,11 @@ private
   end
 
   def load_article
-    @article ||= article_scope.find(params[:id])
+    @article ||= article_scope.friendly.find(params[:id])
   end
 
   def load_article_with_categories
-    @article ||= article_scope.includes(:category).find(params[:id])
+    @article ||= article_scope.includes(:category).friendly.find(params[:id])
   end
 
   def load_categories

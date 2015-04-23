@@ -33,7 +33,7 @@ gem 'recommendable'
 gem 'activerecord-reputation-system'
 
 # SEO
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 5.1.0'
 gem 'babosa'
 gem 'breadcrumble'
 
