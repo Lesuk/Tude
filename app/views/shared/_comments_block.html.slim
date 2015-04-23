@@ -2,8 +2,8 @@
   .comments__head.h-clearfix
     span.comments__headline = pluralize(@article.comments.size, 'Comment')
     .comments__sort
-      button.sort.comments__sort-link.is-current.asc data-sort="timestamp" Date
-      button.sort.comments__sort-link data-sort="rating" Rating
+      button.sort.comments__sort-link data-sort="timestamp" Date
+      button.sort.comments__sort-link.is-current.desc data-sort="rating" Rating
   ul#comments.comments__list
     = render @comments
   .comments__form

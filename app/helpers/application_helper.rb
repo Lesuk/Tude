@@ -77,4 +77,18 @@ module ApplicationHelper
   def get_time_value(time)
     time > (Time.now - 1.days) ? time_ago_in_words(time) + " ago" : time.to_s(:shortdate)
   end
+
+  def wilson_score(up, down)
+    return 0.0 unless up + down > 0
+
+    z = 1.96
+    n = up + down
+    phat = up / n.to_f
+
+    begin
+      score = (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+    rescue Math::DomainError
+      score = 0
+    end
+  end
 end
