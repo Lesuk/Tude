@@ -29,12 +29,11 @@ html.no-js lang="en"
           = yield
           footer.container__main-footer
             = render "main_footer"
+          ul.flash-list
+            = render_flash
           .container__overlay
           - unless user_signed_in?
             .container__signin-modal
               = render "shared/signin_modal"
-    - flash.each do |key, value|
-      div class="#{flash_class(key)}"
-        = value
 
     = javascript_include_tag 'application'

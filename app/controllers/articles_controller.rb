@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 
   add_breadcrumb("Edut", '/')
 
-
   def index
     load_categories
     set_page_params
