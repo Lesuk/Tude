@@ -8,12 +8,14 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
   has_many :own_courses, class_name: "Course"
-  has_many :favorites
-  has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
+  # has_many :favorites
+  # has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
   has_many :enrollments
   has_many :courses, through: :enrollments
   has_many :mentions
   has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
+  has_many :article_progresses, foreign_key: :student_id
+  has_many :completed_articles, through: :article_progresses, source: :article
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},
@@ -48,10 +50,22 @@ class User < ActiveRecord::Base
   end
 
   def enrolled?(course_id)
-    self.enrollments.find_by(course_id: course_id)
+    self.enrollments.find_by(course_id: course_id) ? true : false
   end
 
   def disenroll!(course_id)
     self.enrollments.find_by(course_id: course_id).destroy!
+  end
+
+  def pass_article!(article_id)
+    self.article_progresses.create!(article_id: article_id)
+  end
+
+  def article_passed?(article_id)
+    self.article_progresses.find_by(article_id: article_id) ? true : false
+  end
+
+  def cancel_passed_article!(article_id)
+    self.article_progresses.find_by(article_id: article_id).destroy!
   end
 end

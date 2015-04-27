@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423134220) do
+ActiveRecord::Schema.define(version: 20150427081328) do
+
+  create_table "article_progresses", force: :cascade do |t|
+    t.integer  "student_id", limit: 4, null: false
+    t.integer  "article_id", limit: 4, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "article_progresses", ["article_id"], name: "index_article_progresses_on_article_id", using: :btree
+  add_index "article_progresses", ["student_id", "article_id"], name: "index_article_progresses_on_student_id_and_article_id", unique: true, using: :btree
+  add_index "article_progresses", ["student_id"], name: "index_article_progresses_on_student_id", using: :btree
 
   create_table "article_views", force: :cascade do |t|
     t.string   "guest_ip",   limit: 255
@@ -40,10 +51,12 @@ ActiveRecord::Schema.define(version: 20150423134220) do
     t.string   "demo_link",           limit: 255
     t.string   "github_link",         limit: 255
     t.string   "slug",                limit: 255,                 null: false
+    t.integer  "position",            limit: 4,                   null: false
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
   add_index "articles", ["course_id"], name: "index_articles_on_course_id", using: :btree
+  add_index "articles", ["position"], name: "index_articles_on_position", using: :btree
   add_index "articles", ["section_id"], name: "index_articles_on_section_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
@@ -101,12 +114,13 @@ ActiveRecord::Schema.define(version: 20150423134220) do
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
 
   create_table "enrollments", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "course_id",  limit: 4
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "course_id",  limit: 4, null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
+  add_index "enrollments", ["course_id", "user_id"], name: "index_enrollments_on_course_id_and_user_id", unique: true, using: :btree
   add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
@@ -152,9 +166,11 @@ ActiveRecord::Schema.define(version: 20150423134220) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "duration",   limit: 4,   default: 0, null: false
+    t.integer  "position",   limit: 4
   end
 
   add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
+  add_index "sections", ["position"], name: "index_sections_on_position", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false

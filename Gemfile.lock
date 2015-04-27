@@ -39,6 +39,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.6.0)
+      activerecord (>= 3.0)
     arel (6.0.0)
     babosa (1.0.2)
     bcrypt (3.1.10)
@@ -123,6 +125,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.3)
+      railties (>= 3.2.16)
     json (1.8.2)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -266,6 +270,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to
   activerecord-reputation-system
+  acts_as_list
   babosa
   best_in_place (~> 3.0.1)
   better_errors
@@ -279,6 +284,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   kaminari
   lol_dba
   mysql2

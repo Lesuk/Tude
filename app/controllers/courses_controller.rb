@@ -13,6 +13,11 @@ class CoursesController < ApplicationController
     render locals: {course: @course}
   end
 
+  def articles
+    @course = Course.find(params[:id])
+    @articles = @course.articles
+  end
+
 private
 
   def load_courses
@@ -20,7 +25,7 @@ private
   end
 
   def load_course
-    @course ||= course_scope.includes({sections: :articles}).find(params[:id])
+    @course ||= course_scope.includes({sections: :articles}).friendly.find(params[:id])
   end
 
   def build_course

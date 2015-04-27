@@ -5,6 +5,7 @@
 // and will be compiled with Gulp and Browserify
 //
 //= require jquery
+//= require jquery-ui/sortable
 //= require jquery_ujs
 //= require jquery.purr
 //= require best_in_place

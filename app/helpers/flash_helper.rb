@@ -1,6 +1,7 @@
 module FlashHelper
   ALERT_TYPES = ['success', 'info', 'warning', 'danger']
 
+  # flash_message :success, 'Success'
   def flash_message(type, text)
       flash[type] ||= []
       flash[type] << text

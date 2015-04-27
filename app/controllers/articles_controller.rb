@@ -103,6 +103,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def sort
+    params[:article].each_with_index do |id, index|
+      Article.where(id: id).update_all({position: index+1})
+    end
+    render nothing: true
+  end
+
 private
 
   def load_articles

@@ -13,5 +13,6 @@ require './auto-textarea-height'
 require './comments'
 require './reduce-sidebar'
 require './course-nav'
+require './articles-sort'
 
 console.log message

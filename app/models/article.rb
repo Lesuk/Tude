@@ -1,6 +1,6 @@
 require 'babosa'
 class Article < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user # author
   belongs_to :category, counter_cache: true
   belongs_to :section, touch: true
   belongs_to :course, counter_cache: true
@@ -8,11 +8,15 @@ class Article < ActiveRecord::Base
   has_many :article_views
   #has_many :favorites, as: :favorable
   #has_many :fans, through: :favorites, source: :user
+  has_many :article_progresses, dependent: :destroy
+  has_many :completing_students, through: :article_progresses, source: :student
 
   validates :slug, presence: true
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
+  # if will use a_as_paranoid: 'course_id = #{course_id} AND deleted_at IS NULL'
+  acts_as_list scope: :course
 
   delegate :name, :whois, :bio, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :category, prefix: true, allow_nil: true
@@ -22,6 +26,7 @@ class Article < ActiveRecord::Base
   scope :draft, -> {where(status: false)}
   scope :order_desc, -> {order(id: :desc)}
   scope :order_popular, -> {order(article_views_count: :desc)}
+  scope :order_position, -> {order(position: :asc)} # 'articles.position ASC'
   scope :in_array, ->(ids) { where(id: ids) }
 
   def self.in_category(cat = nil)

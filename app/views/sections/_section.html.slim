@@ -8,7 +8,9 @@ li.course-toc__list-item
       - section.articles.each.with_index(1) do |article, index|
         li.course-toc__sublist-item.h-clearfix
           = link_to "", article_path(article), class: "course-toc__sublist-link"
-          / fa-check-circle
-          i.fa.fa-play-circle-o.course-toc__sublist-icon
+          - if current_user.article_passed?(article.id)
+            i.fa.fa-check-circle.course-toc__sublist-icon
+          - else
+            i.fa.fa-play-circle-o.course-toc__sublist-icon
           span.course-toc__item-name = "#{section_counter + 1}.#{index} #{article.title}"
           span.course-toc__duration = set_duration(article.video_duration)

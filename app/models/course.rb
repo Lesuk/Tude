@@ -1,9 +1,9 @@
 require 'babosa'
 class Course < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: 'user_id'
-  belongs_to :category
-  has_many :sections
-  has_many :articles
+  belongs_to :category, counter_cache: true
+  has_many :sections, -> {order(position: :asc)}
+  has_many :articles, -> {order('articles.position ASC')}, through: :sections
   #has_many :reviews
   has_many :enrollments
   has_many :users, through: :enrollments

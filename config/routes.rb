@@ -29,10 +29,13 @@ Rails.application.routes.draw do
       get :recommended
       get :mine
       get :top
+      post :sort
     end
   end
   resources :categories
-  resources :courses
+  resources :courses do
+    get :articles, on: :member
+  end
   resources :enrollments, only: [:create, :destroy]
 
   # Example of regular route:

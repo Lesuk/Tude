@@ -4,6 +4,8 @@ class Section < ActiveRecord::Base
 
   after_touch :update_duration
 
+  acts_as_list scope: :course
+
  private
 
   def update_duration

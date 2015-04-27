@@ -15,6 +15,7 @@ gem 'breakpoint', '~> 2.5.0'
 gem "font-awesome-rails"
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 #gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -43,6 +44,8 @@ gem 'active_link_to'
 gem 'best_in_place', '~> 3.0.1'
 # Pagination
 gem 'kaminari'
+
+gem 'acts_as_list'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
