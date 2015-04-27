@@ -15,7 +15,6 @@ class Article < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
-  # if will use a_as_paranoid: 'course_id = #{course_id} AND deleted_at IS NULL'
   acts_as_list scope: :course
 
   delegate :name, :whois, :bio, to: :user, prefix: true, allow_nil: true

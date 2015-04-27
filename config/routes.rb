@@ -34,7 +34,10 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :courses do
-    get :articles, on: :member
+    member do
+      get :curriculum
+      get :next_article, path: 'next'
+    end
   end
   resources :enrollments, only: [:create, :destroy]
 

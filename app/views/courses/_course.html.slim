@@ -12,11 +12,14 @@
   .course-card__info
     .course-card__meta
       - if current_user.try(:enrolled?, course.id)
+        - progress_numbers = course.user_progress(current_user)
+        - percent = percent_passed_course(progress_numbers[0], progress_numbers[1])
         .course-card__progress
           .progress
-            .progress-bar.status-active style="width: 49%;"
-          span.progress__stats 00/00
-          a.progress__next href="#next-tuts"
+            .progress-bar.status-active style="width: #{percent}%;"
+          span.progress__stats #{progress_numbers[0]}/#{progress_numbers[1]}
+          /a.progress__next href="#next-tuts"
+          = link_to '', next_article_course_path(course), class: 'progress__next'
       - else
         .course-card__level
           span.course-card__level-lines class="level-#{course.level.downcase}"

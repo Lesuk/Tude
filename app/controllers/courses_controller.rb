@@ -8,14 +8,20 @@ class CoursesController < ApplicationController
   end
 
   def show
-    load_course
+    load_full_course
     add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, nil])
     render locals: {course: @course}
   end
 
-  def articles
-    @course = Course.find(params[:id])
+  def curriculum
+    load_single_course
     @articles = @course.articles
+  end
+
+  def next_article
+    load_single_course
+    article = @course.next_course_article(current_user)
+    redirect_to article
   end
 
 private
@@ -24,7 +30,11 @@ private
     @courses ||= course_scope.includes(:category, :author).to_a
   end
 
-  def load_course
+  def load_single_course
+    @course ||= course_scope.friendly.find(params[:id])
+  end
+
+  def load_full_course
     @course ||= course_scope.includes({sections: :articles}).friendly.find(params[:id])
   end
 

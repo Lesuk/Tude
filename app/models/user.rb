@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :mentions
   has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
   has_many :article_progresses, foreign_key: :student_id
-  has_many :completed_articles, through: :article_progresses, source: :article
+  has_many :passed_articles, through: :article_progresses, source: :article
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def enroll!(course_id)
-    self.enrollments.create!(course_id: course_id)
+    self.enrollments.find_or_create_by!(course_id: course_id)
   end
 
   def enrolled?(course_id)
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
 
   def pass_article!(article_id)
-    self.article_progresses.create!(article_id: article_id)
+    self.article_progresses.find_or_create_by!(article_id: article_id)
   end
 
   def article_passed?(article_id)
@@ -67,5 +67,9 @@ class User < ActiveRecord::Base
 
   def cancel_passed_article!(article_id)
     self.article_progresses.find_by(article_id: article_id).destroy!
+  end
+
+  def passed_articles_ids
+    self.passed_articles.ids
   end
 end

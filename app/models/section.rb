@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
   belongs_to :course, touch: true
-  has_many :articles
+  has_many :articles,  -> {order(position: :asc)}
 
   after_touch :update_duration
 

@@ -1,8 +1,7 @@
 css:
   .ui-state-highlight { height: 1.5em; line-height: 1.2em; background:#ddd;border:1px solid red;}
 div Articles in course #{@course.title}
-/ #{sort_articles_url} - problem with Gulp localhost(192.2....)
-ul id="articles" data-update-url="http://localhost:3001/articles/sort"
+ul id="articles" data-update-url="#{sort_articles_url}"
   - @articles.each do |article|
     = content_tag_for(:li, article)
       span.handle
