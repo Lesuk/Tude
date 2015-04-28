@@ -1,10 +1,10 @@
 .meta-actions
   /a.btn.btn-blue href="#a"
   = link_to like_article_path(@article), remote: true, method: :post, id: "like", class: "btn btn-blue" do
-    <i class="fa fa-thumbs-up #{'is-liked' if current_user.likes?(@article)}"></i>
+    <i class="fa fa-thumbs-up #{'is-liked' if current_user.try(:likes?, @article)}"></i>
     span.btn__text Подобається
     span.amount = @article.liked_by_count
-  = link_to favorite_article_path(@article), remote: true, method: :post, id: "favorite", class: "btn btn-blue-secondary #{'is-favorite' if current_user.bookmarks?(@article)}" do
+  = link_to favorite_article_path(@article), remote: true, method: :post, id: "favorite", class: "btn btn-blue-secondary #{'is-favorite' if current_user.try(:bookmarks?, @article)}" do
     i.fa.fa-star
     span.btn__text Вибране
   a.btn.btn-blue-secondary href="#a"

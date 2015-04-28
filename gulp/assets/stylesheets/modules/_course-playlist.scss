@@ -28,8 +28,13 @@
   font-size: 0;
   overflow: hidden;
   color: #757a80;
+  box-shadow: 0 1px 0 #F0F0F0;
   background: transparent;
   &:hover{
+    background: #e2f0f9;
+  }
+
+  &.is-active{
     background: #e2f0f9;
   }
   &__thumbnail{
@@ -68,6 +73,10 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
     white-space: normal;
+
+    .is-active &{
+      font-weight: 600;
+    }
   }
   &__link{
     position: absolute;

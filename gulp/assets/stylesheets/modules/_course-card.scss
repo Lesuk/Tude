@@ -1,8 +1,12 @@
 .course-card{
   position: relative;
+  display: inline-block;
   min-width: 240px;
   max-width: 280px;
   margin-bottom: 20px;
+  // видалити m-rigth - зробити з Susy
+  margin-right: 20px;
+  vertical-align: top;
   background-color: #fff;
 }
 

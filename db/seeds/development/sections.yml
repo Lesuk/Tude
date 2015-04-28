@@ -8,3 +8,19 @@ records:
   - sprig_id: 2
     name: "Week 2 - Resources and Videos"
     course_id: "<%= sprig_record(Course, 1).id %>"
+
+  - sprig_id: 3
+    name: "Introduction"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+  - sprig_id: 4
+    name: "Creating a Mock-Up in Adobe Photoshop"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+  - sprig_id: 5
+    name: "Building the Interactive Prototype With InVision"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+  - sprig_id: 6
+    name: "Sharing and Gathering Design Feedback"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+  - sprig_id: 7
+    name: "Conclusion"
+    course_id: "<%= sprig_record(Course, 2).id %>"

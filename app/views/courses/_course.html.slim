@@ -19,7 +19,7 @@
             .progress-bar.status-active style="width: #{percent}%;"
           span.progress__stats #{progress_numbers[0]}/#{progress_numbers[1]}
           /a.progress__next href="#next-tuts"
-          = link_to '', next_article_course_path(course), class: 'progress__next'
+          = link_to '', continue_course_path(course), class: 'progress__next'
       - else
         .course-card__level
           span.course-card__level-lines class="level-#{course.level.downcase}"

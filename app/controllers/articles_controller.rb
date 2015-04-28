@@ -113,7 +113,7 @@ class ArticlesController < ApplicationController
 private
 
   def load_articles
-    @articles ||= article_scope.to_a
+    @articles ||= article_scope.published.to_a
   end
 
   def load_article

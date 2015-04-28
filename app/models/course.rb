@@ -2,8 +2,9 @@ require 'babosa'
 class Course < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: 'user_id'
   belongs_to :category, counter_cache: true
-  has_many :sections, -> {order(position: :asc)}
-  has_many :articles, -> {order('articles.position ASC')}, through: :sections
+  has_many :sections, -> { order(position: :asc) }
+  has_many :articles, through: :sections # order('articles.position ASC')
+  has_many :different_articles, through: :sections, source: :different_articles
   #has_many :reviews
   has_many :enrollments
   has_many :users, through: :enrollments
@@ -27,7 +28,7 @@ class Course < ActiveRecord::Base
     [passed, all]
   end
 
-  def next_course_article(user)
+  def continue_course_article(user)
     course_articles_ids_array = self.course_articles_ids
     passed_articles_ids_array = user.passed_articles_ids
     not_completed_articles_ids = course_articles_ids_array - passed_articles_ids_array

@@ -5,23 +5,29 @@ records:
   - sprig_id: 1
     name: "Business"
     description: "This category contains listings of articles and courses concerned with business."
-    #parent_id: 
-    #slug:
+    #parent_id:
 
   - sprig_id: 2
     name: "Startups"
     description: "This category contains listings of articles and courses concerned with startups."
     parent_id: "<%= sprig_record(Category, 1).id %>"
-    #slug:
 
   - sprig_id: 3
     name: "Hiring"
     description: "This category contains listings of articles and courses concerned with business."
     parent_id: "<%= sprig_record(Category, 1).id %>"
-    #slug:
 
   - sprig_id: 4
     name: "Веб-програмування"
     description: "Веб-програмування - галузь веб-розробки і різновид дизайну, в завдання якої входить проектування користувальницьких веб-інтерфейсів для сайтів або веб додатків."
     #parent_id:
-    #slug:
+
+  - sprig_id: 5
+    name: "Web Design"
+    description: "Web design encompasses many different skills and disciplines in the production and maintenance of websites."
+    #parent_id:
+
+  - sprig_id: 6
+    name: "Prototyping"
+    description: "A prototype is a draft version of a product that allows you to explore your ideas and show the intention behind a feature or the overall design concept to users before investing time and money into development. "
+    parent_id: "<%= sprig_record(Category, 5).id %>"

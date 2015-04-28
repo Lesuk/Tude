@@ -24,5 +24,26 @@ records:
     youtube_id: "ApUln7AD0_Q"
     user_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    #slug:
-    #duration:
+
+  - sprig_id: 2
+    title: "UX Prototyping for Mobile Devices with InVision"
+    summary: "Discover how to create mobile-friendly prototypes in Photoshop, before diving into InVision to simulate user interactions."
+    description: |
+                   This course will guide you through the entire prototype design workflow, from project brief and mock-up in Photoshop to client feedback and revisions. Discover how to create mobile-friendly prototypes in Photoshop, before diving into InVision to simulate user interactions.
+    content: |
+              When does the course start and finish?
+              The course runs from September 23rd 2014 to December 4th 2014 and takes place every Tuesday and Thursday. Once the video, readings and other materials are available, they'll be immediately updated here (They'll also be available on Youtube and iTunesU and on the official website).
+              How long do I have access to the material?
+              We pledge to keep them up indefinitely - but if for any legal reason we need to take them down, we reserve the right to do so. This said, we have enabled video downloads so you can download the video file easily and watch them offline.
+              Where can I find the community for the course?
+              The Facebook group you can request access to is here. Additionally, hundreds of other University groups have been set up you can find on the official website.
+              Is this content under Creative Commons?
+              All of the content in this site will be openly available to anyone to use and is under a Creative Commons License which was been make available by YCombinator from the official class website here.
+              Who is behind the creation of this site?
+              This site was put together by the team at Fedora, a site which allows anyone to teach or create their own online school. If you're having any challenges, send an email over to startupclass@usefedora.com.
+              Who do I thank for this sweet typography?
+              All fonts are free to use on Google Fonts and their usage pattern is inspired by Scott Hurff.
+    level: "easy"
+    youtube_id: "aFnOE9h0PDQ"
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"

@@ -1,9 +1,11 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!, only: [:curriculum, :continue_course]
+
   add_breadcrumb("Edut", '/')
 
   def index
     load_courses
-    add_breadcrumb("Курси", nil)
+    add_breadcrumb("Courses", nil)
     render locals: {courses: @courses}
   end
 
@@ -15,13 +17,14 @@ class CoursesController < ApplicationController
 
   def curriculum
     load_single_course
-    @articles = @course.articles
+    @articles = @course.different_articles
+    add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, course_path(@course)], ['Curriculum', nil])
   end
 
-  def next_article
+  def continue_course
     load_single_course
-    article = @course.next_course_article(current_user)
-    redirect_to article
+    article = @course.continue_course_article(current_user)
+    redirect_to article_path(article)
   end
 
 private

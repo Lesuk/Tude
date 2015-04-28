@@ -203,3 +203,297 @@ records:
     #slug:
     #demo_link:
     #github_link:
+
+  - sprig_id: 11
+    title: "Course Overview"
+    description: "Welcome to UX Prototyping for Mobile Devices with InVision."
+    body: |
+            Welcome to UX Prototyping for Mobile Devices with InVision. In this lesson we'll look at what you'll learn in this course, and the new skills and creations you'll have by the end of it.
+    status: 1
+    youtube_id: aFnOE9h0PDQ
+    video_duration: 122
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 2).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 12
+    title: "Project Brief"
+    description: "We’re going to start off by reviewing the project brief—the client's requirements for the project—and take a look at developing a landing page and basic subscription form."
+    body: |
+            We’re going to start off by reviewing the project brief—the client's requirements for the project—and take a look at developing a landing page and basic subscription form.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 243
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 3).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 13
+    title: "User Features"
+    description: "We’ll now plan the user features of the subscription form and the confirmation process after hitting the submit button."
+    body: |
+            We’ll now plan the user features of the subscription form and the confirmation process after hitting the submit button.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 178
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 3).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 14
+    title: "Mock-Up Options"
+    description: "Discover the pros and cons to each of these approaches in this lesson, and learn about the approach we're going to take for the rest of the course."
+    body: |
+            There are several ways to mock up a prototype, ranging from creating simple wireframes through to high-fidelity images in Adobe Photoshop, and HTML pages that lack interactive features. Discover the pros and cons to each of these approaches in this lesson, and learn about the approach we're going to take for the rest of the course.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 329
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 3).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 15
+    title: "Create the Basic Elements"
+    description: "Let's begin our mock-up in Photoshop by designing the core background image."
+    body: |
+            Let's begin our mock-up in Photoshop by designing the core background image.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 447
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 16
+    title: "Create the Main Content Container"
+    description: "Continue your mock-up design by creating the main content container design."
+    body: |
+            Continue your mock-up design by creating the main content container design.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 672
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 17
+    title: "Create the Sign-Up Form"
+    description: "In this lesson you’ll create the sign-up form elements, including the user details and submit button."
+    body: |
+            In this lesson you’ll create the sign-up form elements, including the user details and submit button.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 458
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 18
+    title: "NOT Published Article (in development!)"
+    description: "This article is in development mode, can't be displayed on none public views"
+    body: |
+            This article is in development mode, can't be displayed on none public views
+    status: 0
+    youtube_id: nu8-7huFyvo
+    video_duration: 404
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 19
+    title: "Create the Filled-In Form"
+    description: "We’ve reached the stage where we need to create the filled-in version of the form."
+    body: |
+            We’ve reached the stage where we need to create the filled-in version of the form.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 262
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 20
+    title: "Create the Confirmation Page"
+    description: "Adding to our prototype, let’s now design the confirmation page which appears after hitting the submit button from the subscription form."
+    body: |
+            Adding to our prototype, let’s now design the confirmation page which appears after hitting the submit button from the subscription form.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 555
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 4).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 21
+    title: "InVision Overview"
+    description: "Let’s get started with InVision's interface and primary features."
+    body: |
+            Let’s get started with InVision's interface and primary features.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 673
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 5).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 22
+    title: "Create Project and Add Screens"
+    description: "In this lesson we’ll create a new project in InVision and add the first screens based on your Photoshop mock-up."
+    body: |
+            In this lesson we’ll create a new project in InVision and add the first screens based on your Photoshop mock-up.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 699
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 5).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 23
+    title: "Add Interactive Hotlinks and Animations"
+    description: "We’ll now add interactive hotlinks and animations to the subscription form to mimic user interactions on a mobile device."
+    body: |
+            We’ll now add interactive hotlinks and animations to the subscription form to mimic user interactions on a mobile device.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 664
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 5).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 24
+    title: "Screen Settings and Modes"
+    description: "Discover your screen settings and modes within InVision and the options available for each."
+    body: |
+            Discover your screen settings and modes within InVision and the options available for each.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 249
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 5).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 25
+    title: "Asset Generation"
+    description: "Easily generate developer assets from your Photoshop layers with this simple step."
+    body: |
+            Easily generate developer assets from your Photoshop layers with this simple step.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 496
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 5).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 26
+    title: "Share Project Options"
+    description: "Learn how to share your project via a URL, email, by sending to a mobile device, or downloading."
+    body: |
+            Learn how to share your project via a URL, email, by sending to a mobile device, or downloading.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 340
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 6).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 27
+    title: "Client and User Comment Reviews"
+    description: "In this lesson we’ll look at and respond to client comments, as well as leave our own across the project screens."
+    body: |
+            In this lesson we’ll look at and respond to client comments, as well as leave our own across the project screens.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 383
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 6).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 28
+    title: "Live Sharing in Adobe Photoshop"
+    description: "Take comments to the next level with LiveShare PS. "
+    body: |
+            Take comments to the next level with LiveShare PS. This OS X plugin lets you easily share a working Photoshop mock-up with your team and get instant feedback. You can also apply changes instantly for everyone to see.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 577
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 6).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 29
+    title: "Replacing Screens and Version Control"
+    description: "Take client feedback and apply it to your mock-up. "
+    body: |
+            Take client feedback and apply it to your mock-up. Then replace your screens before sending them back to the client for further feedback.
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 317
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 6).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 30
+    title: "Conclusion"
+    description: "Now that you've seen what prototyping is all about, it's time to take it to the next level. Thanks for watching!"
+    body: |
+            Now that you've seen what prototyping is all about, it's time to take it to the next level. Thanks for watching!
+    status: 1
+    youtube_id: BUz258ybgC4
+    video_duration: 101
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 7).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
+
+  - sprig_id: 31
+    title: "NOT Published Article 22 (in development!)"
+    description: "This article is in development mode, can't be displayed on none public views"
+    body: |
+            This article is in development mode, can't be displayed on none public views
+    status: 0
+    youtube_id: nu8-7huFyvo
+    video_duration: 404
+    user_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    course_id: "<%= sprig_record(Course, 2).id %>"
+    section_id: "<%= sprig_record(Section, 7).id %>"
+    github_link: "https://github.com/tutsplus/ux-prototyping-for-mobile-devices-with-invision"
