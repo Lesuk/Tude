@@ -1,8 +1,8 @@
 li.course-toc__list-item
-  .course-toc__list-item-head.h-clearfix
+  .course-toc__list-item-head.h-clearfix.h-font-semibold
     .course-toc__progress
     span.course-toc__item-name = "#{section_counter + 1}. #{section.name}"
-    span.course-toc__duration.-weight-bold = set_duration(section.duration)
+    span.course-toc__duration = set_duration(section.duration)
   - section.articles.any?
     ol.course-toc__sublist
       - section.articles.each.with_index(1) do |article, index|

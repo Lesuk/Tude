@@ -6,17 +6,12 @@
       = render_breadcrumbs
 
     - if @article.youtube_id?
-      .article-wrapper__main-video
-        .main-video.youtube_video id="#{@article.youtube_id}"
-          - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"
-          img.main-video__thumbnail src="#{img_src}"
-          span.main-video__play-btn
+      = render "shared/articles/main_video_block"
 
     .article-wrapper__primary
       = render "shared/articles/article_body"
       = render "shared/author_box"
       = render "shared/comments_block"
-
 
     aside.article-wrapper__secondary
       - if @article.course

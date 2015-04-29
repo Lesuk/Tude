@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:recommended, :favorites, :mine, :favorite, :like]
+  after_action :record_article_progress, only: [:show]
 
   add_breadcrumb("Edut", '/')
 
@@ -13,7 +14,10 @@ class ArticlesController < ApplicationController
 
   def show
     load_article_with_categories
-    load_course_articles
+    if @article.course
+      course_passed_articles_ids
+      load_course_articles
+    end
     set_commentable
     load_comments
     ArticleView.set_view(@article.id, request.remote_ip)
@@ -148,6 +152,10 @@ private
     @page_size ||= params[:pagesize] ? params[:pagesize] : 8
   end
 
+  def course_passed_articles_ids
+    @passed_ids = @article.course.user_progress(current_user, "passed")
+  end
+
   def article_params
     article_params = params[:article]
     article_params ? article_params.permit(:title, :description, :body, :status, :slug, :category_id, :course_id) : {}
@@ -158,4 +166,7 @@ private
     Article.where(nil)
   end
 
+  def record_article_progress
+    current_user.pass_article!(@article.id) if current_user.enrolled?(@article.course.id)
+  end
 end

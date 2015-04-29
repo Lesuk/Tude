@@ -59,6 +59,10 @@ class Article < ActiveRecord::Base
     string.to_s.to_slug.normalize(transliterations: :ukrainian).to_s
   end
 
+  def published?
+    self.status == '1'
+  end
+
   # def user_fan?(user_id)
   #   self.fans.where(id: user_id).present?
   # end

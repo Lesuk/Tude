@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     end
   end
   resources :enrollments, only: [:create, :destroy]
+  resources :article_progresses, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

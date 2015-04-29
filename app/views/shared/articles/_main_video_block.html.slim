@@ -1,0 +1,23 @@
+.article-wrapper__main-video
+  .main-video.youtube_video id="#{@article.youtube_id}"
+    - img_src = "#{youtube_thumbnail(@article.youtube_id, 'maxres')}"
+    img.main-video__thumbnail src="#{img_src}"
+    span.main-video__play-btn
+  - if @article.in_list?
+    .video-controls.h-clearfix
+      - if !@article.first?  && @article.higher_item.published?
+        .video-controls__previous
+          = link_to @article.higher_item, class: "video-controls__previous-link" do
+            i.fa.fa-arrow-left.video-controls__previous-icon
+            ' Previous
+            span.video-controls__article-text Lesson
+      - if !@article.last? && @article.lower_item.published?
+        .video-controls__next
+          = link_to @article.lower_item, class: "video-controls__next-link" do
+            |
+            ' Next
+            span.video-controls__article-text Lesson
+            i.fa.fa-arrow-right.video-controls__next-icon
+      .video-controls__article-state
+        - if @passed_ids.include?(@article.id)
+          = render partial: "shared/article_progresses/unpass_article_btn", locals: {article: @article}

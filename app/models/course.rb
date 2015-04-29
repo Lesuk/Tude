@@ -19,13 +19,17 @@ class Course < ActiveRecord::Base
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :name, :whois, to: :author, prefix: true, allow_nil: true
 
-  def user_progress(user)
+  def user_progress(user, return_type = "sizes")
     course_articles_ids_array = self.course_articles_ids
     passed_articles_ids_array = user.passed_articles_ids
     passed_course_articles_ids = course_articles_ids_array & passed_articles_ids_array
-    passed = passed_course_articles_ids.size
-    all = course_articles_ids_array.size
-    [passed, all]
+    if return_type == "sizes"
+      passed = passed_course_articles_ids.size
+      all = course_articles_ids_array.size
+      [passed, all]
+    elsif return_type == "passed"
+      passed_course_articles_ids
+    end
   end
 
   def continue_course_article(user)

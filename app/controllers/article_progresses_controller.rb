@@ -1,16 +1,19 @@
 class ArticleProgressesController < ApplicationController
 
   def create
-    article = Article.find(params[:enrollment][:course_id])
-    current_user.enroll!(course.id)
-    redirect_to article_path(course.articles.first)
+    @article = Article.find(params[:article_progress][:article_id])
+    current_user.pass_article!(@article.id)
+    respond_to do |format|
+      format.html { redirect_to @article }
+      format.js
+    end
   end
 
   def destroy
-    @course_enr = Enrollments.find(params[:id])
-    current_user.disenroll!(@course_enr.id)
+    @article = Article.find(params[:article_progress][:article_id])
+    current_user.cancel_passed_article!(@article.id)
     respond_to do |format|
-      format.html { redirect_to @course_enr }
+      format.html { redirect_to @article }
       format.js
     end
   end

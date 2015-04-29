@@ -1,0 +1,5 @@
+= form_for(current_user.article_progresses.find_by(article_id: article.id), remote: true, html: {method: :delete, class: ""}) do |f|
+  = f.hidden_field :article_id
+  = f.button class: "btn btn-blue-secondary" do
+    i.fa.fa-check
+    span.video-controls__article-text Article passed
