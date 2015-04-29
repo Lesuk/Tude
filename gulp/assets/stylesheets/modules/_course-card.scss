@@ -342,6 +342,9 @@
   &.status-active{
     background-color: #5cc0fc;
   }
+  &.status-completed{
+    background-color: #80C83A;
+  }
 }
 
 .progress__stats{
@@ -367,4 +370,15 @@
   &:hover{
     border-color: #ddd;
   }
+}
+
+.progress__check{
+  float: right;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: #80C83A;
 }

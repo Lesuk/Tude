@@ -14,12 +14,17 @@
       - if current_user.try(:enrolled?, course.id)
         - progress_numbers = course.user_progress(current_user)
         - percent = percent_passed_course(progress_numbers[0], progress_numbers[1])
+        - completed = percent < 100 ? false : true
+        - state_class = completed ? 'status-completed' : 'status-active'
         .course-card__progress
           .progress
-            .progress-bar.status-active style="width: #{percent}%;"
+            div class="progress-bar #{state_class}" style="width: #{percent}%;"
           span.progress__stats #{progress_numbers[0]}/#{progress_numbers[1]}
-          /a.progress__next href="#next-tuts"
-          = link_to '', continue_course_path(course), class: 'progress__next'
+          - if completed
+            i.fa.fa-check.progress__check
+          - else
+            = link_to '', continue_course_path(course), class: 'progress__next'
+
       - else
         .course-card__level
           span.course-card__level-lines class="level-#{course.level.downcase}"

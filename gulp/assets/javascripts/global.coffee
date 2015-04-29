@@ -10,9 +10,10 @@ require './show-hide-pass'
 require './signin_modal'
 require './embed_youtube_iframe'
 require './auto-textarea-height'
-require './comments'
 require './reduce-sidebar'
 require './course-nav'
 require './articles-sort'
+
+require './comments'
 
 console.log message

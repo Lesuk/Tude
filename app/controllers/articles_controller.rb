@@ -14,10 +14,8 @@ class ArticlesController < ApplicationController
 
   def show
     load_article_with_categories
-    if @article.course
-      course_passed_articles_ids
-      load_course_articles
-    end
+    course_passed_articles_ids
+    load_course_articles
     set_commentable
     load_comments
     ArticleView.set_view(@article.id, request.remote_ip)
@@ -153,7 +151,7 @@ private
   end
 
   def course_passed_articles_ids
-    @passed_ids = @article.course.user_progress(current_user, "passed")
+    @passed_ids = (current_user && @article.course) ? @article.course.user_progress(current_user, "passed") : []
   end
 
   def article_params
@@ -167,6 +165,8 @@ private
   end
 
   def record_article_progress
-    current_user.pass_article!(@article.id) if current_user.enrolled?(@article.course.id)
+    if current_user
+      current_user.pass_article!(@article.id) if current_user.enrolled?(@article.course.id)
+    end
   end
 end

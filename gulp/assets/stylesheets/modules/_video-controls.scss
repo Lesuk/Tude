@@ -58,7 +58,7 @@
 
   &__article-text{
     display: inline-block;
-    @include breakpoint(100px 400px){
+    @include breakpoint(100px 470px){
       display: none;
     }
   }
