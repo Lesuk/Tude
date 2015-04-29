@@ -82,7 +82,7 @@ private
 
   def load_commentable
     klass = [Article].detect { |c| params["#{c.name.underscore}_id"] }
-    @commentable = klass.find(params["#{klass.name.underscore}_id"])
+    @commentable = klass.friendly.find(params["#{klass.name.underscore}_id"])
   end
 
   def load_comment

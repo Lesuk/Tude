@@ -13,6 +13,7 @@ require './auto-textarea-height'
 require './reduce-sidebar'
 require './course-nav'
 require './articles-sort'
+require './flashes'
 
 require './comments'
 

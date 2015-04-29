@@ -22,7 +22,8 @@ module FlashHelper
       Array(message).each do |msg|
         flash = content_tag(:li,
                            content_tag(:i, '', :class => "fa fa-lg #{flash_icon_class(compare_type)}") +
-                           msg.html_safe, :class => "flash-item -type-#{compare_type}")
+                           msg.html_safe + content_tag(:i, '', :class => "fa fa-close"),
+                           :class => "flash-item -type-#{compare_type}")
         flash_messages << flash if msg
       end
     end
