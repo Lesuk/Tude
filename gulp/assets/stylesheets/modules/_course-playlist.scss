@@ -15,6 +15,7 @@
   }
 
   &__list{
+    position: relative;
     max-height: 330px;
     overflow: auto;
     background: #f9f9f9;

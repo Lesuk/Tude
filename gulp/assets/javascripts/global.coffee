@@ -14,6 +14,7 @@ require './reduce-sidebar'
 require './course-nav'
 require './articles-sort'
 require './flashes'
+require './course-playlist'
 
 require './comments'
 
