@@ -64,5 +64,15 @@
     font-size: 12px;
     line-height: 24px;
     color: #888;
+
+    &-amount {
+      color: #6f7a89;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    &-link {
+      border-bottom: 1px dashed #16a4fa;
+    }
   }
 }

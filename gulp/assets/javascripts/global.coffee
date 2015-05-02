@@ -17,5 +17,6 @@ require './flashes'
 require './course-playlist'
 
 require './comments'
+require './reviews'
 
 console.log message

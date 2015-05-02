@@ -1,15 +1,19 @@
 require 'babosa'
 class Course < ActiveRecord::Base
+
+  LEVELS = ['easy', 'middle', 'hard']
+
   belongs_to :author, class_name: "User", foreign_key: 'user_id'
   belongs_to :category, counter_cache: true
   has_many :sections, -> { order(position: :asc) }
-  has_many :articles, through: :sections # order('articles.position ASC')
+  has_many :articles, through: :sections
   has_many :different_articles, through: :sections, source: :different_articles
-  #has_many :reviews
+  has_many :reviews
   has_many :enrollments
   has_many :users, through: :enrollments
 
   validates :slug, presence: true
+  validates :level, inclusion: {in: LEVELS, message: "must be: easy/middle/hard"}
 
   after_touch :update_duration
 
@@ -29,6 +33,10 @@ class Course < ActiveRecord::Base
       [passed, all]
     elsif return_type == "passed"
       passed_course_articles_ids
+    elsif return_type == "progress"
+      passed = passed_course_articles_ids.size
+      all = course_articles_ids_array.size
+      ( ( passed.to_f / all.to_f ) * 100 ).ceil
     end
   end
 

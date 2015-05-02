@@ -47,6 +47,8 @@ gem 'kaminari'
 
 gem 'acts_as_list'
 
+gem 'counter_culture', '~> 0.1.23'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

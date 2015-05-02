@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427081328) do
+ActiveRecord::Schema.define(version: 20150430152621) do
 
   create_table "article_progresses", force: :cascade do |t|
     t.integer  "student_id", limit: 4, null: false
@@ -99,14 +99,15 @@ ActiveRecord::Schema.define(version: 20150427081328) do
     t.string   "level",          limit: 255
     t.string   "youtube_id",     limit: 255
     t.integer  "category_id",    limit: 4
-    t.integer  "users_count",    limit: 4,     default: 0, null: false
-    t.integer  "articles_count", limit: 4,     default: 0, null: false
-    t.integer  "reviews_count",  limit: 4,     default: 0, null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.integer  "users_count",    limit: 4,     default: 0,   null: false
+    t.integer  "articles_count", limit: 4,     default: 0,   null: false
+    t.integer  "reviews_count",  limit: 4,     default: 0,   null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id",        limit: 4
-    t.integer  "duration",       limit: 4,     default: 0, null: false
-    t.string   "slug",           limit: 255,               null: false
+    t.integer  "duration",       limit: 4,     default: 0,   null: false
+    t.string   "slug",           limit: 255,                 null: false
+    t.float    "rating",         limit: 24,    default: 0.0, null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -159,6 +160,21 @@ ActiveRecord::Schema.define(version: 20150427081328) do
 
   add_index "mentions", ["mentionable_type", "mentionable_id"], name: "index_mentions_on_mentionable_type_and_mentionable_id", using: :btree
   add_index "mentions", ["user_id"], name: "index_mentions_on_user_id", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "course_id",  limit: 4,                 null: false
+    t.integer  "user_id",    limit: 4,                 null: false
+    t.text     "body",       limit: 65535,             null: false
+    t.integer  "rating",     limit: 4,     default: 5, null: false
+    t.integer  "progress",   limit: 4,     default: 0, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "status",     limit: 4,     default: 0, null: false
+  end
+
+  add_index "reviews", ["course_id", "user_id"], name: "index_reviews_on_course_id_and_user_id", unique: true, using: :btree
+  add_index "reviews", ["course_id"], name: "index_reviews_on_course_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "name",       limit: 255

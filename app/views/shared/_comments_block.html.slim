@@ -8,7 +8,7 @@
     = render @comments
   .comments__form
     h4.comments__form-headline Ваш Коментар
-    - if current_user
+    - if user_signed_in?
       = render partial: "comments/new_subcomment_form", locals: {parentid: nil}
     - else
       h4 You must login/register to comment.

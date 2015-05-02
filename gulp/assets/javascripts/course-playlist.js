@@ -1,5 +1,7 @@
 jQuery(document).ready(function() {
-  var item_position = $(".course-playlist__list .is-active").position().top;
-  $(".course-playlist__list").scrollTop(item_position);
-  // animate({scrollTop: item_position});
+  var item = $(".course-playlist__list .is-active");
+  if(item.length > 0){
+    $(".course-playlist__list").scrollTop(item.position().top);
+    // animate({scrollTop: item_position});
+  }
 });

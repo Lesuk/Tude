@@ -1,0 +1,9 @@
+= form_for([course, course.reviews.build], remote: true, html: {class: "main-comment__form"}) do |f|
+  = link_to user_path(current_user), class: "main-comment__form-author" do
+    img src="#{user_pic_placeholder(1)}"
+  div class="main-comment__reply-field"
+    - rating_collection = [ ['5, Excellent', 5], ['4, Good', 4], ['3, Ok', 3], ['2 - Poor', 2], ['1, Failed', 1] ]
+    = f.select :rating, rating_collection
+    = f.text_area :body, rows: "2", class: 'reply-field', style: "height: 52px;", placeholder: "Review.."
+    .reply-buttons
+      = f.submit "Send", class: "btn btn-blue"

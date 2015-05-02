@@ -1,0 +1,33 @@
+<% id = "#score_" + @review.id.to_s %>
+$("<%= id %> .comment__rating-upvote").removeClass('upvoted');
+<% if @downvoted %>
+  $("<%= id %> .comment__rating-downvote").removeClass('downvoted');
+  $("<%= id %> .comment__rating-value").html(function(index, oldhtml){
+    var result = parseInt(oldhtml) + 1;
+    if (result > 0){
+      $("<%= id %> .comment__rating-value").addClass('-color-green').removeClass('-color-red');
+    }
+    else if(result < 0){
+      $("<%= id %> .comment__rating-value").removeClass('-color-green').addClass('-color-red');
+    }
+    else{
+      $("<%= id %> .comment__rating-value").removeClass('-color-green -color-red');
+    }
+    return result > 0 ? '+' + result.toString() : result;
+  });
+<% else %>
+  $("<%= id %> .comment__rating-downvote").addClass('downvoted');
+  $("<%= id %> .comment__rating-value").html(function(index, oldhtml){
+    var result = parseInt(oldhtml) - 1;
+    if (result > 0){
+      $("<%= id %> .comment__rating-value").addClass('-color-green').removeClass('-color-red');
+    }
+    else if(result < 0){
+      $("<%= id %> .comment__rating-value").removeClass('-color-green').addClass('-color-red');
+    }
+    else{
+      $("<%= id %> .comment__rating-value").removeClass('-color-green -color-red');
+    }
+    return result > 0 ? '+' + result.toString() : result;
+  });
+<% end %>

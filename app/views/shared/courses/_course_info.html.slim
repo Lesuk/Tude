@@ -5,8 +5,12 @@
       h3.course-rating__headline Course rating
       .course-rating__rating-stars
         .course-rating__rating-stars-gray
-        .course-rating__rating-stars-yellow style="width: 80%;"
-      .course-rating__rating 4.1 / 5 (12 reviews)
+        .course-rating__rating-stars-yellow style="width: #{rating_to_percentage(course.rating)}%;"
+      .course-rating__rating
+        span.course-rating__rating-amount #{course.rating}
+        = " / 5 ("
+        = link_to "#{pluralize(course.reviews.size, 'review')}", "#reviews__box", class: "course-rating__rating-link"
+        | )
     li.course-info__item
       | Price:
       span Free

@@ -1,0 +1,27 @@
+- upvotes = review.liked_by_count
+- downvotes = review.disliked_by_count
+- score = upvotes - downvotes
+- wilson_score_value = wilson_score(upvotes, downvotes)
+- score_class = score > 0 ? '-color-green' : score < 0 ? '-color-red' : ''
+- like_class = current_user.try(:likes?, review) ? 'upvoted' : ''
+- dislike_class = current_user.try(:dislikes?, review) ? 'downvoted' : ''
+ul.comment__actions
+  li.comment__rating id="score_#{review.id}"
+    - score_title = raw "All #{upvotes + downvotes}: &uarr;#{upvotes}, &darr;#{downvotes}"
+    span class="comment__rating-value #{score_class}" title="#{score_title}" data-upvotes="#{upvotes}" data-downvotes="#{downvotes}"
+      = score > 0 ? "+" + score.to_s : score
+    = link_to upvote_review_path(review), remote: true, method: :post, class: "comment__rating-upvote #{like_class}" do
+      i.fa.fa-angle-up
+    = link_to downvote_review_path(review), remote: true, method: :post, class: "comment__rating-downvote #{dislike_class}" do
+      i.fa.fa-angle-down
+    span.rating.h-hidden = wilson_score_value
+  - if user_signed_in?
+    - if review.user_id == current_user.id
+      li.comment__action
+        = link_to 'Редагувати', "javascript:void(0)", id: "comment_edit_#{review.id}",class: 'comment__sub-comment-action'
+      li.comment__action
+        = link_to 'Видалити', [course, review], method: :delete, remote: true, class: 'comment__sub-comment-action'
+  /li.comment__action.is-hidden
+    a.comment__share-action href="#share" Поділитися
+  /li.comment__action.is-hidden
+    a.comment__claim-action href="#claim" Поскаржитись

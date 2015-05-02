@@ -1,0 +1,17 @@
+#reviews__box.course-reviews
+  .comments__head.h-clearfix
+    span.comments__headline = pluralize(course.reviews.size, 'Review')
+    .comments__sort
+      button.sort.comments__sort-link.is-current.desc data-sort="timestamp" Date
+      button.sort.comments__sort-link data-sort="rating" Rating
+  ul#reviews.reviews__list
+    = render partial: "reviews/review", collection: reviews, locals: {course: course}
+  .comments__form
+    h4.comments__form-headline Write Your Review
+    - if user_signed_in? && current_user.try(:enrolled?, course.id)
+      - if current_user.try(:wrote_review?, course.id)
+        h4 You already wrote a review about this course
+      - else
+        = render partial: "reviews/review_form", locals: {course: course}
+    - else
+      h4 You must be enrolled in course and registered to comment.

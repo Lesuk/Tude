@@ -100,7 +100,7 @@ private
 
   def comment_params
     comment_params = params[:comment]
-    comment_params ? comment_params.permit(:body, :parent_id, :subparent_id, :user_id, :commentable_id, :commentable_type) : {}
+    comment_params ? comment_params.permit(:body, :parent_id, :subparent_id, :commentable_id, :commentable_type) : {}
     #params.require(:comment).permit(:body, :parent_id, :user_id, :commentable_id, :commentable_type)
   end
 

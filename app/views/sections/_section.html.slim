@@ -8,7 +8,8 @@ li.course-toc__list-item
       - section.articles.each.with_index(1) do |article, index|
         li.course-toc__sublist-item.h-clearfix
           = link_to "", article_path(article), class: "course-toc__sublist-link"
-          - if current_user.try(:article_passed?, article.id)
+          /- if current_user.try(:article_passed?, article.id)
+          - if @passed_ids.include?(article.id)
             i.fa.fa-check-circle.course-toc__sublist-icon
           - else
             i.fa.fa-play-circle-o.course-toc__sublist-icon

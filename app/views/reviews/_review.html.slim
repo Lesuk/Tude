@@ -1,0 +1,19 @@
+= content_tag_for(:li, review, class: 'comment__item') do
+  .comment__wrapper
+    .comment__head.h-clearfix
+      .comment__user-pic
+        img src="#{user_pic_placeholder(1)}"
+      = link_to review.user_name, user_path(review.user), class: "comment__user-name"
+      .comment__user-whois = review.user_whois
+      a.comment__anchor-link href="#review_#{review.id}"
+        = insert_time_tag(review.created_at, "comment__date")
+      .timestamp.h-hidden = review.created_at.to_time.to_i
+    /.comment__body = review.body
+    - course ||= @course
+    .comment__body = best_in_place review, :body,
+        as: :textarea, url: [course, review], activator: "#comment_edit_#{review.id}", inner_class: 'reply-field',
+        ok_button: 'Save', ok_button_class: 'btn btn-blue h-spacing-above--xsmall',
+        cancel_button: 'Cancel', cancel_button_class: 'btn btn-blue-secondary h-spacing-above--xsmall',
+        helper_options: review.body
+
+    = render partial: "reviews/review_actions", locals: {review: review, course: course}

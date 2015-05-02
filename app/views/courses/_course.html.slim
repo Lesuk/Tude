@@ -30,12 +30,12 @@
           span.course-card__level-lines class="level-#{course.level.downcase}"
         .course-card__students-count
           span = course.users.size
-          | учасників
+          = 'students'.pluralize(course.users.size)
         .course-card__rating
           .course-card__rating-stars
             .course-card__rating-stars-gray
-            .course-card__rating-stars-yellow style="width: 80%;"
-          span.course-card__rating-count 00 відгуків
+            .course-card__rating-stars-yellow style="width:#{rating_to_percentage(course.rating)}%;"
+          span.course-card__rating-count #{pluralize(course.reviews.size, 'review')}
 
     = link_to course.category_name, category_path(course.category), class: "course-card__category"
     h3.course-card__headline

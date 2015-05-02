@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :articles
   has_many :comments
+  has_many :reviews
   has_many :own_courses, class_name: "Course"
   # has_many :favorites
   # has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  recommends :articles, :courses, :comments
+  recommends :articles, :courses, :comments, :reviews
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -55,6 +56,10 @@ class User < ActiveRecord::Base
 
   def disenroll!(course_id)
     self.enrollments.find_by(course_id: course_id).destroy!
+  end
+
+  def wrote_review?(course_id)
+    self.reviews.find_by(course_id: course_id) ? true : false
   end
 
   def pass_article!(article_id)

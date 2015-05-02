@@ -3,8 +3,8 @@
 - score = upvotes - downvotes
 - wilson_score_value = wilson_score(upvotes, downvotes)
 - score_class = score > 0 ? '-color-green' : score < 0 ? '-color-red' : ''
-- like_class = current_user.likes?(comment) ? 'upvoted' : ''
-- dislike_class = current_user.dislikes?(comment) ? 'downvoted' : ''
+- like_class = current_user.try(:likes?, comment) ? 'upvoted' : ''
+- dislike_class = current_user.try(:dislikes?, comment) ? 'downvoted' : ''
 ul.comment__actions
   li.comment__rating id="score_#{comment.id}"
     - score_title = raw "All #{upvotes + downvotes}: &uarr;#{upvotes}, &darr;#{downvotes}"
@@ -16,13 +16,13 @@ ul.comment__actions
       i.fa.fa-angle-down
     - if comment.parent_id.blank?
       span.rating.h-hidden = wilson_score_value
-  - if comment.parent_id.blank? && current_user
+  - if comment.parent_id.blank? && user_signed_in?
     li.comment__action
       a.comment__sub-comment-action.js-reply-to href="javascript:void(0)" data-reply="#{comment.id}" Коментувати
-  - if current_user && comment.parent_id.present?
+  - if user_signed_in? && comment.parent_id.present?
     li.comment__action
       a.comment__sub-comment-action.js-reply-to href="#comments#{comment.parent_id}" data-reply="#{comment.parent_id}" data-username="#{comment.user_username}" data-rep-id="#{comment.id}" Відповісти
-  - if current_user
+  - if user_signed_in?
     - if comment.user.id == current_user.id
       li.comment__action
         = link_to 'Редагувати', "javascript:void(0)", id: "comment_edit_#{comment.id}",class: 'comment__sub-comment-action'

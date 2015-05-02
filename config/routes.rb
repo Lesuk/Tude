@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'users/:id', to: 'users#show', as: 'user'
   post 'comments/:id/upvote', to: 'comments#upvote', as: 'upvote_comment'
   post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
+  post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
+  post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
 
   resources :articles do
     concerns :paginatable
@@ -34,6 +36,7 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :courses do
+    resources :reviews, only: [:new, :create, :update, :destroy]
     member do
       get :curriculum
       get :continue_course, path: 'continue', as: :continue
