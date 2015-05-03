@@ -1,5 +1,4 @@
 .meta-actions
-  /a.btn.btn-blue href="#a"
   = link_to like_article_path(@article), remote: true, method: :post, id: "like", class: "btn btn-blue" do
     <i class="fa fa-thumbs-up #{'is-liked' if current_user.try(:likes?, @article)}"></i>
     span.btn__text Подобається

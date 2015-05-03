@@ -1,5 +1,7 @@
 <% if @favorited %>
   $('#favorite').removeClass('is-favorite');
+  $("#article-<%= @article.id %> .-favorite .article-meta__icon").removeClass('is-favorite');
 <% else %>
   $('#favorite').addClass('is-favorite');
+  $("#article-<%= @article.id %> .-favorite .article-meta__icon").addClass('is-favorite');
 <% end %>

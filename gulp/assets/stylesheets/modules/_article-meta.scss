@@ -1,0 +1,43 @@
+.article-meta{
+  text-align: left;
+
+  &__item{
+    width: auto;
+    float: left;
+    display: inline-block;
+    margin: 0 20px 0 0;
+    font-size: 11px;
+    line-height: 16px;
+    color: #ddd;
+
+    &.-float-right{
+      float: right;
+      margin:0;
+    }
+
+    &.is-liked{
+      .article-meta__icon{
+        color: lighten(#59b3d5, 10%);
+      }
+      .article-meta__text{
+        color: darken( #59b3d5, 10% );
+      }
+    }
+  }
+  &__link{
+    color: #ddd;
+    &:hover{
+      color: #ccc;
+    }
+  }
+  &__icon{
+    font-size: 14px;
+    &.is-favorite{
+      color: #ffd85c;
+    }
+  }
+  &__text{
+    margin-left: 3px;
+    color: #bbb;
+  }
+}

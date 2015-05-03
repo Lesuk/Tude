@@ -3,9 +3,17 @@
   $('#like .amount').html(function(index, oldhtml){
     return parseInt(oldhtml) - 1;
   });
+  $("#article-<%= @article.id %> .-like").removeClass('is-liked');
+  $('#article-<%= @article.id %> .-like .article-meta__text').html(function(index, oldhtml){
+    return parseInt(oldhtml) - 1;
+  });
 <% else %>
   $('#like i').addClass('is-liked');
   $('#like .amount').html(function(index, oldhtml){
+    return parseInt(oldhtml) + 1;
+  });
+  $("#article-<%= @article.id %> .-like").addClass('is-liked');
+  $('#article-<%= @article.id %> .-like .article-meta__text').html(function(index, oldhtml){
     return parseInt(oldhtml) + 1;
   });
 <% end %>

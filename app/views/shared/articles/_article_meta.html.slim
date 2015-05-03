@@ -1,0 +1,22 @@
+ul.article-meta.h-clearfix
+
+  li.article-meta__item
+    i.fa.fa-eye.article-meta__icon
+    span.article-meta__text = article.article_views.size
+
+  li.article-meta__item
+    a.article-meta__link href="#comment"
+      i.fa.fa-comment.article-meta__icon
+      span.article-meta__text = article.comments.size
+
+  li.article-meta__item.-like class="#{current_user.try(:likes?, article) ? 'is-liked' : ''}"
+    - if user_signed_in?
+      = link_to like_article_path(article), remote: true, method: :post, class: "article-meta__link" do
+        i.fa.fa-thumbs-up.article-meta__icon
+        span.article-meta__text
+          = article.liked_by_count
+
+  - if user_signed_in?
+    li.article-meta__item.-float-right
+      = link_to favorite_article_path(article), remote: true, method: :post, class: "article-meta__link -favorite" do
+        i.fa.fa-star.article-meta__icon class="#{current_user.try(:bookmarks?, article) ? 'is-favorite' : ''}"

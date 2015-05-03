@@ -2,7 +2,7 @@
   - thumb_src = youtube_thumbnail(article.youtube_id, 'mq')
 -else
   - thumb_src = youtube_thumbnail(0, 'none')
-article.article-card
+article.article-card id="article-#{article.id}"
   .article-card__thumbnail
     = link_to '', article_path(article), class: "article-card__thumbnail-link"
     -if article.video_duration > 0
@@ -13,15 +13,10 @@ article.article-card
     img.article-card__thumbnail-image src="#{thumb_src}"
     -if article.video_duration > 0
       span.article-card__duration = set_duration(article.video_duration)
+    /= insert_time_tag(article.created_at, "article-card__publication-date")
   .article-card__info
     /a.article-card__category href="#rails" WordPress
     = link_to article.category_name, category_path(article.category), class: "article-card__category"
     h3.article-card__headline
       = link_to article.title, article_path(article), class: "article-card__headline-link"
-    .article-card__meta
-      span.article-card__rating = article.liked_by_count
-      span.article-card__views = "#{article.article_views.size} переглядів"
-      = insert_time_tag(article.created_at, "article-card__publication-date")
-      / will be redesigned
-      - if current_user
-        = link_to "#{current_user.bookmarks?(article) ? '+' : '' }favor", favorite_article_path(article), remote: true, method: :post
+    = render partial: "shared/articles/article_meta", locals: {article: article}
