@@ -3,6 +3,7 @@
 /* Vendor mixin/function libraries */
 @import "../../../vendor/assets/bower_components/breakpoint-sass/stylesheets/breakpoint";
 @import "../../../vendor/assets/bower_components/susy/sass/susy";
+@import "../../../vendor/assets/bower_components/perfect-scrollbar/css/perfect-scrollbar.min";
 @import "mixins/adaptive-placeholders"
 
 /* Your mixins & functions */
@@ -79,4 +80,5 @@
  * See https://github.com/suitcss/suit/blob/master/doc/utilities.md */
 @import "helpers/helpers";
 @import "helpers/boxed-head";
+@import "helpers/perfect-scrollbar-rewriting";
 @import "states/states";

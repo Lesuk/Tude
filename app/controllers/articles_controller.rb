@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:recommended, :favorites, :mine, :favorite, :like]
   after_action :record_article_progress, only: [:show]
+  after_action :record_user_view, only: [:show]
 
   add_breadcrumb("Edut", '/')
 
@@ -18,7 +19,6 @@ class ArticlesController < ApplicationController
     load_course_articles
     set_commentable
     load_comments
-    ArticleView.set_view(@article.id, request.remote_ip)
     add_breadcrumbs(["Articles", articles_path], [@article.category_name, category_path(@article.category)], [@article.title, nil])
   end
 
@@ -168,5 +168,9 @@ private
     if current_user
       current_user.pass_article!(@article.id) if current_user.enrolled?(@article.course.id)
     end
+  end
+
+  def record_user_view
+    ArticleView.set_view(@article.id, request.remote_ip)
   end
 end
