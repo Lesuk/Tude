@@ -28,19 +28,8 @@
   text-align: center;
 
   @include breakpoint(31.250em){
-    display: inline-block;
+    // display: inline-block;
     margin: 0 0 10px 0;
     font-size: 24px;
-  }
-}
-
-.top-panel__pages-nav{
-  display: block;
-
-  @include breakpoint(31.250em){
-    display: inline-block;
-    position: absolute;
-    right: 10px;
-    bottom: 0;
   }
 }
