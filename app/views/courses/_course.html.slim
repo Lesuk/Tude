@@ -19,7 +19,7 @@
         .course-card__progress
           .progress
             div class="progress-bar #{state_class}" style="width: #{percent}%;"
-          span.progress__stats #{progress_numbers[0]}/#{progress_numbers[1]}
+          span.progress__stats #{progress_numbers[0]} / #{progress_numbers[1]}
           - if completed
             i.fa.fa-check.progress__check
           - else

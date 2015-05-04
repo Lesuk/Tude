@@ -13,8 +13,9 @@ class CoursesController < ApplicationController
     load_full_course
     course_passed_articles_ids
     load_reviews
+    check_enrollment
     add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, nil])
-    render locals: {course: @course, reviews: @reviews}
+    render locals: {course: @course, reviews: @reviews, enrolled: @enrolled}
   end
 
   def curriculum
@@ -49,6 +50,10 @@ private
 
   def course_passed_articles_ids
     @passed_ids = (user_signed_in? && @course.articles.any?) ? @course.user_progress(current_user, "passed") : []
+  end
+
+  def check_enrollment
+    @enrolled = current_user.try(:enrolled?, @course.id) if user_signed_in?
   end
 
   def build_course

@@ -12,12 +12,12 @@
     .hgroup
       h1.hgroup__headline = course.title
       p.hgroup__summary = course.summary
-      - if current_user.try(:enrolled?, course.id)
-        | panel
-      - else
+      - if !enrolled
         .hgroup__actions
-          - if current_user
+          - if user_signed_in?
             = render partial: "shared/enrollments/enroll", locals: {course: course}
           - else
-            = link_to "Start Course", new_user_session_path(), class: "btn btn-blue btn--start-course -shadow-bottom"
+            = link_to "Start Course", "javascript:void(0)", class: "btn btn-blue btn--start-course -shadow-bottom btn-signin"
           a.watch-trailer Переглянути трейлер
+    - if enrolled
+      = render partial: "shared/courses/course_progress", locals: {course: course}
