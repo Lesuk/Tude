@@ -5,10 +5,10 @@
       button.sort.comments__sort-link.is-current.desc data-sort="timestamp" Date
       button.sort.comments__sort-link data-sort="rating" Rating
   ul#reviews.reviews__list
-    = render partial: "reviews/review", collection: reviews, locals: {course: course}
+    = render partial: "reviews/review", collection: course.reviews, locals: {course: course}
   .comments__form
     h4.comments__form-headline Write Your Review
-    - if user_signed_in? && current_user.try(:enrolled?, course.id)
+    - if user_signed_in? && enrolled
       - if current_user.try(:wrote_review?, course.id)
         h4 You already wrote a review about this course
       - else

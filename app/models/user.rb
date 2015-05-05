@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
 
   def enroll!(course_id)
     self.enrollments.find_or_create_by!(course_id: course_id)
+    self.like(Course.find(course_id))
   end
 
   def enrolled?(course_id)
@@ -56,6 +57,7 @@ class User < ActiveRecord::Base
 
   def disenroll!(course_id)
     self.enrollments.find_by(course_id: course_id).destroy!
+    self.unlike(Course.find(course_id))
   end
 
   def wrote_review?(course_id)

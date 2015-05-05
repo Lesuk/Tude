@@ -8,7 +8,7 @@ class Course < ActiveRecord::Base
   has_many :sections, -> { order(position: :asc) }
   has_many :articles, through: :sections
   has_many :different_articles, through: :sections, source: :different_articles
-  has_many :reviews
+  has_many :reviews, -> { published }
   has_many :enrollments
   has_many :users, through: :enrollments
 

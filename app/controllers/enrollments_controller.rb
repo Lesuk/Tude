@@ -8,11 +8,9 @@ class EnrollmentsController < ApplicationController
   end
 
   def destroy
-    @course_enr = Enrollments.find(params[:id])
-    current_user.disenroll!(@course_enr.id)
-    respond_to do |format|
-      format.html { redirect_to @course_enr }
-      format.js
-    end
+    # course = Enrollments.find(params[:id]).course
+    course = Course.find(params[:enrollment][:course_id])
+    current_user.disenroll!(course.id)
+    redirect_to course
   end
 end
