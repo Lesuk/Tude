@@ -44,11 +44,11 @@ private
   end
 
   def course_passed_articles_ids
-    @passed_ids = (user_signed_in? && @course.articles.any? && @enrolled) ? @course.user_progress(current_user, "passed") : []
+    @passed_ids ||= (user_signed_in? && @course.articles.any? && @enrolled) ? @course.user_progress(current_user, "passed") : []
   end
 
   def check_enrollment
-    @enrolled = current_user.try(:enrolled?, @course.id) if user_signed_in?
+    @enrolled ||= current_user.try(:enrolled?, @course.id) if user_signed_in?
   end
 
   def build_course
