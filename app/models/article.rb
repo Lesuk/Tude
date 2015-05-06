@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   belongs_to :section, touch: true
   belongs_to :course, counter_cache: true
   has_many :comments, as: :commentable
-  has_many :article_views
+  has_many :views, as: :viewable
   #has_many :favorites, as: :favorable
   #has_many :fans, through: :favorites, source: :user
   has_many :article_progresses, dependent: :destroy
@@ -24,7 +24,7 @@ class Article < ActiveRecord::Base
   scope :published, -> {where(status: true)}
   scope :draft, -> {where(status: false)}
   scope :order_desc, -> {order(id: :desc)}
-  scope :order_popular, -> {order(article_views_count: :desc)}
+  scope :order_popular, -> {order(views_count: :desc)}
   scope :order_position, -> {order(position: :asc)} # 'articles.position ASC'
   scope :in_array, ->(ids) { where(id: ids) }
 

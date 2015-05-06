@@ -5,7 +5,7 @@
 
 jQuery(document).ready(function() {
   $(".course-playlist__list").perfectScrollbar();
-  $(".sidebar").perfectScrollbar({
-    suppressScrollX: true
-  });
+  // $(".sidebar").perfectScrollbar({
+  //   suppressScrollX: true
+  // });
 });

@@ -11,6 +11,7 @@ class Course < ActiveRecord::Base
   has_many :reviews, -> { published }
   has_many :enrollments
   has_many :users, through: :enrollments
+  has_many :views, as: :viewable
 
   validates :slug, presence: true
   validates :level, inclusion: {in: LEVELS, message: "must be: easy/middle/hard"}
@@ -23,6 +24,9 @@ class Course < ActiveRecord::Base
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :name, :whois, to: :author, prefix: true, allow_nil: true
 
+  scope :order_popular, -> { order(views_count: :desc) }
+
+  # OPTIMIZE
   def user_progress(user, return_type = "sizes")
     course_articles_ids_array = self.course_articles_ids
     passed_articles_ids_array = user.passed_articles_ids

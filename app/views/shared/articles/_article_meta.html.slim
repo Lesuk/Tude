@@ -4,7 +4,7 @@ ul.article-meta.h-clearfix
 
   li.article-meta__item
     i.fa.fa-eye.article-meta__icon
-    span.article-meta__text = article.article_views.size
+    span.article-meta__text = article.views.size
 
   li.article-meta__item
     = link_to article_path(article, anchor: "comments__box"), class: "article-meta__link" do

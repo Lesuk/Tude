@@ -7,7 +7,7 @@
     .meta-info.clearfix
       time.meta-info__date datetime="#{@article.created_at.to_s(:datetime)}" title="#{@article.created_at.to_s(:shortdate)}" = @article.created_at.to_s(:shortdate)
       .meta-info__views
-        span = "#{@article.article_views.size} переглядів"
+        span = "#{@article.views.size} переглядів"
 
   .article-body__content
     = @article.body

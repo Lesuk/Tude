@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:curriculum, :continue_course]
+  before_action :authenticate_user!, only: [:curriculum, :continue_course, :favorite]
+  after_action :record_user_view, only: [:show]
 
   add_breadcrumb("Edut", '/')
 
@@ -23,10 +24,64 @@ class CoursesController < ApplicationController
     add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, course_path(@course)], ['Curriculum', nil])
   end
 
+  def active
+    @courses = current_user.courses.merge(Enrollment.active)
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
+  def popular
+    @courses ||= course_scope.includes(:category, :author).order_popular.to_a
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
+  def favorites
+    @courses = current_user.bookmarked_courses.includes(:category, :author)
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
+  def recommended
+    @courses = current_user.recommended_courses.includes(:category, :author)
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
+  def completed
+    @courses = current_user.courses.merge(Enrollment.completed)
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
+  def mine
+    @courses = current_user.own_courses.includes(:category, :author)
+    add_breadcrumb("Courses", nil)
+    render :index, locals: {courses: @courses}
+  end
+
   def continue_course
     load_single_course
     article = @course.continue_course_article(current_user)
     redirect_to article_path(article)
+  end
+
+  def favorite
+    load_single_course
+    @favorited = current_user.bookmarks?(@course)
+    if @favorited
+      current_user.unbookmark(@course)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.js
+      end
+    else
+      current_user.bookmark(@course)
+      respond_to do |format|
+        format.html{redirect_to :back}
+        format.js
+      end
+    end
   end
 
 private
@@ -69,5 +124,9 @@ private
 
   def course_scope
     Course.where(nil)
+  end
+
+  def record_user_view
+    View.set_view(@course, request.remote_ip)
   end
 end

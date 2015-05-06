@@ -13,8 +13,7 @@
           = render partial: "shared/courses/course_author", locals: {course: course}
         .course-primary__course-info.course-primary__omega data-box="info"
           = render partial: "shared/courses/course_info", locals: {course: course}
-          - if enrolled
-              = render partial: "shared/courses/course_actions", locals: {course: course}
+          = render partial: "shared/courses/course_actions", locals: {course: course, enrolled: enrolled}
         /.course-primary__course-actions.course-primary__omega data-box="info"
         /.course-primary__course-share.course-primary__omega data-box="info"
         .course-primary__course-toc.course-primary__alpha data-box="toc"

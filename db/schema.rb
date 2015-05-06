@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430152621) do
+ActiveRecord::Schema.define(version: 20150506111508) do
 
   create_table "article_progresses", force: :cascade do |t|
     t.integer  "student_id", limit: 4, null: false
@@ -24,34 +24,25 @@ ActiveRecord::Schema.define(version: 20150430152621) do
   add_index "article_progresses", ["student_id", "article_id"], name: "index_article_progresses_on_student_id_and_article_id", unique: true, using: :btree
   add_index "article_progresses", ["student_id"], name: "index_article_progresses_on_student_id", using: :btree
 
-  create_table "article_views", force: :cascade do |t|
-    t.string   "guest_ip",   limit: 255
-    t.integer  "article_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "article_views", ["article_id"], name: "index_article_views_on_article_id", using: :btree
-
   create_table "articles", force: :cascade do |t|
-    t.string   "title",               limit: 255
-    t.string   "description",         limit: 255
-    t.text     "body",                limit: 65535
-    t.integer  "course_id",           limit: 4
-    t.integer  "category_id",         limit: 4
-    t.integer  "user_id",             limit: 4
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.integer  "article_views_count", limit: 4,     default: 0,   null: false
-    t.integer  "section_id",          limit: 4
-    t.string   "youtube_id",          limit: 255
-    t.integer  "comments_count",      limit: 4,     default: 0,   null: false
-    t.string   "status",              limit: 255,   default: "0", null: false
-    t.integer  "video_duration",      limit: 4,     default: 0,   null: false
-    t.string   "demo_link",           limit: 255
-    t.string   "github_link",         limit: 255
-    t.string   "slug",                limit: 255,                 null: false
-    t.integer  "position",            limit: 4,                   null: false
+    t.string   "title",          limit: 255
+    t.string   "description",    limit: 255
+    t.text     "body",           limit: 65535
+    t.integer  "course_id",      limit: 4
+    t.integer  "category_id",    limit: 4
+    t.integer  "user_id",        limit: 4
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "section_id",     limit: 4
+    t.string   "youtube_id",     limit: 255
+    t.integer  "comments_count", limit: 4,     default: 0,   null: false
+    t.string   "status",         limit: 255,   default: "0", null: false
+    t.integer  "video_duration", limit: 4,     default: 0,   null: false
+    t.string   "demo_link",      limit: 255
+    t.string   "github_link",    limit: 255
+    t.string   "slug",           limit: 255,                 null: false
+    t.integer  "position",       limit: 4,                   null: false
+    t.integer  "views_count",    limit: 4,     default: 0,   null: false
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
@@ -108,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150430152621) do
     t.integer  "duration",       limit: 4,     default: 0,   null: false
     t.string   "slug",           limit: 255,                 null: false
     t.float    "rating",         limit: 24,    default: 0.0, null: false
+    t.integer  "views_count",    limit: 4,     default: 0,   null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -115,10 +107,11 @@ ActiveRecord::Schema.define(version: 20150430152621) do
   add_index "courses", ["user_id"], name: "index_courses_on_user_id", using: :btree
 
   create_table "enrollments", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4, null: false
-    t.integer  "course_id",  limit: 4, null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "user_id",    limit: 4,             null: false
+    t.integer  "course_id",  limit: 4,             null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "status",     limit: 4, default: 0, null: false
   end
 
   add_index "enrollments", ["course_id", "user_id"], name: "index_enrollments_on_course_id_and_user_id", unique: true, using: :btree
@@ -209,10 +202,21 @@ ActiveRecord::Schema.define(version: 20150430152621) do
     t.string   "fullname",               limit: 255
     t.text     "bio",                    limit: 65535
     t.string   "whois",                  limit: 255
+    t.integer  "views_count",            limit: 4,     default: 0,  null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "views", force: :cascade do |t|
+    t.integer  "viewable_id",   limit: 4
+    t.string   "viewable_type", limit: 255
+    t.string   "guest_ip",      limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "views", ["viewable_type", "viewable_id"], name: "index_views_on_viewable_type_and_viewable_id", using: :btree
 
 end

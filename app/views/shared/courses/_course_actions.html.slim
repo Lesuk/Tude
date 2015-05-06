@@ -1,3 +1,5 @@
 .course-actions.boxed-head.h-clearfix
   .boxed-head__title Course actions
-  = render partial: "shared/enrollments/disenroll", locals: {course: course}
+  - if enrolled
+    = render partial: "shared/enrollments/disenroll", locals: {course: course}
+  = link_to "Bookmark", favorite_course_path(course), remote: true, method: :post, class: "btn btn-blue-secondary"

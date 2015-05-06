@@ -1,0 +1,7 @@
+li.pages-nav__item = active_link_to "My courses", active_courses_path(), active: /\/active/, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Newest", courses_path(), active: :exclusive, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Popular", popular_courses_path(), active: /\/popular/, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Favorites", favorites_courses_path(), active: /\/favorites/, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Recommended", recommended_courses_path(), active: /\/recommended/, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Completed", completed_courses_path(), active: /\/completed/, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Mine", mine_courses_path(), active: /\/mine/, class_active: 'is-current', class: 'pages-nav__link'

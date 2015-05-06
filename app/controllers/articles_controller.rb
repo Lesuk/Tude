@@ -171,6 +171,6 @@ private
   end
 
   def record_user_view
-    ArticleView.set_view(@article.id, request.remote_ip)
+    View.set_view(@article, request.remote_ip)
   end
 end

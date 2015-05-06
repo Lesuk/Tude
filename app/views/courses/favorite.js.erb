@@ -1,0 +1,5 @@
+<% if @favorited %>
+  $("#course_<%= @course.id %> .fa-star").removeClass('is-favorite');
+<% else %>
+  $("#course_<%= @course.id %> .fa-star").addClass('is-favorite');
+<% end %>

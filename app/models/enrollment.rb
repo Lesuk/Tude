@@ -1,4 +1,7 @@
 class Enrollment < ActiveRecord::Base
+
+  enum status: [:active, :completed, :canceled]
+
   belongs_to :user
   belongs_to :course, counter_cache: :users_count
 

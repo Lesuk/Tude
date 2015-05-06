@@ -1,4 +1,5 @@
-.course-card
+- bookmarked = current_user.try(:bookmarks?, course)
+.course-card id="#{dom_id(course)}"
   .course-card__thumbnail
     img.course-card__thumbnail-image src="#{youtube_thumbnail(course.youtube_id, 'mq')}"
     = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__thumbnail-link"
@@ -7,8 +8,8 @@
         .thumbnail-actions__play-btn
         .thumbnail-actions__share-btn
           i.fa.fa-share-alt
-        .thumbnail-actions__star-btn
-          i.fa.fa-star
+        = link_to favorite_course_path(course), remote: true, method: :post, class: "thumbnail-actions__star-btn" do
+          i.fa.fa-star class="#{bookmarked ? 'is-favorite' : ''}"
   .course-card__info
     .course-card__meta
       - if current_user.try(:enrolled?, course.id)

@@ -40,6 +40,15 @@ Rails.application.routes.draw do
     member do
       get :curriculum
       get :continue_course, path: 'continue', as: :continue
+      post :favorite
+    end
+    collection do
+      get :popular
+      get :recommended
+      get :favorites
+      get :mine
+      get :active
+      get :completed
     end
   end
   resources :enrollments, only: [:create, :destroy]
