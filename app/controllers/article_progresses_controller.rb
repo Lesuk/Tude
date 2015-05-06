@@ -2,7 +2,7 @@ class ArticleProgressesController < ApplicationController
 
   def create
     @article = Article.find(params[:article_progress][:article_id])
-    current_user.pass_article!(@article.id)
+    current_user.pass_article!(@article)
     respond_to do |format|
       format.html { redirect_to @article }
       format.js

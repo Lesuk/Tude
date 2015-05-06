@@ -15,7 +15,8 @@ class ArticlesController < ApplicationController
 
   def show
     load_article_with_categories
-    course_passed_articles_ids
+    check_enrollment
+    user_progress
     load_course_articles
     set_commentable
     load_comments
@@ -131,7 +132,7 @@ private
   end
 
   def load_course_articles
-    @course_articles ||= @article.course.articles if @article.course
+    @course_articles ||= @article.course.articles if @article.course_id
   end
 
   def load_comments
@@ -150,8 +151,12 @@ private
     @page_size ||= params[:pagesize] ? params[:pagesize] : 8
   end
 
-  def course_passed_articles_ids
-    @passed_ids = (current_user && @article.course) ? @article.course.user_progress(current_user, "passed") : []
+  def check_enrollment
+    @enrolled ||= current_user.try(:enrolled?, @article.course.id) if user_signed_in?
+  end
+
+  def user_progress
+    @user_progress ||= @enrolled ? @article.course.user_progress(current_user) : {}
   end
 
   def article_params
@@ -165,9 +170,7 @@ private
   end
 
   def record_article_progress
-    if current_user
-      current_user.pass_article!(@article.id) if current_user.enrolled?(@article.course.id)
-    end
+    current_user.pass_article!(@article, @user_progress) if @enrolled
   end
 
   def record_user_view

@@ -2,4 +2,4 @@
   h2.course-toc__title Table of Content
   - course.sections.any?
     ol.course-toc__list
-      = render course.sections
+      = render partial: "sections/section", collection: course.sections, locals: {user_progress: user_progress}

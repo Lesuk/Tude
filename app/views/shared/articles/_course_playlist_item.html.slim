@@ -3,7 +3,7 @@ li class="pl-list-item #{'is-active' if is_active_link?(article_path(item), :inc
     img src="#{youtube_thumbnail(item.youtube_id, 'default')}"
     span.pl-list-item__counter = item_counter + 1
     /- if current_user.try(:article_passed?, item.id)
-    - if @passed_ids.include?(item.id)
+    - if @user_progress[:passed_course_articles_ids].try(:include?, item.id)
       i.fa.fa-check.pl-list-item__check
   .pl-list-item__title = item.title
   = link_to item.title, article_path(item), class: "pl-list-item__link"

@@ -2,7 +2,7 @@
 .container__course-wrapper
   .course-wrapper.h-clearfix
     .course-wrapper__headbox.h-clearfix
-      = render partial: "shared/courses/headbox", locals: {course: course, enrolled: enrolled}
+      = render partial: "shared/courses/headbox", locals: {course: course, enrolled: enrolled, user_progress: user_progress}
     = render partial: "shared/courses/course_nav", locals: {reviews_size: course.reviews.size}
     .course-wrapper__course-primary
       .course-primary.h-clearfix
@@ -17,7 +17,7 @@
         /.course-primary__course-actions.course-primary__omega data-box="info"
         /.course-primary__course-share.course-primary__omega data-box="info"
         .course-primary__course-toc.course-primary__alpha data-box="toc"
-          = render partial: "shared/courses/course_toc", locals: {course: course}
+          = render partial: "shared/courses/course_toc", locals: {course: course, user_progress: user_progress}
         /.course-primary__course-faq.course-primary__alpha data-box="info"
         .course-primary__course-reviews.course-primary__alpha data-box="reviews"
           = render partial: "shared/courses/course_reviews", locals: {course: course, enrolled: enrolled}

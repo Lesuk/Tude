@@ -1,6 +1,5 @@
 .course-playlist.boxed-head
   .boxed-head__title Course Playlist
-  /a.course-playlist__header href="#course" Гайд до Вашого Першого WordPress Фреймворку
   = link_to @article.course_title, course_path(@article.course), class: "course-playlist__header"
   ul.course-playlist__list.h-visible-scrolls
     = render partial: "shared/articles/course_playlist_item", collection: @course_articles, as: :item

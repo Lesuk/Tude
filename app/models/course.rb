@@ -26,30 +26,22 @@ class Course < ActiveRecord::Base
 
   scope :order_popular, -> { order(views_count: :desc) }
 
-  # OPTIMIZE
-  def user_progress(user, return_type = "sizes")
+  def user_progress(user)
     course_articles_ids_array = self.course_articles_ids
     passed_articles_ids_array = user.passed_articles_ids
-    passed_course_articles_ids = course_articles_ids_array & passed_articles_ids_array
-    if return_type == "sizes"
-      passed = passed_course_articles_ids.size
-      all = course_articles_ids_array.size
-      [passed, all]
-    elsif return_type == "passed"
-      passed_course_articles_ids
-    elsif return_type == "progress"
-      passed = passed_course_articles_ids.size
-      all = course_articles_ids_array.size
-      ( ( passed.to_f / all.to_f ) * 100 ).ceil
-    end
+    passed_course_articles_ids_array = course_articles_ids_array & passed_articles_ids_array
+
+    percentage = ( ( passed_course_articles_ids_array.size.to_f / course_articles_ids_array.size.to_f ) * 100 ).ceil
+
+    {passed_articles_ids: passed_articles_ids_array, course_articles_ids: course_articles_ids_array,
+      passed_course_articles_ids: passed_course_articles_ids_array, percentage: percentage}
   end
 
   def continue_course_article(user)
-    course_articles_ids_array = self.course_articles_ids
-    passed_articles_ids_array = user.passed_articles_ids
-    not_completed_articles_ids = course_articles_ids_array - passed_articles_ids_array
+    progress = self.user_progress(user)
+    not_completed_articles_ids = progress[:course_articles_ids] - progress[:passed_articles_ids]
     if not_completed_articles_ids.any?
-      Article.friendly.find(not_completed_articles_ids[0])
+      Article.find(not_completed_articles_ids[0])
     else
       self.articles.first
     end

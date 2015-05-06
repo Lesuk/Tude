@@ -12,15 +12,18 @@
           i.fa.fa-star class="#{bookmarked ? 'is-favorite' : ''}"
   .course-card__info
     .course-card__meta
+
       - if current_user.try(:enrolled?, course.id)
-        - progress_numbers = course.user_progress(current_user)
-        - percent = percent_passed_course(progress_numbers[0], progress_numbers[1])
-        - completed = percent < 100 ? false : true
+
+        - progress = course.user_progress(current_user)
+        - passed_size = progress[:passed_course_articles_ids].size
+        - all_size = progress[:course_articles_ids].size # course.articles.size
+        - completed = progress[:percentage] < 100 ? false : true
         - state_class = completed ? 'status-completed' : 'status-active'
         .course-card__progress
           .progress
-            div class="progress-bar #{state_class}" style="width: #{percent}%;"
-          span.progress__stats #{progress_numbers[0]} / #{progress_numbers[1]}
+            div class="progress-bar #{state_class}" style="width: #{progress[:percentage]}%;"
+          span.progress__stats #{passed_size} / #{all_size}
           - if completed
             i.fa.fa-check.progress__check
           - else

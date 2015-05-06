@@ -14,7 +14,7 @@
       = render "shared/comments_block"
 
     aside.article-wrapper__secondary
-      - if @article.course
+      - if @article.course_id
         .article-wrapper__secondary-item
           = render "shared/articles/course_playlist"
       .article-wrapper__secondary-item

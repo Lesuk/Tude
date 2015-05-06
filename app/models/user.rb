@@ -64,8 +64,21 @@ class User < ActiveRecord::Base
     self.reviews.find_by(course_id: course_id) ? true : false
   end
 
-  def pass_article!(article_id)
-    self.article_progresses.find_or_create_by!(article_id: article_id)
+  def pass_article!(article, user_progress = {})
+    progress = self.article_progresses.find_or_initialize_by(article_id: article.id)
+    if progress.new_record?
+      progress.save!
+      self.complete_enrollment(article.course_id, user_progress)
+    end
+  end
+
+  def complete_enrollment(course_id, user_progress)
+    if !user_progress.empty?
+      if ( (user_progress[:passed_course_articles_ids].size + 1) == user_progress[:course_articles_ids].size )
+        enrollment = Enrollment.find_by(course_id: course_id, user_id: self.id)
+        enrollment.completed!
+      end
+    end
   end
 
   def article_passed?(article_id)

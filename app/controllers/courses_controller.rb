@@ -13,9 +13,9 @@ class CoursesController < ApplicationController
   def show
     load_full_course
     check_enrollment
-    course_passed_articles_ids
+    user_progress
     add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, nil])
-    render locals: {course: @course, enrolled: @enrolled}
+    render locals: {course: @course, enrolled: @enrolled, user_progress: @user_progress}
   end
 
   def curriculum
@@ -98,8 +98,8 @@ private
     @course ||= course_scope.includes({sections: :articles}, {reviews: :user}).friendly.find(params[:id])
   end
 
-  def course_passed_articles_ids
-    @passed_ids ||= (user_signed_in? && @course.articles.any? && @enrolled) ? @course.user_progress(current_user, "passed") : []
+  def user_progress
+    @user_progress ||= ( @course.articles.any? && @enrolled ) ? @course.user_progress(current_user) : {}
   end
 
   def check_enrollment

@@ -19,5 +19,5 @@
             span.video-controls__article-text Lesson
             i.fa.fa-arrow-right.video-controls__next-icon
       .video-controls__article-state
-        - if @passed_ids.include?(@article.id)
+        - if @user_progress[:passed_course_articles_ids].try(:include?, @article.id)
           = render partial: "shared/article_progresses/unpass_article_btn", locals: {article: @article}

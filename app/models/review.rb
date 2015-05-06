@@ -32,7 +32,8 @@ class Review < ActiveRecord::Base
   end
 
   def set_user_progress
-    self.progress = self.course.user_progress(self.user, "progress")
+    progress = self.course.user_progress(self.user)
+    self.progress = progress[:percentage]
   end
 
   def check_enrollment

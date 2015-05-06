@@ -20,4 +20,4 @@
             = link_to "Start Course", "javascript:void(0)", class: "btn btn-blue btn--start-course -shadow-bottom btn-signin"
           a.watch-trailer Переглянути трейлер
     - if enrolled
-      = render partial: "shared/courses/course_progress", locals: {course: course}
+      = render partial: "shared/courses/course_progress", locals: {course: course, user_progress: user_progress}

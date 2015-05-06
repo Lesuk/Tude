@@ -1,5 +1,6 @@
-- progress_numbers = course.user_progress(current_user)
-- percent = percent_passed_course(progress_numbers[0], progress_numbers[1])
+- percent = user_progress[:percentage]
+- passed_size = user_progress[:passed_course_articles_ids].size
+- all_size = user_progress[:course_articles_ids].size
 - completed = percent < 100 ? false : true
 - state_class = completed ? 'status-completed' : 'status-active'
 .course-progress
@@ -9,5 +10,5 @@
       .course-progress__progress-notdone
         .course-progress__progress-done class="#{state_class}" style="width: #{percent}%;"
       .course-progress__amount
-        .course-progress__done #{progress_numbers[0]} / #{progress_numbers[1]}
+        .course-progress__done #{passed_size} / #{all_size}
         .course-progress__percent #{percent}%
