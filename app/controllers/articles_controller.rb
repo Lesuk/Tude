@@ -152,7 +152,7 @@ private
   end
 
   def check_enrollment
-    @enrolled ||= current_user.try(:enrolled?, @article.course.id) if user_signed_in?
+    @enrolled ||= current_user.try(:enrolled?, @article.course_id) if user_signed_in? && @article.course_id
   end
 
   def user_progress

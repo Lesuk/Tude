@@ -9,6 +9,7 @@
       listClass: 'comments__list'
     };
 
+    var List = require ('list.js/dist/list.min');
     var commentList = new List('comments__box', commentOptions);
     if (commentList.listContainer){
       commentList.sort('rating', { order: "desc" });

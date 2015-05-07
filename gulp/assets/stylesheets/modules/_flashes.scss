@@ -58,17 +58,20 @@
 
 .purr{
   position: fixed;
-  top: 10px;
+  top: 50px;
   right: 30px;
   z-index: 100;
+  max-width: 400px;
+  min-width: 250px;
   padding: 15px 25px;
-  background-color: #fff;
-  border: solid 1px #B9D0DB;
-  border-left-color: #E55D5D;
-  border-left-width: 3px;
   border-radius: 4px;
   font-size: 14px;
-  color: #444;
-  box-shadow: 1px 1px 1px #E2E2E2;
+  line-height: 21px;
+  border: 1px solid #EE363D;
+  border-left-width: 3px;
+  color: #3f4749;
+  background-color: #fff;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
   &:first-letter { text-transform: uppercase; }
+  i.fa-lg{color: #EE363D;}
 }

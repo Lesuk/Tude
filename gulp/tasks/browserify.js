@@ -15,6 +15,7 @@ var browserifyTask = function(callback, devMode) {
   var browserifyThis = function(bundleConfig) {
 
     if(devMode) {
+      // Add watchify args and debug (sourcemaps) option
       _.extend(bundleConfig, watchify.args, { debug: true });
       bundleConfig = _.omit(bundleConfig, ['external', 'require']);
     }

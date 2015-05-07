@@ -3,8 +3,8 @@
 /* Vendor mixin/function libraries */
 @import "../../../vendor/assets/bower_components/breakpoint-sass/stylesheets/breakpoint";
 @import "../../../vendor/assets/bower_components/susy/sass/susy";
-@import "../../../vendor/assets/bower_components/perfect-scrollbar/css/perfect-scrollbar.min";
-@import "mixins/adaptive-placeholders"
+@import "../../../node_modules/perfect-scrollbar/src/css/main";
+@import "mixins/adaptive-placeholders";
 
 /* Your mixins & functions */
 

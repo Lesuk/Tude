@@ -1,7 +1,7 @@
 message = require './message'
 require '../../../vendor/assets/bower_components/fitvids/jquery.fitvids'
-require '../../../vendor/assets/bower_components/list.js/dist/list.min'
-require '../../../vendor/assets/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min'
+require '../../../vendor/assets/javascripts/jquery.purr'
+require './best_in_place.purr'
 require './jquery-fn'
 require './best_in_place'
 require './dropdown-menu'
@@ -17,7 +17,6 @@ require './articles-sort'
 require './flashes'
 require './course-playlist'
 require './perfecr-scrollbar'
-
 require './comments'
 require './reviews'
 

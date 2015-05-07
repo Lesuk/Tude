@@ -6,7 +6,7 @@
     = link_to user_path(current_user), class: "#{type}-comment__form-author" do
       img src="#{user_pic_placeholder(1)}"
     div class="#{type}-comment__reply-field"
-      = f.text_area :body, rows: "2", id: "comment_to_#{parentid}", class: 'reply-field', style: "height: 52px;", placeholder: "Прокоментувати.."
+      = f.text_area :body, rows: "2", id: "comment_to_#{parentid}", class: 'reply-field', placeholder: "Прокоментувати.."
       .reply-buttons
         = f.submit "Надіслати", class: "btn btn-blue"
         - if type == "sub"

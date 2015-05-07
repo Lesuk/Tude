@@ -41,7 +41,7 @@ gem 'breadcrumble'
 # Tips
 gem 'active_link_to'
 # Live editing
-gem 'best_in_place', '~> 3.0.1'
+gem 'best_in_place', '~> 3.0.1', :git => 'https://github.com/Lesuk/best_in_place.git'
 # Pagination
 gem 'kaminari'
 

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  after_action :record_user_view, only: [:show]
+  # TODO
+  # after_action :record_user_view, only: [:show] # uncomment when root page will be changed
 
   def show
     @user = User.find_by_username(params[:id])
