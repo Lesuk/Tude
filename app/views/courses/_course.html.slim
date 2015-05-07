@@ -5,7 +5,7 @@
     = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__thumbnail-link"
     .course-card__thumbnail-actions
       .thumbnail-actions
-        .thumbnail-actions__play-btn
+        = link_to "", course_path(course, {trailer: true}), class: "thumbnail-actions__play-btn"
         .thumbnail-actions__share-btn
           i.fa.fa-share-alt
         = link_to favorite_course_path(course), remote: true, method: :post, class: "thumbnail-actions__star-btn" do

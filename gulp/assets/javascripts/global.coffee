@@ -19,5 +19,6 @@ require './course-playlist'
 require './perfecr-scrollbar'
 require './comments'
 require './reviews'
+require './trailer-modal'
 
 console.log message

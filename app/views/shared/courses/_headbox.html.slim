@@ -18,6 +18,7 @@
             = render partial: "shared/enrollments/enroll", locals: {course: course}
           - else
             = link_to "Start Course", "javascript:void(0)", class: "btn btn-blue btn--start-course -shadow-bottom btn-signin"
-          a.watch-trailer Переглянути трейлер
+          = link_to "Watch trailer", "http://www.youtube.com/watch?v=#{course.youtube_id}",
+              class: "watch-trailer js-modal-trailer", title: "#{course.title}"
     - if enrolled
       = render partial: "shared/courses/course_progress", locals: {course: course, user_progress: user_progress}

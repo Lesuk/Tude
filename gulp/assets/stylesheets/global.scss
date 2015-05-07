@@ -4,6 +4,7 @@
 @import "../../../vendor/assets/bower_components/breakpoint-sass/stylesheets/breakpoint";
 @import "../../../vendor/assets/bower_components/susy/sass/susy";
 @import "../../../node_modules/perfect-scrollbar/src/css/main";
+@import "../../../node_modules/magnific-popup/src/css/main";
 @import "mixins/adaptive-placeholders";
 
 /* Your mixins & functions */
@@ -82,4 +83,5 @@
 @import "helpers/helpers";
 @import "helpers/boxed-head";
 @import "helpers/perfect-scrollbar-rewriting";
+@import "helpers/magnific_popup";
 @import "states/states";

@@ -26,3 +26,10 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+Comment lines in jquery.magnific-popup.js [node_modules] :
+ // This checks if we using node and want require jquery, but we already have it with asset pipeline
+ // else if (typeof exports === 'object') {
+ // Node/CommonJS
+ // factory(require('jquery'));
+ // }
