@@ -12,6 +12,8 @@ class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :users, through: :enrollments
   has_many :views, as: :viewable
+  has_many :subscriptions, as: :subscribable
+  has_many :subscribers, through: :subscriptions
 
   validates :slug, presence: true
   validates :level, inclusion: {in: LEVELS, message: "must be: easy/middle/hard"}

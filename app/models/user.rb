@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
   has_many :article_progresses, foreign_key: :student_id
   has_many :passed_articles, through: :article_progresses, source: :article
+  has_many :subscriptions, foreign_key: :subscriber_id
+  has_many :subscribed_articles, through: :subscriptions, source: :subscribable, source_type: 'Article'
+  has_many :subscribed_courses, through: :subscriptions, source: :subscribable, source_type: 'Course'
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},

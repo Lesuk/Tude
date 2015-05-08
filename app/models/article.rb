@@ -10,6 +10,8 @@ class Article < ActiveRecord::Base
   #has_many :fans, through: :favorites, source: :user
   has_many :article_progresses, dependent: :destroy
   has_many :completing_students, through: :article_progresses, source: :student
+  has_many :subscriptions, as: :subscribable
+  has_many :subscribers, through: :subscriptions
 
   validates :slug, presence: true
 

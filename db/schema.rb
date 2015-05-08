@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506111508) do
+ActiveRecord::Schema.define(version: 20150508094524) do
 
   create_table "article_progresses", force: :cascade do |t|
     t.integer  "student_id", limit: 4, null: false
@@ -180,6 +180,17 @@ ActiveRecord::Schema.define(version: 20150506111508) do
 
   add_index "sections", ["course_id"], name: "index_sections_on_course_id", using: :btree
   add_index "sections", ["position"], name: "index_sections_on_position", using: :btree
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "subscriber_id",     limit: 4,   null: false
+    t.integer  "subscribable_id",   limit: 4,   null: false
+    t.string   "subscribable_type", limit: 255, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "subscriptions", ["subscribable_type", "subscribable_id"], name: "index_subscriptions_on_subscribable_type_and_subscribable_id", using: :btree
+  add_index "subscriptions", ["subscriber_id"], name: "index_subscriptions_on_subscriber_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
