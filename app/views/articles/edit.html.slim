@@ -1,0 +1,10 @@
+= provide(:title, "Edit article: " + @article.title)
+
+.container__article-wrapper
+  .article-wrapper
+    h1 Edit article: #{@article.title}
+
+    = form_for @article, html: { class: "ui form" } do |f|
+      = render 'shared/error_messages', object: f.object
+      = render 'form', f: f
+      = f.submit "Update article", class: "btn btn-primary"

@@ -1,0 +1,10 @@
+= provide(:title, "Create new Article")
+
+.container__article-wrapper
+  .article-wrapper
+    h1 Create new Article
+
+    = form_for @article, html: { class: "ui form" } do |f|
+      = render 'shared/error_messages', object: f.object
+      = render 'form', f: f
+      = f.submit "Create article", class: "btn btn-primary"

@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:recommended, :favorites, :mine, :favorite, :like]
+  before_action :authenticate_user!,
+                  only: [:new, :create, :edit, :update, :destroy, :recommended, :favorites,
+                          :mine, :favorite, :like]
   after_action :record_article_progress, only: [:show]
   after_action :record_user_view, only: [:show]
 
@@ -21,6 +23,39 @@ class ArticlesController < ApplicationController
     set_commentable
     load_comments
     add_breadcrumbs(["Articles", articles_path], [@article.category_name, category_path(@article.category)], [@article.title, nil])
+  end
+
+  def new
+    build_article
+    load_main_categories
+    load_categories
+    @courses = current_user.courses
+    @sections = []
+  end
+
+  def create
+    build_article
+    save_article(true) or render 'new'
+  end
+
+  def edit
+    load_article
+    load_categories
+    @courses = current_user.courses
+    @sections = @article.course.sections
+  end
+
+  def update
+    load_article
+    build_article
+    save_article or render 'edit'
+  end
+
+  def destroy
+    load_article
+    @article.destroy
+    track_activity(@article, 'destroy')
+    redirect_to articles_url
   end
 
   def popular
@@ -113,6 +148,14 @@ class ArticlesController < ApplicationController
     render nothing: true
   end
 
+  # Action for updating sections for related course
+  def update_sections
+    @sections = Section.where("course_id = ?", params[:course_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
 private
 
   def load_articles
@@ -136,7 +179,7 @@ private
   end
 
   def load_comments
-    @comments = @commentable.comments.includes(:user, {subcomments: :user}).main_comments
+    @comments ||= @commentable.comments.includes(:user, {subcomments: :user}).main_comments
   end
 
   def set_commentable
@@ -159,9 +202,23 @@ private
     @user_progress ||= @enrolled ? @article.course.user_progress(current_user) : {}
   end
 
+  def build_article
+    @article ||= current_user.articles.build
+    @article.attributes = article_params
+  end
+
+  def save_article(track = false)
+    if @article.save
+      track_activity(@article, 'create') if track
+      flash_message :success, "Article has been #{action}"
+      redirect_to @article
+    end
+  end
+
   def article_params
     article_params = params[:article]
-    article_params ? article_params.permit(:title, :description, :body, :status, :slug, :category_id, :course_id) : {}
+    article_params ? article_params.permit(:title, :description, :body, :status, :category_id, :course_id,
+          :section_id, :youtube_id, :video_duration, :demo_link, :github_link) : {}
     #params.require(:article).permit(:title, :description, :body, :status, :slug, :category_id, :course_id)
   end
 

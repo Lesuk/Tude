@@ -1,0 +1,3 @@
+$("#article_section_id")
+  .empty()
+  .append("<%= escape_javascript(render(partial: "sections/section_option", collection: @sections, as: 'section')) %>")

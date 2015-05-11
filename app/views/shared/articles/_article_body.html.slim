@@ -12,3 +12,5 @@
 
   .article-body__content
     = @article.body
+    br
+    = link_to "Edit article", edit_article_path(@article)

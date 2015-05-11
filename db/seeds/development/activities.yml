@@ -1,0 +1,83 @@
+options:
+  find_existing_by: ['trackable_id', 'trackable_type']
+
+records:
+  - sprig_id: 1
+    trackable_id: "<%= sprig_record(Course, 1).id %>"
+    trackable_type: "Course"
+    #parent_id:
+    #parent_type:
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 2
+    trackable_id: "<%= sprig_record(Course, 2).id %>"
+    trackable_type: "Course"
+    #parent_id:
+    #parent_type:
+    owner_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 3
+    trackable_id: "<%= sprig_record(Article, 1).id %>"
+    trackable_type: "Article"
+    parent_id: "<%= sprig_record(Course, 1).id %>"
+    parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 4
+    trackable_id: "<%= sprig_record(Article, 10).id %>"
+    trackable_type: "Article"
+    # parent_id: "<%= sprig_record(Course, 1).id %>"
+    # parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 3).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 5
+    trackable_id: "<%= sprig_record(Article, 12).id %>"
+    trackable_type: "Article"
+    parent_id: "<%= sprig_record(Course, 2).id %>"
+    parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 1).id %>"
+    category_id: "<%= sprig_record(Category, 6).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 6
+    trackable_id: "<%= sprig_record(Comment, 1).id %>"
+    trackable_type: "Comment"
+    parent_id: "<%= sprig_record(Article, 1).id %>"
+    parent_type: "Article"
+    owner_id: "<%= sprig_record(User, 1).id %>"
+    # category_id: "<%= sprig_record(Category, 6).id %>"
+    key: "create"
+    # recipient_id:
+
+  - sprig_id: 7
+    trackable_id: "<%= sprig_record(Comment, 2).id %>"
+    trackable_type: "Comment"
+    parent_id: "<%= sprig_record(Article, 1).id %>"
+    parent_type: "Article"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    # category_id: "<%= sprig_record(Category, 6).id %>"
+    key: "create"
+    recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 8
+    trackable_id: "<%= sprig_record(Comment, 2).id %>"
+    trackable_type: "Comment"
+    parent_id: "<%= sprig_record(Article, 1).id %>"
+    parent_type: "Article"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    # category_id: "<%= sprig_record(Category, 6).id %>"
+    key: "mention"
+    recipient_id: "<%= sprig_record(User, 1).id %>"

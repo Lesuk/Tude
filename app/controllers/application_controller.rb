@@ -28,4 +28,15 @@ protected
     stored_location_for(resource) || request.referer || root_path
   end
 
+private
+
+  def track_activity(trackable, key = params[:action], parent = nil)
+    a = current_user.activities.new
+    a.trackable = trackable
+    a.parent = parent if parent
+    a.category_id = trackable.category_id if trackable.category_id
+    a.key = key
+    a.save
+  end
+
 end

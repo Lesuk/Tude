@@ -1,4 +1,4 @@
-- if (article.youtube_id)
+- if article.youtube_id.present?
   - thumb_src = youtube_thumbnail(article.youtube_id, 'mq')
 -else
   - thumb_src = youtube_thumbnail(0, 'none')

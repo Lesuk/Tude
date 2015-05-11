@@ -1,0 +1,11 @@
+li
+  = link_to activity.owner.name, user_path(activity.owner)
+  = " #{activity.key} #{activity.trackable_type}: #{activity.trackable.title} "
+  /- if activity.trackable.comments.exists?
+    = ", comments: #{activity.trackable.comments.size}. "
+  - if activity.category.present?
+    = "In "
+    = link_to activity.category.name, category_path(activity.category)
+  - if activity.course.present?
+    = " from course: "
+    = link_to activity.course.title, course_path(activity.course)

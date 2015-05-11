@@ -4,12 +4,16 @@ Rails.application.routes.draw do
                       path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"
 
+  authenticated do
+    root to: 'pages#feed', as: :authenticated_root
+  end
+
+  root to: 'articles#index' # pages#landing
+
   # For pagination links, like: /page/2
   concern :paginatable do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
-
-  root 'users#show'
 
   # resources :users, only: [:show]
   get 'users/:id', to: 'users#show', as: 'user'
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
   post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
   post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
   post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
+  get '/feed', to: 'pages#feed'
 
   resources :articles do
     concerns :paginatable
@@ -32,6 +37,7 @@ Rails.application.routes.draw do
       get :mine
       get :top
       post :sort
+      get :update_sections, as: 'update_sections'
     end
   end
   resources :categories

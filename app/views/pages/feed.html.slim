@@ -1,0 +1,8 @@
+- provide(:title, "Activity feed")
+
+/= render partial: "shared/container__top_panel", locals: {type: "Feed"}
+.container__article-grid.h-clearfix
+  .article-grid
+    ul
+      - @activities.each do |activity|
+        = render "activities/#{activity.trackable_type.underscore}/#{activity.key}", activity: activity

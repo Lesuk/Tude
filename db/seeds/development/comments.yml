@@ -1,0 +1,19 @@
+options:
+  find_existing_by: ['body']
+
+records:
+  - sprig_id: 1
+    commentable_id: "<%= sprig_record(Article, 1).id %>"
+    commentable_type: "Article"
+    user_id: "<%= sprig_record(User, 1).id %>"
+    body: "Some dummy content for comment"
+    # parent_id:
+    # subparent_id:
+
+  - sprig_id: 2
+    commentable_id: "<%= sprig_record(Article, 1).id %>"
+    commentable_type: "Article"
+    user_id: "<%= sprig_record(User, 2).id %>"
+    body: "Some dummy comment 22 for article"
+    parent_id: "<%= sprig_record(Comment, 1).id %>"
+    # subparent_id:

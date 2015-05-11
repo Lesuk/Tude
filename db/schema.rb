@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508094524) do
+ActiveRecord::Schema.define(version: 20150511173358) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "trackable_id",   limit: 4
+    t.string   "trackable_type", limit: 255
+    t.integer  "owner_id",       limit: 4,   null: false
+    t.integer  "recipient_id",   limit: 4
+    t.integer  "category_id",    limit: 4
+    t.string   "key",            limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "parent_type",    limit: 255
+    t.integer  "parent_id",      limit: 4
+  end
+
+  add_index "activities", ["category_id"], name: "index_activities_on_category_id", using: :btree
+  add_index "activities", ["owner_id"], name: "index_activities_on_owner_id", using: :btree
+  add_index "activities", ["parent_id", "parent_type"], name: "index_activities_on_parent_id_and_parent_type", using: :btree
+  add_index "activities", ["recipient_id"], name: "index_activities_on_recipient_id", using: :btree
+  add_index "activities", ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id", using: :btree
 
   create_table "article_progresses", force: :cascade do |t|
     t.integer  "student_id", limit: 4, null: false
