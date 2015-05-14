@@ -31,7 +31,7 @@ ul.main-nav
         i.fa.fa-user
         span.main-nav__item-text Профіль
     li.main-nav__item
-      a.main-nav__link href="#"
+      = active_link_to feed_path, class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-bell-o
         span.main-nav__item-text Сповіщення
     li.main-nav__item

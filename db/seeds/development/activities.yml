@@ -81,3 +81,53 @@ records:
     # category_id: "<%= sprig_record(Category, 6).id %>"
     key: "mention"
     recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 9
+    trackable_id: "<%= sprig_record(User, 2).id %>"
+    trackable_type: "User"
+    parent_id: "<%= sprig_record(Course, 1).id %>"
+    parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "start"
+    # recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 10
+    trackable_id: "<%= sprig_record(User, 2).id %>"
+    trackable_type: "User"
+    parent_id: "<%= sprig_record(Course, 1).id %>"
+    parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "completed"
+    # recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 11
+    trackable_id: "<%= sprig_record(User, 2).id %>"
+    trackable_type: "User"
+    parent_id: "<%= sprig_record(Course, 1).id %>"
+    parent_type: "Course"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "favorited"
+    # recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 12
+    trackable_id: "<%= sprig_record(User, 2).id %>"
+    trackable_type: "User"
+    parent_id: "<%= sprig_record(Article, 2).id %>"
+    parent_type: "Article"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "favorited"
+    # recipient_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 13
+    trackable_id: "<%= sprig_record(User, 2).id %>"
+    trackable_type: "User"
+    parent_id: "<%= sprig_record(User, 1).id %>"
+    parent_type: "User"
+    owner_id: "<%= sprig_record(User, 2).id %>"
+    category_id: "<%= sprig_record(Category, 2).id %>"
+    key: "subscribed"
+    recipient_id: "<%= sprig_record(User, 1).id %>"

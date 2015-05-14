@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #, :path_prefix => "d"
 
   authenticated do
-    root to: 'pages#feed', as: :authenticated_root
+    root to: 'activities#feed', as: :authenticated_root
   end
 
   root to: 'articles#index' # pages#landing
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
   post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
   post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
-  get '/feed', to: 'pages#feed'
+  get '/feed', to: 'activities#feed', as: 'feed'
 
   resources :articles do
     concerns :paginatable

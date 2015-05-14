@@ -18,20 +18,22 @@ class Activity < ActiveRecord::Base
     categories_ids = get_categories_ids(user_id)
     courses_ids = get_courses_ids(user_id)
     users_ids = get_users_ids(user_id)
+    subscribed_courses = a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))
     where(a[:trackable_type].eq('Article')).
             where(a[:category_id].in(categories_ids).
             or(a[:owner_id].in(users_ids)).
-            or(a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))))
+            or(subscribed_courses))
   end
 
   def self.comments(user_id)
     a = Activity.arel_table
     articles_ids = get_articles_ids(user_id)
     users_ids = get_users_ids(user_id)
+    subscribed_articles = a[:parent_type].eq('Article').and(a[:parent_id].in(articles_ids))
     where(a[:trackable_type].eq('Comment')).
             where(a[:owner_id].in(users_ids).
             or(a[:recipient_id].eq(user_id)).
-            or(a[:parent_type].eq('Article').and(a[:parent_id].in(articles_ids))))
+            or(subscribed_articles))
   end
 
   def self.questions(user_id)
@@ -39,20 +41,22 @@ class Activity < ActiveRecord::Base
     categories_ids = get_categories_ids(user_id)
     courses_ids = get_courses_ids
     users_ids = get_users_ids(user_id)
+    subscribed_courses = a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))
     where(a[:trackable_type].eq('Question').
             and(a[:category_id].in(categories_ids)).
             or(a[:owner_id].in(users_ids)).
-            or(a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))))
+            or(subscribed_courses))
   end
 
   def self.answers(user_id)
     a = Activity.arel_table
     questions_ids = get_questions_ids(user_id)
     users_ids = get_users_ids(user_id)
+    subscribed_questions = a[:parent_type].eq('Question').and(a[:parent_id].in(questions_ids))
     where(a[:trackable_type].eq('Answer')).
             where(a[:owner_id].in(users_ids).
             or(a[:recipient_id].eq(user_id)).
-            or(a[:parent_type].eq('Question').and(a[:parent_id].in(questions_ids))))
+            or(subscribed_questions))
   end
 
   def self.users(user_id)

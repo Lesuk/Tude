@@ -2,4 +2,4 @@
 
 include Sprig::Helpers
 
-sprig [User, Category, Course, Section, Article]
+sprig [User, Category, Course, Section, Article, Comment, Activity]
