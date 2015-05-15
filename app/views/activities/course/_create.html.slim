@@ -1,0 +1,11 @@
+p.activity__text
+  ' has created
+  span.h-font-semibold
+    ' a new course,
+  ' in the category
+  = link_to activity.category.name, category_path(activity.category)
+- if activity.trackable.youtube_id.present?
+  = link_to '', polymorphic_path(activity.trackable),
+      class: "activity__thumbnail", style: "background-image: url(#{youtube_thumbnail(activity.trackable.youtube_id, 'hq')});"
+= link_to polymorphic_path(activity.trackable), class: "activity__title-link" do
+  h3.activity__title = activity.trackable.title

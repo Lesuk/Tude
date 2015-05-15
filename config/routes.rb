@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
   post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
   post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
-  get '/feed', to: 'activities#feed', as: 'feed'
 
   resources :articles do
     concerns :paginatable
@@ -59,6 +58,14 @@ Rails.application.routes.draw do
   end
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
+
+  get '/feed', to: 'activities#feed', as: 'feed'
+  get '/feed/courses', to: 'activities#courses', as: 'courses_feed'
+  get '/feed/articles', to: 'activities#articles', as: 'articles_feed'
+  get '/feed/comments', to: 'activities#comments', as: 'comments_feed'
+  get '/feed/questions', to: 'activities#questions', as: 'questions_feed'
+  get '/feed/answers', to: 'activities#answers', as: 'answers_feed'
+  get '/feed/users', to: 'activities#users', as: 'users_feed'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

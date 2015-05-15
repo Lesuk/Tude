@@ -4,6 +4,18 @@ class Activity < ActiveRecord::Base
   belongs_to :parent, polymorphic: true
   belongs_to :category
 
+  def self.feed(user_id)
+    a = Activity.arel_table
+    categories_ids = get_categories_ids(user_id)
+    courses_ids = get_courses_ids(user_id)
+    users_ids = get_users_ids(user_id)
+    subscribed_courses = a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))
+    where(a[:trackable_type].eq('Article')).
+            where(a[:category_id].in(categories_ids).
+            or(a[:owner_id].in(users_ids)).
+            or(subscribed_courses))
+  end
+
   def self.courses(user_id)
     a = Activity.arel_table
     categories_ids = get_categories_ids(user_id)
@@ -39,11 +51,11 @@ class Activity < ActiveRecord::Base
   def self.questions(user_id)
     a = Activity.arel_table
     categories_ids = get_categories_ids(user_id)
-    courses_ids = get_courses_ids
+    courses_ids = get_courses_ids(user_id)
     users_ids = get_users_ids(user_id)
     subscribed_courses = a[:parent_type].eq('Course').and(a[:parent_id].in(courses_ids))
-    where(a[:trackable_type].eq('Question').
-            and(a[:category_id].in(categories_ids)).
+    where(a[:trackable_type].eq('Question')).
+            where(a[:category_id].in(categories_ids).
             or(a[:owner_id].in(users_ids)).
             or(subscribed_courses))
   end

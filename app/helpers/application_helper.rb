@@ -84,4 +84,17 @@ module ApplicationHelper
       score = 0
     end
   end
+
+  # OPTIMIZE
+  def activity_icon(type, key)
+    if type == 'Course' && key == 'create'
+      'fa-tasks'
+    elsif type == 'Article' && key == 'create'
+      'fa-file-text'
+    elsif type == 'Comment' && key == 'create'
+      'fa-comment'
+    elsif type == 'Comment' && key == 'mention'
+        'fa-hand-o-right'
+    end
+  end
 end

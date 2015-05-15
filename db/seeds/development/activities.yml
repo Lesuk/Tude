@@ -1,5 +1,5 @@
 options:
-  find_existing_by: ['trackable_id', 'trackable_type']
+  find_existing_by: ['trackable_id', 'trackable_type', 'key']
 
 records:
   - sprig_id: 1

@@ -1,28 +1,19 @@
-li.activity__item id="article-#{activity.trackable.id}"
-  .activity__content
-    .activity__header
-      = link_to user_path(activity.owner), class: "activity__header-link" do
-        img.activity__avatar src="#{user_pic_placeholder(1)}"
-        span.activity__badget
-          i.fa.fa-file-text.activity__badget-icon
-        span.activity__fullname Alex Verbovskiy
-      = insert_time_tag(activity.created_at, "activity__time")
-    p.activity__text
-      ' added
-      span.h-font-semibold
-        ' new article
-      - if activity.parent.present?
-        ' to course
-        = link_to activity.parent.title + " ", polymorphic_path(activity.parent)
-      ' in category
-      = link_to activity.category.name, category_path(activity.category)
-    - if activity.trackable.youtube_id.present?
-      = link_to polymorphic_path(activity.trackable),
-          class: "activity__thumbnail", style: "background-image: url(#{youtube_thumbnail(activity.trackable.youtube_id, 'hq')});"
-        -if activity.trackable.video_duration > 0
-          span.activity__duration = set_duration(activity.trackable.video_duration)
-        /.activity__title-block
-          h3.activity__title.-type-inbox = activity.trackable.title
-    = link_to polymorphic_path(activity.trackable), class: "activity__title-link" do
-      h3.activity__title = activity.trackable.title
-    = render partial: "shared/articles/article_meta", object: activity.trackable, as: "article"
+p.activity__text
+  ' added
+  span.h-font-semibold
+    ' new article
+  - if activity.parent.present?
+    ' to course
+    = link_to activity.parent.title + " ", polymorphic_path(activity.parent)
+  ' in category
+  = link_to activity.category.name, category_path(activity.category)
+- if activity.trackable.youtube_id.present?
+  = link_to polymorphic_path(activity.trackable),
+      class: "activity__thumbnail", style: "background-image: url(#{youtube_thumbnail(activity.trackable.youtube_id, 'hq')});"
+    -if activity.trackable.video_duration > 0
+      span.activity__duration = set_duration(activity.trackable.video_duration)
+    /.activity__title-block
+      h3.activity__title.-type-inbox = activity.trackable.title
+= link_to polymorphic_path(activity.trackable), class: "activity__title-link" do
+  h3.activity__title = activity.trackable.title
+= render partial: "shared/articles/article_meta", object: activity.trackable, as: "article"

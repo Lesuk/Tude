@@ -3,6 +3,7 @@
 = render partial: "shared/container__top_panel", locals: {type: "Activities"}
 .container__article-grid.h-clearfix
   .article-grid
-    ul.activities
-      - @activities.each do |activity|
-        = render partial: "activities/#{activity.trackable_type.underscore}/#{activity.key}", locals: { activity: activity }
+    - if @activities.any?
+      ul.activities
+        - @activities.each do |activity|
+          = render partial: "activities/#{activity.trackable_type.underscore}/#{activity.key}", layout: 'activities/activity_wrapper', locals: { activity: activity }

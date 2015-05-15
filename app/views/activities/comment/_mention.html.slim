@@ -1,0 +1,10 @@
+p.activity__text
+  span.h-font-semibold
+    ' mentioned you,
+  'in his comment,
+  ' from the article
+  = link_to activity.parent.title, polymorphic_path(activity.parent)
+  | :
+= link_to polymorphic_path(activity.parent, anchor: "comment_#{activity.trackable.id}"), class: "activity__content-link" do
+  = "\"" +  truncate(activity.trackable.body, length: 140, separator: ' ', omission: '... (continued)') + "\""
+
