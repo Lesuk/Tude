@@ -94,7 +94,19 @@ module ApplicationHelper
     elsif type == 'Comment' && key == 'create'
       'fa-comment'
     elsif type == 'Comment' && key == 'mention'
-        'fa-hand-o-right'
+      'fa-bullhorn'
+    elsif type == 'Question' && key == 'create'
+      'fa-question'
+    elsif type == 'User' && key == 'start'
+      'fa-chevron-circle-right'
+    elsif type == 'User' && key == 'completed'
+      'fa-graduation-cap'
+    elsif type == 'User' && key == 'favorited'
+      'fa-star'
+    elsif type == 'User' && key == 'subscribed'
+      'fa-rss'
+    elsif type == 'Review' && key == 'create'
+      'fa-pencil'
     end
   end
 end

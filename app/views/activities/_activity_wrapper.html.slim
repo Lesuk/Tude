@@ -5,6 +5,6 @@ li.activity__item id="#{activity.trackable_type.downcase}-#{activity.trackable.i
         img.activity__avatar src="#{user_pic_placeholder(1)}"
         span.activity__badget
           i.fa.activity__badget-icon class="#{activity_icon(activity.trackable_type, activity.key)}"
-        span.activity__fullname Alex Verbovskiy
+        span.activity__fullname = activity.owner.name
       = insert_time_tag(activity.created_at, "activity__time")
     = yield

@@ -1,0 +1,7 @@
+p.activity__text
+  span.h-font-semibold
+    ' favorited
+  ' the
+  = activity.parent_type.downcase
+  '
+  = link_to activity.parent.title, polymorphic_path(activity.parent)

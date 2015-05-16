@@ -1,0 +1,5 @@
+p.activity__text
+  span.h-font-semibold
+    ' completed
+  ' the course
+  = link_to activity.parent.title, polymorphic_path(activity.parent)

@@ -1,0 +1,8 @@
+p.activity__text
+  span.h-font-semibold
+    ' subscribed
+  - if activity.parent_id == current_user.id
+    ' to your updates
+  - else
+    ' for updates of
+    = link_to activity.parent.name, polymorphic_path(activity.parent)

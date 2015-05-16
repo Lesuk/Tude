@@ -66,6 +66,7 @@ Rails.application.routes.draw do
   get '/feed/questions', to: 'activities#questions', as: 'questions_feed'
   get '/feed/answers', to: 'activities#answers', as: 'answers_feed'
   get '/feed/users', to: 'activities#users', as: 'users_feed'
+  get '/feed/personal', to: 'activities#personal', as: 'personal_feed'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
