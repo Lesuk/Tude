@@ -1,3 +1,9 @@
+.activities{
+  display: block;
+  margin: 0 auto;
+  max-width: 580px;
+}
+
 .activity{
   &__item{
     position: relative;
@@ -13,7 +19,9 @@
     background: #fff;
   }
   &__content{
-    margin-left: 60px;
+    @include breakpoint(31.25em){
+      margin-left: 60px;
+    }
   }
   &__header{}
   &__header-link{
@@ -23,8 +31,12 @@
     float: left;
     width: 50px;
     height: 50px;
-    margin-left: -60px;
+    margin-right: 10px;
     border-radius: 50%;
+
+    @include breakpoint(31.25em){
+      margin: 0 0 0 -60px;
+    }
   }
   &__badget{
     position: absolute;
