@@ -87,7 +87,7 @@ class Activity < ActiveRecord::Base
 
 private
 
-  ["categories", "courses", "articles", "questions", "comments", "answers", "users"].each do |method|
+  ["categories", "courses", "articles", "questions", "users"].each do |method|
     define_singleton_method("get_#{method}_ids") do |user_id|
       Subscription.where(subscribable_type: "#{method.singularize.capitalize}", subscriber_id: user_id).pluck(:subscribable_id)
     end

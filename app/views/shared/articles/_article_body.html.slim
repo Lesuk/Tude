@@ -5,7 +5,6 @@
     = render "shared/articles/article_actions"
 
     .meta-info.clearfix
-      / time.meta-info__date datetime="#{@article.created_at.to_s(:datetime)}" title="#{@article.created_at.to_s(:shortdate)}" = @article.created_at.to_s(:shortdate)
       = insert_time_tag(@article.created_at, "meta-info__date")
       .meta-info__views
         span = "#{@article.views.size} переглядів"
@@ -14,3 +13,5 @@
     = @article.body
     br
     = link_to "Edit article", edit_article_path(@article)
+    br
+    = link_to "Subscribe", url_for(controller: 'subscriptions', action: 'toggle', params: {subscribable_type: @article.class.to_s, subscribable_id: @article.id}), remote: true, method: :post

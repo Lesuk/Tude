@@ -1,0 +1,13 @@
+ul.course-meta.h-clearfix
+
+  li.course-meta__item
+    i.fa.fa-users.course-meta__icon
+    span.course-meta__text = course.users.size
+
+  li.course-meta__item
+    i.fa.fa-comments-o.course-meta__icon
+    span.course-meta__text = course.reviews.size
+
+  li.course-meta__item
+    i.fa.fa-star-o.course-meta__icon.-size-14
+    span.course-meta__text = course.rating

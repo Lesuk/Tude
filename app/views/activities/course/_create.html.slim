@@ -9,3 +9,4 @@ p.activity__text
       class: "activity__thumbnail", style: "background-image: url(#{youtube_thumbnail(activity.trackable.youtube_id, 'hq')});"
 = link_to polymorphic_path(activity.trackable), class: "activity__title-link" do
   h3.activity__title = activity.trackable.title
+= render partial: "shared/courses/course_meta", object: activity.trackable, as: "course"
