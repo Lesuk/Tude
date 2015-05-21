@@ -5,9 +5,12 @@ class ActivitiesController < ApplicationController
 
   [:feed, :courses, :articles, :questions, :comments, :answers, :users, :personal].each do |action|
     define_method action do
-      @activities = Activity.send("#{action}", current_user.id).includes(:owner, :trackable, :parent, :category).order_desc
+      @activities = Activity.send("#{action}", current_user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(10)
       add_breadcrumb("Activities", nil)
-      render :feed
+      respond_to do |format|
+        format.html {render :feed}
+        format.js
+      end
     end
   end
 end

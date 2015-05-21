@@ -2,6 +2,10 @@
   display: block;
   margin: 0 auto;
   max-width: 580px;
+
+  &__pagination{
+    text-align: center;
+  }
 }
 
 .activity{
