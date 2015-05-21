@@ -12,7 +12,6 @@ capybara-*.html
 /node_modules
 /app/assets/*/compiled/
 /public/assets/*
-/vendor/assets/semantic
 
 **.orig
 rerun.txt
