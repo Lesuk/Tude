@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user.subscriptions.find_or_initialize_by(subscribable: @subscribable)
     if @subscription.new_record?
       @subscription.save
+      track_activity(current_user, 'subscribe', @subscribable, @subscribable.id) if @subscription.subscribable_type == "User"
     else
       @subscription.destroy
     end

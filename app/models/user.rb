@@ -81,6 +81,7 @@ class User < ActiveRecord::Base
       if ( (user_progress[:passed_course_articles_ids].size + 1) == user_progress[:course_articles_ids].size )
         enrollment = Enrollment.find_by(course_id: course_id, user_id: self.id)
         enrollment.completed!
+        enrollment.track_completion(self, course_id)
       end
     end
   end

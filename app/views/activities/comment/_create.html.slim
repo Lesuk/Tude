@@ -2,7 +2,7 @@ p.activity__text
   ' has posted a
   span.h-font-semibold
     ' new comment,
-  ' in the article
+  = "in #{activity.parent.user_id == current_user.id ? 'your' : 'the'} article "
   = link_to activity.parent.title, polymorphic_path(activity.parent)
   | :
 = link_to polymorphic_path(activity.parent, anchor: "comment_#{activity.trackable.id}"), class: "activity__content-link" do

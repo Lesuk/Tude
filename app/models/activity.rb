@@ -6,6 +6,17 @@ class Activity < ActiveRecord::Base
 
   scope :order_desc, -> {order(id: :desc)}
 
+  def self.track_activity(trackable, owner, key, parent = nil, recipient = nil)
+    self.find_or_create_by(trackable: trackable, key: key, owner_id: owner, parent: parent)
+  end
+
+  def self.track_mention(trackable, owner, key, parent = nil, recipient = nil)
+    self.find_or_create_by(trackable: trackable, key: key, recipient_id: recipient) do |a|
+      a.owner_id = owner
+      a.parent = parent
+    end
+  end
+
   def self.feed(user_id)
     all_ids = activities_ids(user_id)
     where(id: all_ids)
@@ -75,8 +86,12 @@ class Activity < ActiveRecord::Base
   def self.users(user_id)
     a = Activity.arel_table
     users_ids = get_users_ids(user_id)
-    where(a[:trackable_type].eq('User').and(a[:trackable_id].in(users_ids)).
-            or(a[:trackable_type].eq('Review').and(a[:owner_id].in(users_ids))))
+    where(a[:trackable_type].eq('User').
+            and(a[:trackable_id].in(users_ids).
+              or(a[:recipient_id].eq(user_id))).
+            or(a[:trackable_type].eq('Review').
+              and(a[:owner_id].in(users_ids).
+                or(a[:recipient_id].eq(user_id)))))
   end
 
   def self.personal(user_id)

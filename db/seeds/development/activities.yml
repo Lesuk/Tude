@@ -129,5 +129,5 @@ records:
     parent_type: "User"
     owner_id: "<%= sprig_record(User, 2).id %>"
     category_id: "<%= sprig_record(Category, 2).id %>"
-    key: "subscribed"
+    key: "subscribe"
     recipient_id: "<%= sprig_record(User, 1).id %>"

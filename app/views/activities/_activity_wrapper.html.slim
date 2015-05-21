@@ -1,4 +1,4 @@
-li.activity__item id="#{activity.trackable_type.downcase}-#{activity.trackable.id}"
+li.activity__item id="#{activity.trackable_type.downcase}-#{activity.trackable_id}"
   .activity__content
     .activity__header
       = link_to user_path(activity.owner), class: "activity__header-link" do

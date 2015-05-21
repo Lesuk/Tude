@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     build_comment
     @comment.user_id = current_user.id
     if @comment.save
+      recipient = @comment.parent.user.id if @comment.parent_id
+      track_activity(@comment, 'create', @commentable, recipient)
       respond_to do |format|
         format.html { redirect_to @commentable, success: 'Comment added' }
         format.js

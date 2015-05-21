@@ -103,7 +103,7 @@ module ApplicationHelper
       'fa-graduation-cap'
     elsif type == 'User' && key == 'favorited'
       'fa-star'
-    elsif type == 'User' && key == 'subscribed'
+    elsif type == 'User' && key == 'subscribe'
       'fa-rss'
     elsif type == 'Review' && key == 'create'
       'fa-pencil'

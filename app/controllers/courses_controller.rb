@@ -18,6 +18,27 @@ class CoursesController < ApplicationController
     render locals: {course: @course, enrolled: @enrolled, user_progress: @user_progress}
   end
 
+  def new
+    build_course
+  end
+
+  def create
+    build_course
+    save_course(true) or render 'new'
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    load_single_course
+    @course.destroy
+    redirect_to courses_url
+  end
+
   def curriculum
     load_single_course
     @articles = @course.different_articles
@@ -77,6 +98,7 @@ class CoursesController < ApplicationController
       end
     else
       current_user.bookmark(@course)
+      track_activity(current_user, 'favorited', @course)
       respond_to do |format|
         format.html{redirect_to :back}
         format.js
@@ -111,8 +133,9 @@ private
     @course.attributes = course_params
   end
 
-  def save_course
+  def save_course(track)
     if @course.save
+      track_activity(@course, 'create') if track
       redirect_to @course
     end
   end

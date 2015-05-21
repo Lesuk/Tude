@@ -24,6 +24,7 @@ class Comment < ActiveRecord::Base
 
     users_mentioned.each do |user|
       Mention.find_or_create_by!(mentionable: self, user_id: user.id)
+      Activity.track_mention(self, self.user_id, 'mention', self.commentable, user.id)
     end
   end
 

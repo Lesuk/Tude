@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     build_review
     @review.user_id = current_user.id
     if @review.save
+      track_activity(@review, 'create', @course, @course.user_id)
       respond_to do |format|
         format.html { redirect_to @course, success: 'Review added' }
         format.js
@@ -99,7 +100,7 @@ private
 
   def review_params
     review_params = params[:review]
-    review_params ? review_params.permit(:body, :rating, :course_id) : {}
+    review_params ? review_params.permit(:body, :rating) : {}
   end
 
   def review_scope

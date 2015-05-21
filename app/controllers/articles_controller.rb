@@ -54,7 +54,6 @@ class ArticlesController < ApplicationController
   def destroy
     load_article
     @article.destroy
-    track_activity(@article, 'destroy')
     redirect_to articles_url
   end
 
@@ -116,6 +115,7 @@ class ArticlesController < ApplicationController
       end
     else
       current_user.bookmark(@article)
+      track_activity(current_user, 'favorited', @article)
       respond_to do |format|
         format.html{redirect_to :back}
         format.js
@@ -209,7 +209,7 @@ private
 
   def save_article(track = false)
     if @article.save
-      track_activity(@article, 'create') if track
+      track_activity(@article, 'create', @article.course) if track
       flash_message :success, "Article has been saved"
       redirect_to @article
     end

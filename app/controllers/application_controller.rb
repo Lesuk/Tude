@@ -30,13 +30,19 @@ protected
 
 private
 
-  def track_activity(trackable, key = params[:action], parent = nil)
+  def track_activity(trackable, key = params[:action], parent = nil, recipient = nil)
     a = current_user.activities.new
     a.trackable = trackable
     a.parent = parent if parent
-    a.category_id = trackable.category_id if trackable.category_id
+    a.category_id = trackable.category_id if trackable.try(:category_id)
     a.key = key
+    a.recipient_id = recipient if recipient
     a.save
+  end
+
+  def destroy_activity(trackable, key, parent)
+    activity = Activity.where(trackable: trackable, owner_id: current_user.id, key: key, parent: parent).first
+    activity.destroy
   end
 
 end
