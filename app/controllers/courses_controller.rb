@@ -92,6 +92,7 @@ class CoursesController < ApplicationController
     @favorited = current_user.bookmarks?(@course)
     if @favorited
       current_user.unbookmark(@course)
+      destroy_activity(current_user, 'favorited', @course)
       respond_to do |format|
         format.html {redirect_to :back}
         format.js
@@ -136,6 +137,7 @@ private
   def save_course(track)
     if @course.save
       track_activity(@course, 'create') if track
+      current_user.subscribe(@course)
       redirect_to @course
     end
   end

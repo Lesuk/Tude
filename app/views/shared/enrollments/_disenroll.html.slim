@@ -1,3 +1,5 @@
 = form_for(current_user.enrollments.find_by(course_id: course.id), html: {method: :delete, class: "hgroup__form"}) do |f|
   = f.hidden_field :course_id
-  = f.submit "Unenroll", class: "btn btn-blue btn--start-course -shadow-bottom"
+  = f.button class: "btn btn-blue-secondary", data: { confirm: "Are you sure you want to disenroll from this course?" } do
+    i.fa.fa-times
+    span.btn__text Disenroll

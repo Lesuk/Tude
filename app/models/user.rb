@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def enrolled?(course_id)
-    self.enrollments.find_by(course_id: course_id) ? true : false
+    self.enrollments.where(course_id: course_id).exists?
   end
 
   def disenroll!(course_id)
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def wrote_review?(course_id)
-    self.reviews.find_by(course_id: course_id) ? true : false
+    self.reviews.where(course_id: course_id).exists?
   end
 
   def pass_article!(article, user_progress = {})
@@ -96,5 +96,13 @@ class User < ActiveRecord::Base
 
   def passed_articles_ids
     self.passed_articles.ids
+  end
+
+  def subscribe(subscribable)
+    self.subscriptions.create(subscribable: subscribable)
+  end
+
+  def subscribed?(object)
+    self.subscriptions.where(subscribable: object).exists?
   end
 end

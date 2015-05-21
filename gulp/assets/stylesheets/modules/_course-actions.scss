@@ -1,4 +1,17 @@
 .course-actions{
   padding: 15px;
-  text-align: center;
+
+  &__row{
+    // margin-bottom: 10px;
+  }
+
+  &__cell{
+    display: inline-block;
+    width: 48%;
+    text-align: center;
+
+    & .btn{
+      margin: 0;
+    }
+  }
 }

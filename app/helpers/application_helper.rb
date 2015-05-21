@@ -85,6 +85,10 @@ module ApplicationHelper
     end
   end
 
+  def url_for_subscribable(object)
+    url_for(controller: 'subscriptions', action: 'toggle', params: {subscribable_type: object.class.to_s, subscribable_id: object.id})
+  end
+
   # OPTIMIZE
   def activity_icon(type, key)
     if type == 'Course' && key == 'create'

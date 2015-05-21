@@ -1,5 +1,28 @@
+- favorite = 'is-favorite' if current_user.try(:bookmarks?, course)
+- subscribed = 'is-subscribed' if current_user.try(:subscribed?, course)
 .course-actions.boxed-head.h-clearfix
   .boxed-head__title Course actions
-  - if enrolled
-    = render partial: "shared/enrollments/disenroll", locals: {course: course}
-  = link_to "Bookmark", favorite_course_path(course), remote: true, method: :post, class: "btn btn-blue-secondary"
+
+  .course-actions__row.h-spacing-below--xsmall
+    .course-actions__cell
+      = link_to url_for_subscribable(course), remote: true, method: :post,
+                  id: "subscribe", class: "btn btn-blue-secondary #{subscribed}" do
+        i.fa.fa-rss
+        span.btn__text = subscribed ? 'Subscribed' : 'Subscribe'
+
+    .course-actions__cell
+      = link_to favorite_course_path(course), remote: true, method: :post,
+                  id: "favorite", class: "btn btn-blue-secondary #{favorite}" do
+        i.fa.fa-star
+        span.btn__text Favorite
+
+  .course-actions__row
+    .course-actions__cell
+      = link_to "http://www.youtube.com/watch?v=#{course.youtube_id}",
+                class: "btn btn-blue-secondary js-modal-trailer", title: "#{course.title}" do
+        i.fa.fa-youtube-play
+        span.btn__text Watch trailer
+
+    .course-actions__cell
+      - if enrolled
+        = render partial: "shared/enrollments/disenroll", locals: {course: course}

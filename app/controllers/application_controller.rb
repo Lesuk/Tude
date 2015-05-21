@@ -42,7 +42,7 @@ private
 
   def destroy_activity(trackable, key, parent)
     activity = Activity.where(trackable: trackable, owner_id: current_user.id, key: key, parent: parent).first
-    activity.destroy
+    activity.destroy if activity
   end
 
 end

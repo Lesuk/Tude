@@ -210,6 +210,7 @@ private
   def save_article(track = false)
     if @article.save
       track_activity(@article, 'create', @article.course) if track
+      current_user.subscribe(@article)
       flash_message :success, "Article has been saved"
       redirect_to @article
     end

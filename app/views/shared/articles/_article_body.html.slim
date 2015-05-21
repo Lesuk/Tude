@@ -14,4 +14,4 @@
     br
     = link_to "Edit article", edit_article_path(@article)
     br
-    = link_to "Subscribe", url_for(controller: 'subscriptions', action: 'toggle', params: {subscribable_type: @article.class.to_s, subscribable_id: @article.id}), remote: true, method: :post
+    = link_to "Subscribe", url_for_subscribable(@article), remote: true, method: :post

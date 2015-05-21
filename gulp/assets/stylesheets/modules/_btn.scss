@@ -87,6 +87,10 @@
     color: #ffac33;
     border-color: rgba(255, 172, 51, 0.5) !important;
   }
+  &.is-subscribed, &.is-subscribed i{
+    color: #349d00;
+    border-color: rgba(52, 157, 0, 0.5) !important;
+  }
   &.-shadow-bottom{
     box-shadow: 0px 2px 0px #0C86D0;
   }
