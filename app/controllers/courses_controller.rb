@@ -1,13 +1,16 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:curriculum, :continue_course, :favorite]
+  before_action :authenticate_user!,
+    only: [:curriculum, :continue_course, :favorite, :active, :completed, :favorites, :recommended, :mine]
   after_action :record_user_view, only: [:show]
 
   add_breadcrumb("Edut", '/')
 
-  def index
-    load_courses
-    add_breadcrumb("Courses", nil)
-    render locals: {courses: @courses}
+  [:index, :active, :popular, :favorites, :recommended, :completed, :mine].each do |action|
+    define_method action do
+      @courses ||= method("load_#{action}_courses".to_sym).call
+      add_breadcrumb("Courses", nil)
+      render :index, locals: {courses: @courses}
+    end
   end
 
   def show
@@ -45,42 +48,6 @@ class CoursesController < ApplicationController
     add_breadcrumbs(["Courses", courses_path], [@course.category_name, category_path(@course.category)], [@course.title, course_path(@course)], ['Curriculum', nil])
   end
 
-  def active
-    @courses = current_user.courses.merge(Enrollment.active)
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
-  def popular
-    @courses ||= course_scope.includes(:category, :author).order_popular.to_a
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
-  def favorites
-    @courses = current_user.bookmarked_courses.includes(:category, :author)
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
-  def recommended
-    @courses = current_user.recommended_courses.includes(:category, :author)
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
-  def completed
-    @courses = current_user.courses.merge(Enrollment.completed)
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
-  def mine
-    @courses = current_user.own_courses.includes(:category, :author)
-    add_breadcrumb("Courses", nil)
-    render :index, locals: {courses: @courses}
-  end
-
   def continue_course
     load_single_course
     article = @course.continue_course_article(current_user)
@@ -109,8 +76,32 @@ class CoursesController < ApplicationController
 
 private
 
-  def load_courses
-    @courses ||= course_scope.includes(:category, :author).to_a
+  def load_index_courses
+    course_scope.includes(:category, :author)
+  end
+
+  def load_active_courses
+    current_user.courses.merge(Enrollment.active).includes(:category, :author)
+  end
+
+  def load_completed_courses
+    current_user.courses.merge(Enrollment.completed).includes(:category, :author)
+  end
+
+  def load_popular_courses
+    course_scope.includes(:category, :author).order_popular.to_a
+  end
+
+  def load_favorites_courses
+    current_user.bookmarked_courses.includes(:category, :author)
+  end
+
+  def load_recommended_courses
+    current_user.recommended_courses.includes(:category, :author)
+  end
+
+  def load_mine_courses
+    current_user.own_courses.includes(:category, :author)
   end
 
   def load_single_course
