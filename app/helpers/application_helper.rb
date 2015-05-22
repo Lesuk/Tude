@@ -111,6 +111,8 @@ module ApplicationHelper
       'fa-rss'
     elsif type == 'Review' && key == 'create'
       'fa-pencil'
+    else
+      'fa-dot-circle-o'
     end
   end
 end

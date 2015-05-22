@@ -14,10 +14,17 @@
     font-size: 14px;
     color: #5e5e5e;
 
-    > *{
+    > span, > time{
       float: right;
-      font-weight: 700;
+      font-weight: 600;
     }
+  }
+  &__icon{
+    min-width: 14px;
+    margin-right: 6px;
+    font-size: 13px;
+    text-align: center;
+    color: rgba(94, 94, 94, 0.7);
   }
   &__course-rating{
     display: inline-block;

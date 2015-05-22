@@ -5,6 +5,7 @@ class ActivitiesController < ApplicationController
 
   [:feed, :courses, :articles, :questions, :comments, :answers, :users, :personal].each do |action|
     define_method action do
+      # group("year(created_at)").group("month(created_at)")
       @activities = Activity.send("#{action}", current_user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(10)
       add_breadcrumb("Activities", nil)
       respond_to do |format|

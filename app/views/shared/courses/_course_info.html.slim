@@ -12,26 +12,34 @@
         = link_to "#{pluralize(course.reviews.size, 'review')}", "#reviews__box", class: "course-rating__rating-link"
         | )
     li.course-info__item
+      i.course-info__icon.fa.fa-dollar
       | Price:
       span Free
     li.course-info__item
+      i.course-info__icon.fa.fa-signal
       | Level:
       span = course.level.capitalize
     li.course-info__item
+      i.course-info__icon.fa.fa-globe
       | Language:
       span Ukrainian
     li.course-info__item
+      i.course-info__icon.fa.fa-users
       | Number of Students:
       span = course.users.size
     li.course-info__item
+      i.course-info__icon.fa.fa-clock-o
       | Course duration:
       span = set_duration(course.duration)
     li.course-info__item
+      i.course-info__icon.fa.fa-file-text-o
       | Number of Lessons:
       span = course.articles.size
     li.course-info__item
+      i.course-info__icon.fa.fa-calendar-o
       | Created at:
       time datetime="#{course.created_at.to_s(:datetime)}" title="#{course.created_at.to_s(:shortdate)}" = course.created_at.to_s(:shortdate)
     li.course-info__item
+      i.course-info__icon.fa.fa-calendar-o
       | Last update:
       time datetime="#{course.updated_at.to_s(:datetime)}" title="#{course.updated_at.to_s(:shortdate)}" = course.updated_at.to_s(:shortdate)

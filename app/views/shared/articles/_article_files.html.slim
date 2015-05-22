@@ -1,10 +1,27 @@
 .article-files.boxed-head
-  .boxed-head__title Додатково
-  a.file-btn
-    .file-btn__icon: i.fa.fa-github
-    .file-btn__text Проект на GitHub
-  a.file-btn
+  .boxed-head__title Additionally
+
+  / Test link
+  /a.file-btn
     .file-btn__icon: i.fa.fa-check-square-o
     .file-btn__text
       span Пройти тест
       | Основи Javascript
+
+  / Live demo link
+  - if @article.demo_link.present?
+    = link_to @article.demo_link, class: "file-btn" do
+      .file-btn__icon: i.fa.fa-eye
+      .file-btn__text Live Demo
+
+  / Download files link
+  /a.file-btn
+    .file-btn__icon: i.fa.fa-download
+    .file-btn__text Download article files
+
+  / Github project
+  - if @article.github_link.present?
+    = link_to @article.github_link, class: "file-btn" do
+      .file-btn__icon: i.fa.fa-github
+      .file-btn__text Project on GitHub
+

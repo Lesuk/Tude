@@ -13,6 +13,10 @@
   background: #fcfcfc;
   cursor: pointer;
 
+  &:hover{
+    border-color: #AEB8BD;
+  }
+
   &__icon{
     position: relative;
     display: inline-block;
@@ -26,10 +30,10 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-top: -13px;
-      margin-left: -11px;
+      margin-top: -12px;
+      margin-left: -10px;
       color: #8695aa;
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 
