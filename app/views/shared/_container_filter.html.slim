@@ -1,10 +1,10 @@
 .container__filter.h-clearfix
   = render partial: "shared/filter_category"
 
+  - if local_assigns.has_key? :levels
+    = render partial: "shared/filter_level", locals: {levels: levels}
+
   = render partial: "shared/filter_view_type"
 
   .filter-results
-    = page_entries_info @articles
-
-    /span.filter-results__amount 23
-    /| Публікації знайдено
+    = page_entries_info entries

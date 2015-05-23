@@ -7,9 +7,12 @@ class CoursesController < ApplicationController
 
   [:index, :active, :popular, :favorites, :recommended, :completed, :mine].each do |action|
     define_method action do
-      @courses ||= method("load_#{action}_courses".to_sym).call
+      load_categories
+      set_page_params
+      levels = Course::LEVELS
+      courses ||= method("load_#{action}_courses".to_sym).call(set_page_size)
       add_breadcrumb("Courses", nil)
-      render :index, locals: {courses: @courses}
+      render :index, locals: {courses: courses, levels: levels}
     end
   end
 
@@ -76,32 +79,33 @@ class CoursesController < ApplicationController
 
 private
 
-  def load_index_courses
-    course_scope.includes(:category, :author)
+  def load_index_courses(page_size)
+    course_scope.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
-  def load_active_courses
-    current_user.courses.merge(Enrollment.active).includes(:category, :author)
+  def load_active_courses(page_size)
+    current_user.courses.merge(Enrollment.active).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
-  def load_completed_courses
-    current_user.courses.merge(Enrollment.completed).includes(:category, :author)
+  def load_completed_courses(page_size)
+    current_user.courses.merge(Enrollment.completed).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
-  def load_popular_courses
-    course_scope.includes(:category, :author).order_popular.to_a
+  def load_popular_courses(page_size)
+    course_scope.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_popular.page(params[:page]).per(page_size)
   end
 
-  def load_favorites_courses
-    current_user.bookmarked_courses.includes(:category, :author)
+  def load_favorites_courses(page_size)
+    current_user.bookmarked_courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
-  def load_recommended_courses
-    current_user.recommended_courses.includes(:category, :author)
+  def load_recommended_courses(page_size)
+    ids = current_user.recommended_courses.map{ |a| a.id }
+    course_scope.in_array(ids).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
-  def load_mine_courses
-    current_user.own_courses.includes(:category, :author)
+  def load_mine_courses(page_size)
+    current_user.own_courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
   def load_single_course
@@ -110,6 +114,18 @@ private
 
   def load_full_course
     @course ||= course_scope.includes({sections: :articles}, {reviews: :user}).friendly.find(params[:id])
+  end
+
+  def load_categories
+    @categories ||= Category.includes(:subcategories).main_categories
+  end
+
+  def set_page_params
+    @page_params ||= params.slice(:pagesize, :category, :level, :page, :view)
+  end
+
+  def set_page_size
+    params[:pagesize] ? params[:pagesize] : 8
   end
 
   def user_progress

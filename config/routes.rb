@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :courses do
+    concerns :paginatable
     resources :reviews, only: [:new, :create, :update, :destroy]
     member do
       get :curriculum

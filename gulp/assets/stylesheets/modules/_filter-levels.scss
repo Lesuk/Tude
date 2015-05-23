@@ -1,0 +1,13 @@
+.filter-level{
+  @extend .filter-cat;
+
+  &__name{
+    @extend .filter-cat__name;
+  }
+  &__list{
+    @extend .filter-cat__list;
+  }
+  &__item{
+    @extend .filter-cat__item;
+  }
+}

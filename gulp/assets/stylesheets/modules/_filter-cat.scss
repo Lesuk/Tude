@@ -7,13 +7,14 @@
 
   @include breakpoint(370px){
     width: 200px;
+    margin-right: 10px;
   }
 }
 
 .filter-cat__name{
   position: relative;
   display:block;
-  z-index: 91;
+  // z-index: 91;
   width: 100%;
   padding: 8px 15px;
   cursor:pointer;

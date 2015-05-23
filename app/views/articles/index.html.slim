@@ -3,7 +3,7 @@
   = rel_next_prev_link_tags @articles
 
 = render partial: "shared/container__top_panel", locals: {type: "Articles"}
-= render "shared/articles/container_filter", locals: {entries: 'articles'}
+= render partial: "shared/container_filter", locals: {entries: @articles}
 .container__article-grid.h-clearfix
   .article-grid
     = render @articles

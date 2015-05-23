@@ -27,7 +27,27 @@ class Course < ActiveRecord::Base
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :name, :whois, to: :author, prefix: true, allow_nil: true
 
+  scope :order_desc, -> { order(id: :desc) }
   scope :order_popular, -> { order(views_count: :desc) }
+  scope :in_array, -> (ids) { where(id: ids) }
+
+  def self.in_category(cat = nil)
+    if cat.present?
+      category = Category.friendly.find_by_slug(cat)
+      if category.parent?
+        ids = category.subcategories.ids
+        where(category_id: ids)
+      else
+        where(category_id: category.id)
+      end
+    else
+      all
+    end
+  end
+
+  def self.in_level(level = nil)
+    level.present? ? where(level: level) : all
+  end
 
   def user_progress(user)
     course_articles_ids_array = self.course_articles_ids

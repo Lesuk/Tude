@@ -43,7 +43,15 @@
 }
 
 .container__courses-grid{
-  padding: 20px;
+  padding: 10px;
+
+  @include breakpoint(31.25em){
+    padding: 10px 20px;
+  }
+
+  .course-grid{
+    @include container(75em);
+  }
 }
 
 .container__article-wrapper{

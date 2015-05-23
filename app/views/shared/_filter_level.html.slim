@@ -1,0 +1,8 @@
+.filter-level
+  .filter-level__name.white-box All levels
+  ul.filter-level__list
+    li.filter-level__item
+      = active_link_to "All levels", url_for(params.except(:level)), active: !params.has_key?(:level), class_active: 'is-active'
+    - levels.each do |level|
+      li.filter-level__item
+        = active_link_to level.capitalize, @page_params.merge(level: level).except(:page), active: /level=#{level}/, class_active: 'is-active'

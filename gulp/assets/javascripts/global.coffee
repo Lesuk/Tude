@@ -28,5 +28,6 @@ require './reviews'
 require './trailer-modal'
 require './semantic-ui'
 require './update_sections'
+require './level-filter'
 
 console.log message

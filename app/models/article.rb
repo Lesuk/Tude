@@ -28,7 +28,7 @@ class Article < ActiveRecord::Base
   scope :order_desc, -> {order(id: :desc)}
   scope :order_popular, -> {order(views_count: :desc)}
   scope :order_position, -> {order(position: :asc)} # 'articles.position ASC'
-  scope :in_array, ->(ids) { where(id: ids) }
+  scope :in_array, -> (ids) { where(id: ids) }
 
   def self.in_category(cat = nil)
     if cat.present?
