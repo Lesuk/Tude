@@ -1,18 +1,20 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!,
-                  only: [:new, :create, :edit, :update, :destroy, :recommended, :favorites,
-                          :mine, :favorite, :like]
+                  only: [:new, :create, :edit, :update, :destroy, :recommended, :favorites, :mine, :favorite, :like]
   after_action :record_article_progress, only: [:show]
   after_action :record_user_view, only: [:show]
 
   add_breadcrumb("Edut", '/')
 
-  def index
-    load_categories
-    set_page_params
-    set_page_size
-    @articles = Article.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
+  [:index, :popular, :top, :favorites, :recommended, :mine].each do |action|
+    define_method action do
+      load_categories
+      set_page_params
+      set_page_size
+      @articles ||= method("load_#{action}_articles".to_sym).call(set_page_size)
+      add_breadcrumb("Articles", nil)
+      render :index
+    end
   end
 
   def show
@@ -55,53 +57,6 @@ class ArticlesController < ApplicationController
     load_article
     @article.destroy
     redirect_to articles_url
-  end
-
-  def popular
-    load_categories
-    set_page_params
-    set_page_size
-    @articles = Article.includes(:category).published.in_category(params[:category]).order_popular.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def favorites
-    load_categories
-    set_page_params
-    set_page_size
-    @articles = current_user.bookmarked_articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def recommended
-    load_categories
-    set_page_params
-    set_page_size
-    ids = current_user.recommended_articles.map{ |a| a.id }
-    @articles = Article.includes(:category).in_array(ids).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def top
-    load_categories
-    set_page_params
-    set_page_size
-    articles_array = Article.top_sorted_array(params[:category])
-    @articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
-  end
-
-  def mine
-    load_categories
-    set_page_params
-    set_page_size
-    @articles = current_user.articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(@page_size)
-    add_breadcrumb("Articles", nil)
-    render :index
   end
 
   def favorite
@@ -162,6 +117,32 @@ private
     @articles ||= article_scope.published.to_a
   end
 
+  def load_index_articles(page_size)
+    article_scope.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(page_size)
+  end
+
+  def load_popular_articles(page_size)
+    article_scope.includes(:category).published.in_category(params[:category]).order_popular.page(params[:page]).per(page_size)
+  end
+
+  def load_top_articles(page_size)
+    articles_array = article_scope.top_sorted_array(params[:category])
+    Kaminari.paginate_array(articles_array).page(params[:page]).per(page_size)
+  end
+
+  def load_favorites_articles(page_size)
+    current_user.bookmarked_articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(page_size)
+  end
+
+  def load_recommended_articles(page_size)
+    ids = current_user.recommended_articles.map{ |a| a.id }
+    article_scope.includes(:category).in_array(ids).published.in_category(params[:category]).order_desc.page(params[:page]).per(page_size)
+  end
+
+  def load_mine_articles(page_size)
+    current_user.articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(page_size)
+  end
+
   def load_article
     @article ||= article_scope.friendly.find(params[:id])
   end
@@ -191,7 +172,7 @@ private
   end
 
   def set_page_size
-    @page_size ||= params[:pagesize] ? params[:pagesize] : 8
+    params[:pagesize] ? params[:pagesize] : 8
   end
 
   def check_enrollment
