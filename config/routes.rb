@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root to: 'activities#feed', as: :authenticated_root
   end
 
-  root to: 'articles#index' # pages#landing
+  root to: 'activities#feed' # pages#landing
 
   # For pagination links, like: /page/2
   concern :paginatable do
@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
 
+  get '/search/:action', to: 'searches#:action', as: 'search'
+
   get '/feed', to: 'activities#feed', as: 'feed'
   get '/feed/courses', to: 'activities#courses', as: 'courses_feed'
   get '/feed/articles', to: 'activities#articles', as: 'articles_feed'
@@ -72,6 +74,9 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+
+  # Example of single route with pages
+  # get '/search/:action/(page/:page)', controller: 'searches', action: ':action', to: 'searches#:action', as: 'search'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

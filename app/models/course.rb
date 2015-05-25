@@ -21,6 +21,7 @@ class Course < ActiveRecord::Base
 
   after_touch :update_duration
 
+  searchkick highlight: [:title, :description]
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -33,7 +34,7 @@ class Course < ActiveRecord::Base
 
   def self.in_category(cat = nil)
     if cat.present?
-      category = Category.friendly.find_by_slug(cat)
+      category = Category.friendly.find(cat)
       if category.parent?
         ids = category.subcategories.ids
         where(category_id: ids)
@@ -47,6 +48,23 @@ class Course < ActiveRecord::Base
 
   def self.in_level(level = nil)
     level.present? ? where(level: level) : all
+  end
+
+  def self.search_courses(params)
+    query = params[:q].presence || "*"
+    conditions = {}
+    conditions[:category_id] = Category.with_child_ids(params[:category]) if params[:category]
+    conditions[:level] = params[:level] if ( params[:level] && Course::LEVELS.include?(params[:level]) )
+    page_size = params[:pagesize] ? params[:pagesize] : 8
+    Course.search(
+      query,
+      include: [:category, :author],
+      fields: ["title^10", "description", "content"],
+      highlight: true,
+      where: conditions,
+      page: params[:page],
+      per_page: page_size
+    )
   end
 
   def user_progress(user)
@@ -77,6 +95,11 @@ class Course < ActiveRecord::Base
   def normalize_friendly_id(string)
     string.to_s.to_slug.normalize(transliterations: :ukrainian).to_s
   end
+
+  # Index only published courses
+  # def should_index?
+  #   # published?
+  # end
 
  private
 

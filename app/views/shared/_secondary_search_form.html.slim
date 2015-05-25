@@ -1,0 +1,6 @@
+= form_tag search_path(search_objects_type), method: :get, class: 'secondary-search' do
+  .secondary-search__group
+    = text_field_tag :q, nil, id: 'secondary-search', class: 'secondary-search__input', placeholder: 'Search..', autocomplete: :off
+    span.secondary-search__btn-group
+      button.secondary-search__btn type="submit"
+        i.fa.fa-search

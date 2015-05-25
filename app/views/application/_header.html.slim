@@ -3,15 +3,12 @@
     button.menu-btn.lines-button.x type="button" role="button" aria-label="Menu"
       span.menu-btn__lines
   .header__main-search
-    .main-search
-      label.main-search__icon for="main-search"
-        i.fa.fa-search
-      input.main-search__input type="text" id="main-search" placeholder="Search articles, courses, questions"
+    = render "shared/main_search_form"
   .header__mob-logo
     .mob-logo
       = link_to root_path, class: "mob-logo__link"
         img.mob-logo__img src="#{gulp_asset_path('images/edut-logo.png')}" width='34' height="40"
-  
+
   - if user_signed_in?
     = render "shared/header_user_section"
   - else

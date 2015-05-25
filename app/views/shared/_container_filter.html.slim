@@ -2,7 +2,7 @@
   = render partial: "shared/filter_category"
 
   - if local_assigns.has_key? :levels
-    = render partial: "shared/filter_level", locals: {levels: levels}
+    = render partial: "shared/filter_level", locals: {levels: levels} if levels.present?
 
   = render partial: "shared/filter_view_type"
 

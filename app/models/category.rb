@@ -14,6 +14,17 @@ class Category < ActiveRecord::Base
   scope :main_categories, -> { where(parent_id: nil) }
   scope :all_subcategories, -> { where.not(parent_id: nil) }
 
+  def self.with_child_ids(main_category)
+    category = self.friendly.find(main_category)
+    if category.present?
+      ids = [category.id]
+      ids << category.subcategories.ids if category.parent?
+      ids.flatten
+    else
+      []
+    end
+  end
+
   def parent?
     self.parent_id == nil
   end

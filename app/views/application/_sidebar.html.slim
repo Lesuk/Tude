@@ -1,12 +1,7 @@
 .sidebar
   .sidebar__logo
   .sidebar__secondary-search.h-bottom-sidebar-border
-    form.secondary-search action="#" method="get"
-      div.secondary-search__group
-        input.secondary-search__input type="text" name="q" placeholder="Пошук..."
-        span.secondary-search__btn-group
-          button.secondary-search__btn type="submit"
-            i.fa.fa-search
+    = render 'shared/secondary_search_form'
   .sidebar__main-logo.h-bottom-sidebar-border
     .main-logo
       = link_to root_path, class: "main-logo__link"

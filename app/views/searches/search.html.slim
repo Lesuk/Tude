@@ -1,0 +1,17 @@
+- provide(:title, "Search")
+- content_for :head do
+  = rel_next_prev_link_tags @search_results if @search_results.present?
+
+= render partial: "shared/container__top_panel", locals: {type: "Search"}
+- if params[:q].present?
+  = render partial: "shared/container_filter", locals: {entries: @search_results, levels: @levels}
+.container__search-results
+  - if @search_results.any?
+    - @search_results.with_details.each do |result, details|
+      p = details[:highlight][:title].present? ? sanitize(details[:highlight][:title]) : result.title
+      p = sanitize details[:highlight][:description]
+      p  = " (#{result.category.name})"
+
+  - if params[:q].present?
+    = paginate @search_results, window: 3, outer_window: 1
+    = render partial: "shared/filter_per_page"

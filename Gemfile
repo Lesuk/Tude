@@ -7,6 +7,11 @@ gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
+# Search
+gem 'searchkick'
+# fast and reliable requests (offered by searchkick)
+gem 'typhoeus'
+
 # front end
 gem "slim-rails"
 gem 'susy'

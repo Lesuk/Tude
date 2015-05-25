@@ -15,6 +15,7 @@ class Article < ActiveRecord::Base
 
   validates :slug, presence: true
 
+  searchkick highlight: [:title, :body]
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   acts_as_list scope: :course
@@ -32,7 +33,7 @@ class Article < ActiveRecord::Base
 
   def self.in_category(cat = nil)
     if cat.present?
-      category = Category.friendly.find_by_slug(cat)
+      category = Category.friendly.find(cat)
       if category.parent?
         ids = category.subcategories.ids
         where(category_id: ids)
@@ -50,6 +51,22 @@ class Article < ActiveRecord::Base
     articles = articles.sort_by{ |x| ids.index x.id }
   end
 
+  def self.search_articles(params)
+    query = params[:q].presence || "*"
+    conditions = {}
+    conditions[:category_id] = Category.with_child_ids(params[:category]) if params[:category]
+    page_size = params[:pagesize] ? params[:pagesize] : 8
+    Article.search(
+      query,
+      include: [:category, :user],
+      fields: ["title^10", "description", "body"],
+      highlight: true,
+      where: conditions,
+      page: params[:page],
+      per_page: page_size
+    )
+  end
+
   def slug_candidates
     [
       :title,
@@ -63,6 +80,11 @@ class Article < ActiveRecord::Base
 
   def published?
     self.status == '1'
+  end
+
+  # Index only published articles
+  def should_index?
+    published?
   end
 
   # def user_fan?(user_id)
