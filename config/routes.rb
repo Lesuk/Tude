@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Soulmate::Server, :at => "/autocomplete"
+
   devise_for :users,  controllers: {registrations: "registrations"},
                       path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"

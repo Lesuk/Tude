@@ -20,6 +20,8 @@ class Course < ActiveRecord::Base
   validates :level, inclusion: {in: LEVELS, message: "must be: easy/middle/hard"}
 
   after_touch :update_duration
+  after_save :push_into_soulmate
+  before_destroy :remove_from_soulmate
 
   searchkick highlight: [:title, :description]
   extend FriendlyId
@@ -106,5 +108,17 @@ class Course < ActiveRecord::Base
   def update_duration
     self.duration = self.sections.sum(:duration)
     self.save!
+  end
+
+  def push_into_soulmate
+    loader = Soulmate::Loader.new("courses")
+    loader.add("id" => self.id, "term" => self.title, "data" => {
+      "url" => Rails.application.routes.url_helpers.course_path(self)
+      })
+  end
+
+  def remove_from_soulmate
+    loader = Soulmate::Loader.new("courses")
+    loader.remove("id" => self.id)
   end
 end

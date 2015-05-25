@@ -15,6 +15,9 @@ class Article < ActiveRecord::Base
 
   validates :slug, presence: true
 
+  after_save :push_into_soulmate
+  before_destroy :remove_from_soulmate
+
   searchkick highlight: [:title, :body]
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
@@ -90,4 +93,18 @@ class Article < ActiveRecord::Base
   # def user_fan?(user_id)
   #   self.fans.where(id: user_id).present?
   # end
+
+ private
+
+  def push_into_soulmate
+    loader = Soulmate::Loader.new("articles")
+    loader.add("id" => self.id, "term" => self.title, "data" => {
+      "url" => Rails.application.routes.url_helpers.article_path(self)
+      })
+  end
+
+  def remove_from_soulmate
+    loader = Soulmate::Loader.new("articles")
+    loader.remove("id" => self.id)
+  end
 end

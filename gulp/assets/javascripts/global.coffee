@@ -29,5 +29,6 @@ require './trailer-modal'
 require './semantic-ui'
 require './update_sections'
 require './level-filter'
+require './soulmate-custom'
 
 console.log message

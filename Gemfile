@@ -12,6 +12,10 @@ gem 'searchkick'
 # fast and reliable requests (offered by searchkick)
 gem 'typhoeus'
 
+# Autocomplete search terms
+gem 'rack-contrib'
+gem 'soulmate', :require => 'soulmate/server'
+
 # front end
 gem "slim-rails"
 gem 'susy'

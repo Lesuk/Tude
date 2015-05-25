@@ -12,6 +12,9 @@
       p = sanitize details[:highlight][:description]
       p  = " (#{result.category.name})"
 
-  - if params[:q].present?
-    = paginate @search_results, window: 3, outer_window: 1
-    = render partial: "shared/filter_per_page"
+    - if params[:q].present?
+      = paginate @search_results, window: 3, outer_window: 1
+      = render partial: "shared/filter_per_page"
+
+  - else
+    p No results found
