@@ -1,7 +1,9 @@
 <% if @favorited %>
+  $("#course-<%= @course.id %> .-favorite .course-meta__icon").removeClass('is-favorite');
   $("#course_<%= @course.id %> .fa-star").removeClass('is-favorite');
   $('#favorite').removeClass('is-favorite');
 <% else %>
+  $("#course-<%= @course.id %> .-favorite .course-meta__icon").addClass('is-favorite');
   $("#course_<%= @course.id %> .fa-star").addClass('is-favorite');
   $('#favorite').addClass('is-favorite');
 <% end %>

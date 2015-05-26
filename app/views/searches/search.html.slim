@@ -8,9 +8,7 @@
 .container__search-results
   - if @search_results.any?
     - @search_results.with_details.each do |result, details|
-      p = details[:highlight][:title].present? ? sanitize(details[:highlight][:title]) : result.title
-      p = sanitize details[:highlight][:description]
-      p  = " (#{result.category.name})"
+      = render partial: 'shared/object_list_type', locals: {object: result, details: details}
 
     - if params[:q].present?
       = paginate @search_results, window: 3, outer_window: 1

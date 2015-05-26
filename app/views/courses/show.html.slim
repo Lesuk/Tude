@@ -8,7 +8,7 @@
       .course-primary.h-clearfix
         .course-primary__course-description.course-primary__alpha data-box="info"
           h2.course-description__title Course description
-          p.course-description__content = course.description
+          p.course-description__content = course.body
         .course-primary__course-author.course-primary__omega data-box="info"
           = render partial: "shared/courses/course_author", locals: {course: course}
         .course-primary__course-info.course-primary__omega data-box="info"

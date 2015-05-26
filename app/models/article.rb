@@ -58,12 +58,14 @@ class Article < ActiveRecord::Base
     query = params[:q].presence || "*"
     conditions = {}
     conditions[:category_id] = Category.with_child_ids(params[:category]) if params[:category]
+    # conditions[:language] = params[:locale]
     page_size = params[:pagesize] ? params[:pagesize] : 8
+    highlight_settings = {fields: {title: {number_of_fragments: 0}, body: {fragment_size: 200}}}
     Article.search(
       query,
       include: [:category, :user],
       fields: ["title^10", "description", "body"],
-      highlight: true,
+      highlight: highlight_settings,
       where: conditions,
       page: params[:page],
       per_page: page_size

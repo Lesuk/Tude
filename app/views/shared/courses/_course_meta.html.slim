@@ -1,3 +1,4 @@
+- bookmarked = current_user.try(:bookmarks?, course)
 ul.course-meta.h-clearfix
 
   li.course-meta__item
@@ -5,9 +6,14 @@ ul.course-meta.h-clearfix
     span.course-meta__text = course.users.size
 
   li.course-meta__item
-    i.fa.fa-comments-o.course-meta__icon
+    i.fa.fa-comment-o.course-meta__icon
     span.course-meta__text = course.reviews.size
 
   li.course-meta__item
     i.fa.fa-star-o.course-meta__icon.-size-14
     span.course-meta__text = course.rating
+
+  - if user_signed_in?
+    li.course-meta__item.-float-right
+      = link_to favorite_course_path(course), remote: true, method: :post, class: "course-meta__link -favorite" do
+        i.fa.course-meta__icon.-size-14 class="#{bookmarked ? 'is-favorite fa-star' : 'fa-star-o'}"

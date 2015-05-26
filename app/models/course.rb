@@ -23,7 +23,7 @@ class Course < ActiveRecord::Base
   after_save :push_into_soulmate
   before_destroy :remove_from_soulmate
 
-  searchkick highlight: [:title, :description]
+  searchkick highlight: [:title, :body]
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -58,11 +58,12 @@ class Course < ActiveRecord::Base
     conditions[:category_id] = Category.with_child_ids(params[:category]) if params[:category]
     conditions[:level] = params[:level] if ( params[:level] && Course::LEVELS.include?(params[:level]) )
     page_size = params[:pagesize] ? params[:pagesize] : 8
+    highlight_settings = {fields: {title: {number_of_fragments: 0}, body: {fragment_size: 200}}}
     Course.search(
       query,
       include: [:category, :author],
-      fields: ["title^10", "description", "content"],
-      highlight: true,
+      fields: ["title^10", "body"],
+      highlight: highlight_settings,
       where: conditions,
       page: params[:page],
       per_page: page_size

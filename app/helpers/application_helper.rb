@@ -89,6 +89,17 @@ module ApplicationHelper
     url_for(controller: 'subscriptions', action: 'toggle', params: {subscribable_type: object.class.to_s, subscribable_id: object.id})
   end
 
+  def object_list_data(object, details)
+    if details
+      title = details[:highlight][:title].present? ? sanitize(details[:highlight][:title]) : object.title
+      body = details[:highlight][:body].present? ? sanitize(details[:highlight][:body]) : truncate(object.body, length: 200, separator: ' ')
+    else
+      title = object.title
+      body = truncate(object.body, length: 200, separator: ' ')
+    end
+    return title, body
+  end
+
   # OPTIMIZE
   def activity_icon(type, key)
     if type == 'Course' && key == 'create'

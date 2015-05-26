@@ -15,7 +15,6 @@ article.article-card id="article-#{article.id}"
       span.article-card__duration = set_duration(article.video_duration)
     /= insert_time_tag(article.created_at, "article-card__publication-date")
   .article-card__info
-    /a.article-card__category href="#rails" WordPress
     = link_to article.category_name, category_path(article.category), class: "article-card__category"
     h3.article-card__headline
       = link_to article.title, article_path(article), class: "article-card__headline-link"
