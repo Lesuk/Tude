@@ -1,5 +1,10 @@
 .main-search{
   position: relative;
+
+  & .soulmate{
+    top: 45px;
+    left: 25px;
+  }
 }
 
 .main-search__icon{

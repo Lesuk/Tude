@@ -232,7 +232,8 @@
       if ($('ul#soulmate').length > 0) {
         this.container = $('ul#soulmate');
       } else {
-        this.container = $('<ul id="soulmate">').insertAfter(this.input);
+        // CHANGED: add soulmate class
+        this.container = $('<ul id="soulmate" class="soulmate">').insertAfter(this.input);
       }
       this.container.delegate('.soulmate-suggestion', {
         mouseover: function() {
@@ -299,6 +300,8 @@
     Soulmate.prototype.showContainer = function() {
       var _this = this;
       this.container.show();
+      //CHANGED: added trigger for container (for highlighting)
+      this.container.trigger('contentchanged');
       return $(document).bind('click.soulmate', function(event) {
         if (!_this.container.has($(event.target)).length) {
           return _this.hideContainer();

@@ -1,4 +1,4 @@
 = form_tag search_path(search_objects_type), method: :get, class: 'main-search' do
   label.main-search__icon for="main-search"
     i.fa.fa-search
-  = text_field_tag :q, nil, class: 'main-search__input', id: "main-search", placeholder: "Search articles, courses, questions", autocomplete: :off
+  = text_field_tag :q, params[:q], class: 'main-search__input', id: "main-search", placeholder: "Search articles, courses, questions", autocomplete: :off, pattern: ".{1,}", required: "required"

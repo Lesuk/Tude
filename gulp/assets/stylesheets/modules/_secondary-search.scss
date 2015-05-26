@@ -1,6 +1,19 @@
 .secondary-search{
   border: 1px solid #666f7f;
   border-radius: 3px;
+
+  & .soulmate{
+    top: 40px;
+    left: -11px;
+    width: 210px;
+    border-radius: 0;
+    & .soulmate-suggestion{
+      padding: 5px;
+    }
+    & .soulmate__icon{
+      display: none;
+    }
+  }
 }
 
 .secondary-search__group{

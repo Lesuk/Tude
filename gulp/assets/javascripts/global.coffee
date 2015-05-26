@@ -30,5 +30,6 @@ require './semantic-ui'
 require './update_sections'
 require './level-filter'
 require './soulmate-custom'
+require './highlight-custom'
 
 console.log message
