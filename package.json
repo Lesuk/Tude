@@ -37,6 +37,7 @@
     "gulp-sourcemaps": "^1.2.8",
     "gulp-swig": "^0.7.4",
     "gulp-util": "^3.0.0",
+    "hint.css": "^1.3.4",
     "list.js": "^1.1.1",
     "lodash": "^2.4.1",
     "magnific-popup": "^1.0.0",

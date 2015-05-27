@@ -1,44 +1,44 @@
 ul.main-nav
   li.main-nav__header
-    | Меню
+    | Menu
     - direction = cookies[:sidebar_position] == 'reduced' ? 'right' : 'left'
     span class="fa fa-angle-#{direction} reduce-sidebar"
   li.main-nav__item
     = active_link_to courses_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-tasks
-      span.main-nav__item-text Курси
+      span.main-nav__item-text Courses
   li.main-nav__item
     = active_link_to articles_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-file-text-o
-      span.main-nav__item-text Публікації
+      span.main-nav__item-text Tutorials
   li.main-nav__item
     a.main-nav__link href="#"
       i.fa.fa-arrows
-      span.main-nav__item-text Вказівники
+      span.main-nav__item-text Tracks
   li.main-nav__item
     a.main-nav__link href="#"
       i.fa.fa-list-ol
-      span.main-nav__item-text Тести
+      span.main-nav__item-text Quizzes
   li.main-nav__item
     a.main-nav__link href="#"
       i.fa.fa-question-circle
-      span.main-nav__item-text Запитання
+      span.main-nav__item-text Questions
   - if user_signed_in?
     li.h-bottom-sidebar-border
-    li.main-nav__header.pers Персональне
+    li.main-nav__header.pers Personal
     li.main-nav__item
       = active_link_to user_path(current_user), class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-user
-        span.main-nav__item-text Профіль
+        span.main-nav__item-text Profile
     li.main-nav__item
       = active_link_to feed_path, class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-bell-o
-        span.main-nav__item-text Сповіщення
+        span.main-nav__item-text Notifications
     li.main-nav__item
       a.main-nav__link href="#"
         i.fa.fa-rss
-        span.main-nav__item-text Підписки
-    li.main-nav__item
+        span.main-nav__item-text Subscriptions
+    /li.main-nav__item
       = link_to destroy_user_session_path, method: :delete, class: "main-nav__link"
         i.fa.fa-sign-out
-        span.main-nav__item-text Вийти
+        span.main-nav__item-text Log Out
