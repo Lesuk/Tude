@@ -1,10 +1,11 @@
+- entries_class = entries.class.to_s.gsub(/:.*$/, '').pluralize.downcase
 .container__filter.h-clearfix
   = render partial: "shared/filter_category"
 
   - if local_assigns.has_key? :levels
     = render partial: "shared/filter_level", locals: {levels: levels} if levels.present?
 
-  = render partial: "shared/filter_view_type"
+  = render partial: "shared/filter_view_type", locals: {entries_class: entries_class} if params[:controller] != 'searches'
 
   .filter-results
     = page_entries_info entries

@@ -133,6 +133,7 @@
   border-top-color: rgba(213, 218, 219, 0.3);
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
+  font-size: 0;
 
   @include breakpoint(28.750em){
     padding: 8px 8px 10px;
@@ -142,8 +143,8 @@
   }
 }
 .article-card__category{
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   margin-bottom: 2px;
   overflow: hidden;
   white-space: nowrap;
@@ -203,5 +204,15 @@
   }
 }
 .article-card__publication-date{
-  @extend .article-card__views;
+  display: inline-block;
+  font-size: 11px;
+  margin-bottom: 1px;
+  line-height: 13px;
+  color: #aaa;
+  overflow: hidden;
+  &:before{
+    content: "\2022";
+    display: inline-block;
+    padding:  0 6px 0 6px;
+  }
 }

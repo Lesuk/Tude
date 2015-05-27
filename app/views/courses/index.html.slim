@@ -1,11 +1,14 @@
 - provide(:title, "Courses")
 - content_for :head do
   = rel_next_prev_link_tags courses
+- partial_path = course_partial_path
 
 = render partial: "shared/container__top_panel", locals: {type: "Courses"}
 = render partial: "shared/container_filter", locals: {entries: courses, levels: levels}
 .container__courses-grid.h-clearfix
   .courses-grid
-    = render courses
+    - courses.each do |course|
+      = render partial: partial_path, locals: {object: course, show_progress: true}
+
   = paginate courses, window: 3, outer_window: 1
   = render partial: "shared/filter_per_page"

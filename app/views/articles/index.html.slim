@@ -1,11 +1,14 @@
 - provide(:title, "Articles")
 - content_for :head do
   = rel_next_prev_link_tags @articles
+- partial_path = article_partial_path
 
 = render partial: "shared/container__top_panel", locals: {type: "Articles"}
 = render partial: "shared/container_filter", locals: {entries: @articles}
 .container__article-grid.h-clearfix
   .article-grid
-    = render @articles
+    - @articles.each do |article|
+      = render partial: partial_path, locals: {object: article}
+
   = paginate @articles, window: 3, outer_window: 1
   = render partial: "shared/filter_per_page"

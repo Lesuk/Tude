@@ -1,11 +1,12 @@
+- grid_view, list_view, links_view = check_view_type(entries_class)
 .filter__view-type
   ul.view-type.white-box
     li.view-type__item
-      = link_to({view: 'grid'}, class: 'view-type__link white-box__icon-item is-active') do
+      = active_link_to('', active: grid_view, class_active: 'is-active', class: 'view-type__link white-box__icon-item js-view-type', data: {objects: entries_class, type: 'grid'}) do
         i.fa.fa-th
     li.view-type__item
-      = link_to({view: 'list'}, class: 'view-type__link white-box__icon-item') do
+      = active_link_to('', active: list_view, class_active: 'is-active', class: 'view-type__link white-box__icon-item js-view-type', data: {objects: entries_class, type: 'list'}) do
         i.fa.fa-th-list
     li.view-type__item
-      = link_to({view: 'links'}, class: 'view-type__link white-box__icon-item') do
+      = active_link_to('', active: links_view, class_active: 'is-active', class: 'view-type__link white-box__icon-item js-view-type', data: {objects: entries_class, type: 'links'}) do
         i.fa.fa-bars

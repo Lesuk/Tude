@@ -1,21 +1,22 @@
-- if article.youtube_id.present?
-  - thumb_src = youtube_thumbnail(article.youtube_id, 'mq')
+- if object.youtube_id.present?
+  - thumb_src = youtube_thumbnail(object.youtube_id, 'mq')
 -else
   - thumb_src = youtube_thumbnail(0, 'none')
-article.article-card id="article-#{article.id}"
+article.article-card id="article-#{object.id}"
   .article-card__thumbnail
-    = link_to '', article_path(article), class: "article-card__thumbnail-link"
-    -if article.video_duration > 0
-      = link_to '', article_path(article, {autoplay: true}), class: "article-card__play-btn"
+    = link_to '', article_path(object), class: "article-card__thumbnail-link"
+    -if object.video_duration > 0
+      = link_to '', article_path(object, {autoplay: true}), class: "article-card__play-btn"
     .article-card__thumbnail-hover-bg
       .article-card__thumbnail-overlay
       .article-card__thumbnail-gradient
     img.article-card__thumbnail-image src="#{thumb_src}"
-    -if article.video_duration > 0
-      span.article-card__duration = set_duration(article.video_duration)
-    /= insert_time_tag(article.created_at, "article-card__publication-date")
+    -if object.video_duration > 0
+      span.article-card__duration = set_duration(object.video_duration)
+
   .article-card__info
-    = link_to article.category_name, category_path(article.category), class: "article-card__category"
+    = link_to object.category_name, category_path(object.category), class: "article-card__category"
+    = insert_time_tag(object.created_at, "article-card__publication-date")
     h3.article-card__headline
-      = link_to article.title, article_path(article), class: "article-card__headline-link"
-    = render partial: "shared/articles/article_meta", locals: {article: article}
+      = link_to object.title, article_path(object), class: "article-card__headline-link"
+    = render partial: "shared/articles/article_meta", locals: {article: object}

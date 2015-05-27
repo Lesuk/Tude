@@ -1,0 +1,10 @@
+.course-card__level
+  span.course-card__level-lines class="level-#{object.level.downcase}"
+.course-card__students-count
+  span = object.users.size
+  = 'students'.pluralize(object.users.size)
+.course-card__rating
+  .course-card__rating-stars
+    .course-card__rating-stars-gray
+    .course-card__rating-stars-yellow style="width:#{rating_to_percentage(object.rating)}%;"
+  span.course-card__rating-count #{pluralize(object.reviews.size, 'review')}

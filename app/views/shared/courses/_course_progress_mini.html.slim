@@ -1,0 +1,14 @@
+- progress = course.user_progress(current_user)
+- passed_size = progress[:passed_course_articles_ids].size
+- all_size = progress[:course_articles_ids].size # course.articles.size
+- completed = progress[:percentage] < 100 ? false : true
+- state_class = completed ? 'status-completed' : 'status-active'
+- classes = local_assigns[:classes] if local_assigns.has_key?("classes")
+.course-card__progress class="#{classes}"
+  .progress
+    div class="progress-bar #{state_class}" style="width: #{progress[:percentage]}%;"
+  span.progress__stats #{passed_size} / #{all_size}
+  - if completed
+    i.fa.fa-check.progress__check
+  - else
+    = link_to '', continue_course_path(course), class: 'progress__next'

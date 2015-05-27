@@ -5,10 +5,11 @@
 = render partial: "shared/container__top_panel", locals: {type: "Search"}
 - if params[:q].present?
   = render partial: "shared/container_filter", locals: {entries: @search_results, levels: @levels}
-.container__search-results
+.container__objects-list.h-clearfix
   - if @search_results.any?
-    - @search_results.with_details.each do |result, details|
-      = render partial: 'shared/object_list_type', locals: {object: result, details: details}
+    .objects-list
+      - @search_results.with_details.each do |result, details|
+        = render partial: 'shared/object_list_type', locals: {object: result, details: details}
 
     - if params[:q].present?
       = paginate @search_results, window: 3, outer_window: 1

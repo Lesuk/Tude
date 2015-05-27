@@ -1,51 +1,27 @@
-- bookmarked = current_user.try(:bookmarks?, course)
-.course-card id="#{dom_id(course)}"
+- bookmarked = current_user.try(:bookmarks?, object)
+.course-card id="#{dom_id(object)}"
   .course-card__thumbnail
-    img.course-card__thumbnail-image src="#{youtube_thumbnail(course.youtube_id, 'mq')}"
-    = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__thumbnail-link"
+    img.course-card__thumbnail-image src="#{youtube_thumbnail(object.youtube_id, 'mq')}"
+    = link_to object.title, course_path(object), title: "#{object.title}", class: "course-card__thumbnail-link"
     .course-card__thumbnail-actions
       .thumbnail-actions
-        = link_to "", course_path(course, {trailer: true}), class: "thumbnail-actions__play-btn"
+        = link_to "", course_path(object, {trailer: true}), class: "thumbnail-actions__play-btn"
         .thumbnail-actions__share-btn
           i.fa.fa-share-alt
-        = link_to favorite_course_path(course), remote: true, method: :post, class: "thumbnail-actions__star-btn" do
+        = link_to favorite_course_path(object), remote: true, method: :post, class: "thumbnail-actions__star-btn" do
           i.fa.fa-star class="#{bookmarked ? 'is-favorite' : ''}"
   .course-card__info
     .course-card__meta
-
-      - if current_user.try(:enrolled?, course.id)
-
-        - progress = course.user_progress(current_user)
-        - passed_size = progress[:passed_course_articles_ids].size
-        - all_size = progress[:course_articles_ids].size # course.articles.size
-        - completed = progress[:percentage] < 100 ? false : true
-        - state_class = completed ? 'status-completed' : 'status-active'
-        .course-card__progress
-          .progress
-            div class="progress-bar #{state_class}" style="width: #{progress[:percentage]}%;"
-          span.progress__stats #{passed_size} / #{all_size}
-          - if completed
-            i.fa.fa-check.progress__check
-          - else
-            = link_to '', continue_course_path(course), class: 'progress__next'
-
+      - if current_user.try(:enrolled?, object.id)
+        = render partial: 'shared/courses/course_progress_mini', locals: {course: object}
       - else
-        .course-card__level
-          span.course-card__level-lines class="level-#{course.level.downcase}"
-        .course-card__students-count
-          span = course.users.size
-          = 'students'.pluralize(course.users.size)
-        .course-card__rating
-          .course-card__rating-stars
-            .course-card__rating-stars-gray
-            .course-card__rating-stars-yellow style="width:#{rating_to_percentage(course.rating)}%;"
-          span.course-card__rating-count #{pluralize(course.reviews.size, 'review')}
+        = render partial: 'shared/courses/course_card_meta', locals: {object: object}
 
-    = link_to course.category_name, category_path(course.category), class: "course-card__category"
+    = link_to object.category_name, category_path(object.category), class: "course-card__category"
     h3.course-card__headline
-      = link_to course.title, course_path(course), title: "#{course.title}", class: "course-card__headline-link"
+      = link_to object.title, course_path(object), title: "#{object.title}", class: "course-card__headline-link"
     .course-card__author
       .course-card__author-img
         img src="#{user_pic_placeholder(1)}"
-      = link_to course.author_name, user_path(course.author), class: "course-card__author-name"
-      .course-card__author-whois = course.author_whois
+      = link_to object.author_name, user_path(object.author), class: "course-card__author-name"
+      .course-card__author-whois = object.author_whois

@@ -2,30 +2,38 @@
 - obj_link = url_for(action: 'index', controller: obj_class.pluralize, only_path: false, trailing_slash: true) + "#{object.to_param}"
 - obj_details = local_assigns.has_key?(:details) ? details : nil
 - article_duration = ( obj_class == 'article' && object.try(:video_duration) > 0 ) ? true : false
-- thumb_src = object.youtube_id.present? ? youtube_thumbnail(object.youtube_id, 'mq') : youtube_thumbnail(0, 'none')
+- thumb_src = object.youtube_id.present? ? youtube_thumbnail(object.youtube_id, 'mq') : nil
 - title, body = object_list_data(object, obj_details)
 article.object-list id="#{obj_class}-#{object.id}"
-  .object-list__thumbnail
-    = link_to '', obj_link, class: 'object-list__thumbnail-link'
-    - if article_duration
-      = link_to '', article_path(object, {autoplay: true}), class: "object-list__play-btn"
-    - elsif obj_class == 'course'
-      = link_to '', course_path(object, {trailer: true}), class: "object-list__play-btn"
-    .object-list__thumbnail-hover-bg
-      .object-list__thumbnail-overlay
-      .object-list__thumbnail-gradient
-    img.object-list__thumbnail-image src="#{thumb_src}"
-    -if article_duration
-      span.object-list__duration = set_duration(object.video_duration)
+  - if thumb_src
+    .object-list__thumbnail
+      = link_to '', obj_link, class: 'object-list__thumbnail-link'
+      - if article_duration
+        = link_to '', article_path(object, {autoplay: true}), class: "object-list__play-btn"
+      - elsif obj_class == 'course'
+        = link_to '', course_path(object, {trailer: true}), class: "object-list__play-btn"
+      .object-list__thumbnail-hover-bg
+        .object-list__thumbnail-overlay
+        .object-list__thumbnail-gradient
+      img.object-list__thumbnail-image src="#{thumb_src}"
+      -if article_duration
+        span.object-list__duration = set_duration(object.video_duration)
 
-  .object-list__info
+  .object-list__info class="#{'-without-thumbnail' if !thumb_src}"
     = link_to object.category_name, category_path(object.category), class: "object-list__category"
     = insert_time_tag(object.created_at, "object-list__publication-date")
     h3.object-list__headline
       = link_to title, obj_link, class: "object-list__headline-link"
     p.object-list__content = body
+    / Resolve conflict with user/author (rename user column in article)
+    / span.object-list__author
+    /   ' Author:
+    /   = link_to obj_class == 'article' ? object.user_name : object.author_name, user_path(object.user)
     - if obj_class == 'article'
       = render partial: "shared/articles/article_meta", locals: {article: object}
     - elsif obj_class == 'course'
       = render partial: "shared/courses/course_meta", locals: {course: object}
 
+    - if (local_assigns[:show_progress])
+      - if current_user.try(:enrolled?, object.id)
+        = render partial: 'shared/courses/course_progress_mini', locals: {course: object, classes: "-display-block"}

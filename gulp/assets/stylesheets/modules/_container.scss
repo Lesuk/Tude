@@ -74,6 +74,10 @@
   }
 }
 
+.container__objects-list{
+  @extend .container__article-grid;
+}
+
 .container__main-footer{
   position: relative;
 }

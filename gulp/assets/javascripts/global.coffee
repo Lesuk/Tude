@@ -31,5 +31,6 @@ require './update_sections'
 require './level-filter'
 require './soulmate-custom'
 require './highlight-custom'
+require './view-type-cookies'
 
 console.log message

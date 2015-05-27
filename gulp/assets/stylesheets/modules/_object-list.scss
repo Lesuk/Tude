@@ -10,9 +10,14 @@
   &__thumbnail{
     @extend .article-card__thumbnail;
     display: inline-block;
-    width: 25%;
+    width: 0;
+    height: auto;
     border: none;
     border-radius: 0;
+
+    @include breakpoint(31.250em){
+      width: 25%;
+    }
   }
   &__thumbnail-link{
     @extend .article-card__thumbnail-link;
@@ -39,13 +44,23 @@
   &__info{
     position: relative;
     display: inline-block;
-    width: 73.5%;
-    margin-left: 1.5%;
+    width: 100%;
+    margin: 0;
     padding: 10px 14px;
     vertical-align: top;
     border: 1px solid;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
     background-color: #fff;
+
+    @include breakpoint(31.250em){
+      width: 73.5%;
+      margin-left: 1.5%;
+    }
+
+    &.-without-thumbnail{
+      width: 100%;
+      margin-left: 0;
+    }
 
     & em{
       font-style: normal;
@@ -55,23 +70,12 @@
 
   &__category{
     @extend .article-card__category;
-    display: inline-block;
-    width: auto;
     margin-bottom: 4px;
   }
 
   &__publication-date{
-    display: inline-block;
-    font-size: 11px;
+    @extend .article-card__publication-date;
     margin-bottom: 4px;
-    line-height: 13px;
-    color: #aaa;
-    overflow: hidden;
-    &:before{
-      content: "\2022";
-      display: inline-block;
-      padding:  0 6px 0 6px;
-    }
   }
 
   &__headline{
@@ -89,6 +93,14 @@
     margin-bottom: 8px;
     font-size: 14px;
     line-height: 20px;
+    color: #5e5e5e;
+  }
+
+  &__author{
+    display: block;
+    margin-bottom: 6px;
+    line-height: 20px;
+    font-size: 12px;
     color: #5e5e5e;
   }
 }

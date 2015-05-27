@@ -100,6 +100,35 @@ module ApplicationHelper
     return title, body
   end
 
+  def check_view_type(entries_class)
+    grid_view = ( cookies["#{entries_class}_view_type"] == 'grid' || cookies["#{entries_class}_view_type"].blank? ) ? true : false
+    list_view = cookies["#{entries_class}_view_type"] == 'list' ? true : false
+    links_view = cookies["#{entries_class}_view_type"] == 'links' ? true : false
+    return grid_view, list_view, links_view
+  end
+
+  def article_partial_path
+    case cookies["articles_view_type"]
+    when 'list'
+      partial = 'shared/object_list_type'
+    when 'links'
+      partial = 'shared/object_links_type'
+    else
+      partial = 'articles/article'
+    end
+  end
+
+  def course_partial_path
+    case cookies["courses_view_type"]
+    when 'list'
+      partial = 'shared/object_list_type'
+    when 'links'
+      partial = 'shared/object_links_type'
+    else
+      partial = 'courses/course'
+    end
+  end
+
   # OPTIMIZE
   def activity_icon(type, key)
     if type == 'Course' && key == 'create'

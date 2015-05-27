@@ -316,6 +316,11 @@
   display: table-cell;
   vertical-align: middle;
   font-size: 0;
+
+  &.-display-block{
+    display: block;
+    margin-top: 10px;
+  }
 }
 
 .progress{

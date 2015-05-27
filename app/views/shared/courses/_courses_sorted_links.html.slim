@@ -1,5 +1,5 @@
 li.pages-nav__item = active_link_to "My active", active_courses_path(), active: /\/active/, class_active: 'is-current', class: 'pages-nav__link'
-li.pages-nav__item = active_link_to "Newest", courses_path(), active: :exclusive, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Newest", courses_path(), active: /courses\/page|courses\/?(\?.*)?$/, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Popular", popular_courses_path(), active: /\/popular/, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Favorites", favorites_courses_path(), active: /\/favorites/, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Recommended", recommended_courses_path(), active: /\/recommended/, class_active: 'is-current', class: 'pages-nav__link'
