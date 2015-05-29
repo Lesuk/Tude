@@ -7,6 +7,6 @@
     remote       : data-remote
 li.pagination__item.pagination__item--next.white-box__list-item
   - unless current_page.last?
-    = link_to url, :rel => 'next', :remote => remote, :class => 'pagination__link white-box__item white-box__link' do
+    = link_to url, :rel => 'next', :remote => remote, :class => 'pagination__link white-box__item white-box__link', aria: {label: "Next page"} do
       i.fa.fa-angle-right
   /== link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, :rel => 'next', :remote => remote, :class => 'pagination__link'

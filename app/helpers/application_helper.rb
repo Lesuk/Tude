@@ -68,7 +68,7 @@ module ApplicationHelper
   end
 
   def get_time_value(time)
-    time > (Time.now - 1.days) ? time_ago_in_words(time) + " ago" : time.to_s(:shortdate)
+    time > 1.days.ago ? time_ago_in_words(time) + " ago" : time.to_s(:shortdate)
   end
 
   def wilson_score(up, down)

@@ -32,5 +32,6 @@ require './level-filter'
 require './soulmate-custom'
 require './highlight-custom'
 require './view-type-cookies'
+require './keyboard-shortcuts'
 
 console.log message

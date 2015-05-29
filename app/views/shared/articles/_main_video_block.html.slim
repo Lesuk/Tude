@@ -6,14 +6,16 @@
   - if @article.in_list?
     .video-controls.h-clearfix
       - if !@article.first?  && @article.higher_item.published?
-        .video-controls__previous
-          = link_to @article.higher_item, class: "video-controls__previous-link" do
+        - prev_article = @article.higher_item
+        .video-controls__previous.hint--rounded.hint--right data-hint="#{prev_article.title}"
+          = link_to prev_article, class: "video-controls__previous-link" do
             i.fa.fa-arrow-left.video-controls__previous-icon
             ' Previous
             span.video-controls__article-text Lesson
       - if !@article.last? && @article.lower_item.published?
-        .video-controls__next
-          = link_to @article.lower_item, class: "video-controls__next-link" do
+        - next_article = @article.lower_item
+        .video-controls__next.hint--rounded.hint--left data-hint="#{next_article.title}"
+          = link_to next_article, class: "video-controls__next-link" do
             |
             ' Next
             span.video-controls__article-text Lesson

@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, foreign_key: :subscriber_id
   has_many :subscribed_articles, through: :subscriptions, source: :subscribable, source_type: 'Article'
   has_many :subscribed_courses, through: :subscriptions, source: :subscribable, source_type: 'Course'
+  has_many :subscribed_users, through: :subscriptions, source: :subscribable, source_type: 'User'
   has_many :activities, foreign_key: :owner_id
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},

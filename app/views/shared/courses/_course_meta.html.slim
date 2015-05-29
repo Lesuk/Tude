@@ -1,19 +1,19 @@
 - bookmarked = current_user.try(:bookmarks?, course)
 ul.course-meta.h-clearfix
 
-  li.course-meta__item
+  li.course-meta__item.hint--top.hint--rounded data-hint="Number of students"
     i.fa.fa-users.course-meta__icon
     span.course-meta__text = course.users.size
 
-  li.course-meta__item
+  li.course-meta__item.hint--top.hint--rounded data-hint="Number of reviews"
     i.fa.fa-comment-o.course-meta__icon
     span.course-meta__text = course.reviews.size
 
-  li.course-meta__item
+  li.course-meta__item.hint--top.hint--rounded data-hint="Course rating"
     i.fa.fa-star-o.course-meta__icon.-size-14
     span.course-meta__text = course.rating
 
   - if user_signed_in?
-    li.course-meta__item.-float-right
+    li.course-meta__item.-float-right.hint--left.hint--rounded data-hint="Add to favorites"
       = link_to favorite_course_path(course), remote: true, method: :post, class: "course-meta__link -favorite" do
         i.fa.course-meta__icon.-size-14 class="#{bookmarked ? 'is-favorite fa-star' : 'fa-star-o'}"

@@ -2,22 +2,22 @@
 - bookmarked = current_user.try(:bookmarks?, article)
 ul.article-meta.h-clearfix
 
-  li.article-meta__item
+  li.article-meta__item.hint--top.hint--rounded data-hint="Number of views"
     i.fa.fa-eye.article-meta__icon
     span.article-meta__text = article.views.size
 
-  li.article-meta__item
+  li.article-meta__item.hint--top.hint--rounded data-hint="Comments on article"
     = link_to article_path(article, anchor: "comments__box"), class: "article-meta__link" do
       i.fa.fa-comment-o.article-meta__icon
       span.article-meta__text = article.comments.size
 
-  li.article-meta__item.-like class="#{liked ? 'is-liked' : ''}"
+  li.article-meta__item.-like.hint--top.hint--rounded data-hint="Likes" class="#{liked ? 'is-liked' : ''}"
     = link_to like_article_path(article), remote: true, method: :post, class: "article-meta__link" do
       i.fa.article-meta__icon class="#{liked ? 'fa-thumbs-up' : 'fa-thumbs-o-up'}"
       span.article-meta__text
         = article.liked_by_count
 
   - if user_signed_in?
-    li.article-meta__item.-float-right
+    li.article-meta__item.-float-right.hint--left.hint--rounded data-hint="Add to favorites"
       = link_to favorite_article_path(article), remote: true, method: :post, class: "article-meta__link -favorite" do
         i.fa.article-meta__icon.-size-14 class="#{bookmarked ? 'is-favorite fa-star' : 'fa-star-o'}"

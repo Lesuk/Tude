@@ -57,4 +57,15 @@
       font-weight: 600;
     }
   }
+  &__badge{
+    display: inline-block;
+    margin-left: 8px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background-color: #5CC0FC;
+  }
 }

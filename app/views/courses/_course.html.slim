@@ -5,10 +5,10 @@
     = link_to object.title, course_path(object), title: "#{object.title}", class: "course-card__thumbnail-link"
     .course-card__thumbnail-actions
       .thumbnail-actions
-        = link_to "", course_path(object, {trailer: true}), class: "thumbnail-actions__play-btn"
-        .thumbnail-actions__share-btn
+        = link_to "", course_path(object, {trailer: true}), class: "thumbnail-actions__play-btn hint--top hint--rounded", data: {hint: "Watch trailer"}
+        a.thumbnail-actions__share-btn.hint--top.hint--rounded data-hint="Share"
           i.fa.fa-share-alt
-        = link_to favorite_course_path(object), remote: true, method: :post, class: "thumbnail-actions__star-btn" do
+        = link_to favorite_course_path(object), remote: true, method: :post, class: "thumbnail-actions__star-btn hint--top hint--rounded", data: {hint: "Favorite"} do
           i.fa.fa-star class="#{bookmarked ? 'is-favorite' : ''}"
   .course-card__info
     .course-card__meta

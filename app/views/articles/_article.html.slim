@@ -6,7 +6,7 @@ article.article-card id="article-#{object.id}"
   .article-card__thumbnail
     = link_to '', article_path(object), class: "article-card__thumbnail-link"
     -if object.video_duration > 0
-      = link_to '', article_path(object, {autoplay: true}), class: "article-card__play-btn"
+      = link_to '', article_path(object, {autoplay: true}), class: "article-card__play-btn hint--top hint--rounded", data: {hint: "Play video"}
     .article-card__thumbnail-hover-bg
       .article-card__thumbnail-overlay
       .article-card__thumbnail-gradient
