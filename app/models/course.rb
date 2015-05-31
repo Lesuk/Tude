@@ -26,6 +26,8 @@ class Course < ActiveRecord::Base
   searchkick highlight: [:title, :body]
   extend FriendlyId
   friendly_id :title, use: :slugged
+  # TODO : add state enum column
+  counter_culture :author #, column_name: Proc.new { |model| model.published? ? 'courses_count' : nil }
 
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :name, :whois, to: :author, prefix: true, allow_nil: true

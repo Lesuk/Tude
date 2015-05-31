@@ -1,17 +1,17 @@
 require 'babosa'
 class Article < ActiveRecord::Base
-  belongs_to :user # author
-  belongs_to :category, counter_cache: true
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :category
   belongs_to :section, touch: true
-  belongs_to :course, counter_cache: true
+  belongs_to :course
   has_many :comments, as: :commentable
   has_many :views, as: :viewable
-  #has_many :favorites, as: :favorable
-  #has_many :fans, through: :favorites, source: :user
   has_many :article_progresses, dependent: :destroy
   has_many :completing_students, through: :article_progresses, source: :student
   has_many :subscriptions, as: :subscribable
   has_many :subscribers, through: :subscriptions
+  ##has_many :favorites, as: :favorable
+  ##has_many :fans, through: :favorites, source: :user
 
   validates :slug, presence: true
 
@@ -22,8 +22,13 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   acts_as_list scope: :course
+  counter_culture :author, column_name: Proc.new { |model| model.published? ? 'articles_count' : nil },
+                    :column_names => { ["articles.status = 1"] => 'articles_count' }
+  counter_culture :course, :column_name => Proc.new {|model| model.published? ? 'articles_count' : nil },
+                    :column_names => { ["articles.status = 1"] => 'articles_count' }
+  counter_culture :category, :foreign_key_values => Proc.new {|category_id| [category_id, Category.find_by_id(category_id).try(:parent).try(:id)] }
 
-  delegate :name, :whois, :bio, to: :user, prefix: true, allow_nil: true
+  delegate :name, :whois, :bio, to: :author, prefix: true, allow_nil: true
   delegate :name, to: :category, prefix: true, allow_nil: true
   delegate :title, to: :course, prefix: true, allow_nil: true
 

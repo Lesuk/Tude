@@ -1,6 +1,6 @@
 .author-box.boxed-head
   .boxed-head__title Автор публікації
   img.author-box__img src="#{user_pic_placeholder(2)}"
-  = link_to @article.user_name, user_path(@article.user), class: "author-box__name"
-  span.author-box__whois = @article.user_whois
-  p.author-box__about = @article.user_bio
+  = link_to @article.author_name, user_path(@article.author), class: "author-box__name"
+  span.author-box__whois = @article.author_whois
+  p.author-box__about = @article.author_bio

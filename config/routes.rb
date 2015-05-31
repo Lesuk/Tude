@@ -25,6 +25,18 @@ Rails.application.routes.draw do
   post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
   post 'subscriptions/toggle', to: 'subscriptions#toggle', as: 'toggle_subscription'
 
+  resources :users, only: [:show] do
+    member do
+      get :activity
+      get :courses
+      get :reviews
+      get :articles
+      get :comments
+      get :questions
+      get :answers
+    end
+  end
+
   resources :articles do
     concerns :paginatable
     resources :comments, only: [:new, :create, :update, :destroy]

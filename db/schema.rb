@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150526173806) do
+ActiveRecord::Schema.define(version: 20150530121642) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -44,24 +44,25 @@ ActiveRecord::Schema.define(version: 20150526173806) do
   add_index "article_progresses", ["student_id"], name: "index_article_progresses_on_student_id", using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",          limit: 255
-    t.string   "description",    limit: 255
-    t.text     "body",           limit: 65535
-    t.integer  "course_id",      limit: 4
-    t.integer  "category_id",    limit: 4
-    t.integer  "user_id",        limit: 4
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "section_id",     limit: 4
-    t.string   "youtube_id",     limit: 255
-    t.integer  "comments_count", limit: 4,     default: 0,   null: false
-    t.string   "status",         limit: 255,   default: "0", null: false
-    t.integer  "video_duration", limit: 4,     default: 0,   null: false
-    t.string   "demo_link",      limit: 255
-    t.string   "github_link",    limit: 255
-    t.string   "slug",           limit: 255,                 null: false
-    t.integer  "position",       limit: 4,                   null: false
-    t.integer  "views_count",    limit: 4,     default: 0,   null: false
+    t.string   "title",             limit: 255
+    t.string   "description",       limit: 255
+    t.text     "body",              limit: 65535
+    t.integer  "course_id",         limit: 4
+    t.integer  "category_id",       limit: 4
+    t.integer  "user_id",           limit: 4
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "section_id",        limit: 4
+    t.string   "youtube_id",        limit: 255
+    t.integer  "comments_count",    limit: 4,     default: 0,   null: false
+    t.string   "status",            limit: 255,   default: "0", null: false
+    t.integer  "video_duration",    limit: 4,     default: 0,   null: false
+    t.string   "demo_link",         limit: 255
+    t.string   "github_link",       limit: 255
+    t.string   "slug",              limit: 255,                 null: false
+    t.integer  "position",          limit: 4,                   null: false
+    t.integer  "views_count",       limit: 4,     default: 0,   null: false
+    t.integer  "subscribers_count", limit: 4,     default: 0,   null: false
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
@@ -72,14 +73,15 @@ ActiveRecord::Schema.define(version: 20150526173806) do
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.string   "description",    limit: 255
-    t.integer  "parent_id",      limit: 4
-    t.integer  "articles_count", limit: 4,   default: 0, null: false
-    t.integer  "courses_count",  limit: 4,   default: 0, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "slug",           limit: 255,             null: false
+    t.string   "name",              limit: 255
+    t.string   "description",       limit: 255
+    t.integer  "parent_id",         limit: 4
+    t.integer  "articles_count",    limit: 4,   default: 0, null: false
+    t.integer  "courses_count",     limit: 4,   default: 0, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "slug",              limit: 255,             null: false
+    t.integer  "subscribers_count", limit: 4,   default: 0, null: false
   end
 
   add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
@@ -102,23 +104,24 @@ ActiveRecord::Schema.define(version: 20150526173806) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
-    t.string   "title",          limit: 255
-    t.string   "summary",        limit: 255
-    t.text     "body",           limit: 65535
-    t.text     "content",        limit: 65535
-    t.string   "level",          limit: 255
-    t.string   "youtube_id",     limit: 255
-    t.integer  "category_id",    limit: 4
-    t.integer  "users_count",    limit: 4,     default: 0,   null: false
-    t.integer  "articles_count", limit: 4,     default: 0,   null: false
-    t.integer  "reviews_count",  limit: 4,     default: 0,   null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.integer  "user_id",        limit: 4
-    t.integer  "duration",       limit: 4,     default: 0,   null: false
-    t.string   "slug",           limit: 255,                 null: false
-    t.float    "rating",         limit: 24,    default: 0.0, null: false
-    t.integer  "views_count",    limit: 4,     default: 0,   null: false
+    t.string   "title",             limit: 255
+    t.string   "summary",           limit: 255
+    t.text     "body",              limit: 65535
+    t.text     "content",           limit: 65535
+    t.string   "level",             limit: 255
+    t.string   "youtube_id",        limit: 255
+    t.integer  "category_id",       limit: 4
+    t.integer  "users_count",       limit: 4,     default: 0,   null: false
+    t.integer  "articles_count",    limit: 4,     default: 0,   null: false
+    t.integer  "reviews_count",     limit: 4,     default: 0,   null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "user_id",           limit: 4
+    t.integer  "duration",          limit: 4,     default: 0,   null: false
+    t.string   "slug",              limit: 255,                 null: false
+    t.float    "rating",            limit: 24,    default: 0.0, null: false
+    t.integer  "views_count",       limit: 4,     default: 0,   null: false
+    t.integer  "subscribers_count", limit: 4,     default: 0,   null: false
   end
 
   add_index "courses", ["category_id"], name: "index_courses_on_category_id", using: :btree
@@ -233,6 +236,12 @@ ActiveRecord::Schema.define(version: 20150526173806) do
     t.text     "bio",                    limit: 65535
     t.string   "whois",                  limit: 255
     t.integer  "views_count",            limit: 4,     default: 0,  null: false
+    t.integer  "courses_count",          limit: 4,     default: 0,  null: false
+    t.integer  "articles_count",         limit: 4,     default: 0,  null: false
+    t.integer  "comments_count",         limit: 4,     default: 0,  null: false
+    t.integer  "questions_count",        limit: 4,     default: 0,  null: false
+    t.integer  "answers_count",          limit: 4,     default: 0,  null: false
+    t.integer  "subscribers_count",      limit: 4,     default: 0,  null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

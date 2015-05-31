@@ -12,6 +12,8 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true
 
   after_save :save_mentions
+  # TODO : add state enum column
+  counter_culture :user #, column_name: Proc.new { |model| model.published? ? 'comments_count' : nil }
 
   delegate :name, :username, :whois, to: :user, prefix: true, allow_nil: true
 
