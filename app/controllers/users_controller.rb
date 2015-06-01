@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     render locals: {courses: courses, levels: levels}
   end
 
+  def articles
+
+  end
+
   private
 
   def record_user_view

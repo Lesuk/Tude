@@ -1,0 +1,35 @@
+.object-link{
+  position: relative;
+  display: block;
+  min-width: 300px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  font-size: 0;
+
+  &__wrapper{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 10px 14px;
+    vertical-align: top;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    background-color: #fff;
+  }
+  &__category{
+    @extend .article-card__category;
+  }
+  &__publication-date{
+    @extend .article-card__publication-date;
+  }
+  &__headline{
+    @extend .article-card__headline;
+    line-height: 26px;
+  }
+  &__headline-link{
+    @extend .article-card__headline-link;
+    min-height: initial;
+    font-size: 18px;
+  }
+}
