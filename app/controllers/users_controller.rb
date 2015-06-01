@@ -32,6 +32,22 @@ class UsersController < ApplicationController
     render locals: {articles: articles}
   end
 
+  def questions
+    @user = User.find_by_username(params[:id])
+  end
+
+  def answers
+    @user = User.find_by_username(params[:id])
+  end
+
+  def comments
+    @user = User.find_by_username(params[:id])
+  end
+
+  def reviews
+    @user = User.find_by_username(params[:id])
+  end
+
   private
 
   def record_user_view

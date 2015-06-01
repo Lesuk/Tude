@@ -1,0 +1,5 @@
+= provide(:title, "#{@user.name} - Answers")
+/ - content_for :head do
+/   = rel_next_prev_link_tags answers
+
+= render partial: 'shared/users/container__user_wrapper', locals: {user: @user}
