@@ -1,0 +1,9 @@
+= provide(:title, "#{@user.name} - Articles")
+- content_for :head do
+  = rel_next_prev_link_tags articles
+
+= render partial: 'shared/users/container__user_wrapper', locals: {user: @user}
+
+= render partial: "shared/container_filter", locals: {entries: articles}
+
+= render partial: "shared/articles/container__article_grid", locals: {articles: articles}

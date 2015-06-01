@@ -24,7 +24,12 @@ class UsersController < ApplicationController
   end
 
   def articles
-
+    @user = User.find_by_username(params[:id])
+    load_categories
+    set_page_params
+    articles = @user.articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(set_page_size)
+    add_breadcrumb("#{@user.name} articles", nil)
+    render locals: {articles: articles}
   end
 
   private

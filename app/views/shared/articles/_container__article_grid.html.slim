@@ -1,0 +1,9 @@
+- partial_path = article_partial_path
+
+.container__article-grid.h-clearfix
+  .article-grid
+    - articles.each do |article|
+      = render partial: partial_path, locals: {object: article}
+
+  = paginate articles, window: 3, outer_window: 1
+  = render partial: "shared/filter_per_page"
