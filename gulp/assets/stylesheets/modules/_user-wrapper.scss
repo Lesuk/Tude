@@ -1,0 +1,14 @@
+.user-wrapper{
+  position: relative;
+  padding: 10px 20px 0 20px;
+  background: #79BCE6 image-url('triangles-max_2.jpg');
+  background-size: cover;
+
+  &__breadcrumbs{
+    margin-bottom: 20px;
+  }
+
+  &__profile-infos{
+    margin-bottom: 20px;
+  }
+}

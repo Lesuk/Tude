@@ -8,12 +8,12 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
   has_many :reviews
-  has_many :own_courses, class_name: "Course"
+  has_many :courses
   has_many :views, as: :viewable
   # has_many :favorites
   # has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
   has_many :enrollments
-  has_many :courses, through: :enrollments
+  has_many :enrolled_courses, through: :enrollments, source: :course
   has_many :mentions
   has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
   has_many :article_progresses, foreign_key: :student_id

@@ -1,0 +1,13 @@
+.container__user-wrapper
+
+  .user-wrapper.h-clearfix
+    .user-wrapper__breadcrumbs.-color-white
+      = render_breadcrumbs
+
+    .user-wrapper__profile-infos
+      = render partial: 'shared/users/profile_infos', locals: {user: user}
+
+  .pages-nav.-bg-white.-shadow-bottom
+    nav.pages-nav__wrapper
+      ul.pages-nav__list
+        = render partial: "shared/users/users_sorted_links", locals: {user: user}

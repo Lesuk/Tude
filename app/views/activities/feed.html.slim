@@ -1,9 +1,4 @@
 - provide(:title, "Activity feed")
 
 = render partial: "shared/container__top_panel", locals: {type: "Activities"}
-.container__activities
-  - if @activities.any?
-    ul.activities
-      = render partial: "shared/activities", object: @activities
-    .activities__pagination
-      = link_to_next_page(@activities, 'Load more', remote: true, class: 'btn btn-large')
+= render partial: "shared/activities/container__activities", locals: {activities: @activities}

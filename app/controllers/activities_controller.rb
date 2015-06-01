@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
       add_breadcrumb("Activities", nil)
       respond_to do |format|
         format.html {render :feed}
-        format.js
+        format.js {render :feed}
       end
     end
   end

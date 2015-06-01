@@ -1,0 +1,12 @@
+ul.user-counters
+  li.user-counters__item
+    span.user-counters__number = user.enrollments.completed.size
+    | completed courses
+
+  li.user-counters__item
+    span.user-counters__number = user.enrollments.active.size
+    | active courses
+
+  li.user-counters__item.-fsize-12
+    span.user-counters__number = user.subscribers.size
+    | subscribers

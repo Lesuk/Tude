@@ -5,14 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:id])
-    add_breadcrumb(@user.name, nil)
-    render locals: {user: @user}
-  end
-
-  def activity
-    @user = User.find_by_username(params[:id])
-    add_breadcrumb("#{@user.name} activity", nil)
-    render locals: {user: @user}
+    @activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(4)
+    add_breadcrumbs(['Users', nil], [@user.name, nil])
+    respond_to do |format|
+      format.html {render :show, locals: {user: @user, activities: @activities}}
+      format.js {render template: "activities/feed.js.erb", locals: {user: @user, activities: @activities}}
+    end
   end
 
   def courses
@@ -20,7 +18,7 @@ class UsersController < ApplicationController
     set_page_params
     levels = Course::LEVELS
     @user = User.find_by_username(params[:id])
-    @courses ||= @user.own_courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
+    @courses ||= @user.courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
     add_breadcrumb("#{@user.name} courses", nil)
     render locals: {courses: @courses, levels: levels}
   end

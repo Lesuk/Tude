@@ -84,11 +84,11 @@ private
   end
 
   def load_active_courses(page_size)
-    current_user.courses.merge(Enrollment.active).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
+    current_user.enrolled_courses.merge(Enrollment.active).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
   def load_completed_courses(page_size)
-    current_user.courses.merge(Enrollment.completed).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
+    current_user.enrolled_courses.merge(Enrollment.completed).includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
   def load_popular_courses(page_size)
@@ -105,7 +105,7 @@ private
   end
 
   def load_mine_courses(page_size)
-    current_user.own_courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
+    current_user.courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(page_size)
   end
 
   def load_single_course

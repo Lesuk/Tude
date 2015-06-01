@@ -1,0 +1,6 @@
+.container__activities
+  - if activities.any?
+    ul.activities
+      = render partial: "shared/activities", object: activities
+    .activities__pagination
+      = link_to_next_page(activities, 'Load more', remote: true, class: 'btn btn-large')

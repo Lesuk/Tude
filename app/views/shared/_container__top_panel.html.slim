@@ -3,7 +3,4 @@
     .top-panel__breadcrumbs
       = render_breadcrumbs
     h1.top-panel__header #{type}
-    .pages-nav
-      nav.pages-nav__wrapper
-        ul.pages-nav__list
-          = render "shared/#{type.downcase}/#{type.downcase}_sorted_links"
+    = render partial: 'shared/pages_nav', locals: {type: type}

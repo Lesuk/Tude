@@ -1,0 +1,41 @@
+.user-description{
+  position: relative;
+  display: inline-block;
+  max-width: 450px;
+  margin-left: 95px;
+
+  &__picture{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-left: -95px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__name{
+    margin: 0;
+    line-height: 26px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  }
+
+  &__bio{
+    display: block;
+    line-height: 18px;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  }
+
+  &__more{
+    display: inline-block;
+    margin-left: 5px;
+    line-height: 14px;
+    border-bottom: 1px dashed $main-blue;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    color: #fff;
+  }
+}

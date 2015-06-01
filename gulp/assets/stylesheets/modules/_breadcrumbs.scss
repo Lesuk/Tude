@@ -52,5 +52,6 @@
     .breadcrumbs__link, .breadcrumbs__link:visited{
       color: #fff;
     }
+    .breadcrumbs__item:last-child span{ opacity: .8; }
   }
 }

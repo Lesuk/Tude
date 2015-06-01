@@ -1,3 +1,5 @@
 = provide(:title, user.name)
 
-= render partial: 'shared/users/users_sorted_links', locals: {user: user}
+= render partial: 'shared/users/container__user_wrapper', locals: {user: user}
+
+= render partial: "shared/activities/container__activities", locals: {activities: activities}
