@@ -1,2 +1,2 @@
-- @activities.each do |activity|
+- activities.each do |activity|
   = render partial: "activities/#{activity.trackable_type.underscore}/#{activity.key}", layout: 'activities/activity_wrapper', locals: { activity: activity }

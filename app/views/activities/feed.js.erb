@@ -1,11 +1,11 @@
 // Append new data
-$("<%= j render(partial: 'shared/activities', object: @activities) %>")
+$("<%= j render(partial: 'shared/activities', object: activities) %>")
   .appendTo($(".container__activities .activities"));
 
 // Update pagination link
-<% if @activities.last_page? %>
+<% if activities.last_page? %>
   $('.activities__pagination').remove();
 <% else %>
   $('.activities__pagination')
-    .html("<%= j link_to_next_page(@activities, 'Load more', remote: true, class: 'btn btn-large') %>");
+    .html("<%= j link_to_next_page(activities, 'Load more', remote: true, class: 'btn btn-large') %>");
 <% end %>

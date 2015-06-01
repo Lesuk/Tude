@@ -1,4 +1,4 @@
-li.pages-nav__item = active_link_to "Activity", user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item = active_link_to "Activity", user_path(user), active: :exclusive, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Courses", courses_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Articles", articles_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Questions", questions_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'

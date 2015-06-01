@@ -1,0 +1,8 @@
+- partial_path = course_partial_path
+.container__courses-grid.h-clearfix
+  .courses-grid
+    - courses.each do |course|
+      = render partial: partial_path, locals: {object: course, show_progress: true}
+
+  = paginate courses, window: 3, outer_window: 1
+  = render partial: "shared/filter_per_page"

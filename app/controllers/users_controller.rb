@@ -4,23 +4,23 @@ class UsersController < ApplicationController
   add_breadcrumb("Edut", '/')
 
   def show
-    @user = User.find_by_username(params[:id])
-    @activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(4)
+    @user = User.find_by_username(params[:id]) # leave it as instance variable
+    activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(4)
     add_breadcrumbs(['Users', nil], [@user.name, nil])
     respond_to do |format|
-      format.html {render :show, locals: {user: @user, activities: @activities}}
-      format.js {render template: "activities/feed.js.erb", locals: {user: @user, activities: @activities}}
+      format.html {render :show, locals: {activities: activities}}
+      format.js {render template: "activities/feed.js.erb", locals: {activities: activities}}
     end
   end
 
   def courses
+    @user = User.find_by_username(params[:id])
     load_categories
     set_page_params
     levels = Course::LEVELS
-    @user = User.find_by_username(params[:id])
-    @courses ||= @user.courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
+    courses ||= @user.courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
     add_breadcrumb("#{@user.name} courses", nil)
-    render locals: {courses: @courses, levels: levels}
+    render locals: {courses: courses, levels: levels}
   end
 
   private
