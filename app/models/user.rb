@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def disenroll!(course_id)
-    self.enrollments.find_by(course_id: course_id).destroy!
+    self.enrollments.find_by(course_id: course_id).destroy
     self.unlike(Course.find(course_id))
   end
 
@@ -94,11 +94,11 @@ class User < ActiveRecord::Base
   end
 
   def article_passed?(article_id)
-    self.article_progresses.find_by(article_id: article_id) ? true : false
+    self.article_progresses.where(article_id: article_id).exists?
   end
 
   def cancel_passed_article!(article_id)
-    self.article_progresses.find_by(article_id: article_id).destroy!
+    self.article_progresses.find_by(article_id: article_id).destroy
   end
 
   def passed_articles_ids
@@ -111,5 +111,9 @@ class User < ActiveRecord::Base
 
   def subscribed?(object)
     self.subscriptions.where(subscribable: object).exists?
+  end
+
+  def unsubscribe(subscribable)
+    self.subscriptions.find_by(subscribable: subscribable).destroy
   end
 end
