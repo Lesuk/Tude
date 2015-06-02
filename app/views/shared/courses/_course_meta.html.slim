@@ -13,6 +13,10 @@ ul.course-meta.h-clearfix
     i.fa.fa-star-o.course-meta__icon.-size-14
     span.course-meta__text = course.rating
 
+  li.course-meta__item.hint--top.hint--rounded data-hint="Level"
+    i.fa.fa-signal.course-meta__icon
+    span.course-meta__text.-size-11 = course.level
+
   - if user_signed_in?
     li.course-meta__item.-float-right.hint--left.hint--rounded data-hint="Add to favorites"
       = link_to favorite_course_path(course), remote: true, method: :post, class: "course-meta__link -favorite" do
