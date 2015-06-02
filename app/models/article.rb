@@ -26,7 +26,8 @@ class Article < ActiveRecord::Base
                     :column_names => { ["articles.status = 1"] => 'articles_count' }
   counter_culture :course, :column_name => Proc.new {|model| model.published? ? 'articles_count' : nil },
                     :column_names => { ["articles.status = 1"] => 'articles_count' }
-  counter_culture :category, :foreign_key_values => Proc.new {|category_id| [category_id, Category.find_by_id(category_id).try(:parent).try(:id)] }
+  counter_culture :category, :column_name => Proc.new {|model| model.published? ? 'articles_count' : nil },
+                    :foreign_key_values => Proc.new {|category_id| [category_id, Category.find_by_id(category_id).try(:parent).try(:id)] }
 
   delegate :name, :whois, :bio, to: :author, prefix: true, allow_nil: true
   delegate :name, to: :category, prefix: true, allow_nil: true

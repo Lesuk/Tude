@@ -3,7 +3,7 @@
     .user-description
       img.user-description__picture src="#{user_pic_placeholder(4)}"
       h1.user-description__name = user.name
-      span.user-description__bio
+      span.user-description__about
         - if user.bio.present?
           = truncate(user.bio, length: 160) { link_to "More", "javascript:void(0)", class: 'user-description__more' }
         - else

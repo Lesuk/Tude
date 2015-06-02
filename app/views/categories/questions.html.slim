@@ -1,0 +1,5 @@
+= provide(:title, "#{category.name} Category - Questions")
+/ - content_for :head do
+/   = rel_next_prev_link_tags questions
+
+= render partial: 'shared/categories/container__category_wrapper', locals: {category: category}

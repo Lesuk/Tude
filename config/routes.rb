@@ -53,7 +53,7 @@ Rails.application.routes.draw do
       get :update_sections, as: 'update_sections'
     end
   end
-  resources :categories
+
   resources :courses do
     concerns :paginatable
     resources :reviews, only: [:new, :create, :update, :destroy]
@@ -69,6 +69,14 @@ Rails.application.routes.draw do
       get :mine
       get :active
       get :completed
+    end
+  end
+
+  resources :categories do
+    member do
+      get :articles
+      get :questions
+      get :quizzes
     end
   end
   resources :enrollments, only: [:create, :destroy]

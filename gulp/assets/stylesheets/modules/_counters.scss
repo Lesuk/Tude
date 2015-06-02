@@ -1,4 +1,4 @@
-.user-counters{
+.counters{
   font-size: 0;
 
   &__item{
@@ -21,6 +21,10 @@
 
     &.-fsize-12{
       font-size: 12px;
+    }
+
+    &.-type-onestroke{
+      padding-top: 14px;
     }
   }
 

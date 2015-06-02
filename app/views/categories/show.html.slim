@@ -1,0 +1,9 @@
+= provide(:title, "#{category.name} Category - Courses")
+- content_for :head do
+  = rel_next_prev_link_tags courses
+
+= render partial: 'shared/categories/container__category_wrapper', locals: {category: category}
+
+= render partial: "shared/container_filter", locals: {entries: courses, levels: levels}
+
+= render partial: 'shared/courses/container__courses_grid', locals: {courses: courses}

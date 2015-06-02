@@ -1,0 +1,9 @@
+.category-infos.h-clearfix
+  .category-infos__category-description
+    .category-description
+      img.category-description__picture src="http://i.imgur.com/9m7nIpO.png"
+      h1.category-description__name = category.name
+      span.category-description__about
+        = truncate(category.description, length: 160) { link_to "More", "javascript:void(0)", class: 'category-description__more' }
+  .category-infos__category-counters
+    = render partial: 'shared/categories/category_counters', locals: {category: category}

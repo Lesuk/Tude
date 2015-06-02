@@ -1,0 +1,38 @@
+.category-wrapper{
+  @extend .user-wrapper;
+  background: initial;
+  background-color: #28425C;
+
+  &__breadcrumbs{
+    @extend .user-wrapper__breadcrumbs;
+  }
+  &__category-infos{
+    @extend .user-wrapper__profile-infos;
+  }
+}
+
+.category-infos{
+  &__category-description{
+    @extend .profile-infos__user-description;
+  }
+  &__category-counters{
+    @extend .profile-infos__user-counters;
+  }
+}
+
+.category-description{
+  @extend .user-description;
+
+  &__picture{
+    @extend .user-description__picture;
+  }
+  &__name{
+    @extend .user-description__name;
+  }
+  &__about{
+    @extend .user-description__about;
+  }
+  &__more{
+    @extend .user-description__more;
+  }
+}

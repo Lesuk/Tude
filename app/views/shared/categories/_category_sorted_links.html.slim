@@ -1,0 +1,23 @@
+li.pages-nav__item
+  = active_link_to category_path(category), active: :exclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Courses
+    - if category.courses.size > 0
+      span.pages-nav__badge-min = category.courses.size
+
+li.pages-nav__item
+  = active_link_to articles_category_path(category), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Articles
+    - if category.articles.size > 0
+      span.pages-nav__badge-min = category.articles.size
+
+li.pages-nav__item
+  = active_link_to questions_category_path(category), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Questions
+    /- if category.questions.size > 0
+      span.pages-nav__badge-min = category.questions.size
+
+/li.pages-nav__item
+  = active_link_to quizzes_category_path(category), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Quizzes
+    - if category.quizzes.size > 0
+      span.pages-nav__badge-min = category.quizzes.size

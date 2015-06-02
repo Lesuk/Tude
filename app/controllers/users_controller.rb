@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   add_breadcrumb("Edut", '/')
 
   def show
-    @user = User.find_by_username(params[:id]) # leave it as instance variable
+    load_user
     activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(4)
     add_breadcrumbs(['Users', nil], [@user.name, nil])
     respond_to do |format|
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def courses
-    @user = User.find_by_username(params[:id])
+    load_user
     load_categories
     set_page_params
     levels = Course::LEVELS
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def articles
-    @user = User.find_by_username(params[:id])
+    load_user
     load_categories
     set_page_params
     articles = @user.articles.includes(:category).published.in_category(params[:category]).order_desc.page(params[:page]).per(set_page_size)
@@ -33,22 +33,26 @@ class UsersController < ApplicationController
   end
 
   def questions
-    @user = User.find_by_username(params[:id])
+    load_user
   end
 
   def answers
-    @user = User.find_by_username(params[:id])
+    load_user
   end
 
   def comments
-    @user = User.find_by_username(params[:id])
+    load_user
   end
 
   def reviews
-    @user = User.find_by_username(params[:id])
+    load_user
   end
 
-  private
+ private
+
+  def load_user
+    @user = User.find_by_username(params[:id])
+  end
 
   def record_user_view
     View.set_view(@user, request.remote_ip)

@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
   has_many :subscribed_courses, through: :subscriptions, source: :subscribable, source_type: 'Course'
   has_many :subscribed_users, through: :subscriptions, source: :subscribable, source_type: 'User'
 
-  has_many :reverse_subscriptions, foreign_key: :subscribable_id, class_name: 'Subscription', dependent: :destroy
-  has_many :subscribers, through: :reverse_subscriptions, source: :subscriber
+  has_many :reverse_subscriptions, as: :subscribable, class_name: 'Subscription', dependent: :destroy
+  has_many :subscribers, through: :reverse_subscriptions
 
   has_many :activities, foreign_key: :owner_id
 
