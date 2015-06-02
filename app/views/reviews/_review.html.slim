@@ -8,7 +8,7 @@
       a.comment__anchor-link href="#review_#{review.id}"
         = insert_time_tag(review.created_at, "comment__date")
       .timestamp.h-hidden = review.created_at.to_time.to_i
-    /.comment__body = review.body
+    = render partial: 'shared/reviews/review__rating', locals: {rating: review.rating, progress: review.progress}
     - course ||= @course
     .comment__body = best_in_place review, :body,
         as: :textarea, url: [course, review], activator: "#comment_edit_#{review.id}", inner_class: 'reply-field',

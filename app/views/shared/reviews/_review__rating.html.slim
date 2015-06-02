@@ -1,0 +1,10 @@
+.review__rating
+  span Rating:
+  ul.review__rating-list
+    - (1..5).each do |i|
+      li.review__rating-item
+        i.fa.fa-star.review__rating-star class="#{'-color-yellow' if i <= rating}"
+  span
+    | (
+    b = "#{progress}% "
+    | completed)
