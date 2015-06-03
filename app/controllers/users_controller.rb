@@ -34,18 +34,22 @@ class UsersController < ApplicationController
 
   def questions
     load_user
+    add_breadcrumb("#{@user.name} questions", nil)
   end
 
   def answers
     load_user
+    add_breadcrumb("#{@user.name} answers", nil)
   end
 
   def comments
     load_user
+    add_breadcrumb("#{@user.name} comments", nil)
   end
 
   def reviews
     load_user
+    add_breadcrumb("#{@user.name} reviews", nil)
   end
 
  private

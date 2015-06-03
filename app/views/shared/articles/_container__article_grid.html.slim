@@ -1,7 +1,7 @@
 - partial_path = article_partial_path
 
-.container__article-grid.h-clearfix
-  .article-grid
+.container__article-grid.h-clearfix.container-box
+  .article-grid.container-box
     - articles.each do |article|
       = render partial: partial_path, locals: {object: article}
 

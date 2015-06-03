@@ -7,10 +7,10 @@ ul.main-nav
     = active_link_to courses_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-tasks
       span.main-nav__item-text Courses
-  li.main-nav__item.hint--right.hint--rounded data-hint="Tutorials"
+  li.main-nav__item.hint--right.hint--rounded data-hint="Articles"
     = active_link_to articles_path, class_active: 'is-active', class: "main-nav__link" do
       i.fa.fa-file-text-o
-      span.main-nav__item-text Tutorials
+      span.main-nav__item-text Articles
   li.main-nav__item.hint--right.hint--rounded data-hint="Tracks"
     a.main-nav__link href="#"
       i.fa.fa-arrows
@@ -30,10 +30,11 @@ ul.main-nav
       = active_link_to user_path(current_user), class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-user
         span.main-nav__item-text Profile
-    li.main-nav__item.hint--right.hint--rounded data-hint="Notifications"
+    li.main-nav__item.hint--right.hint--rounded data-hint="Activities"
       = active_link_to feed_path, class_active: 'is-active', class: "main-nav__link" do
-        i.fa.fa-bell-o
-        span.main-nav__item-text Notifications
+        /! Yes, I know what this icon (google-wallet) does not denote an activity /
+        i.fa.fa-google-wallet
+        span.main-nav__item-text Activities
     li.main-nav__item.hint--right.hint--rounded data-hint="Subscriptions"
       a.main-nav__link href="#"
         i.fa.fa-rss

@@ -1,12 +1,27 @@
+%onestroke{
+  padding-top: 5px;
+  @include breakpoint(54.125em){
+    padding-top: 14px;
+  }
+}
+
 .counters{
+  overflow: hidden;
+  height: 42px;
   font-size: 0;
 
+  @include breakpoint(54.125em){
+    overflow: visible;
+    height: auto;
+  }
+
   &__item{
+    position: relative;
     display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin-left: 20px;
-    padding-top: 8px;
+    width: 30%;
+    min-height: 40px;
+    margin-left: 3.3%;
+    padding: 5px 1px;
     border: 1px solid;
     vertical-align: top;
     text-align: center;
@@ -19,19 +34,47 @@
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
     color: #fff;
 
+    @include breakpoint(22.500em){
+      width: 100px;
+      margin-left: 10px;
+    }
+
+    @include breakpoint(54.125em){
+      width: 80px;
+      height: 80px;
+      margin-left: 20px;
+      padding-top: 8px;
+    }
+
+    &:first-child{
+      margin-left: 0;
+    }
+
     &.-fsize-12{
       font-size: 12px;
     }
 
     &.-type-onestroke{
-      padding-top: 14px;
+      @extend %onestroke;
     }
   }
 
-  &__number{
+  &__link{
+    @extend %onestroke;
+    position: absolute;
+    top:0; bottom:0; left:0; right:0;
     display: block;
-    font-size: 24px;
+    color: inherit;
+  }
+
+  &__number{
+    margin-right: 4px;
     font-weight: 700;
-    line-height: 30px;
+
+    @include breakpoint(54.125em){
+      display: block;
+      font-size: 24px;
+      line-height: 30px;
+    }
   }
 }

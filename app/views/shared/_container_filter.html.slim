@@ -1,5 +1,5 @@
 - entries_class = entries.class.to_s.gsub(/:.*$/, '').pluralize.downcase
-.container__filter.h-clearfix
+.container__filter.h-clearfix.container-box
   - if params[:controller] != 'categories'
     = render partial: "shared/filter_category"
 

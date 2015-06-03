@@ -1,11 +1,12 @@
-- provide(:title, "Search")
+- query = params[:q].present? ? params[:q] : "nothing..."
+- provide(:title, "Search for: " + query)
 - content_for :head do
   = rel_next_prev_link_tags @search_results if @search_results.present?
 
 = render partial: "shared/container__top_panel", locals: {type: "Search"}
 - if params[:q].present?
   = render partial: "shared/container_filter", locals: {entries: @search_results, levels: @levels}
-.container__objects-list.h-clearfix
+.container__objects-list.container-box.h-clearfix
   - if @search_results.any?
     .objects-list
       - @search_results.with_details.each do |result, details|

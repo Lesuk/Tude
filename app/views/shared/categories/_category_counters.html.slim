@@ -1,12 +1,14 @@
 ul.counters
 
   li.counters__item.-type-onestroke
-    span.counters__number = category.courses.size
-    | courses
+    = link_to category_path(category), class: 'counters__link' do
+      span.counters__number = category.courses.size
+      | courses
 
   li.counters__item.-type-onestroke
-    span.counters__number = category.articles.size
-    | articles
+    = link_to articles_category_path(category), class: 'counters__link' do
+      span.counters__number = category.articles.size
+      | articles
 
   /li.counters__item.-type-onestroke
     span.counters__number = category.questions.size

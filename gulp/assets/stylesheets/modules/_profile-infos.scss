@@ -1,9 +1,18 @@
 .profile-infos{
 
   &__user-description{
-    float: left;
+    margin-bottom: 10px;
+
+    @include breakpoint(54.125em){
+      float: left;
+      margin-bottom: 0;
+    }
   }
   &__user-counters{
-    float: right;
+    text-align: center;
+
+    @include breakpoint(54.125em){
+      float: right;
+    }
   }
 }

@@ -14,6 +14,10 @@
   }
 }
 
+.container-box{
+  @include container(80em);
+}
+
 .container__header{
 
 }
@@ -37,10 +41,6 @@
   @include breakpoint(31.25em){
     padding: 10px 20px;
   }
-
-  .article-grid{
-    @include container(75em);
-  }
 }
 
 .container__courses-grid{
@@ -48,10 +48,6 @@
 
   @include breakpoint(31.25em){
     padding: 10px 20px;
-  }
-
-  .course-grid{
-    @include container(75em);
   }
 }
 

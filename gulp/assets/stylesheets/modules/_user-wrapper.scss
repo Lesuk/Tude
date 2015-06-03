@@ -1,14 +1,26 @@
+%margin-bottom{
+  margin-bottom: 10px;
+
+  @include breakpoint(31.25em){
+    margin-bottom: 20px;
+  }
+}
+
 .user-wrapper{
   position: relative;
-  padding: 10px 20px 0 20px;
+  padding: 10px 10px 0 10px;
   background: #79BCE6 image-url('triangles-max_2.jpg');
   background-size: cover;
 
+  @include breakpoint(31.25em){
+    padding: 10px 20px 0 20px;
+  }
+
   &__breadcrumbs{
-    margin-bottom: 20px;
+    @extend %margin-bottom;
   }
 
   &__profile-infos{
-    margin-bottom: 20px;
+    @extend %margin-bottom;
   }
 }

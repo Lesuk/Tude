@@ -1,6 +1,6 @@
 - partial_path = course_partial_path
-.container__courses-grid.h-clearfix
-  .courses-grid
+.container__courses-grid.h-clearfix.container-box
+  .courses-grid.container-box
     - courses.each do |course|
       = render partial: partial_path, locals: {object: course, show_progress: true}
 
