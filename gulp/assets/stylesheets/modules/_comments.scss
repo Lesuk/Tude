@@ -72,7 +72,10 @@
   }
 }
 
-.comments__list{}
+.comments__list{
+  max-width: 780px;
+  margin: 0 auto;
+}
 
 .comment__item{}
 

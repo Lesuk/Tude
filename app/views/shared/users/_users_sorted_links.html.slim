@@ -11,6 +11,14 @@ li.pages-nav__item
       span.pages-nav__badge-min = user.articles.size
 li.pages-nav__item = active_link_to "Questions", questions_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
 li.pages-nav__item = active_link_to "Answers", answers_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
-li.pages-nav__item = active_link_to "Comments", comments_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
-li.pages-nav__item = active_link_to "Reviews", reviews_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+li.pages-nav__item
+  = active_link_to comments_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Comments
+    - if user.comments.size > 0
+      span.pages-nav__badge-min = user.comments.size
+li.pages-nav__item
+  = active_link_to reviews_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'
+    | Reviews
+    - if user.reviews.size > 0
+      span.pages-nav__badge-min = user.reviews.size
 /li.pages-nav__item = active_link_to "Quizzes", quizzes_user_path(user), active: :inclusive, class_active: 'is-current', class: 'pages-nav__link'

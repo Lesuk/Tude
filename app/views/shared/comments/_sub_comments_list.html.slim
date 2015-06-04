@@ -1,0 +1,8 @@
+- sub_comments = comment.subcomments
+- sub_class = "h-hidden" if sub_comments.empty?
+.comment__sub-comments class="#{sub_class}"
+  ul.sub-comments id="comments#{comment.id}"
+    li.sub-comment.bg-white.h-hidden
+      = render partial: "comments/new_subcomment_form", locals: {parentid: comment.id}
+      - if sub_comments.any?
+        = render partial: "comments/subcomment", collection: sub_comments

@@ -22,6 +22,8 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   acts_as_list scope: :course
+
+  # Article.counter_culture_fix_counts :only => :category
   counter_culture :author, column_name: Proc.new { |model| model.published? ? 'articles_count' : nil },
                     :column_names => { ["articles.status = 1"] => 'articles_count' }
   counter_culture :course, :column_name => Proc.new {|model| model.published? ? 'articles_count' : nil },

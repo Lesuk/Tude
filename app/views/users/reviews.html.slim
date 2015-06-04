@@ -1,5 +1,8 @@
 = provide(:title, "#{@user.name} - Reviews")
-/ - content_for :head do
-/   = rel_next_prev_link_tags reviews
 
 = render partial: 'shared/users/container__user_wrapper', locals: {user: @user}
+
+.container__padding
+  ul.comments__list
+    - reviews.each do |review|
+      = render partial: "reviews/review", locals: {review: review, course: review.course}

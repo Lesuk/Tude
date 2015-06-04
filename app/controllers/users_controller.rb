@@ -44,12 +44,16 @@ class UsersController < ApplicationController
 
   def comments
     load_user
+    comments = @user.comments.includes(:user, :commentable) # {subcomments: :user}
     add_breadcrumb("#{@user.name} comments", nil)
+    render locals: {comments: comments}
   end
 
   def reviews
     load_user
+    reviews = @user.reviews.includes(:user, :course)
     add_breadcrumb("#{@user.name} reviews", nil)
+    render locals: {reviews: reviews}
   end
 
  private

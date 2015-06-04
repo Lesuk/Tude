@@ -17,7 +17,10 @@ class Review < ActiveRecord::Base
   after_save :update_course_rating
   after_destroy :update_course_rating
 
-  counter_culture :course, column_name: Proc.new { |model| model.published? ? 'reviews_count' : nil }
+  counter_culture :course, column_name: Proc.new { |model| model.published? ? 'reviews_count' : nil },
+                    :column_names => { ["reviews.status = 0"] => 'reviews_count' }
+  counter_culture :user, column_name: Proc.new { |model| model.published? ? 'reviews_count' : nil },
+                    :column_names => { ["reviews.status = 0"] => 'reviews_count' }
 
   delegate :name, :username, :whois, :id, to: :user, prefix: true, allow_nil: true
 

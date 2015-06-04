@@ -160,7 +160,7 @@ private
   end
 
   def load_comments
-    @comments ||= @commentable.comments.includes(:user, {subcomments: :user}).main_comments
+    @comments ||= @commentable.comments.includes(:user, :commentable, {subcomments: :user}).main_comments
   end
 
   def set_commentable

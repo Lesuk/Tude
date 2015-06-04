@@ -5,7 +5,7 @@
       h1.user-description__name = user.name
       span.user-description__about
         - if user.bio.present?
-          = truncate(user.bio, length: 160) { link_to "More", "javascript:void(0)", class: 'user-description__more' }
+          = truncate(user.bio, length: 160)
         - else
           = user.whois
   .profile-infos__user-counters

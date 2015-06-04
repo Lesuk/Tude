@@ -8,17 +8,11 @@
       a.comment__anchor-link href="#comment_#{comment.id}"
         = insert_time_tag(comment.created_at, "comment__date")
       .timestamp.h-hidden = comment.created_at.to_time.to_i
-    .comment__body = best_in_place comment, :body, as: :textarea, url: [@commentable, comment],
+    .comment__body = best_in_place comment, :body, as: :textarea, url: [comment.commentable, comment],
                       activator: "#comment_edit_#{comment.id}", inner_class: 'reply-field',
                       ok_button: 'Save', ok_button_class: 'btn btn-blue h-spacing-above--xsmall', cancel_button: 'Cancel', cancel_button_class: 'btn btn-blue-secondary h-spacing-above--xsmall',
                       display_with: lambda { |t| sanitize(text_with_mentions(t)) }, helper_options: comment.body
     = render partial: "comments/comment_actions", locals: {comment: comment}
 
-  - sub_comments = comment.subcomments
-  - sub_class = "h-hidden" if sub_comments.empty?
-  .comment__sub-comments class="#{sub_class}"
-    ul.sub-comments id="comments#{comment.id}"
-      li.sub-comment.bg-white.h-hidden
-        = render partial: "comments/new_subcomment_form", locals: {parentid: comment.id}
-        - if sub_comments.any?
-          = render partial: "comments/subcomment", collection: sub_comments
+  - if params[:controller] != 'users'
+    = render partial: 'shared/comments/sub_comments_list', locals: {comment: comment}
