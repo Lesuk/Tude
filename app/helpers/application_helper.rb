@@ -89,6 +89,30 @@ module ApplicationHelper
     url_for(controller: 'subscriptions', action: 'toggle', params: {subscribable_type: object.class.to_s, subscribable_id: object.id})
   end
 
+  def subscribable_name(item, type)
+    case type
+    when 'users', 'categories'
+      item.name
+    when 'courses', 'articles', 'questions'
+      item.title
+    end
+  end
+
+  def subscription_icon(type)
+    case type
+    when 'users'
+      'fa-user'
+    when 'categories'
+      'fa-tag'
+    when 'courses'
+      'fa-tasks'
+    when 'articles'
+      'fa-file-text'
+    when 'questions'
+      'fa-question-circle'
+    end
+  end
+
   def object_list_data(object, details)
     if details
       title = details[:highlight][:title].present? ? sanitize(details[:highlight][:title]) : object.title

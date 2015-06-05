@@ -1,0 +1,24 @@
+- provide(:title, "Subscriptions")
+
+.container__top-panel
+  .top-panel.h-clearfix
+    .top-panel__breadcrumbs.container-box
+      = render_breadcrumbs
+
+    h1.top-panel__header Subscriptions
+
+.container__padding
+
+  .subscriptions
+
+    = render partial: 'shared/subscriptions/subscriptions__block',
+              locals: {objects: users, type: "users", description: "You’ll receive notifications from user about his new courses, articles, questions, comments and answers."}
+
+    = render partial: 'shared/subscriptions/subscriptions__block',
+              locals: {objects: categories, type: "categories", description: "You’ll receive notifications about new courses, articles and questions."}
+
+    = render partial: 'shared/subscriptions/subscriptions__block',
+              locals: {objects: courses, type: "courses", description: "You’ll receive notifications from new articles and updates."}
+
+    = render partial: 'shared/subscriptions/subscriptions__block',
+              locals: {objects: articles, type: "articles", description: "You’ll receive notifications from new comments and updates."}

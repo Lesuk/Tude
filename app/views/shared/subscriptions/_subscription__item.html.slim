@@ -1,0 +1,8 @@
+li.subscriptions__item
+  .subscriptions__item-name
+    = link_to polymorphic_path(item), class: 'subscriptions__item-link' do
+      = subscribable_name(item, type)
+  = link_to url_for_subscribable(item), remote: true, method: :post, class: "subscriptions__toggle-link" do
+    .ui.checkbox.subscriptions__toggle
+      input type="checkbox" name="public" checked="checked"
+      label

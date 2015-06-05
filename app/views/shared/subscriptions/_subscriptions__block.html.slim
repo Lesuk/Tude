@@ -1,0 +1,15 @@
+.subscriptions__block
+  .subscriptions__header
+    h3.subscriptions__type
+      i.fa.subscriptions__type-icon class="#{subscription_icon(type)}"
+      = type
+    p.subscriptions__type-description = description
+  ul.subscriptions__list
+    - if objects.any?
+      = render partial: 'shared/subscriptions/subscription__item', collection: objects,
+                    as: 'item', locals: {type: type}
+    - else
+      li.subscriptions__item
+        .subscriptions__item-name
+          p.subscriptions__type-description
+            | You have not any subscriptions

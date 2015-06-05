@@ -17,14 +17,6 @@ Rails.application.routes.draw do
     get '(page/:page)', :action => :index, :on => :collection, :as => ''
   end
 
-  # resources :users, only: [:show]
-  get 'users/:id', to: 'users#show', as: 'user'
-  post 'comments/:id/upvote', to: 'comments#upvote', as: 'upvote_comment'
-  post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
-  post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
-  post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
-  post 'subscriptions/toggle', to: 'subscriptions#toggle', as: 'toggle_subscription'
-
   resources :users, only: [:show] do
     member do
       get :courses
@@ -50,7 +42,7 @@ Rails.application.routes.draw do
       get :mine
       get :top
       post :sort
-      get :update_sections, as: 'update_sections'
+      get :update_sections
     end
   end
 
@@ -79,10 +71,22 @@ Rails.application.routes.draw do
       get :quizzes
     end
   end
+
+  resources :subscriptions, only: [:index] do
+    collection do
+      post :toggle, as: 'toggle_subscription'
+    end
+  end
+
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
 
   get '/search/:action', to: 'searches#:action', as: 'search'
+
+  post 'comments/:id/upvote', to: 'comments#upvote', as: 'upvote_comment'
+  post 'comments/:id/downvote', to: 'comments#downvote', as: 'downvote_comment'
+  post 'reviews/:id/upvote', to: 'reviews#upvote', as: 'upvote_review'
+  post 'reviews/:id/downvote', to: 'reviews#downvote', as: 'downvote_review'
 
   get '/feed', to: 'activities#feed', as: 'feed'
   get '/feed/courses', to: 'activities#courses', as: 'courses_feed'

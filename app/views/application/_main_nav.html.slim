@@ -36,7 +36,7 @@ ul.main-nav
         i.fa.fa-google-wallet
         span.main-nav__item-text Activities
     li.main-nav__item.hint--right.hint--rounded data-hint="Subscriptions"
-      a.main-nav__link href="#"
+      = active_link_to subscriptions_path, class_active: 'is-active', class: "main-nav__link" do
         i.fa.fa-rss
         span.main-nav__item-text Subscriptions
     /li.main-nav__item.hint--right.hint--rounded data-hint="Log Out"

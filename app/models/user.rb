@@ -20,9 +20,11 @@ class User < ActiveRecord::Base
   has_many :passed_articles, through: :article_progresses, source: :article
 
   has_many :subscriptions, foreign_key: :subscriber_id, dependent: :destroy
-  has_many :subscribed_articles, through: :subscriptions, source: :subscribable, source_type: 'Article'
-  has_many :subscribed_courses, through: :subscriptions, source: :subscribable, source_type: 'Course'
   has_many :subscribed_users, through: :subscriptions, source: :subscribable, source_type: 'User'
+  has_many :subscribed_categories, through: :subscriptions, source: :subscribable, source_type: 'Category'
+  has_many :subscribed_courses, through: :subscriptions, source: :subscribable, source_type: 'Course'
+  has_many :subscribed_articles, through: :subscriptions, source: :subscribable, source_type: 'Article'
+  has_many :subscribed_questions, through: :subscriptions, source: :subscribable, source_type: 'Question'
 
   has_many :reverse_subscriptions, as: :subscribable, class_name: 'Subscription', dependent: :destroy
   has_many :subscribers, through: :reverse_subscriptions

@@ -29,7 +29,6 @@ class ArticlesController < ApplicationController
 
   def new
     build_article
-    load_main_categories
     load_categories
     @courses = current_user.courses
     @sections = []
