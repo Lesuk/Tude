@@ -23,6 +23,9 @@
     .course-card__thumbnail-actions{
       opacity: 1;
     }
+    & .course-card__thumbnail-hover-bg{
+      opacity: 1;
+    }
   }
 }
 
@@ -386,4 +389,14 @@
   border: 1px solid #eee;
   border-radius: 4px;
   color: #80C83A;
+}
+
+.course-card__thumbnail-hover-bg{
+  @extend .article-card__thumbnail-hover-bg;
+}
+.course-card__thumbnail-overlay{
+  @extend .article-card__thumbnail-overlay;
+}
+.course-card__thumbnail-gradient{
+  @extend .article-card__thumbnail-gradient;
 }

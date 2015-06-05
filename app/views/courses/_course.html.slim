@@ -1,6 +1,9 @@
 - bookmarked = current_user.try(:bookmarks?, object)
 .course-card id="#{dom_id(object)}"
   .course-card__thumbnail
+    .course-card__thumbnail-hover-bg
+      .course-card__thumbnail-overlay
+      .course-card__thumbnail-gradient
     img.course-card__thumbnail-image src="#{youtube_thumbnail(object.youtube_id, 'mq')}"
     = link_to object.title, course_path(object), title: "#{object.title}", class: "course-card__thumbnail-link"
     .course-card__thumbnail-actions

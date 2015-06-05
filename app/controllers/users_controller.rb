@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     load_user
-    activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(4)
+    activities = Activity.personal(@user.id).includes(:owner, :trackable, :parent, :category).order_desc.page(params[:page]).per(10)
     add_breadcrumbs(['Users', nil], [@user.name, nil])
     respond_to do |format|
       format.html {render :show, locals: {activities: activities}}

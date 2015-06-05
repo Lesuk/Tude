@@ -6,7 +6,7 @@ ul.article-meta.h-clearfix
     i.fa.fa-eye.article-meta__icon
     span.article-meta__text = article.views.size
 
-  li.article-meta__item.hint--top.hint--rounded data-hint="Comments on article"
+  li.article-meta__item.hint--top.hint--rounded data-hint="Comments"
     = link_to article_path(article, anchor: "comments__box"), class: "article-meta__link" do
       i.fa.fa-comment-o.article-meta__icon
       span.article-meta__text = article.comments.size
