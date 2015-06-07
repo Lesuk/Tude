@@ -5,16 +5,16 @@ class User < ActiveRecord::Base
   # Virtual attribute for authenticating by either username or email
   attr_accessor :login
 
-  has_many :articles
-  has_many :comments
-  has_many :reviews
-  has_many :courses
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :courses, dependent: :destroy
   has_many :views, as: :viewable
   # has_many :favorites
   # has_many :favorite_articles, through: :favorites, source: :favorable, source_type: 'Article'
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :enrolled_courses, through: :enrollments, source: :course
-  has_many :mentions
+  has_many :mentions, dependent: :destroy
   has_many :comments_with_mentions, through: :mentions, source: :mentionable, source_type: 'Comment'
   has_many :article_progresses, foreign_key: :student_id
   has_many :passed_articles, through: :article_progresses, source: :article
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :reverse_subscriptions, as: :subscribable, class_name: 'Subscription', dependent: :destroy
   has_many :subscribers, through: :reverse_subscriptions
 
-  has_many :activities, foreign_key: :owner_id
+  has_many :activities, foreign_key: :owner_id, dependent: :destroy
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},

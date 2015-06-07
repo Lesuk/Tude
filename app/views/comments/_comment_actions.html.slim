@@ -27,7 +27,7 @@ ul.comment__actions
       li.comment__action
         = link_to 'Редагувати', "javascript:void(0)", id: "comment_edit_#{comment.id}",class: 'comment__sub-comment-action'
       li.comment__action
-        = link_to 'Видалити', [@commentable, comment], method: :delete, remote: true, class: 'comment__sub-comment-action'
+        = link_to 'Видалити', [comment.commentable, comment], method: :delete, remote: true, class: 'comment__sub-comment-action'
   /li.comment__action.is-hidden
     a.comment__share-action href="#share" Поділитися
   /li.comment__action.is-hidden

@@ -4,11 +4,11 @@ class Article < ActiveRecord::Base
   belongs_to :category
   belongs_to :section, touch: true
   belongs_to :course
-  has_many :comments, as: :commentable
-  has_many :views, as: :viewable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :views, as: :viewable, dependent: :destroy
   has_many :article_progresses, dependent: :destroy
   has_many :completing_students, through: :article_progresses, source: :student
-  has_many :subscriptions, as: :subscribable
+  has_many :subscriptions, as: :subscribable, dependent: :destroy
   has_many :subscribers, through: :subscriptions
   ##has_many :favorites, as: :favorable
   ##has_many :fans, through: :favorites, source: :user
@@ -71,7 +71,7 @@ class Article < ActiveRecord::Base
     highlight_settings = {fields: {title: {number_of_fragments: 0}, body: {fragment_size: 200}}}
     Article.search(
       query,
-      include: [:category, :user],
+      include: [:category, :author],
       fields: ["title^10", "description", "body"],
       highlight: highlight_settings,
       where: conditions,
