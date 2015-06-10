@@ -1,17 +1,17 @@
 .meta-actions
   = link_to like_article_path(@article), remote: true, method: :post, id: "like", class: "btn btn-blue" do
     i.fa.fa-thumbs-up class="#{'is-liked' if current_user.try(:likes?, @article)}"
-    span.btn__text Подобається
+    span.btn__text Like
     span.amount = @article.liked_by_count
   = link_to favorite_article_path(@article), remote: true, method: :post, id: "favorite", class: "btn btn-blue-secondary #{'is-favorite' if current_user.try(:bookmarks?, @article)}" do
     i.fa.fa-star
-    span.btn__text Вибране
+    span.btn__text Favorite
   a.btn.btn-blue-secondary href="#a"
     i.fa.fa-share-alt
-    span.btn__text Поділитися
+    span.btn__text Share
   a.btn.btn--info href="#a"
     i.fa.fa-info-circle
-    span.btn__text Додатково
+    span.btn__text Additionally
   a.btn.btn--playlist href="#a"
     i.fa.fa-list-ul
-    span.btn__text Плейлист
+    span.btn__text Playlist

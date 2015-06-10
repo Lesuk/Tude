@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   devise_for :users,  controllers: {registrations: "registrations"},
                       path: '', path_names: {sign_up: "register", sign_in: "login", sign_out: "logout", password: "secret", confirmation: "verification"}
   #, :path_prefix => "d"
+  as :user do
+    get 'users/:id/edit', to: 'registrations#edit', as: :user_edit
+  end
 
   authenticated do
     root to: 'activities#feed', as: :authenticated_root
   end
 
-  root to: 'activities#feed' # pages#landing
+  root to: 'articles#index' # pages#landing
 
   # For pagination links, like: /page/2
   concern :paginatable do

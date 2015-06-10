@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def edit
+    render :edit, layout: 'application'
+  end
+
   def update
     new_params = params.require(:user).permit(:email, :username, :current_password, :password, :password_confiramtion)
 
@@ -17,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
     if change_password
       is_valid = @user.update_with_password(new_params)
     else
-      @user.update_without_password(new_params)
+      is_valid = @user.update_without_password(new_params)
     end
 
     if is_valid
@@ -25,7 +29,7 @@ class RegistrationsController < Devise::RegistrationsController
       sign_in @user, bypass: true
       redirect_to after_update_path_for(@user)
     else
-      render 'edit'
+      render :edit, layout: 'application'
     end
   end
 
@@ -36,7 +40,13 @@ class RegistrationsController < Devise::RegistrationsController
       sign_out @user
       redirect_to root_path
     else
-      render 'edit'
+      render :edit, layout: 'application'
     end
+  end
+
+ protected
+
+  def after_update_path_for(resource)
+    authenticated_root_path
   end
 end

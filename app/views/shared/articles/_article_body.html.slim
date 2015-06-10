@@ -11,7 +11,7 @@
 
   .article-body__content
     = @article.body
-    br
-    = link_to "Edit article", edit_article_path(@article)
+    /br
+    /= link_to "Edit article", edit_article_path(@article)
     br
     = link_to "Subscribe", url_for_subscribable(@article), remote: true, method: :post
