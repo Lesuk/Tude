@@ -13,4 +13,8 @@
         = render partial: "shared/users/users_sorted_links", locals: {user: user}
 
   / secondary navigation
-  .pages-bottom-nav.-bg-white.-shadow-bottom
+  - if show_user_nav_bottom?(user)
+    - partial = user_nav_bottom_partial_path(user)
+    .pages-nav-bottom
+      ul.pages-nav-bottom__list
+        = render partial: partial

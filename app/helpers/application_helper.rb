@@ -179,4 +179,15 @@ module ApplicationHelper
       'fa-dot-circle-o'
     end
   end
+
+  def show_user_nav_bottom?(user)
+    is_active_link?(courses_user_path(user), :inclusive)
+  end
+
+  def user_nav_bottom_partial_path(user)
+    case
+    when is_active_link?(courses_user_path(user), :inclusive)
+      'shared/users/courses_secondary_nav_items'
+    end
+  end
 end

@@ -1,11 +1,13 @@
 ul.counters
   li.counters__item
-    span.counters__number = user.enrollments.completed.size
-    | completed courses
+    = link_to courses_user_path(user, {sort: 'completed'}), class: 'counters__link' do
+      span.counters__number = user.enrollments.completed.size
+      | completed courses
 
   li.counters__item
-    span.counters__number = user.enrollments.active.size
-    | active courses
+    = link_to courses_user_path(user, {sort: 'active'}), class: 'counters__link' do
+      span.counters__number = user.enrollments.active.size
+      | active courses
 
   li.counters__item.-fsize-12
     span.counters__number = user.subscribers.size

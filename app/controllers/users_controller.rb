@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     load_categories
     set_page_params
     levels = Course::LEVELS
-    courses ||= @user.courses.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
+    courses ||= courses_scope.includes(:category, :author).in_category(params[:category]).in_level(params[:level]).order_desc.page(params[:page]).per(set_page_size)
     add_breadcrumb("#{@user.name} courses", nil)
     render locals: {courses: courses, levels: levels}
   end
@@ -62,6 +62,17 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
   end
 
+  def courses_scope
+    case params[:sort]
+    when 'completed'
+      @user.enrolled_courses.merge(Enrollment.completed)
+    when 'active'
+      @user.enrolled_courses.merge(Enrollment.active)
+    else
+      @user.courses
+    end
+  end
+
   def record_user_view
     View.set_view(@user, request.remote_ip)
   end
@@ -71,7 +82,7 @@ class UsersController < ApplicationController
   end
 
   def set_page_params
-    @page_params ||= params.slice(:pagesize, :category, :level, :page, :view)
+    @page_params ||= params.slice(:pagesize, :category, :level, :page, :view, :sort)
   end
 
   def set_page_size

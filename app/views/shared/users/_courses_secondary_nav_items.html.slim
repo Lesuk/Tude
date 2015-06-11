@@ -1,0 +1,3 @@
+li.pages-nav-bottom__item = active_link_to "Author", url_for(params.except(:sort)), active: !params.has_key?(:sort), class_active: 'is-current', class: 'pages-nav-bottom__link'
+li.pages-nav-bottom__item = active_link_to "Completed", @page_params.merge(sort: 'completed').except(:page), active: /sort=completed/, class_active: 'is-current', class: 'pages-nav-bottom__link'
+li.pages-nav-bottom__item = active_link_to "Active", @page_params.merge(sort: 'active').except(:page), active: /sort=active/, class_active: 'is-current', class: 'pages-nav-bottom__link'
