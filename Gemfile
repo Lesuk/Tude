@@ -19,7 +19,7 @@ gem 'soulmate', :require => 'soulmate/server'
 # front end
 gem "slim-rails"
 gem 'susy'
-gem 'compass-rails', '~> 2.0.0'
+gem 'compass-rails', '~> 2.0.4'
 gem 'breakpoint', '~> 2.5.0'
 gem "font-awesome-rails"
 
