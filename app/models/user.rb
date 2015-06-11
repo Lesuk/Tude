@@ -31,6 +31,11 @@ class User < ActiveRecord::Base
 
   has_many :activities, foreign_key: :owner_id, dependent: :destroy
 
+  has_many :attempts, as: :participant, class_name: 'Survey::Attempt'
+  has_many :passed_quizzes, -> { uniq }, through: :attempts, source: :survey, class_name: 'Survey::Survey'
+  # has_many :passed_quizzes, -> { where() }
+  # user.attempts.select(:survey_id).uniq.count
+
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},
                         format: {with: USERNAME_REGEX, message: 'Only letters, numbers and underscore'}
@@ -41,6 +46,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   recommends :articles, :courses, :comments, :reviews
+  has_surveys
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

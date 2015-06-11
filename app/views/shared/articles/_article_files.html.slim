@@ -2,11 +2,13 @@
   .boxed-head__title Additionally
 
   / Test link
-  /a.file-btn
-    .file-btn__icon: i.fa.fa-check-square-o
-    .file-btn__text
-      span Пройти тест
-      | Основи Javascript
+  - if @article.quiz.present?
+    = link_to new_attempt_path(survey_id: @article.quiz.id), class: "file-btn" do
+      .file-btn__icon: i.fa.fa-check-square-o
+      .file-btn__text
+        span Start quiz
+        = @article.quiz.name
+
 
   / Live demo link
   - if @article.demo_link.present?

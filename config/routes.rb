@@ -83,6 +83,8 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
+  resources :quizzes, controller: 'surveys'
+  resources :attempts, only: [:new, :create]
 
   get '/search/:action', to: 'searches#:action', as: 'search'
 

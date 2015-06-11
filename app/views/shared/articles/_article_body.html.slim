@@ -7,7 +7,7 @@
     .meta-info.clearfix
       = insert_time_tag(@article.created_at, "meta-info__date")
       .meta-info__views
-        span = "#{@article.views.size} переглядів"
+        span = pluralize(@article.views.size, 'view')
 
   .article-body__content
     = @article.body

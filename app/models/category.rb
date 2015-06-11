@@ -5,6 +5,7 @@ class Category < ActiveRecord::Base
   has_many :subcategories, class_name: "Category", foreign_key: "parent_id"
   has_many :articles
   has_many :courses
+  has_many :quizzes
   has_many :subscriptions, as: :subscribable
   has_many :subscribers, through: :subscriptions
 
