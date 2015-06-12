@@ -11,7 +11,8 @@
     p.quiz-card__description = quiz.description
     - if passed
       p.quiz-card__result
-        = "Your best result: #{correct_answers} of #{questions_size} questions correct"
+        = "Your best result: #{correct_answers} of #{questions_size} questions correct. "
+        = link_to 'Go to last attempt', quiz_attempt_path(quiz.id, quiz.attempts.for_participant(current_user).last.id)
 
     .quiz-card__bottom-actions.h-clearfix
       ul.quiz-card__info-list

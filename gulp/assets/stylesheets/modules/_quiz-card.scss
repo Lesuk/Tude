@@ -46,6 +46,10 @@
     line-height: 18px;
     color: #40A307;
     word-wrap: break-word;
+
+    a:hover{
+      text-decoration: underline;
+    }
   }
 
   &__bottom-actions{

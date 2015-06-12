@@ -1,0 +1,13 @@
+.container__padding.container-box
+  .quiz-wrapper.h-box-border.h-bg-white
+    .quiz-wrapper__breadcrumbs
+      = render_breadcrumbs
+
+    .quiz-wrapper__header
+      h1.quiz-wrapper__title
+        = @quiz.name
+
+      p.quiz-wrapper__description
+        = @quiz.description
+
+    = yield

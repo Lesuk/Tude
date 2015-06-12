@@ -31,7 +31,7 @@ class SurveysController < ApplicationController
       flash_message :success, 'Quiz updated'
       default_redirect
     else
-      flash_message :danger, 'Quiz updated'
+      flash_message :danger, "Can't update"
       render :edit
     end
   end
@@ -92,7 +92,7 @@ class SurveysController < ApplicationController
   def save_quiz(track = false)
     if @quiz.save
       track_activity(@quiz, 'create') if track
-      redirect_to default_redirect
+      default_redirect
     end
   end
 

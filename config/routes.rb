@@ -84,7 +84,7 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
   resources :quizzes, except: [:show], controller: 'surveys' do
-    resources :attempts, only: [:new, :create], path_names: { new: '' }
+    resources :attempts, only: [:new, :create, :show], path_names: { new: '' }
     collection do
       get :popular
       get :favorites
@@ -93,6 +93,8 @@ Rails.application.routes.draw do
       post :favorite
     end
   end
+
+  delete 'attempts/:survey_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts
 
   get '/search/:action', to: 'searches#:action', as: 'search'
 

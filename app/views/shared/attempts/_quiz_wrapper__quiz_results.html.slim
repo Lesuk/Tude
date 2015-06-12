@@ -1,0 +1,14 @@
+p.quiz-wrapper__result Your last result: #{@attempt.score} / #{@quiz.questions.count}
+.ui.form
+  ol.quiz-form__list
+    - @attempt.answers.each_with_index do |answer, index|
+      li.quiz-form__item
+        .grouped.fields
+          p.quiz-form__question-text = "#{index + 1}. #{answer.question.text}"
+          .quiz-form__options-group
+            - answer.question.options.each do |option|
+              .field
+                .ui.radio.checkbox.quiz-form__radio-box
+                  = radio_button_tag nil, nil, option_checked?(answer, option), disabled: true
+                  label.quiz-form__option-label class="#{set_option_type(answer, option)}"
+                    = option.text

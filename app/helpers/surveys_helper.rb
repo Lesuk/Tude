@@ -42,6 +42,22 @@ module SurveysHelper
     :class=>"btn btn-small btn-info")
   end
 
+  def the_chosen_one?(answer, option)
+    answer.option_id == option.id ? 'chosen' : nil
+  end
+
+  def option_checked?(answer, option)
+    the_chosen_one?(answer, option) || option.correct ? 'checked' : nil
+  end
+
+  def set_option_type(answer, option)
+    if option.correct
+      '-type-success'
+    elsif the_chosen_one?(answer, option)
+      '-type-wrong'
+    end
+  end
+
   private
 
   def __link_to_function(name, on_click_event, opts={})
