@@ -89,6 +89,9 @@ Rails.application.routes.draw do
       get :popular
       get :favorites
     end
+    member do
+      post :favorite
+    end
   end
 
   get '/search/:action', to: 'searches#:action', as: 'search'

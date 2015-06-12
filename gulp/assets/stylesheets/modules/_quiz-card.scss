@@ -1,0 +1,95 @@
+.quizzes{
+
+}
+
+.quiz-card{
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto 20px auto;
+  font-size: 0;
+
+  &__wrapper{
+    width: 100%;
+    padding: 16px 20px;
+    overflow: hidden;
+    vertical-align: top;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  &__category{
+    @extend .article-card__category;
+  }
+
+  &__headline{
+    @extend .article-card__headline;
+  }
+  &__headline-link{
+    @extend .article-card__headline-link;
+    min-height: initial;
+    line-height: 26px;
+    font-size: 18px;
+  }
+
+  &__description{
+    @extend .activity__text;
+  }
+
+  &__result{
+    margin: 6px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #40A307;
+    word-wrap: break-word;
+  }
+
+  &__bottom-actions{
+    margin-top: 4px;
+  }
+
+  &__info-list{
+    display: inline-block;
+    line-height: 30px;
+    text-align: left;
+    font-size: 13px;
+  }
+  &__info-item{
+    display: inline-block;
+    margin-right: 14px;
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: middle;
+    color: #a2a2a2;
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+
+  &__item-icon{
+    margin-right: 4px;
+  }
+
+  &__actions{
+    float: right;
+  }
+
+  &__quiz-link{
+    margin-right: 0;
+    @include breakpoint(0.625em 31.250em){
+      display: none;
+    }
+  }
+
+  &__favorite{
+    & i{
+      margin: 0;
+    }
+  }
+
+}

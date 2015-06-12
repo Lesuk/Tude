@@ -1,9 +1,28 @@
-.quiz__block
-  - if quiz.category.present?
-    = link_to quiz.category.name, category_path(quiz.category)
-    br
-  = link_to quiz.name, new_quiz_attempt_path(quiz_id: quiz.id)
-  ' |
-  = link_to 'edit', edit_quiz_path(quiz)
-  span = " Participants: #{quiz.participants.count}"
-  span = " Questions: #{quiz.questions.count}"
+- favorited = current_user.try(:bookmarks?, quiz)
+- passed = current_user.passed_quiz?(quiz.id)
+- correct_answers = quiz.attempts.for_participant(current_user).high_score if passed
+- questions_size = quiz.questions.count
+.quiz-card id="quiz-#{quiz.id}"
+  .quiz-card__wrapper
+    - if quiz.category.present?
+      = link_to quiz.category.name, category_path(quiz.category), class: 'quiz-card__category'
+    h3.quiz-card__headline
+      = link_to quiz.name, new_quiz_attempt_path(quiz_id: quiz.id), class: 'quiz-card__headline-link'
+    p.quiz-card__description = quiz.description
+    - if passed
+      p.quiz-card__result
+        = "Your best result: #{correct_answers} of #{questions_size} questions correct"
+
+    .quiz-card__bottom-actions.h-clearfix
+      ul.quiz-card__info-list
+        li.quiz-card__info-item
+          i.fa.fa-question-circle.quiz-card__item-icon
+          = pluralize(questions_size, 'question')
+        li.quiz-card__info-item
+          i.fa.fa-user.quiz-card__item-icon
+          = pluralize(quiz.participants.count, 'participant')
+      .quiz-card__actions
+        = link_to favorite_quiz_path(quiz), remote: true, method: :post, data: {hint: 'Favorite'},
+            class: "btn btn-blue-secondary quiz-card__favorite hint--top hint--rounded #{'is-favorite' if favorited}" do
+          i.fa class="#{favorited ? 'fa-star' : 'fa-star-o'}"
+        = link_to 'Start Quiz', new_quiz_attempt_path(quiz_id: quiz.id), class: 'btn quiz-card__quiz-link'

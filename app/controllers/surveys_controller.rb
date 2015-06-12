@@ -28,9 +28,11 @@ class SurveysController < ApplicationController
   def update
     load_quiz
     if @quiz.update_attributes(quiz_params)
+      flash_message :success, 'Quiz updated'
       default_redirect
     else
-      render :action => :edit
+      flash_message :danger, 'Quiz updated'
+      render :edit
     end
   end
 
@@ -38,6 +40,26 @@ class SurveysController < ApplicationController
     load_quiz
     @quiz.destroy
     default_redirect
+  end
+
+  def favorite
+    load_quiz
+    @favorited = current_user.bookmarks?(@quiz)
+    if @favorited
+      current_user.unbookmark(@quiz)
+      destroy_activity(current_user, 'favorited', @quiz)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.js
+      end
+    else
+      current_user.bookmark(@quiz)
+      track_activity(current_user, 'favorited', @quiz)
+      respond_to do |format|
+        format.html{redirect_to :back}
+        format.js
+      end
+    end
   end
 
  private

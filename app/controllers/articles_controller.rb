@@ -63,6 +63,7 @@ class ArticlesController < ApplicationController
     @favorited = current_user.bookmarks?(@article)
     if @favorited
       current_user.unbookmark(@article)
+      destroy_activity(current_user, 'favorited', @article)
       respond_to do |format|
         format.html {redirect_to :back}
         format.js

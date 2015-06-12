@@ -122,4 +122,8 @@ class User < ActiveRecord::Base
   def unsubscribe(subscribable)
     self.subscriptions.find_by(subscribable: subscribable).destroy
   end
+
+  def passed_quiz?(quiz_id)
+    self.attempts.where(survey_id: quiz_id).exists?
+  end
 end
