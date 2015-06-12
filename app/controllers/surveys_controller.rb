@@ -1,32 +1,33 @@
+# Quizzes Controller (aka 'surveys')
 class SurveysController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :popular]
 
-  before_filter :load_survey, :only => [:show, :edit, :update, :destroy]
+  add_breadcrumb("Edut", '/')
 
-  def index
-    @surveys = Survey::Survey.all
-  end
-
-  def new
-    @survey = Survey::Survey.new
-  end
-
-  def create
-    @survey = Survey::Survey.new(survey_params)
-    if @survey.valid? && @survey.save
-      default_redirect
-    else
-      render :action => :new
+  [:index, :popular, :favorites].each do |action|
+    define_method action do
+      quizzes ||= method("load_#{action}_quizzes".to_sym).call
+      add_breadcrumb("Quizzes", nil)
+      render :index, locals: {quizzes: quizzes}
     end
   end
 
-  def edit
+  def new
+    build_quiz
   end
 
-  def show
+  def create
+    build_quiz
+    save_quiz(true) or render 'new'
+  end
+
+  def edit
+    load_quiz
   end
 
   def update
-    if @survey.update_attributes(survey_params)
+    load_quiz
+    if @quiz.update_attributes(quiz_params)
       default_redirect
     else
       render :action => :edit
@@ -34,26 +35,52 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    @survey.destroy
+    load_quiz
+    @quiz.destroy
     default_redirect
   end
 
-  private
+ private
 
   def default_redirect
-    redirect_to surveys_path, alert: I18n.t("surveys_controller.#{action_name}")
+    redirect_to quizzes_path, alert: I18n.t("surveys_controller.#{action_name}")
   end
 
-  def load_survey
-    @survey = Survey::Survey.find(params[:id])
+  def load_index_quizzes
+    quiz_scope.includes(:category).active.order_desc
   end
 
-  def survey_params
-    rails4? ? params_whitelist : params[:survey_survey]
+  def load_popular_quizzes
+    quiz_scope.includes(:category).active.order_popular
   end
 
-  def params_whitelist
-    params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes)
+  def load_favorites_quizzes
+    current_user.bookmarked_quizzes.includes(:category).active.order_desc
   end
 
+  def load_quiz
+    @quiz = quiz_scope.find(params[:id])
+  end
+
+  def build_quiz
+    @quiz ||= quiz_scope.build
+    @quiz.attributes = quiz_params
+  end
+
+  def save_quiz(track = false)
+    if @quiz.save
+      track_activity(@quiz, 'create') if track
+      redirect_to default_redirect
+    end
+  end
+
+  def quiz_params
+    quiz_params = params[:quiz]
+    quiz_params ? quiz_params.permit(Survey::Survey::AccessibleAttributes << :testable_type << :testable_id << :category_id) : {}
+    # params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes << :testable_type << :testable_id << :category_id)
+  end
+
+  def quiz_scope
+    Quiz.where(nil)
+  end
 end

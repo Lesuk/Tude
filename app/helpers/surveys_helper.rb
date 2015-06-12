@@ -21,12 +21,12 @@ module SurveysHelper
   end
 
   def new_attempt
-    new_attempt_path
+    new_quiz_attempt_path
   end
 
   def attempt_scope(resource)
     if action_name =~ /new|create/
-     attempts_path(resource)
+      quiz_attempts_path(resource)
     elsif action_name =~ /edit|update/
       attempt_path(resource)
     end

@@ -3,7 +3,7 @@
 
   / Test link
   - if @article.quiz.present?
-    = link_to new_attempt_path(survey_id: @article.quiz.id), class: "file-btn" do
+    = link_to new_quiz_attempt_path(survey_id: @article.quiz.id), class: "file-btn" do
       .file-btn__icon: i.fa.fa-check-square-o
       .file-btn__text
         span Start quiz

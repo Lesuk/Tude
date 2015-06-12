@@ -175,6 +175,8 @@ module ApplicationHelper
       'fa-rss'
     elsif type == 'Review' && key == 'create'
       'fa-pencil'
+    elsif type == 'Survey::Survey' && key == 'create'
+      'fa-list-ol'
     else
       'fa-dot-circle-o'
     end

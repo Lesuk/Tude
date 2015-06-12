@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611210004) do
+ActiveRecord::Schema.define(version: 20150611222411) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -249,16 +249,19 @@ ActiveRecord::Schema.define(version: 20150611210004) do
   end
 
   create_table "survey_surveys", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.text     "description",     limit: 65535
-    t.integer  "attempts_number", limit: 4,     default: 0
-    t.boolean  "finished",        limit: 1,     default: false
-    t.boolean  "active",          limit: 1,     default: false
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.integer  "attempts_number",    limit: 4,     default: 0
+    t.boolean  "finished",           limit: 1,     default: false
+    t.boolean  "active",             limit: 1,     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "testable_type",   limit: 255
-    t.integer  "testable_id",     limit: 4
-    t.integer  "category_id",     limit: 4
+    t.string   "testable_type",      limit: 255
+    t.integer  "testable_id",        limit: 4
+    t.integer  "category_id",        limit: 4
+    t.integer  "views_count",        limit: 4,     default: 0,     null: false
+    t.integer  "participants_count", limit: 4,     default: 0,     null: false
+    t.integer  "questions_count",    limit: 4,     default: 0,     null: false
   end
 
   add_index "survey_surveys", ["category_id"], name: "index_survey_surveys_on_category_id", using: :btree

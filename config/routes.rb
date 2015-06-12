@@ -83,8 +83,13 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:create, :destroy]
   resources :article_progresses, only: [:create, :destroy]
-  resources :quizzes, controller: 'surveys'
-  resources :attempts, only: [:new, :create]
+  resources :quizzes, except: [:show], controller: 'surveys' do
+    resources :attempts, only: [:new, :create], path_names: { new: '' }
+    collection do
+      get :popular
+      get :favorites
+    end
+  end
 
   get '/search/:action', to: 'searches#:action', as: 'search'
 

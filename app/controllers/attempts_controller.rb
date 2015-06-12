@@ -2,20 +2,20 @@ class AttemptsController < ApplicationController
 
   helper 'surveys'
 
-  before_filter :load_active_survey
   before_filter :normalize_attempts_data, :only => :create
+  after_action :record_user_view, only: [:new]
 
   def new
-    @participant = current_user # you have to decide what to do here
-
-    unless @survey.nil?
-      @attempt = @survey.attempts.new
+    load_quiz
+    unless @quiz.nil?
+      @attempt = @quiz.attempts.new
       @attempt.answers.build
     end
   end
 
   def create
-    @attempt = @survey.attempts.new(attempt_params)
+    load_quiz
+    @attempt = @quiz.attempts.new(attempt_params)
     @attempt.participant = current_user
 
     if @attempt.valid? && @attempt.save
@@ -27,13 +27,13 @@ class AttemptsController < ApplicationController
 
   def delete_user_attempts
     Survey::Attempt.where(participant_id: params[:user_id], survey_id: params[:survey_id]).destroy_all
-    redirect_to new_attempt_path(survey_id: params[:survey_id])
+    redirect_to new_quiz_attempt_path(survey_id: params[:survey_id])
   end
 
-  private
+ private
 
-  def load_active_survey
-    @survey =  Survey::Survey.active.first
+  def load_quiz
+    @quiz = Quiz.find(params[:quiz_id])
   end
 
   def normalize_attempts_data
@@ -70,5 +70,9 @@ class AttemptsController < ApplicationController
 
   def params_whitelist
     params.require(:survey_attempt).permit(Survey::Attempt::AccessibleAttributes)
+  end
+
+  def record_user_view
+    View.set_view(@quiz, request.remote_ip)
   end
 end

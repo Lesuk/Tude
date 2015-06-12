@@ -1,0 +1,9 @@
+.quiz__block
+  - if quiz.category.present?
+    = link_to quiz.category.name, category_path(quiz.category)
+    br
+  = link_to quiz.name, new_quiz_attempt_path(quiz_id: quiz.id)
+  ' |
+  = link_to 'edit', edit_quiz_path(quiz)
+  span = " Participants: #{quiz.participants.count}"
+  span = " Questions: #{quiz.questions.count}"

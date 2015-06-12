@@ -141,7 +141,7 @@ private
     @course.attributes = course_params
   end
 
-  def save_course(track)
+  def save_course(track = false)
     if @course.save
       track_activity(@course, 'create') if track
       current_user.subscribe(@course)

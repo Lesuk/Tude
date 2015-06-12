@@ -1,0 +1,8 @@
+p.activity__text
+  ' has created a
+  span.h-font-semibold
+    ' new quiz
+  - if activity.category_id.present?
+    ' , in the category
+    = link_to activity.category.name, category_path(activity.category)
+  = link_to activity.trackable.name, quiz_path(activity.trackable)

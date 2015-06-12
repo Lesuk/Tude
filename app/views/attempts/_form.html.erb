@@ -1,9 +1,10 @@
-<h1>Survey <%= @survey.name %></h1>
+<h1>Survey <%= @quiz.name %></h1>
 <p><small><%= @attempt.survey.description %></small></p>
-<%= form_for(@attempt, :url => attempt_scope(@attempt)) do |f| %>
+<!-- attempt_scope(@attempt) -->
+<%= form_for(@attempt, :url => quiz_attempts_path(@quiz)) do |f| %>
   <%= f.fields_for :answers do |builder| %>
     <ul>
-      <% @survey.questions.each_with_index do |question, index| %>
+      <% @quiz.questions.each_with_index do |question, index| %>
         <li>
           <p><%= question.text %></p>
           <%= hidden_field_tag "survey_attempt[answers_attributes][#{index}][question_id]", question.id %>

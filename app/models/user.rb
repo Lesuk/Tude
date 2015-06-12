@@ -33,8 +33,6 @@ class User < ActiveRecord::Base
 
   has_many :attempts, as: :participant, class_name: 'Survey::Attempt'
   has_many :passed_quizzes, -> { uniq }, through: :attempts, source: :survey, class_name: 'Survey::Survey'
-  # has_many :passed_quizzes, -> { where() }
-  # user.attempts.select(:survey_id).uniq.count
 
   validates :username, presence: true, uniqueness: {case_sensitive: false},
                         exclusion: {in: %w(www edut admin), message: "%{value} is reserved"},
@@ -45,7 +43,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  recommends :articles, :courses, :comments, :reviews
+  recommends :articles, :courses, :comments, :reviews, :quizzes
   has_surveys
 
   def self.find_for_database_authentication(warden_conditions)
