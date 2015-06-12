@@ -1,0 +1,5 @@
+<% if @favorited %>
+  $("#quiz-<%= @quiz.id %> .quiz-card__favorite").removeClass('is-favorite');
+<% else %>
+  $("#quiz-<%= @quiz.id %> .quiz-card__favorite").addClass('is-favorite');
+<% end %>

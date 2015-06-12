@@ -1,0 +1,8 @@
+.quiz-wrapper__quis-form
+  - if @quiz.available_for_participant?(current_user)
+    = render 'form'
+  - else
+    p You have spent all the possible attempts to answer this Survey
+    br
+    = link_to delete_user_attempts_path(@quiz.id), method: :delete do
+      | Click here to reset the attempts

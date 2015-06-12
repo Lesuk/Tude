@@ -10,6 +10,7 @@ class Article < ActiveRecord::Base
   has_many :completing_students, through: :article_progresses, source: :student
   has_many :subscriptions, as: :subscribable, dependent: :destroy
   has_many :subscribers, through: :subscriptions
+  has_one :quiz, as: :testable, dependent: :destroy
   ##has_many :favorites, as: :favorable
   ##has_many :fans, through: :favorites, source: :user
 

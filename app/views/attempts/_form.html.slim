@@ -1,0 +1,16 @@
+= form_for(@attempt, url: quiz_attempts_path(@quiz), html: {class: 'ui form quiz-form h-clearfix'}) do |f|
+  = f.fields_for :answers do |builder|
+    ol.quiz-form__list
+      - @quiz.questions.each_with_index do |question, index|
+        li.quiz-form__item
+          .grouped.fields
+            p.quiz-form__question-text = "#{index + 1}. #{question.text}"
+            = hidden_field_tag "survey_attempt[answers_attributes][#{index}][question_id]", question.id
+            .quiz-form__options-group
+              - question.options.each do |option|
+                .field
+                  .ui.radio.checkbox
+                    = radio_button_tag "survey_attempt[answers_attributes][#{index}][option_id][]", option.id
+                    label.quiz-form__option-label = option.text
+
+  = f.submit "Submit Quiz", class: 'btn btn-blue btn-large quiz-form__submit-btn'

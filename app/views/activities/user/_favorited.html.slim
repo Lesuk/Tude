@@ -2,6 +2,10 @@ p.activity__text
   span.h-font-semibold
     ' favorited
   ' the
-  = activity.parent_type.downcase
-  '
-  = link_to activity.parent.title, polymorphic_path(activity.parent)
+  - if activity.parent_type == 'Survey::Survey'
+    ' quiz
+    = link_to activity.parent.name, new_quiz_attempt_path(activity.parent_id)
+  - else
+    = activity.parent_type.downcase
+    '
+    = link_to activity.parent.title, polymorphic_path(activity.parent)

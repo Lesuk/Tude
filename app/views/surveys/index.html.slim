@@ -1,0 +1,11 @@
+- provide(:title, "Quizzes")
+
+= render partial: "shared/container__top_panel", locals: {type: "Quizzes"}
+
+/ = render partial: "shared/container_filter", locals: {entries: quizzes}
+
+.container__padding.container-box
+
+  .quizzes
+    - quizzes.each do |quiz|
+      = render partial: 'surveys/quiz', locals: {quiz: quiz}

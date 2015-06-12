@@ -9,6 +9,11 @@ ul.counters
       span.counters__number = user.enrollments.active.size
       | active courses
 
+  li.counters__item
+    - passed_quizzes_size = user.passed_quizzes.size
+    span.counters__number = passed_quizzes_size
+    = 'passed quiz'.pluralize(passed_quizzes_size)
+
   li.counters__item.-fsize-12
     span.counters__number = user.subscribers.size
     | subscribers
