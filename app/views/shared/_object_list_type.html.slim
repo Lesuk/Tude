@@ -1,5 +1,5 @@
 - obj_class = object.class.name.downcase
-- obj_link = url_for(action: 'index', controller: obj_class.pluralize, only_path: false, trailing_slash: true) + "#{object.to_param}"
+/- obj_link = url_for(action: 'index', controller: obj_class.pluralize, only_path: false, trailing_slash: true) + "#{object.to_param}"
 - obj_details = local_assigns.has_key?(:details) ? details : nil
 - article_duration = ( obj_class == 'article' && object.try(:video_duration) > 0 ) ? true : false
 - thumb_src = object.youtube_id.present? ? youtube_thumbnail(object.youtube_id, 'mq') : nil
@@ -7,7 +7,7 @@
 article.object-list id="#{obj_class}-#{object.id}"
   - if thumb_src
     .object-list__thumbnail
-      = link_to '', obj_link, class: 'object-list__thumbnail-link'
+      = link_to '', object_type_url(object), class: 'object-list__thumbnail-link'
       - if article_duration
         = link_to '', article_path(object, {autoplay: true}), class: "object-list__play-btn"
       - elsif obj_class == 'course'
@@ -23,7 +23,7 @@ article.object-list id="#{obj_class}-#{object.id}"
     = link_to object.category_name, category_path(object.category), class: "object-list__category"
     = insert_time_tag(object.created_at, "object-list__publication-date")
     h3.object-list__headline
-      = link_to title, obj_link, class: "object-list__headline-link"
+      = link_to title, object_type_url(object), class: "object-list__headline-link"
     p.object-list__content = body
     / Resolve conflict with user/author (rename user column in article)
     / span.object-list__author

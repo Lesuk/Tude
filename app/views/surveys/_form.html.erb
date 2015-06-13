@@ -1,4 +1,4 @@
-<%= form_for(@quiz, :url => survey_scope(@quiz)) do |f| %>
+<%= form_for(@quiz, :url => survey_scope(@quiz), html: {class: 'ui form'}) do |f| %>
 
   <% if f.object.errors.messages.any? %>
     <ul>
@@ -11,17 +11,31 @@
   <% end -%>
 
   <div class="field">
-    <%= f.label :name %> <br />
-    <%= f.text_field :name %> <br />
-    <%= f.label :attempts_number %> <br />
-    <%= f.text_field :attempts_number %> <br />
-    <%= f.label :active %> <br />
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :attempts_number %>
+    <%= f.text_field :attempts_number %>
+  </div>
+  <div class="field">
+    <%= f.label :active %>
     <%= f.select :active, ["true", "false"] %>
+  </div>
+  <div class="field">
+    <%= f.label 'Testable' %>
+    <%= f.grouped_collection_select(:global_testable, [ Article, Course ], :all, :model_name, :to_global_id, :title, {include_blank: true}) %>
+  </div>
+  <div class="three fields">
+    <div class="field">
+      <%= f.label :category %>
+      <%= f.grouped_collection_select(:category_id, @categories, :subcategories, :name, :id, :name, {include_blank: true}) %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :description %> <br />
-    <%= f.text_area :description, :size => "100x5" %> <br />
+    <%= f.label :description %>
+    <%= f.text_area :description, :size => "100x5" %>
   </div>
 
   <br/ >

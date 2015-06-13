@@ -1,5 +1,5 @@
 - obj_class = object.class.name.downcase
-- obj_link = url_for(action: 'index', controller: obj_class.pluralize, only_path: false, trailing_slash: true) + "#{object.to_param}"
+/ - obj_link = url_for(action: 'index', controller: obj_class.pluralize, only_path: false, trailing_slash: true) + "#{object.to_param}"
 - article_duration = ( obj_class == 'article' && object.try(:video_duration) > 0 ) ? true : false
 
 article.object-link id="#{obj_class}-#{object.id}"
@@ -7,7 +7,7 @@ article.object-link id="#{obj_class}-#{object.id}"
     = link_to object.category_name, category_path(object.category), class: "object-link__category"
     = insert_time_tag(object.created_at, "object-link__publication-date")
     h3.object-link__headline
-      = link_to object.title, obj_link, class: "object-link__headline-link"
+      = link_to object.title, object_type_url(object), class: "object-link__headline-link"
 
     - if obj_class == 'article'
       = render partial: "shared/articles/article_meta", locals: {article: object}

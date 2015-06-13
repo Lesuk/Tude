@@ -1,2 +1,7 @@
-<h2>New Survey</h2>
-<%= render 'form' %>
+<% provide(:title, "New Quiz") %>
+<div class="container__padding container-box">
+  <div class="quiz-wrapper h-box-border h-bg-white">
+    <h2>New Quiz</h2>
+    <%= render 'form' %>
+  </div>
+</div>

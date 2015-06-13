@@ -192,4 +192,13 @@ module ApplicationHelper
       'shared/users/courses_secondary_nav_items'
     end
   end
+
+  def object_type_url(object)
+    case object.class.name
+    when 'Course'
+      course_path(object)
+    when 'Article'
+      article_path(object)
+    end
+  end
 end

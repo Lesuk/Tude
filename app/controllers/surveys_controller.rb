@@ -14,6 +14,7 @@ class SurveysController < ApplicationController
 
   def new
     build_quiz
+    load_categories
   end
 
   def create
@@ -84,6 +85,10 @@ class SurveysController < ApplicationController
     @quiz = quiz_scope.find(params[:id])
   end
 
+  def load_categories
+    @categories ||= Category.includes(:subcategories).main_categories
+  end
+
   def build_quiz
     @quiz ||= quiz_scope.build
     @quiz.attributes = quiz_params
@@ -98,7 +103,7 @@ class SurveysController < ApplicationController
 
   def quiz_params
     quiz_params = params[:quiz]
-    quiz_params ? quiz_params.permit(Survey::Survey::AccessibleAttributes << :testable_type << :testable_id << :category_id) : {}
+    quiz_params ? quiz_params.permit(Survey::Survey::AccessibleAttributes << :global_testable << :category_id) : {}
     # params.require(:survey_survey).permit(Survey::Survey::AccessibleAttributes << :testable_type << :testable_id << :category_id)
   end
 
