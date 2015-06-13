@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     get 'users/:id/edit', to: 'registrations#edit', as: :user_edit
   end
 
+  # DON'T USE Articles#index or Courses#index as ROOT PAGE!
   authenticated do
     root to: 'activities#feed', as: :authenticated_root
   end
 
-  root to: 'articles#index' # pages#landing
+  root to: 'pages#landing'
 
   # For pagination links, like: /page/2
   concern :paginatable do

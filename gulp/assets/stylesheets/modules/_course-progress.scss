@@ -86,4 +86,24 @@
       font-size: 13px;
     }
   }
+
+  &__completed-text{
+    display: inline-block;
+    width: 260px;
+    margin: 0 0 5px 0;
+    padding: 10px;
+    border: 1px solid #8CC84D;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #3E730C;
+    background-color: #fff;
+
+    @include breakpoint(500px){
+      float: right;
+      width: 200px;
+      margin: 0;
+    }
+  }
 }

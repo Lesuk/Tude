@@ -5,7 +5,9 @@
 - state_class = completed ? 'status-completed' : 'status-active'
 .course-progress
   .course-progress__inner.h-clearfix
-    = link_to 'Continue Course', continue_course_path(course), class: 'btn btn-blue -shadow-bottom course-progress__continue'
+    /- unless completed
+    = link_to_unless completed, 'Continue Course', continue_course_path(course), class: 'btn btn-blue -shadow-bottom course-progress__continue' do
+      = content_tag(:span, 'Course completed', class: 'course-progress__completed-text')
     .course-progress__progress-bar
       .course-progress__progress-notdone
         .course-progress__progress-done class="#{state_class}" style="width: #{percent}%;"

@@ -5,4 +5,7 @@ p.activity__text
   - if activity.category_id.present?
     ' , in the category
     = link_to activity.category.name, category_path(activity.category)
-  = link_to activity.trackable.name, new_quiz_attempt_path(activity.trackable)
+  - if activity.trackable
+    = link_to activity.trackable.name, new_quiz_attempt_path(activity.trackable)
+  - else
+    | that is already deleted

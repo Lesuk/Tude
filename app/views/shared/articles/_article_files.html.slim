@@ -12,7 +12,7 @@
 
   / Live demo link
   - if @article.demo_link.present?
-    = link_to @article.demo_link, class: "file-btn" do
+    = link_to @article.demo_link, class: "file-btn", target: '_blank' do
       .file-btn__icon: i.fa.fa-eye
       .file-btn__text Live Demo
 
@@ -23,7 +23,7 @@
 
   / Github project
   - if @article.github_link.present?
-    = link_to @article.github_link, class: "file-btn" do
+    = link_to @article.github_link, class: "file-btn", target: '_blank' do
       .file-btn__icon: i.fa.fa-github
       .file-btn__text Project on GitHub
 
