@@ -1,0 +1,5 @@
+= provide(:title, "#{category.name} Category - Quizzes")
+
+= render partial: 'shared/categories/container__category_wrapper', locals: {category: category}
+
+= render partial: "shared/quizzes/container_quizzes", locals: {quizzes: quizzes}

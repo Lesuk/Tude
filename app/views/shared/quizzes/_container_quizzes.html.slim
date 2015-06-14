@@ -1,0 +1,5 @@
+.container__padding.container-box
+
+  .quizzes
+    - quizzes.each do |quiz|
+      = render partial: 'surveys/quiz', locals: {quiz: quiz}

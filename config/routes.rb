@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # DON'T USE Articles#index or Courses#index as ROOT PAGE!
   authenticated do
-    root to: 'activities#feed', as: :authenticated_root
+    root to: 'pages#dashboard', as: :authenticated_root
   end
 
   root to: 'pages#landing'

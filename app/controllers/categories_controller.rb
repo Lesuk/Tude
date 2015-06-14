@@ -30,6 +30,13 @@ class CategoriesController < ApplicationController
     render locals: {category: category}
   end
 
+  def quizzes
+    category ||= load_category
+    quizzes ||= load_quizzes(category)
+    add_breadcrumbs(["Categories", categories_path], [category.name, category_path(category)], ["Quizzes", nil])
+    render locals: {category: category, quizzes: quizzes}
+  end
+
   private
 
   def load_category
@@ -42,6 +49,10 @@ class CategoriesController < ApplicationController
 
   def load_articles(category)
     Article.includes(:category).published.in_category(category.to_param).order_desc.page(params[:page]).per(set_page_size)
+  end
+
+  def load_quizzes(category)
+    Quiz.includes(:category).active.in_category(category.to_param).order_desc
   end
 
   def set_page_params
