@@ -3,7 +3,7 @@ html.no-js lang="en"
   head
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
-    title = content_for?(:title) ? yield(:title) : "Edut"
+    title = full_title(yield(:title))
     meta name="description" content="description"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
@@ -11,9 +11,7 @@ html.no-js lang="en"
     link rel="shortcut icon" href="" type="image/x-icon"
 
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=cyrillic,latin"
-    = stylesheet_link_tag "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
     = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
     = csrf_meta_tags
 
   body
@@ -33,3 +31,5 @@ html.no-js lang="en"
 
     ul.flash-list
       = render_flash
+
+    = javascript_include_tag 'application'

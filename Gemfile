@@ -84,6 +84,12 @@ group :development, :test do
   gem 'lol_dba'
   # finds dead routes and unused actions
   gem 'traceroute'
+
+  # Entity-Relationship Diagrams
+  gem "rails-erd"
+
+  # model and controller UML class diagram generator
+  gem 'railroady'
 end
 
 group :production do

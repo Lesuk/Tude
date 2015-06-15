@@ -71,6 +71,7 @@ GEM
       columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    choice (0.2.0)
     chunky_png (1.3.4)
     code_analyzer (0.4.5)
       sexp_processor
@@ -178,6 +179,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.3.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -195,6 +197,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     rails_best_practices (1.15.7)
@@ -226,6 +233,7 @@ GEM
     require_all (1.3.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    ruby-graphviz (1.2.2)
     ruby-progressbar (1.7.5)
     sass (3.4.14)
     sass-rails (5.0.1)
@@ -337,7 +345,9 @@ DEPENDENCIES
   mysql2
   pg
   rack-contrib
+  railroady
   rails (= 4.2.0)
+  rails-erd
   rails_best_practices
   recommendable
   sass-rails (~> 5.0.0.beta1)
