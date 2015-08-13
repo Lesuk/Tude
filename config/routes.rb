@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       get :recommended
       get :mine
       get :top
-      post :sort
+      put :sort
       get :update_sections
     end
   end

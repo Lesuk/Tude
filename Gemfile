@@ -24,7 +24,6 @@ gem 'breakpoint', '~> 2.5.0'
 gem "font-awesome-rails"
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 #gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

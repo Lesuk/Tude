@@ -97,8 +97,8 @@ class ArticlesController < ApplicationController
   end
 
   def sort
-    params[:article].each_with_index do |id, index|
-      Article.where(id: id).update_all({position: index+1})
+    params[:order].each do |key, value|
+      current_user.articles.where(id: value[:id]).update_all(position: key.to_i + 1)
     end
     render nothing: true
   end
