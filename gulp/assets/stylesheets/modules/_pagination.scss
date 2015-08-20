@@ -14,7 +14,7 @@
   display: inline-block;
   float: left;
   margin-bottom: 16px;
-  @include breakpoint(max-width 499px){
+  @include breakpoint(max-width 31.188em){
     display: block;
     float: none;
     text-align: center;
@@ -25,19 +25,19 @@
 
   &__item{
 
-    @include breakpoint(max-width 499px){
+    @include breakpoint(max-width 31.188em){
       @include abs-position;
     }
 
     &--first{
       @include initial-position;
-      @include breakpoint(500px){
+      @include breakpoint(31.250em){
         @include abs-position;
       }
     }
     &--last{
       @include initial-position;
-      @include breakpoint(500px){
+      @include breakpoint(31.250em){
         @include abs-position;
       }
     }
@@ -52,7 +52,7 @@
       @include initial-position;
 
       & .total-pages{
-        @include breakpoint(500px){
+        @include breakpoint(31.250em){
           display: none;
         }
       }

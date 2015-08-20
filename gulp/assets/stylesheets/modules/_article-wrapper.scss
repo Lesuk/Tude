@@ -45,13 +45,13 @@
 .article-wrapper__primary{
   max-width: 800px;
   margin: 0 auto;
-  @include breakpoint(1000px){
-    width: calc(100% - 300px);
+  @include breakpoint(62.500em){
+    width: calc(100% - 18.750em);
     padding-right: 15px;
     // margin-top: 20px;
     float: left;
   }
-  @include breakpoint(1000px){
+  @include breakpoint(62.500em){
     padding-right: 25px;
   }
 }
@@ -62,7 +62,7 @@
   display: none;
   float: right;
   // margin-top: 20px;
-  @include breakpoint(1000px){
+  @include breakpoint(62.500em){
     display: block;
   }
 

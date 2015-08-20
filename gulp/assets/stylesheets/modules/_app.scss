@@ -16,7 +16,7 @@
   height: 100%;
 
   @include breakpoint(62.500em){
-    width: calc(100% - 210px);
+    width: calc(100% - 13.125em);
     float: right;
   }
 

@@ -2,7 +2,7 @@
 
   &__headbox{
     padding: 10px 10px 0;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       padding: 0;
     }
   }

@@ -72,14 +72,14 @@
   }
   &.btn-register {
     display: none;
-    @include breakpoint(700px){
+    @include breakpoint(43.750em){
       margin: 6px 0 6px 0;
       display: inline-block
     }
   }
   &.btn-signin{
     margin: 6px 0 6px 0;
-    @include breakpoint(700px){
+    @include breakpoint(43.750em){
       margin: 6px 10px 6px 0;
     }
   }
@@ -100,7 +100,7 @@
     padding: 10px 10px;
     font-weight: 600;
     font-size: 15px;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       width: 180px;
       margin-right: 20px;
     }

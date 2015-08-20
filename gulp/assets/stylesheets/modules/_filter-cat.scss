@@ -5,7 +5,7 @@
   margin-bottom: 8px;
   font-size: 14px;
 
-  @include breakpoint(370px){
+  @include breakpoint(23.125em){
     width: 200px;
     margin-right: 10px;
   }
@@ -70,7 +70,7 @@
   display: none;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 
-  @include breakpoint(370px){
+  @include breakpoint(23.125em){
     width: 280px;
   }
 }

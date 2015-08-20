@@ -4,7 +4,7 @@
 
   &__breadcrumbs{
     margin-bottom: 10px;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       position: absolute;
       top: 10px;
       left: 20px;
@@ -13,12 +13,12 @@
   }
   &__course-thumb{
     position: relative;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       pointer-events: none;
     }
   }
   &__hgroup{
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -36,7 +36,7 @@
   background-color: #12425e;
   cursor: pointer;
 
-  @include breakpoint(500px){
+  @include breakpoint(31.250em){
     margin: 0;
   }
 
@@ -61,14 +61,14 @@
     background: rgba(0, 0, 0, 0.6) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAWCAQAAACMYb/JAAAArklEQVR4AYXSr05CYRjA4cPGxjRosTijdvNJzmD1CrwAvQWugASNwGg0MoErOIVCPCMx0hmBMaAA4mPX8/2rT/i+9/1lPu0M3MtCN1OAvS+NEFkDmHqoJwcAbHzUkb9n7C5FqLynCAzdpAhLrynCRc9VnEDpKUWYpUmZIlt5nBQeY889amvGPj33HBvdt45WbAELeWyNP/qu/8dwBrDyVp9UBRi5DYXZdTLxEs77F5bCVAHlDJ1UAAAAAElFTkSuQmCC) center center no-repeat;
     transition: opacity 80ms linear;
 
-    @include breakpoint(500px){display: none;}
+    @include breakpoint(31.250em){display: none;}
   }
 }
 
 .hgroup{
   position: relative;
 
-  @include breakpoint(500px){
+  @include breakpoint(31.250em){
     width: 80%;
     margin: 0 auto;
   }
@@ -83,7 +83,7 @@
     color: #3f4749;
     /*border-bottom: 1px solid #e4e4e4;*/
 
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       padding: 0;
       line-height: 30px;
       border: none;
@@ -91,25 +91,25 @@
       font-size: 26px;
       text-shadow: 1px 1px 2px rgba(0,0,0,.6);
     }
-    @include breakpoint(600px){
+    @include breakpoint(37.500em){
       line-height: 38px;
       font-size: 30px;
     }
-    @include breakpoint(1200px){
+    @include breakpoint(75.000em){
       line-height: 48px;
       font-size: 36px;
     }
   }
   &__summary{
     display: none;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       display: block;
       line-height: 24px;
       color: #fff;
       text-align: center;
       text-shadow: 1px 1px 2px rgba(0,0,0,.6);
     }
-    @include breakpoint(600px){
+    @include breakpoint(37.500em){
       line-height: 26px;
       font-size: 18px;
     }
@@ -122,7 +122,7 @@
   &__actions{
     margin-bottom: 5px;
     text-align: center;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       margin-bottom: 25px;
     }
   }
@@ -130,7 +130,7 @@
 
 .watch-trailer{
   display: none;
-  @include breakpoint(500px){
+  @include breakpoint(31.250em){
     display: inline-block;
     padding: 9px 10px;
     font-size: 15px;
@@ -138,7 +138,7 @@
     color: #fff;
     cursor: pointer;
   }
-  @include breakpoint(600px){
+  @include breakpoint(37.500em){
     padding: 9px 10px 9px 50px;
     background: transparent image-url('play-big.png') 0 0 no-repeat;
   }

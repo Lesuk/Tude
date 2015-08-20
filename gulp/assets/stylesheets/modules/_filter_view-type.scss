@@ -6,7 +6,7 @@
   text-align: center;
   vertical-align: top;
 
-  @include breakpoint(370px){
+  @include breakpoint(23.125em){
     width: auto;
     // margin-left: 8px;
   }

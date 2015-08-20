@@ -65,7 +65,7 @@
   color: #777;
   font-size: 14px;
 
-  @include breakpoint(min-width 700px){
+  @include breakpoint(min-width 43.750em){
     display: initial;
   }
 }

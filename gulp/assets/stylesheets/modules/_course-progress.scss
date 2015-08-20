@@ -2,7 +2,7 @@
   position: relative;
   background-color: #FFF;
   text-align: center;
-  @include breakpoint(500px){
+  @include breakpoint(31.250em){
     padding: 7px 20px;
     border: 1px solid #e1e1e1;
     border-width: 0 0 1px 0;
@@ -19,7 +19,7 @@
     padding: 10px 10px;
     font-weight: 600;
     font-size: 15px;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       float: right;
       width: 200px;
       margin: 0;
@@ -31,7 +31,7 @@
     text-align: left;
     vertical-align: middle;
     font-size: 0;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       float: left;
       width: calc(100% - 220px);
     }
@@ -65,7 +65,7 @@
     margin-left: 10px;
     vertical-align: middle;
     text-align: center;
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       margin-left: 15px;
     }
   }
@@ -74,7 +74,7 @@
     font-weight: 600;
     line-height: 14px;
     color: #6f7a89;
-    @include breakpoint(1000px){
+    @include breakpoint(62.500em){
       font-size: 16px;
     }
   }
@@ -82,7 +82,7 @@
     font-size: 12px;
     line-height: 12px;
     color: #aaa;
-    @include breakpoint(1000px){
+    @include breakpoint(62.500em){
       font-size: 13px;
     }
   }
@@ -100,7 +100,7 @@
     color: #3E730C;
     background-color: #fff;
 
-    @include breakpoint(500px){
+    @include breakpoint(31.250em){
       float: right;
       width: 200px;
       margin: 0;
