@@ -1,4 +1,4 @@
-$(".filter-level__name").html(function(){
+$(".filter-level__name-text").html(function(){
   return $(".filter-level__list .is-active").text();
 });
 

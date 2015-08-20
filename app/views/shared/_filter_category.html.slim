@@ -1,5 +1,7 @@
 .filter-cat
-  .filter-cat__name.white-box All categories
+  .filter-cat__name.white-box
+    span.filter-cat__name-text All categoriess
+    i.fa.fa-angle-down.filter-cat__icon
   ul.filter-cat__list
     li.filter-cat__item
       = active_link_to "All categories", url_for(params.except(:category)), active: !params.has_key?(:category), class_active: 'is-active'
@@ -11,4 +13,5 @@
           ul.filter-cat__sub-list
             - sub_cats.each do |subcat|
               li.filter-cat__sub-list-item
+                i.fa.fa-angle-right.filter-cat__sub-list-icon
                 = active_link_to subcat.name, @page_params.merge(category: subcat.slug).except(:page), active: /category=#{subcat.slug}/, class_active: 'is-active'

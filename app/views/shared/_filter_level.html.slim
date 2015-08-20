@@ -1,5 +1,7 @@
 .filter-level
-  .filter-level__name.white-box All levels
+  .filter-level__name.white-box
+    span.filter-cat__name-text All levels
+    i.fa.fa-angle-down.filter-cat__icon
   ul.filter-level__list
     li.filter-level__item
       = active_link_to "All levels", url_for(params.except(:level)), active: !params.has_key?(:level), class_active: 'is-active'
